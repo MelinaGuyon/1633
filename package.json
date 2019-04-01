@@ -59,6 +59,7 @@
     "lodash.throttle": "^4.1.1",
     "pixi.js": "^4.8.2",
     "raw-loader": "^0.5.1",
+    "run-waterfall": "^1.1.6",
     "stylus-reset": "0.0.1",
     "test-inline-video": "^1.0.0"
   },

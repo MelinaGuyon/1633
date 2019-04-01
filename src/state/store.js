@@ -14,8 +14,11 @@ export default createStore({
   languages: Object.keys(languages),
   baseUrl: window.__conf.baseUrl,
 
-  // ---- scene ----
+  // ---- screen device infos ----
+  size: [0, 0],
   pixelRatio: ratio,
+
+  // ---- scene ----
   sceneLayers,
   levelDict: {
     0: 'studio',
@@ -40,6 +43,6 @@ export default createStore({
     rotate: 'assets/gif/rotate.gif'
   },
 
-  // ---- stored animation ----
-  animations: {},
+  // ---- stored animations ----
+  animations: {}
 })
