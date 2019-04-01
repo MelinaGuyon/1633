@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "abstractions/*": ["src/abstractions/*"],
+      "components/*": ["src/components/*"],
+      "controllers/*": ["src/controllers/*"],
+      "state/*": ["src/state/*"],
+      "utils/*": ["src/utils/*"]
+    }
+  }
+}

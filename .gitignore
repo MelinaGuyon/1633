@@ -1,0 +1,42 @@
+docs
+.gh-pages-cache
+
+# Do not add builds
+public/*.js
+public/*.css
+
+# Do not add rendered htmls
+public/cn
+public/en
+public/fr
+public/index.html
+
+# Do not add sources sounds
+src/assets/sounds/music
+src/assets/sounds/sfx
+src/assets/sounds/*.wav
+
+# Editors
+.idea
+.vscode
+
+# Node / Yarn / Npm
+node_modules
+npm-debug.log*
+
+# Logs and Temporary files
+.tmp
+logs
+*.log
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Misc
+coverage
+
+yarn.lock

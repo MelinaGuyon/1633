@@ -1,0 +1,93 @@
+<!doctype html>
+<html class="no-js lang-<%=htmlWebpackPlugin.options.lang%> <%=htmlWebpackPlugin.options.noCustomFont%>" lang="<%=htmlWebpackPlugin.options.langCode%>">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="<%=webpackConfig.output.publicPath%>">
+    <script>
+      (function () {
+        // redirect to good locale
+        var base = '<%=webpackConfig.output.publicPath%>';
+        var langs = <%=htmlWebpackPlugin.options.languages%>;
+
+        var pathname = window.location.pathname;
+        var splitted = pathname.substr(base.length).split('/');
+        var supposedLang = splitted[0];
+        var rest = splitted.length > 1 ? splitted.slice(1).join('/') : ''
+        if (rest[rest.length - 1] !== '/') rest += '/'
+        if (rest[0] !== '/') rest = '/' + rest
+
+        var lang = (function () {return navigator.languages&&navigator.languages.length?navigator.languages[0]:navigator.userLanguage?navigator.userLanguage:navigator.language})().split('-');
+        var sublang = lang[1] !== undefined ? (lang[1] + '').toLowerCase() : '';
+        lang = lang[0] !== undefined ? (lang[0] + '').toLowerCase() : 'en';
+        if (lang === 'zh') lang = 'cn';
+        if (!~langs.indexOf(lang)) lang = 'en';
+        if (!~langs.indexOf(supposedLang)) window.location = base + lang + rest
+
+        document.getElementsByTagName('html')[0].classList.remove('no-js')
+        document.getElementsByTagName('html')[0].classList.add('js')
+        // safariDesktop is a quick fix to avoid blurred pixel on safari desktop
+        var ua = navigator.userAgent.toLowerCase();
+        var safariDesktop = ((ua.indexOf('safari')!=-1) && (ua.indexOf('chrome')  == -1) && !('ontouchstart' in window));
+        if (safariDesktop) document.getElementsByTagName('html')[0].classList.add('safaridesktop');
+      })();
+    </script>
+
+    <title><%=htmlWebpackPlugin.options.loc['site.title']%></title>
+    <meta name="description" content="<%=htmlWebpackPlugin.options.loc['site.description']%>">
+    <meta name="pinterest" content="nohover">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="">
+
+    <link rel="canonical" href="<%=htmlWebpackPlugin.options.domain%><%=webpackConfig.output.publicPath%><%=htmlWebpackPlugin.options.lang%>/">
+    <link rel="alternate" hreflang="x-default" href="<%=htmlWebpackPlugin.options.domain%><%=webpackConfig.output.publicPath%>">
+    <link rel="alternate" hreflang="en-EN" href="<%=htmlWebpackPlugin.options.domain%><%=webpackConfig.output.publicPath%>en/">
+    <link rel="alternate" hreflang="en-US" href="<%=htmlWebpackPlugin.options.domain%><%=webpackConfig.output.publicPath%>en/">
+    <link rel="alternate" hreflang="fr-FR" href="<%=htmlWebpackPlugin.options.domain%><%=webpackConfig.output.publicPath%>fr/">
+    <link rel="alternate" hreflang="zh-CN" href="<%=htmlWebpackPlugin.options.domain%><%=webpackConfig.output.publicPath%>cn/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="<%=htmlWebpackPlugin.options.loc['site.name']%>">
+    <meta property="og:title" content="<%=htmlWebpackPlugin.options.loc['og.title']%>">
+    <meta property="og:description" content="<%=htmlWebpackPlugin.options.loc['og.decription']%>">
+    <meta property="og:image" content="<%=htmlWebpackPlugin.options.domain%><%=webpackConfig.output.publicPath%>assets/share/share.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%=htmlWebpackPlugin.options.loc['og.title']%>">
+    <meta name="twitter:description" content="<%=htmlWebpackPlugin.options.loc['og.decription']%>">
+    <meta name="twitter:url" content="<%=htmlWebpackPlugin.options.domain%><%=webpackConfig.output.publicPath%>">
+    <meta name="twitter:image" content="<%=htmlWebpackPlugin.options.domain%><%=webpackConfig.output.publicPath%>assets/share/share.jpg">
+    <meta name="twitter:creator" content="@miumiuofficial">
+  </head>
+  <body>
+  <main class="app"></main>
+
+  <script>
+    window.__version = '<%=htmlWebpackPlugin.options.version%>';
+    window.__conf = {
+      loc: <%=htmlWebpackPlugin.options.serializedLoc%>,
+      lang: '<%=htmlWebpackPlugin.options.lang%>',
+      baseUrl: '<%=webpackConfig.output.publicPath%>',
+      useCustomFont: <%=htmlWebpackPlugin.options.useCustomFont%>
+    };
+    window.loadjs=function(){var l=function(){},c={},f={},u={};function s(e,n){if(e){var t=u[e];if(f[e]=n,t)for(;t.length;)t[0](e,n),t.splice(0,1)}}function o(e,n){e.call&&(e={success:e}),n.length?(e.error||l)(n):(e.success||l)(e)}function h(t,r,i,c){var s,o,e=document,n=i.async,f=(i.numRetries||0)+1,u=i.before||l,a=t.replace(/^(css|img)!/,"");c=c||0,/(^css!|\.css$)/.test(t)?(s=!0,(o=e.createElement("link")).rel="stylesheet",o.href=a):/(^img!|\.(png|gif|jpg|svg)$)/.test(t)?(o=e.createElement("img")).src=a:((o=e.createElement("script")).src=t,o.async=void 0===n||n),!(o.onload=o.onerror=o.onbeforeload=function(e){var n=e.type[0];if(s&&"hideFocus"in o)try{o.sheet.cssText.length||(n="e")}catch(e){n="e"}if("e"==n&&(c+=1)<f)return h(t,r,i,c);r(t,n,e.defaultPrevented)})!==u(t,o)&&e.head.appendChild(o)}function t(e,n,t){var r,i;if(n&&n.trim&&(r=n),i=(r?t:n)||{},r){if(r in c)throw"LoadJS";c[r]=!0}!function(e,r,n){var t,i,c=(e=e.push?e:[e]).length,s=c,o=[];for(t=function(e,n,t){if("e"==n&&o.push(e),"b"==n){if(!t)return;o.push(e)}--c||r(o)},i=0;i<s;i++)h(e[i],t,n)}(e,function(e){o(i,e),s(r,e)},i)}return t.ready=function(e,n){return function(e,t){e=e.push?e:[e];var n,r,i,c=[],s=e.length,o=s;for(n=function(e,n){n.length&&c.push(e),--o||t(c)};s--;)r=e[s],(i=f[r])?n(r,i):(u[r]=u[r]||[]).push(n)}(e,function(e){o(n,e)}),t},t.done=function(e){s(e,[])},t.reset=function(){c={},f={},u={}},t.isDefined=function(e){return e in c},t}();
+    (function () {
+      function noop () {};
+      var files = [];
+
+      // css bundle (production env only)
+      <% if (!htmlWebpackPlugin.options.isDev) { %>files.push('css!<%=htmlWebpackPlugin.files.css[0]%>?v=<%=htmlWebpackPlugin.options.version%>');<% } %>
+
+      // js bundle
+      files.push('<%=htmlWebpackPlugin.files.js[0]%>?v=<%=htmlWebpackPlugin.options.version%>')
+
+      // On production, add delay loading to avoid freezes during the slide transition
+      <% if (!htmlWebpackPlugin.options.isDev) { %> window.setTimeout(function () { <% } %>
+        window.loadjs(files, { success: noop, error: noop, async: false });
+      <% if (!htmlWebpackPlugin.options.isDev) { %> }, 500); <% } %>
+    })();
+  </script>
+  </body>
+</html>
