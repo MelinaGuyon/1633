@@ -2,7 +2,7 @@ import './App.styl'
 
 import { h, addRef } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
-// import pixi from 'controllers/pixi'
+import pixi from 'controllers/pixi'
 
 import Preloader from 'components/dom/Preloader/Preloader'
 // import Game from 'components/dom/Game/Game'
@@ -14,10 +14,10 @@ export default class App extends DomComponent {
 
   componentDidMount () {
     // Initialize pixi part of the App
-    // pixi.init()
+    pixi.init()
 
     // Render the pixi canvas in App <main> node
-    // this.render(pixi.getView(), this.base)
+    this.render(pixi.getView(), this.base)
 
     // Attach Preloader component
     this.render(
