@@ -7,17 +7,34 @@ let base
 
 
 function Scene() {
-  console.log("pouet")
+
+  let backView, floor, frontView
 
   function setup() {
     base = new Container()
 
-    let graphics = new PIXI.Graphics()
-    graphics.beginFill(0xFFFF00)
-    graphics.lineStyle(5, 0xFF0000)
-    graphics.drawRect(0, 0, 300, 200)
+    // setBackView()
+    // //setFloor()
+    // setFrontView()
+  }
 
-    base.addChild(graphics)
+
+  function setBackView() {
+    backView = PIXI.Sprite.fromImage("assets/backView.jpg")
+    base.addChild(backView)
+  }
+
+
+  function setFloor() {
+    floor = PIXI.Sprite.fromImage("assets/floor.jpg")
+    floor.y = 591 // backView height
+    base.addChild(floor)
+  }
+
+  function setFrontView() {
+    frontView = PIXI.Sprite.fromImage("assets/frontView.png")
+    frontView.y = window.innerHeight - 390 // frontView height
+    base.addChild(frontView)
   }
 
   return { setup, getBase () { return base }}
@@ -26,4 +43,3 @@ function Scene() {
 
 const scene = new Scene()
 export default scene
-
