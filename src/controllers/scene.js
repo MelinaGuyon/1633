@@ -1,6 +1,7 @@
 import { Container } from 'pixi.js'
 
 import store from 'state/store'
+import dragAndDrop from 'controllers/dragAndDrop'
 
 let base
 
