@@ -3,8 +3,10 @@ import store from 'state/store'
 
 function Keyboard () {
 
-  let left = keyboard("ArrowLeft")
-  let right = keyboard("ArrowRight")
+    let left = {isDown: true}
+    let right = {isDown: true}
+    let vx = 0
+    let vy = 0
 
   function use (config) {
     return new Promise((resolve) => {
@@ -14,78 +16,56 @@ function Keyboard () {
     }).catch((err) => { throw new Error(err) })
   }
 
-  // function resize (e) {
-  //   store.size.set({ w: window.innerWidth, h: window.innerHeight })
-  // }
-
-  function keyboard(value) {
-    let key = {}
-    key.value = value
-    key.isDown = false
-    key.isUp = true
-    key.press = undefined
-    key.release = undefined
-
-    key.downHandler = event => {
-      if (event.key === key.value) {
-        if (key.isUp && key.press) key.press()
-        key.isDown = true
-        key.isUp = false
-        event.preventDefault()
-      }
-    }
-
-    key.upHandler = event => {
-      if (event.key === key.value) {
-        if (key.isDown && key.release) key.release()
-        key.isDown = false
-        key.isUp = true
-        event.preventDefault()
-      }
-    }
-
-    const downListener = key.downHandler.bind(key)
-    const upListener = key.upHandler.bind(key)
-    
-    return key
+  function sceneDisplacement (e) {
+    store.scenePosition.set({ x: vx })
   }
 
-
-  function bind() {
-    left.press = function(mouseData) {
-      // STORAGE.female.vx = -10
-      // STORAGE.female.vy = 0
-      // STORAGE.animatedFemale._textures = STORAGE.sheet.animations["elle-0/land"]
+  function downListener() {
+    if (event.key === "ArrowLeft") {
+      left.isDown = false
+      console.log("go gauche", vx)
+      vx = -10
+      vy = 0
+      // animatedFemale._textures = sheet.animations["elle-0/land"]
     }
-    left.release = function(mouseData) {
-      // if (!that.right.isDown && STORAGE.female.vy === 0) {
-      //   // STORAGE.female.vx = 0
-      //   // STORAGE.animatedFemale._textures = STORAGE.sheet.animations["elle-end/dance1"]
-      // }
-    }
-
-    right.press = function(mouseData) {
-      // STORAGE.female.vx = 10
-      // STORAGE.female.vy = 0
-      // STORAGE.animatedFemale._textures = STORAGE.sheet.animations["elle-menu/waiting"]
-    }
-    right.release = function(mouseData) {
-      // if (!that.left.isDown && STORAGE.female.vy === 0) {
-      //   // STORAGE.female.vx = 0
-      //   // STORAGE.animatedFemale._textures = STORAGE.sheet.animations["elle-end/dance1"]
-      // }
+ 
+    else if (event.key === "ArrowRight") { 
+      right.isDown = false
+      console.log("go droite", vx)
+      vx = 10
+      vy = 0
+      // animatedFemale._textures = sheet.animations["elle-menu/waiting"]
     }
   }
 
+  function upListener() {
+    if (event.key === "ArrowLeft") {
+      left.isDown = true
+      if (right.isDown) {
+        console.log("fin gauche", vx)
+        vx = 0
+        // animatedFemale._textures = sheet.animations["elle-end/dance1"]
+      }
+    }
+    if (event.key === "ArrowRight") {
+      right.isDown = true
+      if (left.isDown) {
+        console.log("fin droite", vx)
+        vx = 0
+        // animatedFemale._textures = sheet.animations["elle-end/dance1"]
+      }
+    }
+  }
 
   function init () {
-    // window.addEventListener("keydown", downListener, false)
-    // window.addEventListener("keyup", upListener, false) 
+    sceneDisplacement()
+    window.addEventListener("keydown", downListener, false)
+    window.addEventListener("keyup", upListener, false)
   }
 
   function remove () {
-    // window.removeEventListener("keydown", downListener)
-    // window.removeEventListener("keyup", upListener)  
+    window.removeEventListener("keydown", downListener)
+    window.removeEventListener("keyup", upListener)
   }
 
   return {

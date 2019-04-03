@@ -18,6 +18,9 @@ export default createStore({
   size: [0, 0],
   pixelRatio: ratio,
 
+  scenePosition: [0],
+
+
   // ---- scene ----
   sceneLayers,
   levelDict: {
