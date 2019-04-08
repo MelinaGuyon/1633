@@ -1,11 +1,8 @@
-const IS_CHANGI = process.env.APP_ENV === 'changi'
-const IS_RETAIL = process.env.APP_ENV === 'retail'
-
 const fs = require('fs-extra')
 const path = require('path')
 const GoogleSpreadsheet = require('google-spreadsheet')
 const sh = require('kool-shell/namespaced')('twist')
-const spreadsheetKey = (IS_CHANGI || IS_RETAIL) ? '1T8K7St_6EyAXunOfbOhcnnb0JiGo0sYXuoa74leQeNA' : '1MtecpvcPqmvXGSsY-WuFHeAVBa4AhyWbqCcR4EBaQ3A'
+const spreadsheetKey = '1yuKmrauXgVhKv_M118xC6plruT-tQTH_rN65mPvEA-k'
 const keyColumn = 'KEY'
 const contentOffset = 1
 const outputDir = path.join(__dirname, '..', 'src', 'locs')
