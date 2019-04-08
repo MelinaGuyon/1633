@@ -6,6 +6,9 @@ class SceneLayer extends PixiComponent {
   setup (props) {
     this.base = new Container()
     this.z = props.z
+
+    this.base.y = window.innerHeight / 2
+    this.base.x = window.innerWidth / 2
   }
 }
 

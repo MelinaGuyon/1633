@@ -46,8 +46,6 @@ export default class Preloader extends DomComponent {
       }
     }
 
-    console.log(anims)
-
     store.textures.set(Object.assign(store.textures.get(), texs))
     store.animations.set(Object.assign(store.animations.get(), anims))
   }

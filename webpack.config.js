@@ -73,7 +73,7 @@ const dev = {
     contentBase: paths.public,
     compress: true,
     host: '0.0.0.0',
-    port: 8080,
+    port: 3000,
     stats: 'minimal',
     hot: true,
     historyApiFallback: {

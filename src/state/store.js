@@ -23,7 +23,6 @@ export default createStore({
 
   scenePosition: [0],
 
-
   // ---- scene ----
   sceneLayers,
   levelDict: {

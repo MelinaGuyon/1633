@@ -182,7 +182,6 @@ export default class PixiComponent {
       if (component.linked && component.layer) {
         if (!scene[component.layer]) throw Error('Layer ' + component.layer + ' doesn\'t exist')
         scene[component.layer].addChild(component.base)
-        console.log(scene[component.layer])
       } else if (this.base) {
         this.base.addChild(component.base)
       }
