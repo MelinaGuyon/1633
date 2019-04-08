@@ -1,7 +1,10 @@
 import './Preloader.styl'
 
 import logger from 'utils/logger'
+// import { loader, SCALE_MODES } from 'pixi.js'
 import { DomComponent } from 'abstractions/DomComponent'
+// import store from 'state/store'
+// import cachebust from 'utils/cachebust'
 
 export default class Preloader extends DomComponent {
   template ({ base }) {
@@ -14,8 +17,12 @@ export default class Preloader extends DomComponent {
   }
 
   load () {
-    // Load all stuff here then do 'this.props.onComplete' in promise
     this.log('complete')
     this.props.onComplete()
+    // Promise.all([this.pixiLoad()])
+    //   .then(() => {
+    //     this.log('complete')
+    //     this.props.onComplete()
+    //   })
   }
 }

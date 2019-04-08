@@ -5,18 +5,15 @@
 // 0 : move normally
 // 1000 : move twice the speed
 
-
 export default [
   ['fixed', -1000], // will not move
 
-  ['bg990', -790],
-  ['bg980', -580],
+  ['bg800', -800],
+  ['bg600', -600],
 
   ['prehero', 0], // main layer, behind hero
   ['hero', 0], // main layer, used only for the hero
 
   ['f200', 200],
-  ['f250', 650],
-
+  ['f650', 650]
 ]
-

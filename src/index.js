@@ -13,7 +13,7 @@ window.onload = () => {
     .use(Resize)
     .use(Keyboard)
     .start(() => {
-      logger('App', '#47b342').log('setup succes')
+      logger('App', '#eda61a').log('setup succes')
       render(<App base={document.body.querySelector('.app')} />)
     })
 }

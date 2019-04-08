@@ -3,15 +3,15 @@ import store from 'state/store'
 
 function Keyboard () {
 
-    let left = {isDown: true}
-    let right = {isDown: true}
-    let vx = 0
-    let vy = 0
+  let left = {isDown: true}
+  let right = {isDown: true}
+  let vx = 0
+  let vy = 0
 
   function use (config) {
     return new Promise((resolve) => {
-      init()
-      logger('Use Keyboard', '#47b342').log()
+      // init()
+      logger('Use Keyboard', '#eda61a').log()
       resolve(config)
     }).catch((err) => { throw new Error(err) })
   }
@@ -28,8 +28,8 @@ function Keyboard () {
       vy = 0
       // animatedFemale._textures = sheet.animations["elle-0/land"]
     }
- 
-    else if (event.key === "ArrowRight") { 
+
+    else if (event.key === "ArrowRight") {
       right.isDown = false
       console.log("go droite", vx)
       vx = 10

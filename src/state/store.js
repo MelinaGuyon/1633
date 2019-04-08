@@ -8,6 +8,9 @@ const isDev = IS_DEV
 const ratio = window.devicePixelRatio <= 2 ? 1 : 1.5
 
 export default createStore({
+  // app version number
+  version: VERSION, /* global VERSION */
+
   // ---- i18n / base ----
   lang: window.__conf.lang,
   loc: window.__conf.loc,

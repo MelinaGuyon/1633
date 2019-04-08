@@ -1,45 +1,36 @@
 import { Container } from 'pixi.js'
-
 import store from 'state/store'
-import dragAndDrop from 'controllers/dragAndDrop'
+import PixiComponent from 'abstractions/PixiComponent'
 
-let base
-
-
-function Scene() {
-
-  let backView, floor, frontView
-
-  function setup() {
-    base = new Container()
-
-    // setBackView()
-    // //setFloor()
-    // setFrontView()
+class SceneLayer extends PixiComponent {
+  setup (props) {
+    this.base = new Container()
+    this.z = props.z
   }
-
-
-  function setBackView() {
-    backView = PIXI.Sprite.fromImage("assets/backView.jpg")
-    base.addChild(backView)
-  }
-
-
-  function setFloor() {
-    floor = PIXI.Sprite.fromImage("assets/floor.jpg")
-    floor.y = 591 // backView height
-    base.addChild(floor)
-  }
-
-  function setFrontView() {
-    frontView = PIXI.Sprite.fromImage("assets/frontView.png")
-    frontView.y = window.innerHeight - 390 // frontView height
-    base.addChild(frontView)
-  }
-
-  return { setup, getBase () { return base }}
 }
 
+class Scene extends PixiComponent {
+  setup () {
+    this.base = new Container()
+    this.createLayers()
+  }
+
+  createLayers () {
+    const layers = store.sceneLayers.get()
+    this.layers = {}
+
+    // Create parallax layers
+    for (let i = 0; i < layers.length; i++) {
+      const name = layers[i][0]
+      const layer = this.addComponent(SceneLayer, { z: layers[i][1] })
+      this.layers[name] = layer
+      if (!this[name]) this[name] = layer
+    }
+
+    this.layersKeys = Object.keys(this.layers)
+    console.log(this.layers)
+  }
+}
 
 const scene = new Scene()
 export default scene

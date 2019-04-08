@@ -5,7 +5,8 @@ import { DomComponent } from 'abstractions/DomComponent'
 import pixi from 'controllers/pixi'
 
 import Preloader from 'components/dom/Preloader/Preloader'
-// import Game from 'components/dom/Game/Game'
+import GameInterface from 'components/dom/GameInterface/GameInterface'
+import PixiGame from 'components/pixi/PixiGame/PixiGame'
 
 export default class App extends DomComponent {
   template ({ base }) {
@@ -13,13 +14,9 @@ export default class App extends DomComponent {
   }
 
   componentDidMount () {
-    // Initialize pixi part of the App
     pixi.init()
 
-    // Render the pixi canvas in App <main> node
     this.render(pixi.getView(), this.base)
-
-    // Attach Preloader component
     this.render(
       <Preloader
         ref={addRef(this, 'preloader')}
@@ -28,10 +25,15 @@ export default class App extends DomComponent {
       />)
   }
 
-  // Once preloading is done
   didPreload () {
-    console.log('Lauch game')
-    // Promise.resolve()
-    //   .then(() => this.render(<Game />, this.base))
+    Promise.resolve()
+      .then(() => {
+        // Mount the Pixi Game component
+        this.game = new PixiGame()
+        this.game.setup()
+
+        // Render Game Interface
+        this.render(<GameInterface />, this.base)
+      })
   }
 }

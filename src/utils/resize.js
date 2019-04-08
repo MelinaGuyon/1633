@@ -5,7 +5,7 @@ function Resize () {
   function use (config) {
     return new Promise((resolve) => {
       init()
-      logger('Use Resize', '#47b342').log()
+      logger('Use Resize', '#eda61a').log()
       resolve(config)
     }).catch((err) => { throw new Error(err) })
   }

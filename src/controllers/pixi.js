@@ -1,14 +1,12 @@
-import { Container, autoDetectRenderer, settings, PRECISION } from 'pixi.js'
+import { Container, autoDetectRenderer } from 'pixi.js'
 import { raf } from '@internet/raf'
 import scene from 'controllers/scene'
 
 import store from 'state/store'
 
-
 let renderer
 let view
 let stage
-
 
 function init () {
   renderer = autoDetectRenderer({
@@ -17,19 +15,15 @@ function init () {
     antialias: false,
     resolution: store.pixelRatio.get(),
     backgroundColor: 0x000000,
-    autoResize: false,
+    autoResize: false
   })
 
   renderer.view.classList.add('app-canvas')
   view = renderer.view
-  stage = new Container()
-
-
   scene.setup()
 
-    console.log("SCENE", scene)
-
-  stage.addChild(scene.getBase())
+  stage = new Container()
+  stage.addChild(scene.base)
 
   raf.add(render)
 }
@@ -43,4 +37,3 @@ export default {
   getView () { return view },
   getRenderer () { return renderer }
 }
-
