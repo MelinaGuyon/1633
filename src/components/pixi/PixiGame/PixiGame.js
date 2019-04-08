@@ -23,7 +23,7 @@ export default class PixiGame extends PixiComponent {
   }
 
   createPerso () {
-    // this.perso = this.addComponent(Perso, { layer: 'hero' })
-    console.log('create perso')
+    this.perso = this.addComponent(Perso, { layer: 'hero' })
+    // console.log('perso', this.perso)
   }
 }

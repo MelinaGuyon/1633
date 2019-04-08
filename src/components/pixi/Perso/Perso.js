@@ -6,7 +6,10 @@ export default class Perso extends PixiComponent {
     this.base = new Container()
     this.refs = {}
 
-    // this.refs.elle = this.addChild('elle-0/idle')
+    this.refs.perso = this.addChild('elle-0/idle')
+
+    console.log(this.refs.perso)
+    // console.log(this.refs.elle, 'HERE')
 
     // let graphics = new Graphics()
     // graphics.beginFill(0xFFFF00)

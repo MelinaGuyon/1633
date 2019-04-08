@@ -132,7 +132,6 @@ export default class PixiComponent {
   // You can add props.layer to add the child onto a scene layer
   addChild (c, props = {}) {
     if (this.destroyed) return
-    console.log(store.animations.get())
     if (typeof c === 'string') c = new Sprite(store.animations.get()[c][0])
     if (props.layer) {
       this.linkedChilds.push(c)
@@ -183,6 +182,7 @@ export default class PixiComponent {
       if (component.linked && component.layer) {
         if (!scene[component.layer]) throw Error('Layer ' + component.layer + ' doesn\'t exist')
         scene[component.layer].addChild(component.base)
+        console.log(scene[component.layer])
       } else if (this.base) {
         this.base.addChild(component.base)
       }

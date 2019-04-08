@@ -50,5 +50,8 @@ export default createStore({
   },
 
   // ---- stored animations ----
-  animations: {}
+  animations: {},
+
+  // ---- stored non animated textures ----
+  textures: {}
 })

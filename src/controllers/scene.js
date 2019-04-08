@@ -28,7 +28,6 @@ class Scene extends PixiComponent {
     }
 
     this.layersKeys = Object.keys(this.layers)
-    console.log(this.layers)
   }
 }
 
