@@ -24,10 +24,14 @@ export default createStore({
   // ---- scene ----
   sceneLayers,
   levelDict: {
-    0: 'studio',
+    0: 'university',
     1: 'city',
-    2: 'sky'
+    2: 'sky',
+    3: 'space',
+    4: 'end'
   },
+  levelId: null,
+  levelInstance: null,
   scenePosition: [0],
   frameDuration: 70, // default animation's frame duration
 

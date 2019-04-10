@@ -29,10 +29,9 @@ export default class App extends DomComponent {
     Promise.resolve()
       .then(() => {
         // Mount the Pixi Game component
-        this.game = new PixiGame()
-        this.game.setup()
+        this.game = new PixiGame({ autosetup: true })
 
-        // Render Game Interface
+        // Render the Game Interface
         this.render(<GameInterface />, this.base)
       })
   }
