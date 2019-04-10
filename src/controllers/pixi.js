@@ -1,12 +1,16 @@
 import { Container, autoDetectRenderer } from 'pixi.js'
 import { raf } from '@internet/raf'
 import scene from 'controllers/scene'
+import PixiComponent from 'abstractions/PixiComponent'
 
 import store from 'state/store'
 
 let renderer
 let view
 let stage
+
+let gameComponent = new PixiComponent()
+let time = 0
 
 function init () {
   renderer = autoDetectRenderer({
@@ -29,11 +33,27 @@ function init () {
 }
 
 function render (dt) {
+
+  // dt adjustements (timescale, time computation)
+  const playing = !store.pause.get()
+  if (playing) {
+    dt = dt * 1 // see part 'force pixalated rendering
+    time += dt
+  } else {
+    dt = 0
+  }
+
+  gameComponent.update(dt, time)
   renderer.render(stage)
+}
+
+function setGameComponent (c) {
+  gameComponent = c
 }
 
 export default {
   init,
+  setGameComponent,
   getView () { return view },
   getRenderer () { return renderer }
 }

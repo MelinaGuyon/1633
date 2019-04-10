@@ -1,5 +1,6 @@
 import PixiComponent from 'abstractions/PixiComponent'
 import scene from 'controllers/scene'
+import pixi from 'controllers/pixi'
 
 import Perso from 'components/pixi/Perso/Perso'
 // import LevelStudio from 'components/pixi/LevelStudio/LevelStudio'
@@ -18,6 +19,8 @@ const lvls = {
 
 export default class PixiGame extends PixiComponent {
   setup () {
+    pixi.setGameComponent(this)
+
     this.levels = {}
     this.createPerso()
   }

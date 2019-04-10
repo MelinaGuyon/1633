@@ -109,7 +109,9 @@ export default class PixiComponent {
 
   update (dt, time) {
     if (this.destroyed) return
-    for (let i = this.components.length - 1; i >= 0; i--) this.components[i].update(dt, time)
+    for (let i = this.components.length - 1; i >= 0; i--) {
+      this.components[i].update(dt, time)
+    }
   }
 
   resize (s) {

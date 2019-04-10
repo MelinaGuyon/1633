@@ -21,8 +21,6 @@ export default createStore({
   size: [0, 0],
   pixelRatio: ratio,
 
-  scenePosition: [0],
-
   // ---- scene ----
   sceneLayers,
   levelDict: {
@@ -30,6 +28,8 @@ export default createStore({
     1: 'city',
     2: 'sky'
   },
+  scenePosition: [0],
+  frameDuration: 70, // default animation's frame duration
 
   // ---- Debug utilities ----
   mute: isDev ? 0 : 0, // Mute game

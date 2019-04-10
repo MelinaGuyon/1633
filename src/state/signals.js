@@ -6,7 +6,7 @@ const signals = {
   tap: new Signal(),
 
   // Triggered when the hero collide with a block
-  collide: new Signal(),
+  collide: new Signal()
 }
 
 export default signals
