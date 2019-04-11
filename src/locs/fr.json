@@ -6,6 +6,9 @@
     "og.title": "1633",
     "og.decription": "Découvrez les chroniques de la Sorbonne",
     "preloader.text": "Chargement",
+    "nav.university": "Université",
+    "nav.church": "Chapelle",
+    "nav.profanation": "Profanation",
     "variable.exemple": "Mission accomplie ! J'ai obtenu {{{score}}} points."
   }
 }

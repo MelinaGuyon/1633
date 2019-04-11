@@ -37,12 +37,24 @@ export default class PixiGame extends PixiComponent {
   }
 
   onLvlChange (id) {
+    this.destroyCurrentLvl()
+
     const level = store.levelDict.get()[id]
     if (!this.levels[level]) {
       this.levels[level] = new levels[level]({ autosetup: true, name: level }) // eslint-disable-line
     }
 
     store.levelInstance.set(this.levels[level])
-    this.currentLevelName = level
+    this.currentLevel = level
+  }
+
+  destroyCurrentLvl () {
+    if (this.currentLevel && this.levels[this.currentLevel]) {
+      this.levels[this.currentLevel].destroy()
+      this.levels[this.currentLevel] = undefined
+    }
+    this.currentLevel = undefined
+
+    store.levelInstance.set(undefined)
   }
 }

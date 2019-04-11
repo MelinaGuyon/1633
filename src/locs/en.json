@@ -6,6 +6,9 @@
     "og.title": "1633",
     "og.decription": "Discover the Sorbonne's chronicles",
     "preloader.text": "Loading",
+    "nav.university": "University",
+    "nav.church": "Church",
+    "nav.profanation": "Profanation",
     "variable.exemple": "Mission accomplied with {{{score}}} pts."
   }
 }

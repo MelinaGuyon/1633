@@ -1,4 +1,3 @@
-import { RafTimer } from '@internet/raf'
 import PixiComponent from 'abstractions/PixiComponent'
 
 export default class Level extends PixiComponent {
@@ -11,7 +10,6 @@ export default class Level extends PixiComponent {
   }
 
   componentWillMount () {
-    console.log('here')
   }
 
   componentWillUnmount () { }
