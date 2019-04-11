@@ -53,12 +53,12 @@ export default class PixiGame extends PixiComponent {
   }
 
   destroyCurrentLvl () {
-    // if (this.currentLevel && this.levels[this.currentLevel]) {
-    //   this.levels[this.currentLevel].destroy()
-    //   this.levels[this.currentLevel] = undefined
-    // }
-    // this.currentLevel = undefined
+    if (this.currentLevel && this.levels[this.currentLevel]) {
+      this.levels[this.currentLevel].destroy()
+      this.levels[this.currentLevel] = undefined
+    }
+    this.currentLevel = undefined
 
-    // store.levelInstance.set(undefined)
+    store.levelInstance.set(undefined)
   }
 }

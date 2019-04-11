@@ -9,7 +9,6 @@ export default class CityBuildings extends PixiComponent {
   }
 
   componentWillUnmount () {
-    console.log('component buildings unmount')
     this.mains = undefined
   }
 }
