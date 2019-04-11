@@ -18,24 +18,6 @@ export default class Perso extends PixiComponent {
     this.body = new Body({ group: 'hero', gravity: true })
     this.body.attach(this.base)
     camera.setTarget(this.base)
-
-    setTimeout(() => {
-      this.haut()
-    }, 1000)
-
-    setTimeout(() => {
-      this.bas()
-    }, 1500)
-  }
-
-  haut () {
-    this.body.bas = false
-    this.body.haut = true
-  }
-
-  bas () {
-    this.body.bas = true
-    this.body.haut = false
   }
 
   update (dt, time) {

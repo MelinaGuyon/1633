@@ -22,8 +22,8 @@ class Camera {
     if (this.target) {
       this.smooth.target.fakeX = preciseDamp(this.smooth.target.fakeX, -this.target.fakeX, 0, dt)
       this.smooth.target.fakeY = preciseDamp(this.smooth.target.fakeY, -this.target.fakeY, 0.007, dt)
-      tx = lerp(-this.target.fakeX, this.smooth.target.fakeX, 0.5)
-      ty = lerp(-this.target.fakeY, this.smooth.target.fakeY, 0.5)
+      tx = lerp(-this.target.fakeX, this.smooth.target.fakeX, 0.1)
+      ty = lerp(-this.target.fakeY, this.smooth.target.fakeY, 0.1)
     }
     this.x = tx
     this.y = ty

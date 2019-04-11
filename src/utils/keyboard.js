@@ -1,71 +1,56 @@
 import logger from './logger'
 import store from 'state/store'
+import signals from 'state/signals'
 
 function Keyboard () {
-
-  let left = {isDown: true}
-  let right = {isDown: true}
-  let vx = 0
-  let vy = 0
+  let left = { isDown: true }
+  let right = { isDown: true }
 
   function use (config) {
     return new Promise((resolve) => {
-      // init()
+      init()
       logger('Use Keyboard', '#eda61a').log()
       resolve(config)
     }).catch((err) => { throw new Error(err) })
   }
 
-  function sceneDisplacement (e) {
-    store.scenePosition.set({ x: vx })
-  }
-
-  function downListener() {
-    if (event.key === "ArrowLeft") {
+  function downListener (event) {
+    if (event.key === 'ArrowLeft') {
       left.isDown = false
-      console.log("go gauche", vx)
-      vx = -10
-      vy = 0
-      // animatedFemale._textures = sheet.animations["elle-0/land"]
-    }
-
-    else if (event.key === "ArrowRight") {
+      signals.goLeft.dispatch(0)
+      // console.log('go gauche')
+    } else if (event.key === 'ArrowRight') {
       right.isDown = false
-      console.log("go droite", vx)
-      vx = 10
-      vy = 0
-      // animatedFemale._textures = sheet.animations["elle-menu/waiting"]
+      signals.goRight.dispatch(1)
+      // console.log('go droite')
     }
   }
 
-  function upListener() {
-    if (event.key === "ArrowLeft") {
+  function upListener (event) {
+    if (event.key === 'ArrowLeft') {
       left.isDown = true
       if (right.isDown) {
-        console.log("fin gauche", vx)
-        vx = 0
-        // animatedFemale._textures = sheet.animations["elle-end/dance1"]
+        signals.stop.dispatch(null)
+        // console.log('fin gauche')
       }
     }
-    if (event.key === "ArrowRight") {
+    if (event.key === 'ArrowRight') {
       right.isDown = true
       if (left.isDown) {
-        console.log("fin droite", vx)
-        vx = 0
-        // animatedFemale._textures = sheet.animations["elle-end/dance1"]
+        signals.stop.dispatch(null)
+        // console.log('fin droite')
       }
     }
   }
 
   function init () {
-    sceneDisplacement()
-    window.addEventListener("keydown", downListener, false)
-    window.addEventListener("keyup", upListener, false)
+    window.addEventListener('keydown', downListener, false)
+    window.addEventListener('keyup', upListener, false)
   }
 
   function remove () {
-    window.removeEventListener("keydown", downListener)
-    window.removeEventListener("keyup", upListener)
+    window.removeEventListener('keydown', downListener)
+    window.removeEventListener('keyup', upListener)
   }
 
   return {
