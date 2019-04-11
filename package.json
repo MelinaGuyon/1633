@@ -54,6 +54,7 @@
     "fast-random": "^2.0.4",
     "fontfaceobserver": "^2.1.0",
     "howler": "^2.1.0",
+    "inrtia": "^0.2.3",
     "js-cookie": "^2.2.0",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",

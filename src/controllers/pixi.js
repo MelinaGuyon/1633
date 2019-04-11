@@ -1,6 +1,7 @@
 import { Container, autoDetectRenderer } from 'pixi.js'
 import { raf } from '@internet/raf'
 import scene from 'controllers/scene'
+import camera from 'controllers/camera'
 import PixiComponent from 'abstractions/PixiComponent'
 
 import store from 'state/store'
@@ -24,6 +25,7 @@ function init () {
 
   renderer.view.classList.add('app-canvas')
   view = renderer.view
+  camera.setup()
   scene.setup()
 
   stage = new Container()
@@ -33,7 +35,6 @@ function init () {
 }
 
 function render (dt) {
-
   // dt adjustements (timescale, time computation)
   const playing = !store.pause.get()
   if (playing) {
@@ -43,6 +44,8 @@ function render (dt) {
     dt = 0
   }
 
+  camera.update(dt, time)
+  scene.update(dt, time)
   gameComponent.update(dt, time)
   renderer.render(stage)
 }
