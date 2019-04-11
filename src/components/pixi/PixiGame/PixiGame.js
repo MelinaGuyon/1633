@@ -5,13 +5,17 @@ import store from 'state/store'
 
 import Perso from 'components/pixi/Perso/Perso'
 import LevelUniversity from 'components/pixi/LevelUniversity/LevelUniversity'
+import LevelChurch from 'components/pixi/LevelChurch/LevelChurch'
+import LevelProfanation from 'components/pixi/LevelProfanation/LevelProfanation'
 // import LevelCity from 'components/pixi/LevelCity/LevelCity'
 // import LevelSky from 'components/pixi/LevelSky/LevelSky'
 // import LevelSpace from 'components/pixi/LevelSpace/LevelSpace'
 // import LevelEnd from 'components/pixi/LevelEnd/LevelEnd'
 
 const levels = {
-  university: LevelUniversity
+  university: LevelUniversity,
+  church: LevelChurch,
+  profanation: LevelProfanation
   // city: LevelCity,
   // sky: LevelSky,
   // space: LevelSpace,
@@ -49,12 +53,12 @@ export default class PixiGame extends PixiComponent {
   }
 
   destroyCurrentLvl () {
-    if (this.currentLevel && this.levels[this.currentLevel]) {
-      this.levels[this.currentLevel].destroy()
-      this.levels[this.currentLevel] = undefined
-    }
-    this.currentLevel = undefined
+    // if (this.currentLevel && this.levels[this.currentLevel]) {
+    //   this.levels[this.currentLevel].destroy()
+    //   this.levels[this.currentLevel] = undefined
+    // }
+    // this.currentLevel = undefined
 
-    store.levelInstance.set(undefined)
+    // store.levelInstance.set(undefined)
   }
 }

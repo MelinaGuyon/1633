@@ -4,21 +4,40 @@ import store from 'state/store'
 
 import './Menu.styl'
 
-export default class GameInterface extends DomComponent {
-  template ({ base }) {
+class Button extends DomComponent {
+  template (props) {
     const loc = store.loc.get()
-    console.log(loc)
 
     return (
+      <button class='nav' data-id={props.id}>{loc['nav.' + props.type]}</button>
+    )
+  }
+
+  componentDidMount () {
+    this.bind()
+  }
+
+  bind () {
+    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+  }
+
+  onClick (e) {
+    const id = e.target.getAttribute('data-id')
+    store.levelId.set(id)
+  }
+}
+
+export default class Menu extends DomComponent {
+  template ({ base }) {
+    return (
       <section class='menu'>
-        <button class='nav' data-nav='university'>{loc['nav.university']}</button>
-        <button class='nav' data-nav='church'>{loc['nav.church']}</button>
-        <button class='nav' data-nav='profanation'>{loc['nav.profanation']}</button>
+        <Button type={'university'} id={0} />
+        <Button type={'church'} id={1} />
+        <Button type={'profanation'} id={2} />
       </section>
     )
   }
 
   componentDidMount () {
-
   }
 }

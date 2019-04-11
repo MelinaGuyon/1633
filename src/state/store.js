@@ -25,10 +25,8 @@ export default createStore({
   sceneLayers,
   levelDict: {
     0: 'university',
-    1: 'city',
-    2: 'sky',
-    3: 'space',
-    4: 'end'
+    1: 'church',
+    2: 'profanation'
   },
   levelId: null,
   levelInstance: null,
