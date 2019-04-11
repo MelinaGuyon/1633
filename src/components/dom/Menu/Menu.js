@@ -22,7 +22,7 @@ class Button extends DomComponent {
   }
 
   onClick (e) {
-    const id = e.target.getAttribute('data-id')
+    const id = Number(e.target.getAttribute('data-id'))
     store.levelId.set(id)
   }
 }
