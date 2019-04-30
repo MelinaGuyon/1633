@@ -9,6 +9,7 @@
     "nav.university": "University",
     "nav.church": "Church",
     "nav.profanation": "Profanation",
+    "nav.timeline": "Timeline",
     "variable.exemple": "Mission accomplied with {{{score}}} pts."
   }
 }

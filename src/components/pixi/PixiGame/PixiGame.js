@@ -34,6 +34,7 @@ export default class PixiGame extends PixiComponent {
 
   bind () {
     this.listenStore('levelId', this.onLvlChange)
+    this.listenStore('timelineStatus', this.onTimelineClick)
   }
 
   createPerso () {
@@ -50,6 +51,15 @@ export default class PixiGame extends PixiComponent {
 
     store.levelInstance.set(this.levels[level])
     this.currentLevel = level
+  }
+
+  onTimelineClick (timelineStatus) {
+    if (timelineStatus === "appearing") {
+      document.querySelector(".timeline").style.marginLeft = "0%"
+    }
+    else if (timelineStatus === "disappearing") {
+      document.querySelector(".timeline").style.marginLeft = "100%"
+    }
   }
 
   destroyCurrentLvl () {
