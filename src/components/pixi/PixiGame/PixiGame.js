@@ -2,6 +2,7 @@ import PixiComponent from 'abstractions/PixiComponent'
 import scene from 'controllers/scene'
 import pixi from 'controllers/pixi'
 import store from 'state/store'
+import anime from 'animejs'
 
 import Perso from 'components/pixi/Perso/Perso'
 import LevelUniversity from 'components/pixi/LevelUniversity/LevelUniversity'
@@ -34,6 +35,7 @@ export default class PixiGame extends PixiComponent {
 
   bind () {
     this.listenStore('levelId', this.onLvlChange)
+    this.listenStore('factsStatus', this.onFactUnlocked)
     this.listenStore('timelineStatus', this.onTimelineClick)
   }
 
@@ -53,12 +55,22 @@ export default class PixiGame extends PixiComponent {
     this.currentLevel = level
   }
 
+  onFactUnlocked (id) {
+    document.querySelector("#fact"+id+"").style.opacity = 1
+  }
+
   onTimelineClick (timelineStatus) {
     if (timelineStatus === "appearing") {
-      document.querySelector(".timeline").style.marginLeft = "0%"
+      anime({
+        targets:  document.querySelector(".timeline"),
+        translateX: -window.innerWidth
+      })
     }
     else if (timelineStatus === "disappearing") {
-      document.querySelector(".timeline").style.marginLeft = "100%"
+      anime({
+        targets:  document.querySelector(".timeline"),
+        translateX: "0px"
+      })    
     }
   }
 
