@@ -31,6 +31,13 @@ export default createStore({
   levelId: null,
   levelInstance: null,
   timelineStatus: null,
+  factsStatus: {
+    0: 'locked',
+    1: 'locked',
+    2: 'locked',
+    3: 'locked',
+    4: 'locked'
+  },
   frameDuration: 70, // default animation's frame duration
 
   // ---- Debug utilities ----

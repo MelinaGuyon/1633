@@ -10,6 +10,11 @@
     "nav.church": "Chapelle",
     "nav.profanation": "Profanation",
     "nav.timeline": "Chronologie",
+    "fact.fact0": "Fait historique n°1",
+    "fact.fact1": "Fait historique n°2",
+    "fact.fact2": "Fait historique n°3",
+    "fact.fact3": "Fait historique n°4",
+    "fact.fact4": "Fait historique n°5",
     "variable.exemple": "Mission accomplie ! J'ai obtenu {{{score}}} points."
   }
 }
