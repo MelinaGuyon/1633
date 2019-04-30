@@ -9,6 +9,11 @@
     "nav.university": "Université",
     "nav.church": "Chapelle",
     "nav.profanation": "Profanation",
+    "carrousel.richelieu": "Richelieu",
+    "carrousel.mariecurie": "Marie Curie",
+    "carrousel.robertdesorbon": "Robert de Sorbon",
+    "carrousel.jacqueslemercier": "Jacques le mercier",
+    "carrousel.napoleonbonaparte": "Napoleon Bonaparte",
     "variable.exemple": "Mission accomplie ! J'ai obtenu {{{score}}} points."
   }
 }

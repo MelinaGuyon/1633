@@ -21,6 +21,15 @@ export default createStore({
   size: [0, 0],
   pixelRatio: ratio,
 
+  // ---- Chapter ----
+  chapter: {
+    0: 'richelieu',
+    1: 'mariecurie',
+    2: 'robertdesorbon',
+    3: 'jacqueslemercier',
+    4: 'napoleononaparte'
+  },
+
   // ---- scene ----
   sceneLayers,
   levelDict: {
