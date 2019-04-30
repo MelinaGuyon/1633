@@ -30,6 +30,7 @@ export default createStore({
   },
   levelId: null,
   levelInstance: null,
+  timelineStatus: null,
   frameDuration: 70, // default animation's frame duration
 
   // ---- Debug utilities ----
