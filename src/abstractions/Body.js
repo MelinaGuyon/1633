@@ -6,6 +6,8 @@ export default class Body {
     this.group = props.group
     this.gravity = props.gravity ? 1 : 0
 
+    this.width = props.width * this.scale || 1
+    this.height = props.height * this.scale || 1
     this.ax = this.ay = 0
     this.vx = this.vy = 0
     this.vxMax = this.vyMax = 1
@@ -13,6 +15,17 @@ export default class Body {
     this.x = 0
 
     this.dir = null
+
+    // used by the physics controller
+    this.hasMoved = false
+    this.hasColliders = false
+    this.colliders = []
+    this.anchor = props.anchor || [0.5, 0.5]
+    this.anchOffX = -this.width * this.anchor[0]
+    this.anchOffY = -this.height * this.anchor[1]
+    this.hw = this.width * 0.5
+    this.hh = this.height * 0.5
+
     this.bind()
   }
 
@@ -80,6 +93,11 @@ export default class Body {
       this.x += this.vx * dt
       this.y += this.vy * dt
     }
+  }
+
+  collideWith (group, cb = null) {
+    this.hasColliders = true
+    this.colliders.push([group, cb, { collide: false }])
   }
 }
 

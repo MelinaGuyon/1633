@@ -12,13 +12,6 @@ export class DomComponent extends Component {
     if (loggerName) this.log = logger('Component ' + loggerName, '#3a99fc').log
   }
 
-  // Add a proper dom reference
-  addDomRef (node, name) {
-    const cb = addRef(this, name)
-    this._collector.refs.push({ ref: null, fn: cb })
-    cb(node)
-  }
-
   listenStore (k, cb) {
     this.signals[k] = store[k].listen(cb, this)
   }

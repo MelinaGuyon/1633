@@ -29,8 +29,8 @@ function removeBody (body) {
 }
 
 function checkCollide (bA, bB, cb, prevState, gA, gB) {
-  // top right bottom left
-  const newState = { collide: false, body: undefined, sides: [false, false, false, false], overlap: { x: 0, y: 0 } }
+  // state to set colision to true!
+
   // distance
   const dx = (bA.x + Math.abs(bA.hw) + bA.anchOffX) - (bB.x + Math.abs(bB.hw) + bB.anchOffX)
   const dy = (bA.y + Math.abs(bA.hh) + bA.anchOffY) - (bB.y + Math.abs(bB.hh) + bB.anchOffY)
@@ -39,67 +39,18 @@ function checkCollide (bA, bB, cb, prevState, gA, gB) {
   const halfHeights = Math.abs(bA.hh) + Math.abs(bB.hh)
 
   // Check intersections
-  const hCollide = Math.abs(dx) < halfWidths
-  const vCollide = Math.abs(dy) < halfHeights
+  // const hCollide = Math.abs(dx) < halfWidths  // real
+  // const vCollide = Math.abs(dy) < halfHeights  // real
+  const hCollide = Math.abs(dx) < 50 // temps
+  const vCollide = Math.abs(dy) < 50 // temps
+  if (!hCollide || !vCollide) return false
 
-  if (!hCollide || !vCollide) {
-    if (prevState.collide !== false && cb) cb(newState)
-    prevState.collide = !!newState.collide
-    return false
-  }
-
-  newState.collide = true
-  newState.body = bB
-
-  // Find out the size of the overlap on both the X and Y axes
-  let overlapX = halfWidths - Math.abs(dx)
-  let overlapY = halfHeights - Math.abs(dy)
-
-  if (gA === 'hero' && gB === 'obstacles' && bB.validated) {
-    overlapX += 30
-  }
-
-  if (gA === 'hero' && gB === 'obstacles') {
-    // Nasty
-    overlapY *= 0.4
-  }
-
-  newState.overlap.x = overlapX
-  newState.overlap.y = overlapY
-
-  // x is a stronger collision, we adjust y
-  // else, we do the opposite
-  // WARNING: this is a real dumb and lazy implementation, not taking into account direction at all
-  if (overlapX >= overlapY) {
-    if (sign(bA.vy) !== sign(dy)) {
-      newState.sides[dy > 0 ? 0 : 2] = true
-      bA.inGround = true
-      bA.y = bA.y + overlapY * sign(dy)
-      bA.vy = 0
-    } else {
-      newState.sides[dx > 0 ? 3 : 1] = true
-      bA.x = bA.x + overlapX * sign(dx)
-      bA.vx = 0
-    }
-  } else {
-    if (sign(bA.vx) !== sign(dx)) {
-      newState.sides[dx > 0 ? 3 : 1] = true
-      bA.x = bA.x + overlapX * sign(dx)
-      bA.vx = 0
-    } else {
-      newState.sides[dy > 0 ? 0 : 2] = true
-      bA.y = bA.y + overlapY * sign(dy)
-      bA.vy = 0
-    }
-  }
-
-  cb && cb(newState)
-  prevState.collide = !!newState.collide
+  cb && cb()
   return true
 }
 
 function update (dt) {
-  let n, n2, g, i, j, k, bodyA, bodyB
+  let n, n2, g, i, bodyA, bodyB
 
   // update pos
   for (n in groups) {
@@ -122,7 +73,7 @@ function update (dt) {
         let k = g.length
         while (k--) {
           bodyB = g[k]
-          if (!bodyA.hasMoved && !bodyB.hasMoved) continue
+          // if (!bodyA.hasMoved && !bodyB.hasMoved) continue
           if (!groups[n][i].colliders[j]) continue
           if (bodyA.needsReset) { bodyA.inGround = bodyA.needsReset = false }
           checkCollide(bodyA, bodyB, groups[n][i].colliders[j][1], groups[n][i].colliders[j][2], n, n2)

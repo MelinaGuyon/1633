@@ -19,6 +19,11 @@ export default class Perso extends PixiComponent {
     this.body = physics.addBody({ group: 'hero', gravity: true })
     this.body.attach(this.base)
     camera.setTarget(this.base)
+
+    /// temp here
+    this.body.collideWith('obstacles', (c) => {
+      console.log('COLLIDE')
+    })
   }
 
   update (dt, time) {
