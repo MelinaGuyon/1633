@@ -7,7 +7,6 @@ import './Carrousel.styl'
 class Button extends DomComponent {
   template (props) {
     const loc = store.loc.get()
-    console.log('carrousel.' + props.type)
     return (
       <button class='carrousel__choice' data-id={props.id}>{loc['carrousel.' + props.type]}</button>
     )
