@@ -6,7 +6,6 @@ import pixi from 'controllers/pixi'
 
 import Preloader from 'components/dom/Preloader/Preloader'
 import GameInterface from 'components/dom/GameInterface/GameInterface'
-import PixiGame from 'components/pixi/PixiGame/PixiGame'
 
 export default class App extends DomComponent {
   template ({ base }) {
@@ -28,9 +27,6 @@ export default class App extends DomComponent {
   didPreload () {
     Promise.resolve()
       .then(() => {
-        // Mount the Pixi Game component
-        this.game = new PixiGame({ autosetup: true })
-
         // Render the Game Interface
         this.render(<GameInterface />, this.base)
       })
