@@ -1,8 +1,14 @@
 .timeline
   width: 90%
+  height: 100%
   background: white
   margin-left: 100vw
   position: absolute
+  overflow-y: auto
+
+.timeline::-webkit-scrollbar
+   width: 0px
+   background: transparent
 
   .fact
     position: relative
@@ -16,14 +22,20 @@
   .fact-unlocked
   	opacity: 1
 
-  	.background
-  		width: 300px
+  .background
+  	width: 300px
+
+  .factContent
+    color: white
+    border: solid white
+    width: 50%
+    margin-left: 50%
+    padding: 30px
 
 	.character
 	  display: block
 	  position: absolute
 	  height: 200px !important
 	  width: 200px !important
-	  left: 20%
-	  margin-top: 100px
-
+	  left: 10%
+	  margin-top: 50px

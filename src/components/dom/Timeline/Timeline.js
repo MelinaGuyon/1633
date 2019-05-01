@@ -11,8 +11,8 @@ class Fact extends DomComponent {
     const loc = store.loc.get()
     return (
       <div class='fact' id={props.type} data-id={props.id}>
-        {loc['fact.' + props.type]}
           <img class="character" src="http://www.europexplo.fr/wp-content/uploads/2016/08/MAZARIN.png" />
+          <div class="factContent">{loc['fact.' + props.type]}</div>
       </div>
     )
   }
@@ -29,9 +29,9 @@ class Fact extends DomComponent {
   onClick (e) {
     const id = Number(e.target.getAttribute('data-id'))
 
-    console.log(store.factsStatus)
-/*    store.factsStatus[id].set("unlocked")
-*/  }
+    console.log(id, store.factsStatus.get()[id])
+    store.factsStatus.get()[id].set("unlocked")[id] // erreur
+  }
 
   onMouseMove (e) {
     if (e.srcElement.className === "fact") {    
@@ -39,7 +39,7 @@ class Fact extends DomComponent {
       let character = document.querySelector("#"+e.srcElement.id+" .character")
       //let background = document.querySelector("#"+e.srcElement.id+" .background")
 
-      this.parallaxIt(e, container, character, -100)
+      this.parallaxIt(e, container, character, -50)
       //this.parallaxIt(e, container, background, -30)
     }
   }
