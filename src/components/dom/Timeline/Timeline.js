@@ -11,8 +11,8 @@ class Fact extends DomComponent {
     const loc = store.loc.get()
     return (
       <div class='fact' id={props.type} data-id={props.id}>
-          <img class="character" src="http://www.europexplo.fr/wp-content/uploads/2016/08/MAZARIN.png" />
-          <div class="factContent">{loc['fact.' + props.type]}</div>
+        <img class="character" src="http://www.europexplo.fr/wp-content/uploads/2016/08/MAZARIN.png" />
+        <div class="factContent">{loc['fact.' + props.type]}</div>
       </div>
     )
   }
@@ -30,11 +30,11 @@ class Fact extends DomComponent {
     const id = Number(e.target.getAttribute('data-id'))
 
     console.log(id, store.factsStatus.get()[id])
-    store.factsStatus.get()[id].set("unlocked")[id] // erreur
+    // store.factsStatus.get()[id].set("unlocked")[id] // erreur
   }
 
   onMouseMove (e) {
-    if (e.srcElement.className === "fact") {    
+    if (e.srcElement.className === "fact") {
       let container = document.querySelector("#"+e.srcElement.id+"")
       let character = document.querySelector("#"+e.srcElement.id+" .character")
       //let background = document.querySelector("#"+e.srcElement.id+" .background")
@@ -51,7 +51,8 @@ class Fact extends DomComponent {
     anime({
       targets: target,
       translateX: (relX - container.offsetWidth / 2) / container.offsetWidth * movement,
-      translateY: (relY - container.offsetHeight / 2) / container.offsetHeight * movement
+      translateY: (relY - container.offsetHeight / 2) / container.offsetHeight * movement,
+      easing: 'easeOutQuad'
     })
   }
 }

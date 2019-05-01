@@ -2,6 +2,7 @@ import { Container } from 'pixi.js'
 import PixiComponent from 'abstractions/PixiComponent'
 import Animator from 'controllers/animator'
 import camera from 'controllers/camera'
+import physics from 'controllers/physics'
 import Body from 'abstractions/Body'
 
 export default class Perso extends PixiComponent {
@@ -15,7 +16,7 @@ export default class Perso extends PixiComponent {
 
     this.base.fakeX = 0
     this.base.fakeY = 0
-    this.body = new Body({ group: 'hero', gravity: true })
+    this.body = physics.addBody({ group: 'hero', gravity: true })
     this.body.attach(this.base)
     camera.setTarget(this.base)
   }
