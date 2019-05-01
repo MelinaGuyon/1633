@@ -3,6 +3,7 @@ import { raf } from '@internet/raf'
 import scene from 'controllers/scene'
 import camera from 'controllers/camera'
 import PixiComponent from 'abstractions/PixiComponent'
+import sound from 'controllers/sound'
 
 import store from 'state/store'
 
@@ -48,6 +49,7 @@ function render (dt) {
   scene.update(dt, time)
   gameComponent.update(dt, time)
   renderer.render(stage)
+	sound.update(dt)
 }
 
 function setGameComponent (c) {

@@ -5,6 +5,7 @@ import { loader, SCALE_MODES } from 'pixi.js'
 import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
 import cachebust from 'utils/cachebust'
+import sound from 'controllers/sound'
 
 function isFromAnim (tex, anims) {
   for (let k in anims) {
@@ -68,6 +69,8 @@ export default class Preloader extends DomComponent {
   }
 
   load () {
+	  sound.setup()
+
     Promise.all([this.pixiLoad()])
       .then(() => {
         this.log('complete')
