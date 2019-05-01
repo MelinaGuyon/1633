@@ -23,7 +23,7 @@ export default class Perso extends PixiComponent {
 
   update (dt, time) {
     this.anim.update(dt)
-    this.body.update(dt) // for now, then see with the physics class
+    this.body.update(dt) // for now, then see with the physics class that will handle collisions
     this.body.updateAttachment()
   }
 }

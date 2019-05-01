@@ -27,7 +27,7 @@ export default class Body {
   }
 
   attach (obj) {
-    // fakeX and fakeY for perso
+    // fakeX and fakeY for perso because we don't really moove it
     if (obj._pixicomponent) this.component = obj
     this.attachment = this.component ? obj.base : obj
     this.attachment.px = obj.fakeX || obj.x
@@ -48,7 +48,7 @@ export default class Body {
 
     dt = Math.min(dt, 35)
 
-    if (this.dir === 0) {
+    if (this.dir === 1) {
       this.vx += (this.ax + this.gravity) * 0.0008 * dt
       this.vy += this.ay * 0.0008 * dt
       this.vx = clamp(this.vx, -this.vxMax, this.vxMax)
@@ -56,7 +56,7 @@ export default class Body {
 
       this.x += this.vx * dt
       this.y += this.vy * dt
-    } else if (this.dir === 1) {
+    } else if (this.dir === 0) {
       this.vx -= (this.ax + this.gravity) * 0.0008 * dt
       this.vy -= this.ay * 0.0008 * dt
       this.vx = clamp(this.vx, -this.vxMax, this.vxMax)
@@ -82,3 +82,5 @@ export default class Body {
     }
   }
 }
+
+// idée anim perso : http://inspacewetrust.org/en/
