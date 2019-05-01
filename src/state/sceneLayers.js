@@ -15,5 +15,7 @@ export default [
   ['hero', 0], // main layer, used only for the hero
 
   ['f200', 200],
-  ['f650', 650]
+  ['f650', 650],
+
+  ['light', 0] // light system is on a specific group to avoid breaking the batching too much
 ]
