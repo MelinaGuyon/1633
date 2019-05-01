@@ -30,6 +30,8 @@ function removeBody (body) {
 
 function checkCollide (bA, bB, cb, prevState, gA, gB) {
   // state to set colision to true!
+  // to fix : layer postion to check, center anchor, elements widths, remove colliders we don't need anymore
+  // to see if we can fix : useless to pass here if not mooving
 
   // distance
   const dx = (bA.x + Math.abs(bA.hw) + bA.anchOffX) - (bB.x + Math.abs(bB.hw) + bB.anchOffX)
