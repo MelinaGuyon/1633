@@ -30,17 +30,22 @@ class Fact extends DomComponent {
     const id = Number(e.target.getAttribute('data-id'))
 
     console.log(id, store.factsStatus.get()[id])
-    store.factsStatus.get()[id].set("unlocked")[id] // erreur
+    //store.factsStatus.get()[id].set("unlocked")[id] // erreur
   }
 
   onMouseMove (e) {
-    if (e.srcElement.className === "fact") {    
-      let container = document.querySelector("#"+e.srcElement.id+"")
-      let character = document.querySelector("#"+e.srcElement.id+" .character")
-      //let background = document.querySelector("#"+e.srcElement.id+" .background")
+    let container
+    let character
 
+    if (e.srcElement.className === "fact") {    
+      container = document.querySelector("#"+e.srcElement.id+"")
+      character = document.querySelector("#"+e.srcElement.id+" .character")
       this.parallaxIt(e, container, character, -50)
-      //this.parallaxIt(e, container, background, -30)
+    }
+    else if (e.srcElement.className === "factContent") {
+      container = document.querySelector("#"+e.srcElement.parentNode.id+"")
+      character = document.querySelector("#"+e.srcElement.parentNode.id+" .character")
+      this.parallaxIt(e, container, character, -50)
     }
   }
 
