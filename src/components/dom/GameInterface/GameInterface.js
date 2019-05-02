@@ -3,6 +3,7 @@ import { DomComponent } from 'abstractions/DomComponent'
 import Menu from 'components/dom/Menu/Menu'
 import Carrousel from 'components/dom/Carrousel/Carrousel'
 import Chronologie from 'components/dom/Chronologie/Chronologie'
+import Subtitles from 'components/dom/Subtitles/Subtitles'
 
 import './GameInterface.styl'
 
@@ -13,6 +14,7 @@ export default class GameInterface extends DomComponent {
         <Menu />
         <Carrousel />
         <Chronologie />
+        <Subtitles />
       </section>
     )
   }
