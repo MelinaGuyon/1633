@@ -11,8 +11,8 @@ class Fact extends DomComponent {
     const loc = store.loc.get()
     return (
       <div class='fact' id={props.type} data-id={props.id}>
-          <img class="character" src="http://www.europexplo.fr/wp-content/uploads/2016/08/MAZARIN.png" />
-          <div class="factContent">{loc['fact.' + props.type]}</div>
+        <img class="character" src="http://www.europexplo.fr/wp-content/uploads/2016/08/MAZARIN.png" />
+        <div class="factContent">{loc['fact.' + props.type]}</div>
       </div>
     )
   }
@@ -56,7 +56,8 @@ class Fact extends DomComponent {
     anime({
       targets: target,
       translateX: (relX - container.offsetWidth / 2) / container.offsetWidth * movement,
-      translateY: (relY - container.offsetHeight / 2) / container.offsetHeight * movement
+      translateY: (relY - container.offsetHeight / 2) / container.offsetHeight * movement,
+      easing: 'easeOutQuad'
     })
   }
 }

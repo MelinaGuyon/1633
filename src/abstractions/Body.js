@@ -6,6 +6,8 @@ export default class Body {
     this.group = props.group
     this.gravity = props.gravity ? 1 : 0
 
+    this.width = props.width * this.scale || 1
+    this.height = props.height * this.scale || 1
     this.ax = this.ay = 0
     this.vx = this.vy = 0
     this.vxMax = this.vyMax = 1
@@ -13,6 +15,17 @@ export default class Body {
     this.x = 0
 
     this.dir = null
+
+    // used by the physics controller
+    this.hasMoved = false
+    this.hasColliders = false
+    this.colliders = []
+    this.anchor = props.anchor || [0.5, 0.5]
+    this.anchOffX = -this.width * this.anchor[0]
+    this.anchOffY = -this.height * this.anchor[1]
+    this.hw = this.width * 0.5
+    this.hh = this.height * 0.5
+
     this.bind()
   }
 
@@ -27,7 +40,7 @@ export default class Body {
   }
 
   attach (obj) {
-    // fakeX and fakeY for perso
+    // fakeX and fakeY for perso because we don't really moove it
     if (obj._pixicomponent) this.component = obj
     this.attachment = this.component ? obj.base : obj
     this.attachment.px = obj.fakeX || obj.x
@@ -48,7 +61,7 @@ export default class Body {
 
     dt = Math.min(dt, 35)
 
-    if (this.dir === 0) {
+    if (this.dir === 1) {
       this.vx += (this.ax + this.gravity) * 0.0008 * dt
       this.vy += this.ay * 0.0008 * dt
       this.vx = clamp(this.vx, -this.vxMax, this.vxMax)
@@ -56,7 +69,7 @@ export default class Body {
 
       this.x += this.vx * dt
       this.y += this.vy * dt
-    } else if (this.dir === 1) {
+    } else if (this.dir === 0) {
       this.vx -= (this.ax + this.gravity) * 0.0008 * dt
       this.vy -= this.ay * 0.0008 * dt
       this.vx = clamp(this.vx, -this.vxMax, this.vxMax)
@@ -81,4 +94,11 @@ export default class Body {
       this.y += this.vy * dt
     }
   }
+
+  collideWith (group, cb = null) {
+    this.hasColliders = true
+    this.colliders.push([group, cb, { collide: false }])
+  }
 }
+
+// idée anim perso : http://inspacewetrust.org/en/

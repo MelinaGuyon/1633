@@ -1,6 +1,7 @@
 import PixiComponent from 'abstractions/PixiComponent'
 import scene from 'controllers/scene'
 import pixi from 'controllers/pixi'
+import physics from 'controllers/physics'
 import store from 'state/store'
 import anime from 'animejs'
 
@@ -8,25 +9,20 @@ import Perso from 'components/pixi/Perso/Perso'
 import LevelUniversity from 'components/pixi/LevelUniversity/LevelUniversity'
 import LevelChurch from 'components/pixi/LevelChurch/LevelChurch'
 import LevelProfanation from 'components/pixi/LevelProfanation/LevelProfanation'
-// import LevelCity from 'components/pixi/LevelCity/LevelCity'
-// import LevelSky from 'components/pixi/LevelSky/LevelSky'
-// import LevelSpace from 'components/pixi/LevelSpace/LevelSpace'
-// import LevelEnd from 'components/pixi/LevelEnd/LevelEnd'
 
 const levels = {
   university: LevelUniversity,
   church: LevelChurch,
   profanation: LevelProfanation
-  // city: LevelCity,
-  // sky: LevelSky,
-  // space: LevelSpace,
-  // end: LevelEnd
 }
 
 export default class RichelieuGame extends PixiComponent {
   setup () {
-    console.log('up Richelieu game');
+    console.log('up Richelieu game')
     pixi.setGameComponent(this) // set current game
+    physics.createGroup('obstacles', { color: 0xffff00 })
+    physics.createGroup('hero', { color: 0x00ff00 })
+
     this.bind()
     this.levels = {}
     this.createPerso()
@@ -56,21 +52,24 @@ export default class RichelieuGame extends PixiComponent {
   }
 
   onFactUnlocked (id) {
-    document.querySelector("#fact"+id+"").style.opacity = 1
+    document.querySelector('#fact' + id + '').style.opacity = 1
   }
 
   onTimelineClick (timelineStatus) {
-    if (timelineStatus === "appearing") {
+    if (timelineStatus === 'appearing') {
       anime({
-        targets:  document.querySelector(".timeline"),
-        translateX: -window.innerWidth
+        targets: document.querySelector('.timeline'),
+        translateX: -window.innerWidth,
+        easing: 'easeOutQuad',
+        duration: 600
       })
-    }
-    else if (timelineStatus === "disappearing") {
+    } else if (timelineStatus === 'disappearing') {
       anime({
-        targets:  document.querySelector(".timeline"),
-        translateX: "0px"
-      })    
+        targets: document.querySelector('.timeline'),
+        translateX: '0px',
+        easing: 'easeOutQuad',
+        duration: 600
+      })
     }
   }
 
