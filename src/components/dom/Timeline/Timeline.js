@@ -22,8 +22,27 @@ class Fact extends DomComponent {
   }
 
   bind () {
+    this.listenStore('timelineStatus', this.onTimelineClick)
     this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
     this.base.addEventListener('mousemove', this.fastbind('onMouseMove', 1))
+  }
+
+  onTimelineClick (timelineStatus) {
+    if (timelineStatus === 'appearing') {
+      anime({
+        targets: document.querySelector('.timeline'),
+        translateX: -window.innerWidth,
+        easing: 'easeOutQuad',
+        duration: 600
+      })
+    } else if (timelineStatus === 'disappearing') {
+      anime({
+        targets: document.querySelector('.timeline'),
+        translateX: '0px',
+        easing: 'easeOutQuad',
+        duration: 600
+      })
+    }
   }
 
   onClick (e) {
