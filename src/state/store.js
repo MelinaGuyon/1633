@@ -40,8 +40,8 @@ export default createStore({
   levelId: null,
   levelInstance: null,
 
-  // ---- timeline ----
-  timelineStatus: null,
+  // ---- chronologie ----
+  chronologieStatus: null,
   factsStatus: [
     'locked',
     'locked',

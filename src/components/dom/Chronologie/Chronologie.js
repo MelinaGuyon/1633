@@ -3,7 +3,7 @@ import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
 import anime from 'animejs'
 
-import './Timeline.styl'
+import './Chronologie.styl'
 
 
 class Fact extends DomComponent {
@@ -22,22 +22,22 @@ class Fact extends DomComponent {
   }
 
   bind () {
-    this.listenStore('timelineStatus', this.onTimelineClick)
+    this.listenStore('chronologieStatus', this.onChronologieClick)
     this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
     this.base.addEventListener('mousemove', this.fastbind('onMouseMove', 1))
   }
 
-  onTimelineClick (timelineStatus) {
-    if (timelineStatus === 'appearing') {
+  onChronologieClick (chronologieStatus) {
+    if (chronologieStatus === 'appearing') {
       anime({
-        targets: document.querySelector('.timeline'),
+        targets: document.querySelector('.chronologie'),
         translateX: -window.innerWidth,
         easing: 'easeOutQuad',
         duration: 600
       })
-    } else if (timelineStatus === 'disappearing') {
+    } else if (chronologieStatus === 'disappearing') {
       anime({
-        targets: document.querySelector('.timeline'),
+        targets: document.querySelector('.chronologie'),
         translateX: '0px',
         easing: 'easeOutQuad',
         duration: 600
@@ -81,10 +81,10 @@ class Fact extends DomComponent {
   }
 }
 
-export default class Timeline extends DomComponent {
+export default class Chronologie extends DomComponent {
   template ({ base }) {
     return (
-      <section class='timeline'>
+      <section class='chronologie'>
         <h1>Chronologie</h1>
         <Fact type={'fact0'} id={0} />
         <Fact type={'fact1'} id={1} />

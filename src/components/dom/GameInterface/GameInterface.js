@@ -2,7 +2,7 @@ import { h } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
 import Menu from 'components/dom/Menu/Menu'
 import Carrousel from 'components/dom/Carrousel/Carrousel'
-import Timeline from 'components/dom/Timeline/Timeline'
+import Chronologie from 'components/dom/Chronologie/Chronologie'
 
 import './GameInterface.styl'
 
@@ -12,7 +12,7 @@ export default class GameInterface extends DomComponent {
       <section class='game'>
         <Menu />
         <Carrousel />
-        <Timeline />
+        <Chronologie />
       </section>
     )
   }

@@ -29,7 +29,7 @@ class Button extends DomComponent {
   }
 }
 
-class TimelineButton extends DomComponent {
+class ChronologieButton extends DomComponent {
   template (props) {
     const loc = store.loc.get()
 
@@ -47,11 +47,11 @@ class TimelineButton extends DomComponent {
   }
 
   onClick (e) {
-    if (store.timelineStatus.get() != "appearing") {
-      store.timelineStatus.set("appearing")
+    if (store.chronologieStatus.get() != "appearing") {
+      store.chronologieStatus.set("appearing")
     }
     else {
-      store.timelineStatus.set("disappearing")
+      store.chronologieStatus.set("disappearing")
     }
   }
 }
@@ -63,7 +63,7 @@ export default class Menu extends DomComponent {
         <Button type={'university'} id={0} />
         <Button type={'church'} id={1} />
         <Button type={'profanation'} id={2} />
-        <TimelineButton type={'timeline'} id={3} />
+        <ChronologieButton type={'chronologie'} id={3} />
       </section>
     )
   }
