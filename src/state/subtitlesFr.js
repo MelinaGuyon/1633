@@ -1,4 +1,4 @@
-const subtitles = [
+export default [
   [
     ['Je m’appelle Min-Ho, je suis Nord-Coréen.', 0],
     ['J’ai fui mon pays natal à 16 ans, et lui étais', 3000],

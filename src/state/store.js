@@ -3,6 +3,8 @@
 import { createStore } from '@internet/state'
 import languages from '../languages'
 import sceneLayers from './sceneLayers'
+import subtitlesFr from './subtitlesFr'
+import subtitlesEn from './subtitlesEn'
 
 const isDev = IS_DEV
 const ratio = window.devicePixelRatio <= 2 ? 1 : 1.5
@@ -32,6 +34,7 @@ export default createStore({
 
   // ---- scene ----
   sceneLayers,
+  subtitles: window.__conf.lang === 'fr' ? subtitlesFr : subtitlesEn,
   levelDict: {
     0: 'university',
     1: 'church',

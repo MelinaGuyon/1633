@@ -4,9 +4,7 @@ import store from 'state/store'
 import anime from 'animejs'
 import { map, delay } from 'lodash'
 
-import subtitles from './datas.js'
 import './Subtitles.styl'
-
 
 class SubtitlesContent extends DomComponent {
   template (props) {
@@ -17,38 +15,29 @@ class SubtitlesContent extends DomComponent {
     )
   }
 
-  componentDidMount () {
-    console.log("datas", subtitles)
-/*    this.writeSubtitles(subtitles[index], index)
-*/  }
-}
-
-export default class Subtitles extends DomComponent {
-  template ({ base }) {
-    return (
-      <section class='subtitles'>
-        <SubtitlesContent type={'subtitles'} id={0} />
-      </section>
-    )
-  }
-
-  componentDidMount () {
-  }
-
   writeSubtitles (options, index) {
+    console.log('bloc sous titres', options)
+    console.log('index du bloc', index)
     let actualLength = options.length - 1
     let globalIndex = index
-    map(options, this.write(index))
+    map(options, this.write.bind(index))
   }
 
-  write (indexOfGlobalSub, opt, index) {
-    delay(this.writeOne, opt[1], { text: opt[0], index, indexOfGlobalSub });
+  write (opt, index, indexOfGlobalSub) {
+    // opt = ligne de options
+    // index index de la ligne
+    // globalIndex index du bloc de subtitles
+    console.log('ligne du bloc', opt)
+    console.log('index de la ligne', index)
+    console.log('index du bloc', indexOfGlobalSub)
+    delay(this.writeOne, opt[1], { text: opt[0], index, indexOfGlobalSub })
   }
 
   writeOne (opt) {
+    // vérification qu'il s'agit toujours du même bloc de sous-titres sinon return
     if (opt.indexOfGlobalSub !== globalIndex) return
     document.querySelector('.subtitles-content').innerHTML = opt.text
-    if (opt.index === actualLength) delay(this.remove, 2000);
+    if (opt.index === actualLength) delay(this.remove, 2000)
   }
 
   remove () {
@@ -61,5 +50,23 @@ export default class Subtitles extends DomComponent {
 
   showSubtitles () {
     document.querySelector('.subtitles').classList.remove('is-hidden')
+  }
+
+  componentDidMount () {
+    // console.log('sous titres', store.subtitles.get()[0])
+    this.writeSubtitles(store.subtitles.get()[0], 0)
+  }
+}
+
+export default class Subtitles extends DomComponent {
+  template ({ base }) {
+    return (
+      <section class='subtitles'>
+        <SubtitlesContent type={'subtitles'} id={0} />
+      </section>
+    )
+  }
+
+  componentDidMount () {
   }
 }
