@@ -2,6 +2,7 @@ import { Container, autoDetectRenderer } from 'pixi.js'
 import { raf } from '@internet/raf'
 import scene from 'controllers/scene'
 import camera from 'controllers/camera'
+import physics from 'controllers/physics'
 import PixiComponent from 'abstractions/PixiComponent'
 import sound from 'controllers/sound'
 
@@ -45,11 +46,12 @@ function render (dt) {
     dt = 0
   }
 
+  if (playing) physics.update(dt, time)
   camera.update(dt, time)
   scene.update(dt, time)
   gameComponent.update(dt, time)
   renderer.render(stage)
-	sound.update(dt)
+  sound.update(dt)
 }
 
 function setGameComponent (c) {
