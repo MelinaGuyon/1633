@@ -9,6 +9,11 @@ import './Subtitles.styl'
 class SubtitlesContent extends DomComponent {
   template (props) {
     const loc = store.loc.get()
+    this.actualLength = 0
+    this.globalIndex = 0
+
+    console.log('context this', this)
+    console.log('SubtitleContent', SubtitlesContent)
 
     return (
       <div class='subtitles-content' data-id={props.id}>{loc['nav.' + props.type]}</div>
@@ -16,28 +21,31 @@ class SubtitlesContent extends DomComponent {
   }
 
   writeSubtitles (options, index) {
-    console.log('bloc sous titres', options)
-    console.log('index du bloc', index)
-    let actualLength = options.length - 1
-    let globalIndex = index
-    map(options, this.write.bind(index))
+    // console.log('bloc sous titres', options)
+    // console.log('index du bloc', index)
+    this.actualLength = options.length - 1
+    this.globalIndex = index
+
+    // console.log('globalIndex', this.globalIndex)
+    map(options, this.write.bind(this, index))
   }
 
-  write (opt, index, indexOfGlobalSub) {
-    // opt = ligne de options
-    // index index de la ligne
-    // globalIndex index du bloc de subtitles
-    console.log('ligne du bloc', opt)
-    console.log('index de la ligne', index)
-    console.log('index du bloc', indexOfGlobalSub)
-    delay(this.writeOne, opt[1], { text: opt[0], index, indexOfGlobalSub })
+  write (indexOfGlobalSub, opt, index) {
+    // console.log('ligne du bloc', opt)
+    // console.log('index de la ligne', index)
+    // console.log('index du bloc', indexOfGlobalSub)
+    delay(this.writeOne.bind(this), opt[1], { text: opt[0], index, indexOfGlobalSub })
   }
 
   writeOne (opt) {
+    console.log('context writeOne', this)
+    console.log('opt', opt)
+    console.log('globalIndex', this.globalIndex)
+
     // vérification qu'il s'agit toujours du même bloc de sous-titres sinon return
-    if (opt.indexOfGlobalSub !== globalIndex) return
+    if (opt.indexOfGlobalSub !== this.globalIndex) return
     document.querySelector('.subtitles-content').innerHTML = opt.text
-    if (opt.index === actualLength) delay(this.remove, 2000)
+    if (opt.index === this.actualLength) delay(this.remove, 2000)
   }
 
   remove () {
@@ -54,7 +62,7 @@ class SubtitlesContent extends DomComponent {
 
   componentDidMount () {
     // console.log('sous titres', store.subtitles.get()[0])
-    this.writeSubtitles(store.subtitles.get()[0], 0)
+    this.writeSubtitles(store.subtitles.get()[4], 4)
   }
 }
 
