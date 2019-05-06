@@ -20,32 +20,21 @@ class SubtitlesContent extends DomComponent {
     )
   }
 
-  writeSubtitles (options, index) {
-    // console.log('bloc sous titres', options)
-    // console.log('index du bloc', index)
-    this.actualLength = options.length - 1
-    this.globalIndex = index
-
-    // console.log('globalIndex', this.globalIndex)
-    map(options, this.write.bind(this, index))
+  writeSubtitles (block, blockIndex) {
+    this.actualLength = block.length - 1
+    this.globalIndex = blockIndex
+    map(block, this.write.bind(this, blockIndex))
   }
 
-  write (indexOfGlobalSub, opt, index) {
-    // console.log('ligne du bloc', opt)
-    // console.log('index de la ligne', index)
-    // console.log('index du bloc', indexOfGlobalSub)
-    delay(this.writeOne.bind(this), opt[1], { text: opt[0], index, indexOfGlobalSub })
+  write (blockIndex, line, lineIndex) {
+    delay(this.writeOne.bind(this), line[1], { text: line[0], lineIndex, blockIndex })
   }
 
-  writeOne (opt) {
-    console.log('context writeOne', this)
-    console.log('opt', opt)
-    console.log('globalIndex', this.globalIndex)
-
+  writeOne (line) {
     // vérification qu'il s'agit toujours du même bloc de sous-titres sinon return
-    if (opt.indexOfGlobalSub !== this.globalIndex) return
-    document.querySelector('.subtitles-content').innerHTML = opt.text
-    if (opt.index === this.actualLength) delay(this.remove, 2000)
+    if (line.blockIndex !== this.globalIndex) return
+    document.querySelector('.subtitles-content').innerHTML = line.text
+    if (line.lineIndex === this.actualLength) delay(this.remove, 2000)
   }
 
   remove () {
@@ -61,7 +50,6 @@ class SubtitlesContent extends DomComponent {
   }
 
   componentDidMount () {
-    // console.log('sous titres', store.subtitles.get()[0])
     this.writeSubtitles(store.subtitles.get()[4], 4)
   }
 }
