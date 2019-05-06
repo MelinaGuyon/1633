@@ -70,7 +70,7 @@ export default class PixiGame extends PixiComponent {
       anime({
         targets:  document.querySelector(".timeline"),
         translateX: "0px"
-      })    
+      })
     }
   }
 
