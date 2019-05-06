@@ -6,6 +6,7 @@ export default class Body {
     this.group = props.group
     this.gravity = props.gravity ? 1 : 0
 
+    this.scale = props.scale || 1
     this.width = props.width * this.scale || 1
     this.height = props.height * this.scale || 1
     this.ax = this.ay = 0
@@ -20,11 +21,15 @@ export default class Body {
     this.hasMoved = false
     this.hasColliders = false
     this.colliders = []
-    this.anchor = props.anchor || [0.5, 0.5]
+
+    this.anchor = [0.5, 0.5]
     this.anchOffX = -this.width * this.anchor[0]
     this.anchOffY = -this.height * this.anchor[1]
-    this.hw = this.width * 0.5
-    this.hh = this.height * 0.5
+
+    this.hw = this.width
+    this.hh = this.height
+
+    console.log(this.anchOffX, 'anchorX')
 
     this.bind()
   }

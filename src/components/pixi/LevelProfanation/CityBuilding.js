@@ -17,13 +17,17 @@ export default class CityBuilding extends PixiComponent {
     this.width = this.base.width
     this.height = this.base.height
 
-    this.body = physics.addBody({
-      group: 'obstacles',
-      width: this.base.width - 14,
-      height: this.base.height,
-      anchor: [0.5, 0.5],
-      scale: 1
-    })
-    this.body.attach(this.base)
+    console.log('here', this.width)
+
+    if (props.collide) {
+      this.body = physics.addBody({
+        group: 'obstacles',
+        width: this.base.width,
+        height: this.base.height,
+        // anchor: [0.5, 0.5],
+        scale: 1
+      })
+      this.body.attach(this.base)
+    }
   }
 }

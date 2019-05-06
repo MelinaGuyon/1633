@@ -39,12 +39,15 @@ function checkCollide (bA, bB, cb, prevState, gA, gB) {
 
   const halfWidths = Math.abs(bA.hw) + Math.abs(bB.hw)
   const halfHeights = Math.abs(bA.hh) + Math.abs(bB.hh)
+  console.log(bA.anchOffX)
 
   // Check intersections
-  // const hCollide = Math.abs(dx) < halfWidths  // real
-  // const vCollide = Math.abs(dy) < halfHeights  // real
-  const hCollide = Math.abs(dx) < 50 // temps
-  const vCollide = Math.abs(dy) < 50 // temps
+  const hCollide = Math.abs(dx) < halfWidths // real
+  const vCollide = Math.abs(dy) < halfHeights // real
+
+  // const hCollide = Math.abs(dx) < 50 // temps
+  // const vCollide = Math.abs(dy) < 50 // temps
+
   if (!hCollide || !vCollide) return false
 
   cb && cb()

@@ -26,7 +26,7 @@ export default class RichelieuGame extends PixiComponent {
     this.bind()
     this.levels = {}
     this.createPerso()
-    store.levelId.set(0)
+    store.levelId.set(2)
   }
 
   bind () {
