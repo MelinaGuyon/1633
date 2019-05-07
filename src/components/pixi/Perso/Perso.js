@@ -27,7 +27,7 @@ export default class Perso extends PixiComponent {
 
     /// temp here
     this.body.collideWith('obstacles', (c) => {
-      console.log('COLLIDE')
+      // console.log('COLLIDE')
     })
   }
 
