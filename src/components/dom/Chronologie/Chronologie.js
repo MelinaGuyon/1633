@@ -5,12 +5,36 @@ import anime from 'animejs'
 
 import './Chronologie.styl'
 
+
+class PreviousButton extends DomComponent {
+  template (props) {
+    const loc = store.loc.get()
+
+    return (
+      <button class="buttonFact" data-id={props.id}>Fait précédent</button>
+    )
+  }
+
+  componentDidMount () {
+    this.bind()
+  }
+
+  bind () {
+    this.base.addEventListener('click', this.fastbind('onClick', 1))
+  }
+
+  onClick (e) {
+    let previousFactId = Number(e.target.getAttribute('data-id')) - 1
+    previousFactId >= 0 ? document.querySelector(".chronologie").scrollTo(0, document.querySelector("#fact"+previousFactId+"").offsetTop) : ''
+  }
+}
+
 class NextButton extends DomComponent {
   template (props) {
     const loc = store.loc.get()
 
     return (
-      <button class="nextFact" data-id={props.id}>Fait suivant</button>
+      <button class="buttonFact" data-id={props.id}>Fait suivant</button>
     )
   }
 
@@ -24,20 +48,22 @@ class NextButton extends DomComponent {
 
   onClick (e) {
     let nextFactId = Number(e.target.getAttribute('data-id')) + 1
-    document.querySelector(".chronologie").scrollTo(0, document.querySelector("#fact"+nextFactId+"").offsetTop)
+    nextFactId < store.factsStatus.get().length ? document.querySelector(".chronologie").scrollTo(0, document.querySelector("#fact"+nextFactId+"").offsetTop) : ''
   }
 }
 
 class Fact extends DomComponent {
   template (props) {
     const loc = store.loc.get()
-    this.factsStatus = ['locked', 'locked', 'locked', 'locked', 'locked']
 
     return (
       <div class='fact' id={props.type} data-id={props.id}>
         <img class="character" data-id={props.id} src="http://www.europexplo.fr/wp-content/uploads/2016/08/MAZARIN.png" />
         <div class="factContent" data-id={props.id}>{loc['fact.' + props.type]}</div>
-        <NextButton id={props.id}/>
+        <ul class="factButtons">
+          <li><PreviousButton id={props.id}/></li>
+          <li><NextButton id={props.id}/></li>
+        </ul>  
       </div>
     )
   }
