@@ -24,7 +24,7 @@ class NextButton extends DomComponent {
 
   onClick (e) {
     let nextFactId = Number(e.target.getAttribute('data-id')) + 1
-    window.scrollTo(0, document.querySelector("#fact"+nextFactId+"").offsetTop)
+    document.querySelector(".chronologie").scrollTo(0, document.querySelector("#fact"+nextFactId+"").offsetTop)
   }
 }
 
@@ -60,7 +60,6 @@ class Fact extends DomComponent {
         easing: 'easeOutQuad',
         duration: 600
       })
-      document.querySelector('html').style.overflowY = 'initial'
     } else if (chronologieStatus === 'disappearing') {
       anime({
         targets: document.querySelector('.chronologie'),
@@ -68,7 +67,6 @@ class Fact extends DomComponent {
         easing: 'easeOutQuad',
         duration: 600
       })
-      document.querySelector('html').style.overflowY = 'hidden'
     }
   }
 
