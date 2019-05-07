@@ -1,10 +1,10 @@
-const subtitles = [
+export default [
   [
-    ['Je m’appelle Min-Ho, je suis Nord-Coréen.', 0],
-    ['J’ai fui mon pays natal à 16 ans, et lui étais', 3000],
-    ['jusqu’alors toujours resté fidèle.', 6000],
-    ['Il était pour moi le meilleur pays au monde,', 8000],
-    ['car je ne connaissais rien d’autre.', 11000]
+    ['My name is Min-Ho, I am North Korean.', 0],
+    ['dwhrdhtgfnhdgnhj', 3000],
+    ['dgdfgfgfhtyjtyf', 6000],
+    ['gfdgfghgrhthth', 8000],
+    ['sklfjqjefejflksnrgflrs', 11000]
   ],
   [
     ['J’ai évolué jour après jour dans un monde artificiel,', 0],
