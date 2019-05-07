@@ -47,35 +47,21 @@ class Fact extends DomComponent {
   }
 
   bind () {
-    this.listenStore('chronologieStatus', this.onChronologieClick)
+    // this.listenStore('factsStatus', this.onFactUnlocked)
     this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
     this.base.addEventListener('mousemove', this.fastbind('onMouseMove', 1))
   }
 
-  onChronologieClick (chronologieStatus) {
-    if (chronologieStatus === 'appearing') {
-      anime({
-        targets: document.querySelector('.chronologie'),
-        translateX: -window.innerWidth,
-        easing: 'easeOutQuad',
-        duration: 600
-      })
-    } else if (chronologieStatus === 'disappearing') {
-      anime({
-        targets: document.querySelector('.chronologie'),
-        translateX: '0px',
-        easing: 'easeOutQuad',
-        duration: 600
-      })
-    }
-  }
-
   onClick (e) {
     let id = Number(e.target.getAttribute('data-id'))
-    console.log('deblocage fact', id, store.factsStatus.get()[id])
     store.factsStatus.current[id] = 'unlocked'
     document.querySelector('#fact' + id + ' .factContent').style.opacity = 0.5
   }
+
+  // onFactUnlocked (id) {
+  //   console.log('FACT UNLOCKED', id)
+  //   console.log('factsStatus updated', store.factsStatus.get())
+  // }
 
   onMouseMove (e) {
     let id = Number(e.target.getAttribute('data-id'))
@@ -111,5 +97,28 @@ export default class Chronologie extends DomComponent {
   }
 
   componentDidMount () {
+    this.bind()
+  }
+
+  bind () {
+    this.listenStore('chronologieStatus', this.onChronologieClick)
+  }
+
+  onChronologieClick (chronologieStatus) {
+    if (chronologieStatus === 'appearing') {
+      anime({
+        targets: document.querySelector('.chronologie'),
+        translateX: -window.innerWidth,
+        easing: 'easeOutQuad',
+        duration: 600
+      })
+    } else if (chronologieStatus === 'disappearing') {
+      anime({
+        targets: document.querySelector('.chronologie'),
+        translateX: '0px',
+        easing: 'easeOutQuad',
+        duration: 600
+      })
+    }
   }
 }

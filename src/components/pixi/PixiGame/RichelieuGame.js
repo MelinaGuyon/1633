@@ -31,7 +31,6 @@ export default class RichelieuGame extends PixiComponent {
 
   bind () {
     this.listenStore('levelId', this.onLvlChange)
-    // this.listenStore('factsStatus', this.onFactUnlocked)
   }
 
   createPerso () {
@@ -49,11 +48,6 @@ export default class RichelieuGame extends PixiComponent {
     store.levelInstance.set(this.levels[level])
     this.currentLevel = level
   }
-
-  // onFactUnlocked (id) {
-  //   console.log('FACT UNLOCKED', id)
-  //   document.querySelector('#fact' + id + '').style.opacity = 1
-  // }
 
   destroyCurrentLvl () {
     if (this.currentLevel && this.levels[this.currentLevel]) {
