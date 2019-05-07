@@ -5,15 +5,39 @@ import anime from 'animejs'
 
 import './Chronologie.styl'
 
-
-class Fact extends DomComponent {
+class NextButton extends DomComponent {
   template (props) {
     const loc = store.loc.get()
 
     return (
+      <button class="nextFact" data-id={props.id}>Fait suivant</button>
+    )
+  }
+
+  componentDidMount () {
+    this.bind()
+  }
+
+  bind () {
+    this.base.addEventListener('click', this.fastbind('onClick', 1))
+  }
+
+  onClick (e) {
+    let nextFactId = Number(e.target.getAttribute('data-id')) + 1
+    document.querySelector(".chronologie").scrollTo(0, document.querySelector("#fact"+nextFactId+"").offsetTop)
+  }
+}
+
+class Fact extends DomComponent {
+  template (props) {
+    const loc = store.loc.get()
+    this.factsStatus = ['locked', 'locked', 'locked', 'locked', 'locked']
+
+    return (
       <div class='fact' id={props.type} data-id={props.id}>
-        <img class="character" src="http://www.europexplo.fr/wp-content/uploads/2016/08/MAZARIN.png" />
-        <div class="factContent">{loc['fact.' + props.type]}</div>
+        <img class="character" data-id={props.id} src="http://www.europexplo.fr/wp-content/uploads/2016/08/MAZARIN.png" />
+        <div class="factContent" data-id={props.id}>{loc['fact.' + props.type]}</div>
+        <NextButton id={props.id}/>
       </div>
     )
   }
@@ -47,26 +71,17 @@ class Fact extends DomComponent {
   }
 
   onClick (e) {
-    const id = Number(e.target.getAttribute('data-id'))
-    console.log(id, store.factsStatus.get()[id])
-    //store.factsStatus.get()[id].set("unlocked")[id] // erreur
+    let id = Number(e.target.getAttribute('data-id'))
+    console.log('deblocage fact', id, store.factsStatus.get()[id])
+    store.factsStatus.current[id] = 'unlocked'
+    document.querySelector('#fact' + id + ' .factContent').style.opacity = 0.5
   }
 
   onMouseMove (e) {
-    let container
-    let character
-
-    if (e.srcElement.className === "fact") { 
-      container = document.querySelector("#"+e.srcElement.id+"")
-      character = document.querySelector("#"+e.srcElement.id+" .character")
-      this.parallaxIt(e, container, character, -70)
-    }
-
-    else if (e.srcElement.className === "factContent") {
-      container = document.querySelector("#"+e.srcElement.parentNode.id+"")
-      character = document.querySelector("#"+e.srcElement.parentNode.id+" .character")
-      this.parallaxIt(e, container, character, -70)
-    }
+    let id = Number(e.target.getAttribute('data-id'))
+    let container = document.querySelector("#fact"+id+"")
+    let character = document.querySelector("#fact"+id+" .character")
+    this.parallaxIt(e, container, character, -70)
   }
 
   parallaxIt (e, container, target, movement) {

@@ -5,8 +5,8 @@
   margin-left: 100vw
   position: absolute
   z-index: 1
-  overflow-y: auto
   top: 0
+  overflow: auto
 
 .chronologie::-webkit-scrollbar
    width: 0px
@@ -14,12 +14,11 @@
 
   .fact
     position: relative
-    display: flex
     border: solid 1px
     width: 100%
     height: 100vh
-    opacity: 0.1
     background: url('https://www.st-wandrille.com/images/hautdepage/im-abbay.jpg')
+    background-size: cover
 
   .fact-unlocked
   	opacity: 1
@@ -28,17 +27,26 @@
   	width: 300px
 
   .factContent
-    color: white
-    border: solid white
+    color: black
+    background: white
     width: 50%
-    padding: 30px
+    height: 60%
+    opacity: 0.5
+    padding: 40px
+    margin-top: 20%
+    margin-left: 45%
+    opacity: 0.2
 
   .fact img
+    float: left
     width: 300px
     height: 400px
     margin-left: 10%
     margin-right: 10%
     margin-top: 20%
-      
-	.character
-	  display: block
+
+  .nextFact
+    height: 30px
+    width: 100px
+    margin-left: 45%
+    margin-top: 20px
