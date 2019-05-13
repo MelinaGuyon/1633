@@ -13,12 +13,9 @@ export default class Perso extends PixiComponent {
     this.oldDirection = null
     this.state = {}
 
-
     this.refs.perso = this.addChild('animation-static/animation')
     this.anim = new Animator(this.refs.perso)
     this.anim.play('animation-static/animation', { loop: true, frameDuration: 600 })
-    console.log(this.base.width, 'perso width')
-    this.anim.play('elle-0/land', { loop: true, frameDuration: 80 })
     this.base.fakeX = 0
     this.base.fakeY = 0
     this.body = physics.addBody({
