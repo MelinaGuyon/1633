@@ -1,6 +1,7 @@
 import { Howl } from 'howler'
 import cachebust from 'utils/cachebust'
 import prng from 'utils/prng'
+import store from "../state/store";
 
 const DEFAULT_VOLUME = 1
 
@@ -69,31 +70,36 @@ export default class Sample {
     }
     this.state.paused = false
     this.state.playing = true
+	  store.musicPlayed.set(true)
   }
 
   pause (opts = {}) {
     if (!this.state.playing || !this.state.sound || !this.state.id) return
     if (this.state.paused) return
     if (!opts.all && this.type === 'music') {
-      this.state.sound.volume(this.state.volume * 0.5, this.state.id)
+      this.state.sound.volume(0, this.state.id)
       this.state.quiet = true
     } else {
       this.state.sound.pause(this.state.id)
       this.state.paused = true
     }
+	  store.musicPlayed.set(false)
   }
 
   unpause (opts = {}) {
-    if (opts.keepQuiet && !this.state.quiet) return
+	  console.log('here fdsjnfjkdsfjkdns')
+	  if (opts.keepQuiet && !this.state.quiet) return
     const curPaused = this.state.paused
     if (!opts.keepQuiet) this.state.quiet = false
     this.state.paused = false
-    if (!this.state.playing || !this.state.sound || !this.state.id) return
+	  if (!this.state.playing || !this.state.sound || !this.state.id) return
     if (curPaused) this.state.sound.play(this.state.id)
     if (this.type === 'music') {
-      if (this.state.quiet) this.state.sound.volume(this.volume * 0.5, this.state.id)
-      else this.state.sound.volume(this.volume, this.state.id)
+      console.log('here')
+       if (this.state.quiet) this.state.sound.volume(this.volume * 0.5, this.state.id)
+       this.state.sound.volume(this.volume, this.state.id)
     }
+	  store.musicPlayed.set(true)
   }
 
   update (dt) {
