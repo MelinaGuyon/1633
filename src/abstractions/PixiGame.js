@@ -5,7 +5,17 @@ import pixi from 'controllers/pixi'
 import store from 'state/store'
 import anime from 'animejs'
 
+import LevelUniversity from 'components/pixi/LevelUniversity/LevelUniversity'
+import LevelChurch from 'components/pixi/LevelChurch/LevelChurch'
+import LevelProfanation from 'components/pixi/LevelProfanation/LevelProfanation'
+
 import Perso from 'components/pixi/Perso/Perso'
+
+const levels = {
+	university: LevelUniversity,
+	church: LevelChurch,
+	profanation: LevelProfanation
+}
 
 export default class Pixigame extends PixiComponent {
   constructor (props, loggerName) {
@@ -25,7 +35,7 @@ export default class Pixigame extends PixiComponent {
   bind () {
     this.listenStore('levelId', this.onLvlChange)
     this.listenStore('factsStatus', this.onFactUnlocked)
-    this.listenStore('timelineStatus', this.onTimelineClick)
+    // this.listenStore('timelineStatus', this.onTimelineClick) TODO
   }
 
   createPerso () {
