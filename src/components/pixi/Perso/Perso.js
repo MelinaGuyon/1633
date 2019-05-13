@@ -9,6 +9,7 @@ export default class Perso extends PixiComponent {
   setup () {
     this.base = new Container()
     this.refs = {}
+    this.state = {}
 
     this.refs.perso = this.addChild('elle-0/land')
     this.anim = new Animator(this.refs.perso)
@@ -25,9 +26,13 @@ export default class Perso extends PixiComponent {
     this.body.attach(this.base)
     camera.setTarget(this.base)
 
-    /// temp here
-    this.body.collideWith('obstacles', (c) => {
-      console.log('COLLIDE')
+    this.active()
+  }
+
+  active () {
+    this.body.collideWith('obstacles', (state) => {
+      this.state.collide = state.collide
+      this.state.spaceCb = state.spaceCb
     })
   }
 

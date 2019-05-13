@@ -31,31 +31,29 @@ function removeBody (body) {
 
 function checkCollide (bA, bB, cb, prevState, gA, gB) {
   // state to set colision to true!
-  // to fix : center anchor, elements widths, remove colliders we don't need anymore
+  // to fix : remove colliders we don't need anymore
   // to see if we can fix : useless to pass here if not mooving
 
   // bA is perso
   // bB is colliders
 
+  const newState = { collide: false, spaceCb: undefined }
+
   // distance
   const layerDisplacement = store.size.get().w / 2 - bB.container.base.x
   const offsetObject = bB.x + bB.width / 2
   const dx = offsetObject - layerDisplacement
-  console.log(dx)
+  const hCollide = Math.abs(dx) < bB.width / 2 // distance inférieur à 20
 
-  // const halfWidths = Math.abs(bA.hw) + Math.abs(bB.hw)
-  // const halfHeights = Math.abs(bA.hh) + Math.abs(bB.hh)
-  // console.log(bA.hw, bB.hw)
+  if (!hCollide) {
+    cb(newState)
+    return false
+  }
 
-  // Check intersections
-  // const hCollide = Math.abs(dx) < halfWidths // real
-  // const vCollide = Math.abs(dy) < halfHeights // real
+  newState.collide = true
+  newState.spaceCb = bB.cb
 
-  const hCollide = Math.abs(dx) < 20 // temps
-
-  if (!hCollide) return false
-
-  cb && cb()
+  cb && cb(newState)
   return true
 }
 
