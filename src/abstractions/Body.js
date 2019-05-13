@@ -18,7 +18,6 @@ export default class Body {
     this.dir = null
 
     // all bellow is used by the physics controller
-    console.log(props.container)
     this.container = props.container || null
 
     this.hasMoved = false

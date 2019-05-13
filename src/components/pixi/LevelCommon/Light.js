@@ -34,10 +34,6 @@ export default class Light extends PixiComponent {
   constructor (props) {
     super(props)
     const targetLayer = props.layer
-    // props.layer = props.qte ? 'qte_light' : 'light'
-    // this.props.layer = props.qte ? 'qte_light' : 'light'
-    // this.layer = props.qte ? 'qte_light' : 'light'
-	  console.log('props.layer', props.layer)
     this.props.layer = props.layer
     this.layer = props.layer
 	  this.form = props.form // correspond a l url vers l'image de la forme que dois prendre la lumière
