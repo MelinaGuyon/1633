@@ -17,8 +17,9 @@ export default class CityBuilding extends PixiComponent {
     this.base.scale.x = props.scale || 1
     this.width = this.base.width
     this.height = this.base.height
+    this.collide = props.collide
 
-    if (props.collide) {
+    if (this.collide) {
       this.body = physics.addBody({
         group: 'obstacles',
         container: scene[props.layer],
@@ -31,5 +32,16 @@ export default class CityBuilding extends PixiComponent {
       })
       this.body.attach(this.base)
     }
+  }
+
+  componentWillUnmount () {
+    if (this.collide) {
+      this.removeBody()
+    }
+  }
+
+  removeBody () {
+    physics.removeBody(this.body)
+    this.body = undefined
   }
 }

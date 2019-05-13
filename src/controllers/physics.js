@@ -30,7 +30,6 @@ function removeBody (body) {
 }
 
 function checkCollide (bA, bB, cb, prevState, gA, gB) {
-  // state to set colision to true!
   // to fix : remove colliders we don't need anymore
   // to see if we can fix : useless to pass here if not mooving
 

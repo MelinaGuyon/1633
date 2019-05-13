@@ -34,6 +34,7 @@ export default class Perso extends PixiComponent {
     this.body.collideWith('obstacles', (state) => {
       this.state.collide = state.collide
       this.state.spaceCb = state.spaceCb
+      console.log(this.state)
     })
 
     this.bind()
@@ -60,7 +61,6 @@ export default class Perso extends PixiComponent {
 
   update (dt, time) {
     this.anim.update(dt)
-    this.body.update(dt) // for now, then see with the physics class that will handle collisions
     this.body.updateAttachment()
   }
 }

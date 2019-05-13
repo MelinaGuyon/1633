@@ -37,7 +37,6 @@ export default class Pixigame extends PixiComponent {
 
   bind () {
     this.listenStore('levelId', this.onLvlChange)
-    this.listenStore('factsStatus', this.onFactUnlocked)
     // this.listenStore('timelineStatus', this.onTimelineClick) TODO
   }
 
@@ -55,10 +54,6 @@ export default class Pixigame extends PixiComponent {
 
     store.levelInstance.set(this.levels[level])
     this.currentLevel = level
-  }
-
-  onFactUnlocked (id) {
-    document.querySelector('#fact' + id + '').style.opacity = 1
   }
 
   onTimelineClick (timelineStatus) {
