@@ -18,7 +18,7 @@ const levels = {
 
 export default class RichelieuGame extends PixiComponent {
   setup () {
-    console.log('up Richelieu game')
+    // console.log('up Richelieu game')
     pixi.setGameComponent(this) // set current game
     physics.createGroup('obstacles', { color: 0xffff00 })
     physics.createGroup('hero', { color: 0x00ff00 })

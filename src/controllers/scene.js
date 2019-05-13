@@ -45,6 +45,7 @@ class Scene extends PixiComponent {
       const y = camera.y + camera.y * p
       layer.base.x = Math.round(store.size.get().w / 2 + x)
       layer.base.y = Math.round(store.size.get().h / 2 + y)
+      // if (layer.props.name === 'bg600') console.log(store.size.get().w / 2 - layer.base.x, 'layer')
     }
   }
 
