@@ -40,11 +40,12 @@ export default class Light extends PixiComponent {
 	  console.log('props.layer', props.layer)
     this.props.layer = props.layer
     this.layer = props.layer
+	  this.form = props.form // correspond a l url vers l'image de la forme que dois prendre la lumière
     this.targetLayer = targetLayer || props.layer
   }
 
   setup (props = {}) {
-    this.base = new Sprite(store.animations.get()['light/main'][0])
+    this.base = new Sprite(store.animations.get()[props.form][0])
 
     if (!props.scale) props.scale = [1, 1]
 

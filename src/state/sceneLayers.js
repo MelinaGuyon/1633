@@ -10,6 +10,7 @@ export default [
 
   ['bg800', -800],
   ['bg600', -600],
+  ['bg605', -605],
 
   ['prehero', 0], // main layer, behind hero
   ['hero', 0], // main layer, used only for the hero
