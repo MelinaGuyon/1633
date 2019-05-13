@@ -48,7 +48,7 @@ export default class Perso extends PixiComponent {
 
   updateAnimation (direction) {
     if (this.oldDirection !== direction) {
-      return
+      return // temp pour pas avoir mal aux yeux
       if (direction === 0) {
         this.anim.play('animation-left/animation', { loop: true, frameDuration: 600 })
       } else if (direction === 1) {

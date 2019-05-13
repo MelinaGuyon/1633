@@ -23,6 +23,7 @@ export default class Body {
     this.hasMoved = false
     this.hasColliders = false
     this.colliders = []
+    this.cb = props.cb || null
 
     this.anchor = props.anchor || [0.5, 0.5]
     this.anchOffX = -this.width * this.anchor[0]
