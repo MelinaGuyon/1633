@@ -1,6 +1,7 @@
 import PixiComponent from 'abstractions/PixiComponent'
 import { Sprite } from 'pixi.js'
 import physics from 'controllers/physics'
+import scene from 'controllers/scene'
 
 import store from 'state/store'
 
@@ -20,6 +21,7 @@ export default class CityBuilding extends PixiComponent {
     if (props.collide) {
       this.body = physics.addBody({
         group: 'obstacles',
+        container: scene[props.layer],
         width: this.base.width,
         height: this.base.height,
         x: this.base.x,

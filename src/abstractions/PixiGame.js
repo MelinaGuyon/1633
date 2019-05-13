@@ -32,7 +32,7 @@ export default class Pixigame extends PixiComponent {
 
     this.levels = {}
     this.createPerso()
-    store.levelId.set(0)
+    store.levelId.set(2) // temps profanation pour test collision
   }
 
   bind () {

@@ -1,4 +1,5 @@
 import Body from 'abstractions/Body'
+import store from 'state/store'
 
 const groups = {}
 const groupColors = {}
@@ -30,27 +31,29 @@ function removeBody (body) {
 
 function checkCollide (bA, bB, cb, prevState, gA, gB) {
   // state to set colision to true!
-  // to fix : layer postion to check, center anchor, elements widths, remove colliders we don't need anymore
+  // to fix : remove colliders we don't need anymore
   // to see if we can fix : useless to pass here if not mooving
 
+  // bA is perso
+  // bB is colliders
+
+  const newState = { collide: false, spaceCb: undefined }
+
   // distance
-  const dx = (bA.x + Math.abs(bA.hw) + bA.anchOffX) - (bB.x + Math.abs(bB.hw) + bB.anchOffX)
-  const dy = (bA.y + Math.abs(bA.hh) + bA.anchOffY) - (bB.y + Math.abs(bB.hh) + bB.anchOffY)
-  // console.log(bA.x, bB)
-  // const halfWidths = Math.abs(bA.hw) + Math.abs(bB.hw)
-  // const halfHeights = Math.abs(bA.hh) + Math.abs(bB.hh)
-  // console.log(bA.hw, bB.hw)
+  const layerDisplacement = store.size.get().w / 2 - bB.container.base.x
+  const offsetObject = bB.x + bB.width / 2
+  const dx = offsetObject - layerDisplacement
+  const hCollide = Math.abs(dx) < bB.width / 2 // distance inférieur à 20
 
-  // Check intersections
-  // const hCollide = Math.abs(dx) < halfWidths // real
-  // const vCollide = Math.abs(dy) < halfHeights // real
+  if (!hCollide) {
+    cb(newState)
+    return false
+  }
 
-  const hCollide = Math.abs(dx) < 50 // temps
-  const vCollide = Math.abs(dy) < 50 // temps
+  newState.collide = true
+  newState.spaceCb = bB.cb
 
-  if (!hCollide || !vCollide) return false
-
-  cb && cb()
+  cb && cb(newState)
   return true
 }
 
