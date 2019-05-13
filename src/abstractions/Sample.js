@@ -87,7 +87,6 @@ export default class Sample {
   }
 
   unpause (opts = {}) {
-	  console.log('here fdsjnfjkdsfjkdns')
 	  if (opts.keepQuiet && !this.state.quiet) return
     const curPaused = this.state.paused
     if (!opts.keepQuiet) this.state.quiet = false
@@ -95,7 +94,6 @@ export default class Sample {
 	  if (!this.state.playing || !this.state.sound || !this.state.id) return
     if (curPaused) this.state.sound.play(this.state.id)
     if (this.type === 'music') {
-      console.log('here')
        if (this.state.quiet) this.state.sound.volume(this.volume * 0.5, this.state.id)
        this.state.sound.volume(this.volume, this.state.id)
     }
