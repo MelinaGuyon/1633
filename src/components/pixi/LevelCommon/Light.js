@@ -33,9 +33,11 @@ export default class Light extends PixiComponent {
   constructor (props) {
     super(props)
     const targetLayer = props.layer
-    props.layer = props.qte ? 'qte_light' : 'light'
-    this.props.layer = props.qte ? 'qte_light' : 'light'
-    this.layer = props.qte ? 'qte_light' : 'light'
+    // props.layer = props.qte ? 'qte_light' : 'light'
+    // this.props.layer = props.qte ? 'qte_light' : 'light'
+    // this.layer = props.qte ? 'qte_light' : 'light'
+    this.props.layer = props.layer
+    this.layer = props.layer
     this.targetLayer = targetLayer || props.layer
   }
 
