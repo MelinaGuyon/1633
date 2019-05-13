@@ -137,7 +137,6 @@ export default class Sample {
   }
 
   loadSamples () {
-    console.log('test', this.key)
     if (this.type === 'music') {
       this.sounds.intro = new Howl({
         src: cachebust('assets/sounds/' + this.key + '_intro.mp3'),

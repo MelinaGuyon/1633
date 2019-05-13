@@ -13,7 +13,7 @@ export default class Perso extends PixiComponent {
     this.refs.perso = this.addChild('elle-0/land')
     this.anim = new Animator(this.refs.perso)
     this.anim.play('elle-0/land', { loop: true, frameDuration: 80 })
-    console.log(this.base.width, 'perso width')
+
     this.base.fakeX = 0
     this.base.fakeY = 0
     this.body = physics.addBody({

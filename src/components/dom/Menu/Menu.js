@@ -8,8 +8,6 @@ class Button extends DomComponent {
   template (props) {
     const loc = store.loc.get()
 
-    console.log("ICI", loc['nav.' + props.type])
-
     return (
       <button class='nav' data-id={props.id}>{loc['nav.' + props.type]}</button>
     )

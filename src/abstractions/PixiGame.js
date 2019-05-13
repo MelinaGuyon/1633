@@ -2,6 +2,7 @@ import PixiComponent from 'abstractions/PixiComponent'
 
 import logger from 'utils/logger'
 import pixi from 'controllers/pixi'
+import physics from 'controllers/physics'
 import store from 'state/store'
 import anime from 'animejs'
 
@@ -12,9 +13,9 @@ import LevelProfanation from 'components/pixi/LevelProfanation/LevelProfanation'
 import Perso from 'components/pixi/Perso/Perso'
 
 const levels = {
-	university: LevelUniversity,
-	church: LevelChurch,
-	profanation: LevelProfanation
+  university: LevelUniversity,
+  church: LevelChurch,
+  profanation: LevelProfanation
 }
 
 export default class Pixigame extends PixiComponent {
@@ -25,6 +26,8 @@ export default class Pixigame extends PixiComponent {
 
   setup () {
     pixi.setGameComponent(this) // set current game
+    physics.createGroup('obstacles', { color: 0xffff00 })
+    physics.createGroup('hero', { color: 0x00ff00 })
     this.bind()
 
     this.levels = {}
