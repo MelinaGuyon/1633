@@ -30,7 +30,6 @@ function removeBody (body) {
 }
 
 function checkCollide (bA, bB, cb, prevState, gA, gB) {
-  // state to set colision to true!
   // to fix : remove colliders we don't need anymore
   // to see if we can fix : useless to pass here if not mooving
 
@@ -41,7 +40,7 @@ function checkCollide (bA, bB, cb, prevState, gA, gB) {
 
   // distance
   const layerDisplacement = store.size.get().w / 2 - bB.container.base.x
-  const offsetObject = bB.x + bB.width / 2
+  const offsetObject = bB.x
   const dx = offsetObject - layerDisplacement
   const hCollide = Math.abs(dx) < bB.width / 2 // distance inférieur à 20
 

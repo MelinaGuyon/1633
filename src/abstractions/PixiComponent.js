@@ -226,7 +226,7 @@ export default class PixiComponent {
     return scene[this.layer].toLocal(x, y, ignoreProgress)
   }
 
-  destroy () {
+  destroy (test) {
     if (this.destroyed) return
     DEBUG && this.log('Destroy')
 

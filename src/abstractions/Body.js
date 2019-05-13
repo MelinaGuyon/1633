@@ -17,7 +17,7 @@ export default class Body {
 
     this.dir = null
 
-    // all bellow is used by the physics controller
+    // all variables bellow is used by the physics controller
     this.container = props.container || null
 
     this.hasMoved = false
@@ -103,6 +103,16 @@ export default class Body {
   collideWith (group, cb = null) {
     this.hasColliders = true
     this.colliders.push([group, cb, { collide: false }])
+  }
+
+  destroy () {
+    this.destroyed = true
+    this.rect && this.rect.destroy()
+    this.hasColliders = false
+    this.colliders = undefined
+    this.component = undefined
+    this.attachment = undefined
+    this.rect = undefined
   }
 }
 
