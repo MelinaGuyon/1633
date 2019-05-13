@@ -15,7 +15,7 @@ export default class Perso extends PixiComponent {
 
     this.refs.perso = this.addChild('animation-static/animation')
     this.anim = new Animator(this.refs.perso)
-    this.anim.play('animation-static/animation', { loop: true, frameDuration: 600 })
+    // this.anim.play('animation-static/animation', { loop: true, frameDuration: 600 })
     this.base.fakeX = 0
     this.base.fakeY = 0
     this.body = physics.addBody({
@@ -48,6 +48,7 @@ export default class Perso extends PixiComponent {
 
   updateAnimation (direction) {
     if (this.oldDirection !== direction) {
+      return
       if (direction === 0) {
         this.anim.play('animation-left/animation', { loop: true, frameDuration: 600 })
       } else if (direction === 1) {
