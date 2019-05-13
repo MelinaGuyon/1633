@@ -1,13 +1,16 @@
 import PixiComponent from 'abstractions/PixiComponent'
-import scene from 'controllers/scene'
+
+import logger from 'utils/logger'
 import pixi from 'controllers/pixi'
+import physics from 'controllers/physics'
 import store from 'state/store'
 import anime from 'animejs'
 
-import Perso from 'components/pixi/Perso/Perso'
 import LevelUniversity from 'components/pixi/LevelUniversity/LevelUniversity'
 import LevelChurch from 'components/pixi/LevelChurch/LevelChurch'
 import LevelProfanation from 'components/pixi/LevelProfanation/LevelProfanation'
+
+import Perso from 'components/pixi/Perso/Perso'
 
 const levels = {
   university: LevelUniversity,
@@ -15,19 +18,27 @@ const levels = {
   profanation: LevelProfanation
 }
 
-export default class PixiGame extends PixiComponent {
+export default class Pixigame extends PixiComponent {
+  constructor (props, loggerName) {
+    super(props)
+    if (loggerName) this.log = logger('Component ' + loggerName, '#3a99fc').log
+  }
+
   setup () {
     pixi.setGameComponent(this) // set current game
+    physics.createGroup('obstacles', { color: 0xffff00 })
+    physics.createGroup('hero', { color: 0x00ff00 })
     this.bind()
 
     this.levels = {}
     this.createPerso()
-    store.levelId.set(0)
+    store.levelId.set(2) // temps profanation pour test collision
   }
 
   bind () {
     this.listenStore('levelId', this.onLvlChange)
     this.listenStore('factsStatus', this.onFactUnlocked)
+    // this.listenStore('timelineStatus', this.onTimelineClick) TODO
   }
 
   createPerso () {
@@ -39,7 +50,7 @@ export default class PixiGame extends PixiComponent {
 
     const level = store.levelDict.get()[id]
     if (!this.levels[level]) {
-      this.levels[level] = new levels[level]({ autosetup: true, name: level }) // eslint-disable-line
+			this.levels[level] = new levels[level]({ autosetup: true, name: level }) // eslint-disable-line
     }
 
     store.levelInstance.set(this.levels[level])
@@ -48,6 +59,20 @@ export default class PixiGame extends PixiComponent {
 
   onFactUnlocked (id) {
     document.querySelector('#fact' + id + '').style.opacity = 1
+  }
+
+  onTimelineClick (timelineStatus) {
+    if (timelineStatus === 'appearing') {
+      anime({
+        targets: document.querySelector('.timeline'),
+        translateX: -window.innerWidth
+      })
+    } else if (timelineStatus === 'disappearing') {
+      anime({
+        targets: document.querySelector('.timeline'),
+        translateX: '0px'
+      })
+    }
   }
 
   destroyCurrentLvl () {

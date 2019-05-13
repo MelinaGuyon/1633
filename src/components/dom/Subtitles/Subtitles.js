@@ -12,9 +12,6 @@ class SubtitlesContent extends DomComponent {
     this.actualLength = 0
     this.globalIndex = 0
 
-    console.log('context this', this)
-    console.log('SubtitleContent', SubtitlesContent)
-
     return (
       <div class='subtitles-content' data-id={props.id}>{loc['nav.' + props.type]}</div>
     )

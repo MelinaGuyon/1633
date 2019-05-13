@@ -12,24 +12,25 @@ export default class Body {
     this.ax = this.ay = 0
     this.vx = this.vy = 0
     this.vxMax = this.vyMax = 1
-    this.y = 0
-    this.x = 0
+    this.y = props.y || 0
+    this.x = props.x || 0
 
     this.dir = null
 
-    // used by the physics controller
+    // all bellow is used by the physics controller
+    console.log(props.container)
+    this.container = props.container || null
+
     this.hasMoved = false
     this.hasColliders = false
     this.colliders = []
 
-    this.anchor = [0.5, 0.5]
+    this.anchor = props.anchor || [0.5, 0.5]
     this.anchOffX = -this.width * this.anchor[0]
     this.anchOffY = -this.height * this.anchor[1]
 
-    this.hw = this.width
-    this.hh = this.height
-
-    console.log(this.anchOffX, 'anchorX')
+    this.hw = this.width * 0.5
+    this.hh = this.height * 0.5
 
     this.bind()
   }
