@@ -63,6 +63,7 @@ export default createStore({
 
   // ---- game ----
   pause: false, // Is the game paused
+  musicPlayed: false,
 
   // ---- assets to preload ----
   atlases: {
