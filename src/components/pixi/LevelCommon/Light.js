@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs,no-tabs */
 import PixiComponent from 'abstractions/PixiComponent'
 import { Sprite, Container } from 'pixi.js'
 import store from 'state/store'
@@ -33,16 +34,14 @@ export default class Light extends PixiComponent {
   constructor (props) {
     super(props)
     const targetLayer = props.layer
-    // props.layer = props.qte ? 'qte_light' : 'light'
-    // this.props.layer = props.qte ? 'qte_light' : 'light'
-    // this.layer = props.qte ? 'qte_light' : 'light'
     this.props.layer = props.layer
     this.layer = props.layer
+	  this.form = props.form // correspond a l url vers l'image de la forme que dois prendre la lumière
     this.targetLayer = targetLayer || props.layer
   }
 
   setup (props = {}) {
-    this.base = new Sprite(store.animations.get()['light/main'][0])
+    this.base = new Sprite(store.animations.get()[props.form][0])
 
     if (!props.scale) props.scale = [1, 1]
 
