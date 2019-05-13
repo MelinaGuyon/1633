@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs,no-tabs */
 import PixiComponent from 'abstractions/PixiComponent'
 import { Sprite, Container } from 'pixi.js'
 import store from 'state/store'
@@ -36,6 +37,7 @@ export default class Light extends PixiComponent {
     // props.layer = props.qte ? 'qte_light' : 'light'
     // this.props.layer = props.qte ? 'qte_light' : 'light'
     // this.layer = props.qte ? 'qte_light' : 'light'
+	  console.log('props.layer', props.layer)
     this.props.layer = props.layer
     this.layer = props.layer
     this.targetLayer = targetLayer || props.layer
