@@ -1,4 +1,5 @@
 import Body from 'abstractions/Body'
+import store from 'state/store'
 
 const groups = {}
 const groupColors = {}
@@ -33,10 +34,15 @@ function checkCollide (bA, bB, cb, prevState, gA, gB) {
   // to fix : layer postion to check, center anchor, elements widths, remove colliders we don't need anymore
   // to see if we can fix : useless to pass here if not mooving
 
+  // bA is perso
+  // bB is colliders
+
   // distance
-  const dx = (bA.x + Math.abs(bA.hw) + bA.anchOffX) - (bB.x + Math.abs(bB.hw) + bB.anchOffX)
-  const dy = (bA.y + Math.abs(bA.hh) + bA.anchOffY) - (bB.y + Math.abs(bB.hh) + bB.anchOffY)
-  // console.log(bA.x, bB)
+  const layerDisplacement = store.size.get().w / 2 - bB.container.base.x
+  const offsetObject = bB.x
+  const dx = offsetObject - layerDisplacement
+  console.log(dx)
+
   // const halfWidths = Math.abs(bA.hw) + Math.abs(bB.hw)
   // const halfHeights = Math.abs(bA.hh) + Math.abs(bB.hh)
   // console.log(bA.hw, bB.hw)
@@ -45,10 +51,9 @@ function checkCollide (bA, bB, cb, prevState, gA, gB) {
   // const hCollide = Math.abs(dx) < halfWidths // real
   // const vCollide = Math.abs(dy) < halfHeights // real
 
-  const hCollide = Math.abs(dx) < 50 // temps
-  const vCollide = Math.abs(dy) < 50 // temps
+  const hCollide = Math.abs(dx) < 20 // temps
 
-  if (!hCollide || !vCollide) return false
+  if (!hCollide) return false
 
   cb && cb()
   return true
