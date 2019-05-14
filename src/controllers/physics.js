@@ -30,7 +30,6 @@ function removeBody (body) {
 }
 
 function checkCollide (bA, bB, cb, prevState, gA, gB) {
-  // to fix : remove colliders we don't need anymore
   // to see if we can fix : useless to pass here if not mooving
 
   // bA is perso
@@ -40,9 +39,9 @@ function checkCollide (bA, bB, cb, prevState, gA, gB) {
 
   // distance
   const layerDisplacement = store.size.get().w / 2 - bB.container.base.x
-  const offsetObject = bB.x
+  const offsetObject = bB.x + bB.width / 2
   const dx = offsetObject - layerDisplacement
-  const hCollide = Math.abs(dx) < bB.width / 2 // distance inférieur à 20
+  const hCollide = Math.abs(dx) < bB.width / 2
 
   if (!hCollide) {
     cb(newState)
