@@ -79,9 +79,9 @@ class Fact extends DomComponent {
   }
 
   onClick (e) {
-    let id = Number(e.target.getAttribute('data-id'))
-    store.factsStatus.current[id] = 'unlocked'
-    document.querySelector('#fact' + id + ' .factContent').style.opacity = 0.5
+    // let id = Number(e.target.getAttribute('data-id'))
+    // store.factsStatus.current[id] = 'unlocked'
+    // document.querySelector('#fact' + id + ' .factContent').style.opacity = 0.5
   }
 
   // onFactUnlocked (id) {

@@ -48,6 +48,7 @@ function checkCollide (bA, bB, cb, prevState, gA, gB) {
 
   newState.collide = true
   newState.spaceCb = bB.cb
+  // newState.histoFact = bB.histoFact
 
   cb && cb(newState)
   return true
