@@ -9,8 +9,10 @@ export default class InterestPoint extends PixiComponent {
   setup (props) {
     this.type = props.type || 'a'
 
+    console.log('popo', props)
+
     this.base = new Graphics()
-    this.base.tint = props.tint || 0xFF0000
+    this.base.tint = props.tint || 0xFF00FF
     this.base.lineStyle(4, this.base.tint, 1)
     this.base.beginFill(this.base.tint)
     this.base.drawRect(0, 0, 64, 64)
@@ -22,6 +24,8 @@ export default class InterestPoint extends PixiComponent {
     this.height = this.base.height
     this.collide = props.collide
 
+    this.histoFact = props.histoFact
+
     if (this.collide) {
       this.body = physics.addBody({
         group: 'obstacles',
@@ -32,6 +36,7 @@ export default class InterestPoint extends PixiComponent {
         y: this.base.y,
         anchor: [0.5, 0.5],
         scale: 1,
+        // histoFact: this.histoFact,
         cb: this.unlock
       })
       this.body.attach(this.base)
@@ -39,7 +44,10 @@ export default class InterestPoint extends PixiComponent {
   }
 
   unlock () {
-    console.log('unlock')
+    console.log('UNLOOOOOOOOOOOOCK', this.histoFact)
+    // let id = this.histoFact
+    // store.factsStatus.current[id] = 'unlocked'
+    // document.querySelector('#fact' + id + ' .factContent').style.opacity = 0.5
   }
 
   componentWillUnmount () {

@@ -33,7 +33,7 @@ export default class Perso extends PixiComponent {
     this.body.collideWith('obstacles', (state) => {
       this.state.collide = state.collide
       this.state.spaceCb = state.spaceCb
-      console.log(this.state)
+      console.log('COLLIDE', this.state.spaceCb)
     })
 
     this.bind()
@@ -43,7 +43,8 @@ export default class Perso extends PixiComponent {
     signals.goLeft.listen(this.updateAnimation, this) // 0
     signals.goRight.listen(this.updateAnimation, this) // 1
     signals.stop.listen(this.updateAnimation, this)
-    // listen space
+    // listen space // ajouter condition du collide (if this.state.collide, this.stateCb())
+    signals.space.listen(this.state.spaceCb, this)
   }
 
   updateAnimation (direction) {
