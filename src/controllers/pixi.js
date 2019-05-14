@@ -33,6 +33,7 @@ function init () {
   stage = new Container()
   stage.addChild(scene.base)
 
+  store.size.listen(resize)
   raf.add(render)
 }
 
@@ -52,6 +53,14 @@ function render (dt) {
   gameComponent.update(dt, time)
   renderer.render(stage)
   sound.update(dt)
+}
+
+function resize (s) {
+  renderer.resize(s.w, s.h)
+  view.style.width = s.w + 'px'
+  view.style.height = s.h + 'px'
+
+  scene.resize(s)
 }
 
 function setGameComponent (c) {

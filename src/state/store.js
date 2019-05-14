@@ -1,4 +1,4 @@
-/* global IS_DEV */
+/* global IS_DEV, VERSION */
 
 import { createStore } from '@internet/state'
 import languages from '../languages'
@@ -10,8 +10,7 @@ const isDev = IS_DEV
 const ratio = window.devicePixelRatio <= 2 ? 1 : 1.5
 
 export default createStore({
-  // app version number
-  version: VERSION, /* global VERSION */
+  version: VERSION, // app version number
 
   // ---- i18n / base ----
   lang: window.__conf.lang,
@@ -22,6 +21,7 @@ export default createStore({
   // ---- screen device infos ----
   size: [0, 0],
   pixelRatio: ratio,
+  sceneScale: 1,
 
   // ---- Chapter ----
   chapter: {

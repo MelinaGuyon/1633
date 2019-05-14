@@ -56,6 +56,7 @@ export default class Pixigame extends PixiComponent {
     this.currentLevel = level
   }
 
+  // TODO à déplacer dans la classe Timeline (la vraie)
   onTimelineClick (timelineStatus) {
     if (timelineStatus === 'appearing') {
       anime({
