@@ -5,6 +5,7 @@ export default class Interests extends PixiComponent {
   setup () {
     this.mains = []
     this.mains.push(this.addComponent(InterestPoint, { layer: 'bg600', lockedKey: 0, x: 300, y: -100, collide: true, tint: 0xFF0000, histoFact: 0 }))
+    // this.mains.push(this.addComponent(InterestPoint, { layer: 'bg600', lockedKey: 0, x: 800, y: -100, collide: true, tint: 0x00FF00, histoFact: 2 }))
   }
 
   componentWillUnmount () {

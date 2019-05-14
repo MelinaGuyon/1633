@@ -24,8 +24,7 @@ function Keyboard () {
       signals.goRight.dispatch(1)
       // console.log('go droite')
     } else if (event.key === ' ') {
-      // console.log('histo fact unlocked', signals)
-      signals.space.dispatch(2)
+      signals.space.dispatch()
     }
   }
 

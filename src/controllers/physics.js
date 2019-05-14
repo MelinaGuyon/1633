@@ -33,9 +33,7 @@ function checkCollide (bA, bB, cb, prevState, gA, gB) {
   // bA is perso
   // bB is colliders
 
-  // console.log('bbbbbbbbbbbbb', bB)
-
-  const newState = { collide: false, spaceCb: undefined, histoFact: undefined }
+  const newState = { collide: false, spaceCb: undefined }
 
   // distance
   const layerDisplacement = store.size.get().w / 2 - bB.container.base.x

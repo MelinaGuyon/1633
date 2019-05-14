@@ -7,9 +7,8 @@ import store from 'state/store'
 
 export default class InterestPoint extends PixiComponent {
   setup (props) {
+    console.log(props, 'ici')
     this.type = props.type || 'a'
-
-    console.log('popo', props)
 
     this.base = new Graphics()
     this.base.tint = props.tint || 0xFF00FF
@@ -36,18 +35,18 @@ export default class InterestPoint extends PixiComponent {
         y: this.base.y,
         anchor: [0.5, 0.5],
         scale: 1,
-        // histoFact: this.histoFact,
-        cb: this.unlock
+        cb: this.unlock.bind(this)
       })
       this.body.attach(this.base)
     }
   }
 
   unlock () {
-    console.log('UNLOOOOOOOOOOOOCK', this.histoFact)
-    // let id = this.histoFact
-    // store.factsStatus.current[id] = 'unlocked'
-    // document.querySelector('#fact' + id + ' .factContent').style.opacity = 0.5
+    if (this.histoFact >= 0) {
+      let id = this.histoFact
+      store.factsStatus.current[id] = 'unlocked'
+      document.querySelector('#fact' + id + ' .factContent').style.opacity = 0.5
+    }
   }
 
   componentWillUnmount () {
