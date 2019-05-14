@@ -1,4 +1,4 @@
-import { Container, autoDetectRenderer } from 'pixi.js'
+import { Container, autoDetectRenderer, settings, PRECISION } from 'pixi.js'
 import { raf } from '@internet/raf'
 import scene from 'controllers/scene'
 import camera from 'controllers/camera'
@@ -22,8 +22,11 @@ function init () {
     antialias: false,
     resolution: store.pixelRatio.get(),
     backgroundColor: 0xf9b85c,
-    autoResize: false
+    autoResize: false,
+    roundPixels: true
   })
+
+  settings.PRECISION_FRAGMENT = PRECISION.HIGH
 
   renderer.view.classList.add('app-canvas')
   view = renderer.view

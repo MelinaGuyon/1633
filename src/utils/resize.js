@@ -11,7 +11,6 @@ function Resize () {
   }
 
   function resize (e) {
-    console.log('resize')
     store.size.set({ w: window.innerWidth, h: window.innerHeight })
   }
 

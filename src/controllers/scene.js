@@ -37,6 +37,11 @@ class Scene extends PixiComponent {
   }
 
   goPos (layer) {
+    let z = this.scale
+    layer.base.scale.x = z
+    layer.base.scale.y = z
+    layer.scale = z
+
     if (layer.props.name === 'hero') {
       layer.base.x = Math.round(store.size.get().w / 2)
       layer.base.y = Math.round(store.size.get().h / 2)
@@ -50,7 +55,18 @@ class Scene extends PixiComponent {
   }
 
   resize (s) {
-    console.log('scene resize')
+    const scale = 1.2
+
+    this.screenWidth = s.w
+    this.screenHeight = s.h
+    this.width = s.w / scale
+    this.height = s.h / scale
+
+    this.scale = scale
+    store.sceneScale.set(scale)
+
+    console.log(scale)
+
     super.resize(s)
   }
 

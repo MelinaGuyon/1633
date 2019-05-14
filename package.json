@@ -58,7 +58,7 @@
     "js-cookie": "^2.2.0",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
-    "pixi.js": "^4.8.2",
+    "pixi.js": "^4.8.7",
     "raw-loader": "^0.5.1",
     "run-waterfall": "^1.1.6",
     "stylus-reset": "0.0.1",
