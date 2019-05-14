@@ -14,6 +14,8 @@ export default class Body {
     this.vxMax = this.vyMax = 1
     this.y = props.y || 0
     this.x = props.x || 0
+    this.px = this.x
+    this.py = this.y
 
     this.dir = null
 
@@ -65,6 +67,9 @@ export default class Body {
   update (dt) {
     if (this.group !== 'hero') return
 
+    this.px = this.x
+    this.py = this.y
+
     dt = Math.min(dt, 35)
 
     if (this.dir === 1) {
@@ -98,6 +103,12 @@ export default class Body {
 
       this.x += this.vx * dt
       this.y += this.vy * dt
+    }
+
+    if (this.x !== this.px || this.y !== this.py) {
+      this.hasMoved = true
+    } else {
+      this.hasMoved = false
     }
   }
 

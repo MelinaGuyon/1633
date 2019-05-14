@@ -30,8 +30,6 @@ function removeBody (body) {
 }
 
 function checkCollide (bA, bB, cb, prevState, gA, gB) {
-  // to see if we can fix : useless to pass here if not mooving
-
   // bA is perso
   // bB is colliders
 
@@ -79,7 +77,7 @@ function update (dt) {
         let k = g.length
         while (k--) {
           bodyB = g[k]
-          // if (!bodyA.hasMoved && !bodyB.hasMoved) continue
+          if (!bodyA.hasMoved && !bodyB.hasMoved) return
           if (!groups[n][i].colliders[j]) continue
           if (bodyA.needsReset) { bodyA.inGround = bodyA.needsReset = false }
           checkCollide(bodyA, bodyB, groups[n][i].colliders[j][1], groups[n][i].colliders[j][2], n, n2)
