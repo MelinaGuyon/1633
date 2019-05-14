@@ -4,6 +4,7 @@ import Menu from 'components/dom/Menu/Menu'
 import Carrousel from 'components/dom/Carrousel/Carrousel'
 import Chronologie from 'components/dom/Chronologie/Chronologie'
 import Subtitles from 'components/dom/Subtitles/Subtitles'
+import MouseMv from 'components/dom/MouseMv/MouseMv'
 
 import './GameInterface.styl'
 
@@ -15,6 +16,7 @@ export default class GameInterface extends DomComponent {
         <Carrousel />
         <Chronologie />
         <Subtitles />
+        <MouseMv />
       </section>
     )
   }

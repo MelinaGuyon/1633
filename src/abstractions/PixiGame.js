@@ -5,6 +5,7 @@ import pixi from 'controllers/pixi'
 import physics from 'controllers/physics'
 import store from 'state/store'
 import anime from 'animejs'
+import mouse from 'controllers/mouse'
 
 import LevelUniversity from 'components/pixi/LevelUniversity/LevelUniversity'
 import LevelChurch from 'components/pixi/LevelChurch/LevelChurch'
@@ -29,6 +30,7 @@ export default class Pixigame extends PixiComponent {
     physics.createGroup('obstacles', { color: 0xffff00 })
     physics.createGroup('hero', { color: 0x00ff00 })
     this.bind()
+	  mouse.init(document.getElementsByClassName('game'))
 
     this.levels = {}
     this.createPerso()
