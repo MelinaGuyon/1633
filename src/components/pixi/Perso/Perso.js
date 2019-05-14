@@ -4,7 +4,6 @@ import Animator from 'controllers/animator'
 import camera from 'controllers/camera'
 import physics from 'controllers/physics'
 import signals from 'state/signals'
-import Body from 'abstractions/Body'
 
 export default class Perso extends PixiComponent {
   setup () {
@@ -44,20 +43,24 @@ export default class Perso extends PixiComponent {
     signals.goLeft.listen(this.updateAnimation, this) // 0
     signals.goRight.listen(this.updateAnimation, this) // 1
     signals.stop.listen(this.updateAnimation, this)
+    // listen space
   }
 
   updateAnimation (direction) {
-    if (this.oldDirection !== direction) {
-      return
-      if (direction === 0) {
-        this.anim.play('animation-left/animation', { loop: true, frameDuration: 600 })
-      } else if (direction === 1) {
-        this.anim.play('animation-right/animation', { loop: true, frameDuration: 600 })
-      } else {
-        this.anim.play('animation-static/animation', { loop: true, frameDuration: 600 })
-      }
-      this.oldDirection = direction
-    }
+    // if (this.oldDirection !== direction) {
+    //   if (direction === 0) {
+    //     this.anim.play('animation-left/animation', { loop: true, frameDuration: 600 })
+    //   } else if (direction === 1) {
+    //     this.anim.play('animation-right/animation', { loop: true, frameDuration: 600 })
+    //   } else {
+    //     this.anim.play('animation-static/animation', { loop: true, frameDuration: 600 })
+    //   }
+    //   this.oldDirection = direction
+    // }
+  }
+
+  checkInterest () {
+    // si il collide alors il peut lancer le spaceCb
   }
 
   update (dt, time) {

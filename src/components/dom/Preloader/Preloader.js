@@ -29,13 +29,8 @@ export default class Preloader extends DomComponent {
   createTexFromAtlas (atlas, key) {
     const sheet = atlas.spritesheet
 
-    if (key === 'sheet') {
-      sheet.baseTexture.scaleMode = SCALE_MODES.NEAREST
-      sheet.baseTexture.mipmap = true
-    } if (key === 'smoothsheet') {
-      sheet.baseTexture.scaleMode = SCALE_MODES.LINEAR
-      sheet.baseTexture.mipmap = false
-    }
+    sheet.baseTexture.scaleMode = SCALE_MODES.LINEAR
+    sheet.baseTexture.mipmap = true
 
     const anims = sheet.animations || {}
     const texs = {}

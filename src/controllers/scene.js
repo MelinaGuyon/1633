@@ -23,6 +23,7 @@ class Scene extends PixiComponent {
   createLayers () {
     const layers = store.sceneLayers.get()
     this.layers = {}
+    this.scale = 1
 
     // Create parallax layers
     for (let i = 0; i < layers.length; i++) {
@@ -36,6 +37,11 @@ class Scene extends PixiComponent {
   }
 
   goPos (layer) {
+    let z = this.scale
+    layer.base.scale.x = z
+    layer.base.scale.y = z
+    layer.scale = z
+
     if (layer.props.name === 'hero') {
       layer.base.x = Math.round(store.size.get().w / 2)
       layer.base.y = Math.round(store.size.get().h / 2)
@@ -45,8 +51,23 @@ class Scene extends PixiComponent {
       const y = camera.y + camera.y * p
       layer.base.x = Math.round(store.size.get().w / 2 + x)
       layer.base.y = Math.round(store.size.get().h / 2 + y)
-      // if (layer.props.name === 'bg600') console.log(store.size.get().w / 2 - layer.base.x, 'layer')
     }
+  }
+
+  resize (s) {
+    const scale = 1.2
+
+    this.screenWidth = s.w
+    this.screenHeight = s.h
+    this.width = s.w / scale
+    this.height = s.h / scale
+
+    this.scale = scale
+    store.sceneScale.set(scale)
+
+    console.log(scale)
+
+    super.resize(s)
   }
 
   update (dt) {
@@ -60,4 +81,4 @@ class Scene extends PixiComponent {
 }
 
 const scene = new Scene()
-export default scene
+export default scene // Expose a singleton

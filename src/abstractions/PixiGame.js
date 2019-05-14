@@ -34,7 +34,7 @@ export default class Pixigame extends PixiComponent {
 
     this.levels = {}
     this.createPerso()
-    store.levelId.set(2) // temps profanation pour test collision
+    store.levelId.set(1) // temp profanation pour test collision
   }
 
   bind () {
@@ -58,6 +58,7 @@ export default class Pixigame extends PixiComponent {
     this.currentLevel = level
   }
 
+  // TODO à déplacer dans la classe Timeline (la vraie)
   onTimelineClick (timelineStatus) {
     if (timelineStatus === 'appearing') {
       anime({
