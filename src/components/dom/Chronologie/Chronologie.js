@@ -131,13 +131,16 @@ export default class Chronologie extends DomComponent {
   }
 
   onChronologieClick (chronologieStatus) {
+    console.log('chapter', store.chapterId.get())
+
     if (chronologieStatus === 'appearing') {
       anime({
         targets: document.querySelector('.chronologie'),
-        translateX: -window.innerWidth,
+        translateX: -window.innerWidth, // - window.innerWidth * store.chapterId.get(),
         easing: 'easeOutQuad',
-        duration: 600
+        duration: 1000
       })
+      setTimeout(function () { document.querySelector('.chronologie').scrollTo(0, document.querySelector('#fact' + store.chapterId.get() + '').offsetTop) }, 1000)
     } else if (chronologieStatus === 'disappearing') {
       anime({
         targets: document.querySelector('.chronologie'),
