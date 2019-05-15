@@ -30,7 +30,7 @@ export default class Pixigame extends PixiComponent {
     physics.createGroup('obstacles', { color: 0xffff00 })
     physics.createGroup('hero', { color: 0x00ff00 })
     this.bind()
-	  mouse.init(document.getElementsByClassName('game'))
+    mouse.init(document.getElementsByClassName('game'))
 
     this.levels = {}
     this.createPerso()
@@ -39,7 +39,6 @@ export default class Pixigame extends PixiComponent {
 
   bind () {
     this.listenStore('levelId', this.onLvlChange)
-    // this.listenStore('timelineStatus', this.onTimelineClick) TODO
   }
 
   createPerso () {
@@ -56,21 +55,6 @@ export default class Pixigame extends PixiComponent {
 
     store.levelInstance.set(this.levels[level])
     this.currentLevel = level
-  }
-
-  // TODO à déplacer dans la classe Timeline (la vraie)
-  onTimelineClick (timelineStatus) {
-    if (timelineStatus === 'appearing') {
-      anime({
-        targets: document.querySelector('.timeline'),
-        translateX: -window.innerWidth
-      })
-    } else if (timelineStatus === 'disappearing') {
-      anime({
-        targets: document.querySelector('.timeline'),
-        translateX: '0px'
-      })
-    }
   }
 
   destroyCurrentLvl () {

@@ -18,6 +18,7 @@ class Scene extends PixiComponent {
   setup () {
     this.base = new Container()
     this.createLayers()
+    this.resize()
   }
 
   createLayers () {
@@ -55,7 +56,16 @@ class Scene extends PixiComponent {
   }
 
   resize (s) {
-    const scale = 1.2
+    if (!s) s = store.size.get()
+
+    let scale
+    scale = Math.max(
+      0.9,
+      Math.min(
+        0.9 + (Math.max(1, s.w / 700) - 1) * 1.2,
+        0.9 + (Math.max(1, s.h / 700) - 1) * 1.5
+      )
+    )
 
     this.screenWidth = s.w
     this.screenHeight = s.h
@@ -64,8 +74,6 @@ class Scene extends PixiComponent {
 
     this.scale = scale
     store.sceneScale.set(scale)
-
-    console.log(scale)
 
     super.resize(s)
   }
