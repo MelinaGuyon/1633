@@ -64,7 +64,7 @@ export default class Preloader extends DomComponent {
   }
 
   load () {
-	  sound.setup()
+    sound.setup()
 
     Promise.all([this.pixiLoad()])
       .then(() => {

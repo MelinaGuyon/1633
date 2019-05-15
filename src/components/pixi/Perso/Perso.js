@@ -34,7 +34,7 @@ export default class Perso extends PixiComponent {
       this.state.collide = state.collide
       this.state.spaceCb = state.spaceCb
       // this.state.histoFact = state.histoFact
-      // console.log('COLLIDE', this.state)
+      console.log('COLLIDE', this.state)
     })
 
     this.bind()
@@ -61,7 +61,7 @@ export default class Perso extends PixiComponent {
   }
 
   checkInterest () {
-    console.log(this.state)
+    // console.log(this.state)
     // eslint-disable-next-line no-unused-expressions
     this.state.collide === true ? this.state.spaceCb() : ''
   }

@@ -36,10 +36,11 @@ function checkCollide (bA, bB, cb, prevState, gA, gB) {
   const newState = { collide: false, spaceCb: undefined }
 
   // distance
+  const sceneScale = store.sceneScale.get()
   const layerDisplacement = store.size.get().w / 2 - bB.container.base.x
-  const offsetObject = bB.x + bB.width / 2
+  const offsetObject = bB.x * sceneScale + bB.width / 2
   const dx = offsetObject - layerDisplacement
-  const hCollide = Math.abs(dx) < bB.width / 2
+  const hCollide = Math.abs(dx) < bB.width
 
   if (!hCollide) {
     cb(newState)
@@ -48,7 +49,6 @@ function checkCollide (bA, bB, cb, prevState, gA, gB) {
 
   newState.collide = true
   newState.spaceCb = bB.cb
-  // newState.histoFact = bB.histoFact
 
   cb && cb(newState)
   return true
