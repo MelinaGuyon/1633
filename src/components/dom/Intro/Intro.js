@@ -37,7 +37,7 @@ class SoundButton extends DomComponent {
 export default class Intro extends DomComponent {
   template ({ base }) {
     return (
-      <section class='intro'>
+      <section class='intro mouse__close-zone__parent'>
         <a href='#' class='logo'>logo</a>
         <a href='#' class='about'>about</a>
         <div class='mouse__close-zone'>

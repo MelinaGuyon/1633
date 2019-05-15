@@ -1,6 +1,8 @@
 function init (element) {
+	let zoneClose = document.getElementsByClassName('mouse__close-zone')
   element[0].addEventListener('mousemove', onMouseMove)
   element[0].addEventListener('touchmove', onMouseMove)
+	zoneClose[0].addEventListener('click', clickClose)
 }
 
 function onMouseMove (event) {
@@ -19,6 +21,10 @@ function onMouseMove (event) {
   } else {
 	  mouseDiv[0].className = 'mouse'
   }
+}
+
+function clickClose (event) {
+	event.target.closest('.mouse__close-zone__parent').remove()
 }
 
 export default {
