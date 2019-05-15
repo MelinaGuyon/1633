@@ -35,7 +35,7 @@ export default class Pixigame extends PixiComponent {
     this.levels = {}
     this.createPerso()
     // this.createTimeline()
-    store.levelId.set(1) // temp profanation pour test collision
+    store.levelId.set(0)
   }
 
   bind () {
@@ -45,9 +45,10 @@ export default class Pixigame extends PixiComponent {
   createPerso () {
     this.perso = this.addComponent(Perso, { layer: 'hero' })
   }
-  createTimeline () {
-    this.timeline = this.addComponent(Timeline, { layer: 'timeline' })
-  }
+
+  // createTimeline () {
+  //   this.timeline = this.addComponent(Timeline, { layer: 'timeline' })
+  // }
 
   onLvlChange (id) {
     this.destroyCurrentLvl()
