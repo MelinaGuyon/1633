@@ -12,6 +12,7 @@ import LevelChurch from 'components/pixi/LevelChurch/LevelChurch'
 import LevelProfanation from 'components/pixi/LevelProfanation/LevelProfanation'
 
 import Perso from 'components/pixi/Perso/Perso'
+import Timeline from 'components/pixi/Timeline/Timeline'
 
 const levels = {
   university: LevelUniversity,
@@ -29,11 +30,14 @@ export default class Pixigame extends PixiComponent {
     pixi.setGameComponent(this) // set current game
     physics.createGroup('obstacles', { color: 0xffff00 })
     physics.createGroup('hero', { color: 0x00ff00 })
+    // physics.createGroup('timeline', { color: 0x00ff00 })
+
     this.bind()
 	  mouse.init(document.getElementsByClassName('game'))
 
     this.levels = {}
     this.createPerso()
+    // this.createTimeline()
     store.levelId.set(1) // temp profanation pour test collision
   }
 
@@ -44,6 +48,9 @@ export default class Pixigame extends PixiComponent {
 
   createPerso () {
     this.perso = this.addComponent(Perso, { layer: 'hero' })
+  }
+  createTimeline () {
+    this.timeline = this.addComponent(Timeline, { layer: 'timeline' })
   }
 
   onLvlChange (id) {
@@ -56,21 +63,6 @@ export default class Pixigame extends PixiComponent {
 
     store.levelInstance.set(this.levels[level])
     this.currentLevel = level
-  }
-
-  // TODO à déplacer dans la classe Timeline (la vraie)
-  onTimelineClick (timelineStatus) {
-    if (timelineStatus === 'appearing') {
-      anime({
-        targets: document.querySelector('.timeline'),
-        translateX: -window.innerWidth
-      })
-    } else if (timelineStatus === 'disappearing') {
-      anime({
-        targets: document.querySelector('.timeline'),
-        translateX: '0px'
-      })
-    }
   }
 
   destroyCurrentLvl () {
