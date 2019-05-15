@@ -25,5 +25,10 @@ export default class GameInterface extends DomComponent {
 
   componentDidMount () {
     console.log('Game interface did mount')
+    document.addEventListener('click', function (e) {
+      if (document.activeElement.toString() === '[object HTMLButtonElement]') {
+        document.activeElement.blur()
+      }
+    })
   }
 }
