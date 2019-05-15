@@ -8,16 +8,30 @@
 export default [
   ['fixed', -1000], // will not move
 
-  ['bg800', -800],
-  ['bg600', -600],
-  ['bg400', -400],
-  ['bg200', -200],
+  ['3bg800', -800],
+  ['3bg600', -600],
+  ['3bg400', -400],
+  ['3bg200', -200],
+
+  ['2bg800', -800],
+  ['2bg600', -600],
+  ['2bg400', -400],
+  ['2bg200', -200],
+
+  ['1bg800', -800],
+  ['1bg600', -600],
+  ['1bg400', -400],
+  ['1bg200', -200],
 
   ['prehero', 0], // main layer, behind hero
   ['hero', 0], // main layer, used only for the hero
 
-  ['f200', 200],
-  ['f650', 650],
+  ['3f200', 200],
+  ['3f650', 650],
 
-  ['light', 0] // light system is on a specific group to avoid breaking the batching too much
+  ['2f200', 200],
+  ['2f650', 650],
+
+  ['1f200', 200],
+  ['1f650', 650]
 ]

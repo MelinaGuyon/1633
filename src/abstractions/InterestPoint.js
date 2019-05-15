@@ -14,7 +14,7 @@ export default class InterestPoint extends PixiComponent {
     this.base.tint = props.tint || 0xFF00FF
     this.base.lineStyle(4, this.base.tint, 1)
     this.base.beginFill(this.base.tint)
-    this.base.drawRect(0, 0, 64, 64)
+    this.base.drawCircle(24, 24, 24)
     this.base.endFill()
 
     this.base.x = props.x || 0
