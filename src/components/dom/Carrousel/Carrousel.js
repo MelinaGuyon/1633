@@ -78,6 +78,6 @@ export default class Carrousel extends DomComponent {
   componentDidMount () {
 	  mouse.init(document.getElementsByClassName('game'))
 	  // debug to start directly
-    // if (store.directStart.get()) this.launchGame(0)
+    if (store.directStart.get()) this.launchGame(0)
   }
 }
