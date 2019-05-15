@@ -156,12 +156,7 @@ export default class Chronologie extends DomComponent {
   }
 
   onResize () {
-    console.log('resize')
-    anime({
-      targets: document.querySelector('.chronologie'),
-      translateX: -window.innerWidth,
-      easing: 'easeOutQuad',
-      duration: 0
-    })
+    console.log('resize', this)
+    this.onChronologieClick(store.chronologieStatus.get())
   }
 }
