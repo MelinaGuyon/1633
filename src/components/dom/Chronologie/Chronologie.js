@@ -11,7 +11,7 @@ class PreviousButton extends DomComponent {
     const loc = store.loc.get()
 
     return (
-      <button class="buttonFact" data-id={props.id}>Fait précédent</button>
+      <button class='buttonFact' data-id={props.id}>Fait précédent</button>
     )
   }
 
@@ -25,7 +25,8 @@ class PreviousButton extends DomComponent {
 
   onClick (e) {
     let previousFactId = Number(e.target.getAttribute('data-id')) - 1
-    previousFactId >= 0 ? document.querySelector(".chronologie").scrollTo(0, document.querySelector("#fact"+previousFactId+"").offsetTop) : ''
+    // eslint-disable-next-line no-unused-expressions
+    previousFactId >= 0 ? document.querySelector('.chronologie').scrollTo(0, document.querySelector('#fact' + previousFactId + '').offsetTop) : ''
   }
 }
 
@@ -34,7 +35,7 @@ class NextButton extends DomComponent {
     const loc = store.loc.get()
 
     return (
-      <button class="buttonFact" data-id={props.id}>Fait suivant</button>
+      <button class='buttonFact' data-id={props.id}>Fait suivant</button>
     )
   }
 
@@ -48,7 +49,8 @@ class NextButton extends DomComponent {
 
   onClick (e) {
     let nextFactId = Number(e.target.getAttribute('data-id')) + 1
-    nextFactId < store.factsStatus.get().length ? document.querySelector(".chronologie").scrollTo(0, document.querySelector("#fact"+nextFactId+"").offsetTop) : ''
+    // eslint-disable-next-line no-unused-expressions
+    nextFactId < store.factsStatus.get().length ? document.querySelector('.chronologie').scrollTo(0, document.querySelector('#fact' + nextFactId + '').offsetTop) : ''
   }
 }
 
@@ -58,12 +60,12 @@ class Fact extends DomComponent {
 
     return (
       <div class='fact' id={props.type} data-id={props.id}>
-        <img class="character" data-id={props.id} src="http://www.europexplo.fr/wp-content/uploads/2016/08/MAZARIN.png" />
-        <div class="factContent" data-id={props.id}>{loc['fact.' + props.type]}</div>
-        <ul class="factButtons">
-          <li><PreviousButton id={props.id}/></li>
-          <li><NextButton id={props.id}/></li>
-        </ul>  
+        <img class='character' data-id={props.id} src='http://www.europexplo.fr/wp-content/uploads/2016/08/MAZARIN.png' />
+        <div class='factContent' data-id={props.id}>{loc['fact.' + props.type]}</div>
+        {/* <ul class='factButtons'>
+          <li><PreviousButton id={props.id} /></li>
+          <li><NextButton id={props.id} /></li>
+        </ul> */}
       </div>
     )
   }
@@ -91,8 +93,8 @@ class Fact extends DomComponent {
 
   onMouseMove (e) {
     let id = Number(e.target.getAttribute('data-id'))
-    let container = document.querySelector("#fact"+id+"")
-    let character = document.querySelector("#fact"+id+" .character")
+    let container = document.querySelector('#fact' + id + '')
+    let character = document.querySelector('#fact' + id + ' .character')
     this.parallaxIt(e, container, character, -70)
   }
 
@@ -128,12 +130,14 @@ export default class Chronologie extends DomComponent {
 
   bind () {
     this.listenStore('chronologieStatus', this.onChronologieClick)
+    window.addEventListener('resize', this.fastbind('onResize', 1)) // 1 to pass the event
   }
 
   onChronologieClick (chronologieStatus) {
     console.log('chapter', store.chapterId.get())
 
     if (chronologieStatus === 'appearing') {
+      console.log('width window', window.innerWidth)
       anime({
         targets: document.querySelector('.chronologie'),
         translateX: -window.innerWidth, // - window.innerWidth * store.chapterId.get(),
@@ -144,10 +148,20 @@ export default class Chronologie extends DomComponent {
     } else if (chronologieStatus === 'disappearing') {
       anime({
         targets: document.querySelector('.chronologie'),
-        translateX: '0px',
+        translateX: '0',
         easing: 'easeOutQuad',
         duration: 600
       })
     }
+  }
+
+  onResize () {
+    console.log('resize')
+    anime({
+      targets: document.querySelector('.chronologie'),
+      translateX: -window.innerWidth,
+      easing: 'easeOutQuad',
+      duration: 0
+    })
   }
 }
