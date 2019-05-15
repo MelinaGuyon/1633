@@ -1,19 +1,21 @@
 import Level from 'abstractions/Level'
 import Interests from './Interests'
+import LevelChecks from './LevelChecks'
 import Buildings from './CityBuildings'
 
 export default class LevelChurch extends Level {
   setup () {
     super.setup()
     this.createLand()
-    this.addInterest()
+    this.addColliders()
   }
 
   createLand () {
     this.addComponent(Buildings)
   }
 
-  addInterest () {
+  addColliders () {
     this.addComponent(Interests)
+    this.addComponent(LevelChecks)
   }
 }

@@ -27,7 +27,8 @@ export default class Pixigame extends PixiComponent {
 
   setup () {
     pixi.setGameComponent(this) // set current game
-    physics.createGroup('obstacles', { color: 0xffff00 })
+    physics.createGroup('interests', { color: 0xffff00 })
+    physics.createGroup('levelChecks', { color: 0xffff00 })
     physics.createGroup('hero', { color: 0x00ff00 })
     // physics.createGroup('timeline', { color: 0x00ff00 })
 
@@ -51,7 +52,7 @@ export default class Pixigame extends PixiComponent {
   // }
 
   onLvlChange (id) {
-    this.destroyCurrentLvl()
+    // this.destroyCurrentLvl()
 
     const level = store.levelDict.get()[id]
     if (!this.levels[level]) {

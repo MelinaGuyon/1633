@@ -1,20 +1,19 @@
 import PixiComponent from 'abstractions/PixiComponent'
-import { Sprite, Rectangle, Graphics } from 'pixi.js'
+import { Graphics } from 'pixi.js'
 import physics from 'controllers/physics'
 import scene from 'controllers/scene'
 
-import store from 'state/store'
-
-export default class InterestPoint extends PixiComponent {
+export default class Colliders extends PixiComponent {
   setup (props) {
-    console.log(props, 'ici')
+    this.state = {}
+
     this.type = props.type || 'a'
 
     this.base = new Graphics()
     this.base.tint = props.tint || 0xFF00FF
     this.base.lineStyle(4, this.base.tint, 1)
     this.base.beginFill(this.base.tint)
-    this.base.drawCircle(24, 24, 24)
+    this.base.drawCircle(14, 14, 14)
     this.base.endFill()
 
     this.base.x = props.x || 0
@@ -22,30 +21,27 @@ export default class InterestPoint extends PixiComponent {
     this.width = this.base.width
     this.height = this.base.height
     this.collide = props.collide
+    this.group = props.group
 
-    this.histoFact = props.histoFact
+    this.cb = props.cb
 
-    if (this.collide) {
+    if (this.collide && this.group) {
       this.body = physics.addBody({
-        group: 'obstacles',
+        group: this.group,
         container: scene[props.layer],
         width: this.base.width,
         height: this.base.height,
         x: this.base.x,
         y: this.base.y,
         anchor: [0.5, 0.5],
-        scale: 1,
-        cb: this.unlock.bind(this)
+        scale: 1
       })
       this.body.attach(this.base)
-    }
-  }
 
-  unlock () {
-    if (this.histoFact >= 0) {
-      let id = this.histoFact
-      store.factsStatus.current[id] = 'unlocked'
-      document.querySelector('#fact' + id + ' .factContent').style.opacity = 0.5
+      this.body.collideWith('hero', (state) => {
+        this.state.collide = state.collide
+        this.cb(state)
+      })
     }
   }
 

@@ -29,11 +29,11 @@ function removeBody (body) {
   groups[body.group].splice(index, 1)
 }
 
-function checkCollide (bA, bB, cb, prevState, gA, gB) {
+function checkCollide (bB, bA, cb, prevState, gA, gB) {
   // bA is perso
   // bB is colliders
 
-  const newState = { collide: false, spaceCb: undefined }
+  const newState = { collide: false }
 
   // distance
   const sceneScale = store.sceneScale.get()
@@ -48,7 +48,6 @@ function checkCollide (bA, bB, cb, prevState, gA, gB) {
   }
 
   newState.collide = true
-  newState.spaceCb = bB.cb
 
   cb && cb(newState)
   return true
