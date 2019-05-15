@@ -26,7 +26,7 @@ class PreviousButton extends DomComponent {
   onClick (e) {
     let previousFactId = Number(e.target.getAttribute('data-id')) - 1
     // eslint-disable-next-line no-unused-expressions
-    previousFactId >= 0 ? document.querySelector('.chronologie').scrollTo(0, document.querySelector('#fact' + previousFactId + '').offsetTop) : ''
+    previousFactId >= 0 ? document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + previousFactId + '').offsetTop) : ''
   }
 }
 
@@ -50,7 +50,7 @@ class NextButton extends DomComponent {
   onClick (e) {
     let nextFactId = Number(e.target.getAttribute('data-id')) + 1
     // eslint-disable-next-line no-unused-expressions
-    nextFactId < store.factsStatus.get().length ? document.querySelector('.chronologie').scrollTo(0, document.querySelector('#fact' + nextFactId + '').offsetTop) : ''
+    nextFactId < store.factsStatus.get().length ? document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + nextFactId + '').offsetTop) : ''
   }
 }
 
@@ -114,7 +114,7 @@ class Fact extends DomComponent {
 export default class Chronologie extends DomComponent {
   template ({ base }) {
     return (
-      <section class='chronologie'>
+      <section id='chronologie'>
         <Fact type={'fact0'} id={0} />
         <Fact type={'fact1'} id={1} />
         <Fact type={'fact2'} id={2} />
@@ -130,33 +130,14 @@ export default class Chronologie extends DomComponent {
 
   bind () {
     this.listenStore('chronologieStatus', this.onChronologieClick)
-    window.addEventListener('resize', this.fastbind('onResize', 1)) // 1 to pass the event
   }
 
   onChronologieClick (chronologieStatus) {
-    console.log('chapter', store.chapterId.get())
-
     if (chronologieStatus === 'appearing') {
-      console.log('width window', window.innerWidth)
-      anime({
-        targets: document.querySelector('.chronologie'),
-        translateX: -window.innerWidth, // - window.innerWidth * store.chapterId.get(),
-        easing: 'easeOutQuad',
-        duration: 1000
-      })
-      setTimeout(function () { document.querySelector('.chronologie').scrollTo(0, document.querySelector('#fact' + store.chapterId.get() + '').offsetTop) }, 1000)
+      document.querySelector('#chronologie').className = 'visible'
+      setTimeout(function () { document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + store.chapterId.get() + '').offsetTop) }, 1000)
     } else if (chronologieStatus === 'disappearing') {
-      anime({
-        targets: document.querySelector('.chronologie'),
-        translateX: '0',
-        easing: 'easeOutQuad',
-        duration: 600
-      })
+      document.querySelector('#chronologie').className = 'hidden'
     }
-  }
-
-  onResize () {
-    console.log('resize', this)
-    this.onChronologieClick(store.chronologieStatus.get())
   }
 }
