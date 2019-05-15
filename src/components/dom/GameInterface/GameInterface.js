@@ -2,6 +2,7 @@ import { h } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
 import Menu from 'components/dom/Menu/Menu'
 import Carrousel from 'components/dom/Carrousel/Carrousel'
+import Timeline from 'components/dom/Timeline/Timeline'
 import Chronologie from 'components/dom/Chronologie/Chronologie'
 import Subtitles from 'components/dom/Subtitles/Subtitles'
 import MouseMv from 'components/dom/MouseMv/MouseMv'
@@ -16,6 +17,7 @@ export default class GameInterface extends DomComponent {
         <Intro />
         <Menu />
         <Carrousel />
+        <Timeline />
         <Chronologie />
         <Subtitles />
         <MouseMv />

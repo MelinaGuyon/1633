@@ -32,6 +32,8 @@ export default createStore({
     4: 'napoleononaparte'
   },
 
+  chapterId: 0,
+
   // ---- scene ----
   sceneLayers,
   subtitles: window.__conf.lang === 'fr' ? subtitlesFr : subtitlesEn,

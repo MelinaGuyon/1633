@@ -23,6 +23,8 @@ function Keyboard () {
       right.isDown = false
       signals.goRight.dispatch(1)
       // console.log('go droite')
+    } else if (event.key === ' ') {
+      signals.space.dispatch()
     }
   }
 
@@ -41,6 +43,9 @@ function Keyboard () {
         // console.log('fin droite')
       }
     }
+    // if (event.key === ' ') {
+    //   signals.stop.dispatch(null)
+    // }
   }
 
   function init () {
