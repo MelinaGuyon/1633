@@ -38,17 +38,19 @@ export default class Intro extends DomComponent {
   template ({ base }) {
     return (
       <section class='intro'>
-        <a href="#" class="logo">logo</a>
-        <a href='#' class="about">about</a>
-        <p class="centerText">Bienvenue en Sorbonne, dans cette chapelle,
-        lieu saint qui a connu toute l'histoire de l'Université</p>
-        <div class="actions">
-          <select name='' id=''>
-            <option value=''>FR</option>
-            <option value=''>EN</option>
-          </select>
-	        <SoundButton type={'sound'} id={4} />
+        <a href='#' class='logo'>logo</a>
+        <a href='#' class='about'>about</a>
+        <div class='mouse__close-zone'>
+          <p class='centerText'>Bienvenue en Sorbonne, dans cette chapelle,
+			      lieu saint qui a connu toute l'histoire de l'Université</p>
         </div>
+	      <div class='actions'>
+		      <select name='' id=''>
+			      <option value=''>FR</option>
+			      <option value=''>EN</option>
+		      </select>
+		      <SoundButton type={'sound'} id={4} />
+	      </div>
       </section>
     )
   }
