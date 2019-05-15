@@ -70,6 +70,8 @@ export default class Preloader extends DomComponent {
       .then(() => {
         this.log('complete')
         this.props.onComplete()
+	      let loader = document.querySelector('.prld')
+        loader.classList.add('load')
       })
   }
 }

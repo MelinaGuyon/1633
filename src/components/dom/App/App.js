@@ -28,6 +28,8 @@ export default class App extends DomComponent {
     Promise.resolve()
       .then(() => {
         // Render the Game Interface
+        let needTuto = true;
+        //TODO COOKIE
         this.render(<GameInterface />, this.base)
       })
   }

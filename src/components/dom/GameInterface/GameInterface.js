@@ -5,7 +5,7 @@ import Carrousel from 'components/dom/Carrousel/Carrousel'
 import Timeline from 'components/dom/Timeline/Timeline'
 import Chronologie from 'components/dom/Chronologie/Chronologie'
 import Subtitles from 'components/dom/Subtitles/Subtitles'
-import MouseMv from 'components/dom/MouseMv/MouseMv'
+import Tutorial from 'components/dom/Tutorial/Tutorial'
 
 import './GameInterface.styl'
 
@@ -18,7 +18,7 @@ export default class GameInterface extends DomComponent {
         <Timeline />
         <Chronologie />
         <Subtitles />
-        <MouseMv />
+        <Tutorial />
       </section>
     )
   }

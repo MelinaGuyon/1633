@@ -23,8 +23,8 @@ export default createStore({
   pixelRatio: ratio,
   sceneScale: 1,
 
-  // ---- Chapter ----
-  chapter: {
+  // ---- history ----
+  history: {
     0: 'richelieu',
     1: 'mariecurie',
     2: 'robertdesorbon',
