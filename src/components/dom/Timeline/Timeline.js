@@ -68,29 +68,40 @@ export default class Timeline extends DomComponent {
   }
 
   onLvlChange (id) {
+    // this.displacement = 0
     let previousId = id - 1
 
     let currentLevelX = 500
-    let nextLevelX = 1900
+    let nextLevelX = 1200
     let heroDistance = nextLevelX - currentLevelX
 
     this.currentPoint = document.querySelector('#point' + id + '')
+
+    this.id = id
+    // console.log('left newPoint', window.getComputedStyle(this.currentPoint).left)
+
     let previousPoint = document.querySelector('#point' + previousId + '')
 
     if (id === 0) {
       this.pointDistance = window.innerWidth
-    } else {
+    } else if (this.currentPoint) {
       this.pointDistance = parseInt(window.getComputedStyle(this.currentPoint).left, 10) - parseInt(window.getComputedStyle(previousPoint).left, 10)
+      // this.pointDistance = window.innerWidth
     }
 
     this.ratio = heroDistance / this.pointDistance
+    console.log('ratio', this.ratio)
   }
 
   updateState (displacement) {
-    // console.log('anim left', displacement / this.ratio)
+    // réinitialiser displacement !!!
+    // console.log('displacement', displacement - window.innerWidth)
+    this.displacement = displacement // - window.innerWidth * this.id
+
+    // console.log('POINT', this.id, 'anim left', this.displacement / this.ratio)
 
     if (this.currentPoint) {
-      this.currentPoint.style.left = -(displacement / this.ratio) + 'px'
+      this.currentPoint.style.left = -(this.displacement / this.ratio) + 'px'
     }
   }
 }
