@@ -3,6 +3,7 @@ import { h } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
 import cookie from 'controllers/cookie'
+import logger from 'utils/logger'
 
 import './Tutorial.styl'
 
@@ -51,5 +52,6 @@ export default class Tutorial extends DomComponent {
     if (isAlreadyShow) {
 	    document.querySelector('.tutorial').remove()
     }
+    logger('Tutorial did mount', '#47b342').log()
   }
 }
