@@ -9,14 +9,22 @@ import anime from 'animejs'
 import LevelUniversity from 'components/pixi/LevelUniversity/LevelUniversity'
 import LevelChurch from 'components/pixi/LevelChurch/LevelChurch'
 import LevelProfanation from 'components/pixi/LevelProfanation/LevelProfanation'
+import LevelCeremony from 'components/pixi/LevelCeremony/LevelCeremony'
+import LevelPharmacist from 'components/pixi/LevelPharmacist/LevelPharmacist'
+import LevelNapoleon from 'components/pixi/LevelNapoleon/LevelNapoleon'
+import LevelRecovery from 'components/pixi/LevelRecovery/LevelRecovery'
 
 import Perso from 'components/pixi/Perso/Perso'
-import Timeline from 'components/pixi/Timeline/Timeline'
+// import Timeline from 'components/pixi/Timeline/Timeline'
 
 const levels = {
   university: LevelUniversity,
   church: LevelChurch,
-  profanation: LevelProfanation
+  profanation: LevelProfanation,
+  ceremony: LevelCeremony,
+  pharmacist: LevelPharmacist,
+  napoleon: LevelNapoleon,
+  recovery: LevelRecovery
 }
 
 export default class Pixigame extends PixiComponent {
@@ -54,15 +62,16 @@ export default class Pixigame extends PixiComponent {
   onLvlChange (id) {
     this.addLevelsAround(id)
     this.destroyOtherLevels(id)
-
     console.log('LEVELS ON SCENE', this.levels)
   }
 
   addLevelsAround (id) {
     // Previous level
-    const previousLevel = store.levelDict.get()[id - 1]
-    if (previousLevel && !this.levels[previousLevel]) {
-      this.levels[previousLevel] = new levels[previousLevel]({ autosetup: true, name: previousLevel }) // eslint-disable-line
+    for (let i = 1; i <= store.levelSecurity.get(); i++) {
+      const previousLevel = store.levelDict.get()[id - i]
+      if (previousLevel && !this.levels[previousLevel]) {
+        this.levels[previousLevel] = new levels[previousLevel]({ autosetup: true, name: previousLevel }) // eslint-disable-line
+      }
     }
 
     // Current Level
@@ -74,9 +83,11 @@ export default class Pixigame extends PixiComponent {
     this.currentLevel = level
 
     // Next level
-    const nextLevel = store.levelDict.get()[id + 1]
-    if (nextLevel && !this.levels[nextLevel]) {
-      this.levels[nextLevel] = new levels[nextLevel]({ autosetup: true, name: nextLevel }) // eslint-disable-line
+    for (let i = 1; i <= store.levelSecurity.get(); i++) {
+      const nextLevel = store.levelDict.get()[id + i]
+      if (nextLevel && !this.levels[nextLevel]) {
+        this.levels[nextLevel] = new levels[nextLevel]({ autosetup: true, name: nextLevel }) // eslint-disable-line
+      }
     }
   }
 
@@ -84,7 +95,7 @@ export default class Pixigame extends PixiComponent {
     const keys = Object.keys(this.levels)
 
     keys.forEach((key, index) => {
-      if (index < id - 1 || index > id + 1) {
+      if (index < id - store.levelSecurity.get() || index > id + store.levelSecurity.get()) {
         if (this.levels[key]) {
           this.levels[key].destroy()
           this.levels[key] = undefined

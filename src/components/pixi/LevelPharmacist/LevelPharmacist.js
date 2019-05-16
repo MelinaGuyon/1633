@@ -1,8 +1,9 @@
 import Level from 'abstractions/Level'
-import Buildings from './CityBuildings'
+import Interests from './Interests'
 import LevelChecks from './LevelChecks'
+import Buildings from './CityBuildings'
 
-export default class LevelProfanation extends Level {
+export default class LevelPharmacist extends Level {
   setup () {
     super.setup()
     this.createLand()
@@ -14,6 +15,7 @@ export default class LevelProfanation extends Level {
   }
 
   addColliders () {
+    this.addComponent(Interests)
     this.addComponent(LevelChecks)
   }
 }
