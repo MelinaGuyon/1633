@@ -11,6 +11,7 @@ const ratio = window.devicePixelRatio <= 2 ? 1 : 1.5
 
 export default createStore({
   version: VERSION, // app version number
+  debug: false,
 
   // ---- i18n / base ----
   lang: window.__conf.lang,

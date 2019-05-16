@@ -1,8 +1,10 @@
 function init (element) {
-	let zoneClose = document.getElementsByClassName('mouse__close-zone')
+  let zoneClose = document.getElementsByClassName('mouse__close-zone')
   element[0].addEventListener('mousemove', onMouseMove)
   element[0].addEventListener('touchmove', onMouseMove)
-	zoneClose[0].addEventListener('click', clickClose)
+  for (let i = 0; i < zoneClose.length; i++) {
+    zoneClose[i].addEventListener('click', clickClose)
+  }
 }
 
 function onMouseMove (event) {
@@ -24,7 +26,10 @@ function onMouseMove (event) {
 }
 
 function clickClose (event) {
-	event.target.closest('.mouse__close-zone__parent').remove()
+  let element = event.target.closest('.mouse__close')
+  let type = element.getAttribute('data-type')
+  type += ' mouse__close hide'
+  event.target.closest('.mouse__close').className = type
 }
 
 export default {

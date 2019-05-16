@@ -1,2 +1,25 @@
 .tutorial
-  display none
+
+  .button
+    position fixed
+    bottom: 0
+    left: 0
+
+    button
+      margin 10px
+
+  &__item
+    display none
+    background #000000
+    width: 100vw
+    height: 100vh
+    position fixed
+    top: 0
+    left: 0
+    z-index 20
+    
+    p, span
+      color: #fff
+
+    &.active
+      display block

@@ -9,7 +9,7 @@ export default class Interests extends PixiComponent {
 
     this.mains = []
     this.mains.push(this.addComponent(Colliders, { layer: '2bg600', x: 100, y: -100, group: 'interests', collide: true, tint: 0xFF0000, cb: this.cb.bind(this, 0) }))
-    // this.mains.push(this.addComponent(Colliders, { layer: '2bg600', x: 400, y: -100, group: 'interests', collide: true, tint: 0xFF0000, cb: this.cb.bind(this, 1) }))
+   // this.mains.push(this.addComponent(Colliders, { layer: '2bg600', x: 400, y: -100, group: 'tuto', collide: true, tint: 0x29487d, cb: this.cb.bind(this, 1) }))
 
     this.bind()
   }
