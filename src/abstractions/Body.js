@@ -17,7 +17,13 @@ export default class Body {
     this.px = this.x
     this.py = this.y
 
-    this.dir = null
+    // use to focus camera
+    if (this.group === 'hero') {
+      this.dir = null
+      this.minX = -window.innerWidth / 2
+      this.maxX = window.innerWidth * 3.8
+      this.bind()
+    }
 
     // all variables bellow is used by the physics controller
     this.container = props.container || null
@@ -33,8 +39,6 @@ export default class Body {
 
     this.hw = this.width * 0.5
     this.hh = this.height * 0.5
-
-    this.bind()
   }
 
   bind () {
@@ -72,7 +76,7 @@ export default class Body {
 
     dt = Math.min(dt, 35)
 
-    if (this.dir === 1) {
+    if (this.dir === 1 && this.x < this.maxX) {
       this.vx += (this.ax + this.gravity) * 0.0008 * dt
       this.vy += this.ay * 0.0008 * dt
       this.vx = clamp(this.vx, -this.vxMax, this.vxMax)
@@ -80,7 +84,7 @@ export default class Body {
 
       this.x += this.vx * dt
       this.y += this.vy * dt
-    } else if (this.dir === 0) {
+    } else if (this.dir === 0 && this.x > this.minX) {
       this.vx -= (this.ax + this.gravity) * 0.0008 * dt
       this.vy -= this.ay * 0.0008 * dt
       this.vx = clamp(this.vx, -this.vxMax, this.vxMax)
@@ -104,6 +108,8 @@ export default class Body {
       this.x += this.vx * dt
       this.y += this.vy * dt
     }
+
+    this.x = Math.min(this.maxX, Math.max(this.minX, this.x))
 
     if (this.x !== this.px || this.y !== this.py) {
       this.hasMoved = true

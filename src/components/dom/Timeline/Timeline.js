@@ -57,7 +57,6 @@ export default class Timeline extends DomComponent {
   }
 
   componentDidMount () {
-    console.log(store.levelId.get())
     this.onLvlChange(0)
     this.bind()
   }
@@ -80,7 +79,8 @@ export default class Timeline extends DomComponent {
     if (id === 0) {
       this.pointDistance = window.innerWidth
     } else {
-      this.pointDistance = parseInt(window.getComputedStyle(this.currentPoint).left, 10) - parseInt(window.getComputedStyle(previousPoint).left, 10)
+      // Erreur ici
+      // this.pointDistance = parseInt(window.getComputedStyle(this.currentPoint).left, 10) - parseInt(window.getComputedStyle(previousPoint).left, 10)
     }
 
     this.ratio = heroDistance / this.pointDistance
