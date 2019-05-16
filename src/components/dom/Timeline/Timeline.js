@@ -24,7 +24,7 @@ class Point extends DomComponent {
   onClick (e) {
     const id = Number(e.target.getAttribute('data-id'))
     if (store.chronologieStatus.get() === 'appearing' && store.chapterId.get(id) !== id) {
-      document.querySelector('.chronologie').scrollTo(0, document.querySelector('#fact' + id + '').offsetTop)
+      document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + id + '').offsetTop)
     } else {
       if (store.chronologieStatus.get() !== 'appearing') {
         store.chronologieStatus.set('appearing')

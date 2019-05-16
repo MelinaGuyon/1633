@@ -46,6 +46,7 @@ class Scene extends PixiComponent {
     layer.base.scale.y = z
     layer.scale = z
 
+    // TODO : test if we can active paralax, parralax only active between to range : when on screen
     if (layer.props.name === 'hero') {
       layer.base.x = Math.round(store.size.get().w / 2 * layer.x)
       layer.base.y = Math.round(store.size.get().h / 2)
@@ -53,7 +54,7 @@ class Scene extends PixiComponent {
       let p = layer.z * 0.001
       const x = camera.x + camera.x * p
       const y = camera.y + camera.y * p
-      layer.base.x = Math.round((store.size.get().w / 2 + x) * layer.x)
+      layer.base.x = Math.round(store.size.get().w / 2 * layer.x + x)
       layer.base.y = Math.round(store.size.get().h / 2 + y)
     }
   }

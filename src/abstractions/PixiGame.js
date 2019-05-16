@@ -11,6 +11,7 @@ import LevelChurch from 'components/pixi/LevelChurch/LevelChurch'
 import LevelProfanation from 'components/pixi/LevelProfanation/LevelProfanation'
 
 import Perso from 'components/pixi/Perso/Perso'
+import Timeline from 'components/pixi/Timeline/Timeline'
 
 const levels = {
   university: LevelUniversity,
@@ -26,12 +27,16 @@ export default class Pixigame extends PixiComponent {
 
   setup () {
     pixi.setGameComponent(this) // set current game
-    physics.createGroup('obstacles', { color: 0xffff00 })
+    physics.createGroup('interests', { color: 0xffff00 })
+    physics.createGroup('levelChecks', { color: 0xffff00 })
     physics.createGroup('hero', { color: 0x00ff00 })
+    // physics.createGroup('timeline', { color: 0x00ff00 })
+
     this.bind()
     this.levels = {}
     this.createPerso()
-    store.levelId.set(1) // temp profanation pour test collision
+    // this.createTimeline()
+    store.levelId.set(0)
   }
 
   bind () {
@@ -42,8 +47,12 @@ export default class Pixigame extends PixiComponent {
     this.perso = this.addComponent(Perso, { layer: 'hero' })
   }
 
+  // createTimeline () {
+  //   this.timeline = this.addComponent(Timeline, { layer: 'timeline' })
+  // }
+
   onLvlChange (id) {
-    this.destroyCurrentLvl()
+    // this.destroyCurrentLvl()
 
     const level = store.levelDict.get()[id]
     if (!this.levels[level]) {

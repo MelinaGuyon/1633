@@ -11,7 +11,7 @@ class PreviousButton extends DomComponent {
     const loc = store.loc.get()
 
     return (
-      <button class="buttonFact" data-id={props.id}>Fait précédent</button>
+      <button class='buttonFact' data-id={props.id}>Fait précédent</button>
     )
   }
 
@@ -25,7 +25,8 @@ class PreviousButton extends DomComponent {
 
   onClick (e) {
     let previousFactId = Number(e.target.getAttribute('data-id')) - 1
-    previousFactId >= 0 ? document.querySelector(".chronologie").scrollTo(0, document.querySelector("#fact"+previousFactId+"").offsetTop) : ''
+    // eslint-disable-next-line no-unused-expressions
+    previousFactId >= 0 ? document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + previousFactId + '').offsetTop) : ''
   }
 }
 
@@ -34,7 +35,7 @@ class NextButton extends DomComponent {
     const loc = store.loc.get()
 
     return (
-      <button class="buttonFact" data-id={props.id}>Fait suivant</button>
+      <button class='buttonFact' data-id={props.id}>Fait suivant</button>
     )
   }
 
@@ -48,7 +49,8 @@ class NextButton extends DomComponent {
 
   onClick (e) {
     let nextFactId = Number(e.target.getAttribute('data-id')) + 1
-    nextFactId < store.factsStatus.get().length ? document.querySelector(".chronologie").scrollTo(0, document.querySelector("#fact"+nextFactId+"").offsetTop) : ''
+    // eslint-disable-next-line no-unused-expressions
+    nextFactId < store.factsStatus.get().length ? document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + nextFactId + '').offsetTop) : ''
   }
 }
 
@@ -58,12 +60,12 @@ class Fact extends DomComponent {
 
     return (
       <div class='fact' id={props.type} data-id={props.id}>
-        <img class="character" data-id={props.id} src="http://www.europexplo.fr/wp-content/uploads/2016/08/MAZARIN.png" />
-        <div class="factContent" data-id={props.id}>{loc['fact.' + props.type]}</div>
-        <ul class="factButtons">
-          <li><PreviousButton id={props.id}/></li>
-          <li><NextButton id={props.id}/></li>
-        </ul>  
+        <img class='character' data-id={props.id} src='http://www.europexplo.fr/wp-content/uploads/2016/08/MAZARIN.png' />
+        <div class='factContent' data-id={props.id}>{loc['fact.' + props.type]}</div>
+        {/* <ul class='factButtons'>
+          <li><PreviousButton id={props.id} /></li>
+          <li><NextButton id={props.id} /></li>
+        </ul> */}
       </div>
     )
   }
@@ -91,8 +93,8 @@ class Fact extends DomComponent {
 
   onMouseMove (e) {
     let id = Number(e.target.getAttribute('data-id'))
-    let container = document.querySelector("#fact"+id+"")
-    let character = document.querySelector("#fact"+id+" .character")
+    let container = document.querySelector('#fact' + id + '')
+    let character = document.querySelector('#fact' + id + ' .character')
     this.parallaxIt(e, container, character, -70)
   }
 
@@ -112,7 +114,7 @@ class Fact extends DomComponent {
 export default class Chronologie extends DomComponent {
   template ({ base }) {
     return (
-      <section class='chronologie'>
+      <section id='chronologie'>
         <Fact type={'fact0'} id={0} />
         <Fact type={'fact1'} id={1} />
         <Fact type={'fact2'} id={2} />
@@ -131,23 +133,11 @@ export default class Chronologie extends DomComponent {
   }
 
   onChronologieClick (chronologieStatus) {
-    console.log('chapter', store.chapterId.get())
-
     if (chronologieStatus === 'appearing') {
-      anime({
-        targets: document.querySelector('.chronologie'),
-        translateX: -window.innerWidth, // - window.innerWidth * store.chapterId.get(),
-        easing: 'easeOutQuad',
-        duration: 1000
-      })
-      setTimeout(function () { document.querySelector('.chronologie').scrollTo(0, document.querySelector('#fact' + store.chapterId.get() + '').offsetTop) }, 1000)
+      document.querySelector('#chronologie').className = 'visible'
+      setTimeout(function () { document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + store.chapterId.get() + '').offsetTop) }, 1000)
     } else if (chronologieStatus === 'disappearing') {
-      anime({
-        targets: document.querySelector('.chronologie'),
-        translateX: '0px',
-        easing: 'easeOutQuad',
-        duration: 600
-      })
+      document.querySelector('#chronologie').className = 'hidden'
     }
   }
 }
