@@ -1,6 +1,6 @@
 import PixiComponent from 'abstractions/PixiComponent'
 import Colliders from 'abstractions/Colliders'
-import store from 'state/store';
+import store from 'state/store'
 
 export default class LevelCheck extends PixiComponent {
   setup () {

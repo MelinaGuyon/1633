@@ -107,6 +107,7 @@ export default class Body {
 
     if (this.x !== this.px || this.y !== this.py) {
       this.hasMoved = true
+      signals.moving.dispatch(this.x)
     } else {
       this.hasMoved = false
     }
