@@ -38,7 +38,7 @@ export default class TutoCheck extends PixiComponent {
 
   cb (id, state) {
     if (state.collide) {
-      this.openTuto(id)
+      // this.openTuto(id)
     }
   }
 
