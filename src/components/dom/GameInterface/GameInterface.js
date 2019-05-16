@@ -9,6 +9,8 @@ import Subtitles from 'components/dom/Subtitles/Subtitles'
 import Tutorial from 'components/dom/Tutorial/Tutorial'
 import Debug from 'components/dom/Debug/Debug'
 import mouse from 'controllers/mouse'
+import logger from 'utils/logger'
+
 import './GameInterface.styl'
 
 export default class GameInterface extends DomComponent {
@@ -28,8 +30,8 @@ export default class GameInterface extends DomComponent {
   }
 
   componentDidMount () {
-    console.log('Game interface did mount')
     mouse.init(document.getElementsByClassName('game'))
+    logger('Game interface did mount', '#47b342').log()
     document.addEventListener('click', function (e) {
       if (document.activeElement.toString() === '[object HTMLButtonElement]') {
         document.activeElement.blur()

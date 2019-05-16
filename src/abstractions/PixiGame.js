@@ -9,14 +9,22 @@ import anime from 'animejs'
 import LevelUniversity from 'components/pixi/LevelUniversity/LevelUniversity'
 import LevelChurch from 'components/pixi/LevelChurch/LevelChurch'
 import LevelProfanation from 'components/pixi/LevelProfanation/LevelProfanation'
+import LevelCeremony from 'components/pixi/LevelCeremony/LevelCeremony'
+import LevelPharmacist from 'components/pixi/LevelPharmacist/LevelPharmacist'
+import LevelNapoleon from 'components/pixi/LevelNapoleon/LevelNapoleon'
+import LevelRecovery from 'components/pixi/LevelRecovery/LevelRecovery'
 
 import Perso from 'components/pixi/Perso/Perso'
-import Timeline from 'components/pixi/Timeline/Timeline'
+// import Timeline from 'components/pixi/Timeline/Timeline'
 
 const levels = {
   university: LevelUniversity,
   church: LevelChurch,
-  profanation: LevelProfanation
+  profanation: LevelProfanation,
+  ceremony: LevelCeremony,
+  pharmacist: LevelPharmacist,
+  napoleon: LevelNapoleon,
+  recovery: LevelRecovery
 }
 
 export default class Pixigame extends PixiComponent {
@@ -53,36 +61,46 @@ export default class Pixigame extends PixiComponent {
   // }
 
   onLvlChange (id) {
-    // this.destroyPassedLevels(id)
-    this.addLevels(id)
-
-    console.log('LEVELS ON SCENE', this.levels)
+    this.addLevelsAround(id)
+    this.destroyOtherLevels(id)
   }
 
-  addLevels (id) {
-    // First time called : add current level if doesn't exist
+  addLevelsAround (id) {
+    // Previous level
+    for (let i = 1; i <= store.levelSecurity.get(); i++) {
+      const previousLevel = store.levelDict.get()[id - i]
+      if (previousLevel && !this.levels[previousLevel]) {
+        this.levels[previousLevel] = new levels[previousLevel]({ autosetup: true, name: previousLevel }) // eslint-disable-line
+      }
+    }
+
+    // Current Level
     const level = store.levelDict.get()[id]
-    if (!this.levels[level]) {
+    if (level && !this.levels[level]) {
       this.levels[level] = new levels[level]({ autosetup: true, name: level }) // eslint-disable-line
     }
     store.levelInstance.set(this.levels[level])
     this.currentLevel = level
 
-    // Next levels
-    const nextLevel = store.levelDict.get()[id + 1]
-    if (!nextLevel) return
-    if (!this.levels[nextLevel]) {
-      this.levels[nextLevel] = new levels[nextLevel]({ autosetup: true, name: nextLevel }) // eslint-disable-line
+    // Next level
+    for (let i = 1; i <= store.levelSecurity.get(); i++) {
+      const nextLevel = store.levelDict.get()[id + i]
+      if (nextLevel && !this.levels[nextLevel]) {
+        this.levels[nextLevel] = new levels[nextLevel]({ autosetup: true, name: nextLevel }) // eslint-disable-line
+      }
     }
   }
 
-  destroyPassedLevels (id) {
-    if (this.currentLevel && this.levels[this.currentLevel]) {
-      this.levels[this.currentLevel].destroy()
-      this.levels[this.currentLevel] = undefined
-    }
-    this.currentLevel = undefined
+  destroyOtherLevels (id) {
+    const keys = Object.keys(this.levels)
 
-    store.levelInstance.set(undefined)
+    keys.forEach((key, index) => {
+      if (index < id - store.levelSecurity.get() || index > id + store.levelSecurity.get()) {
+        if (this.levels[key]) {
+          this.levels[key].destroy()
+          this.levels[key] = undefined
+        }
+      }
+    })
   }
 }

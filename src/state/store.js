@@ -41,10 +41,15 @@ export default createStore({
   levelDict: {
     0: 'university',
     1: 'church',
-    2: 'profanation'
+    2: 'profanation',
+    3: 'ceremony',
+    4: 'pharmacist',
+    5: 'napoleon',
+    6: 'recovery'
   },
   levelId: null,
   levelInstance: null,
+  levelSecurity: 2,
 
   // ---- chronologie ----
   chronologieStatus: null,
