@@ -21,31 +21,7 @@ class Point extends DomComponent {
   }
 
   bind () {
-    this.listenStore('levelId', this.onLvlChange)
-    signals.moving.listen(this.updateState, this)
     this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
-  }
-
-  onLvlChange (id) {
-    let previousId = id - 1
-
-    let currentLevelX = 1000
-    let nextLevelX = 4000
-    let heroDistance = nextLevelX - currentLevelX
-
-    this.currentPoint = document.querySelector('#point' + id + '')
-    let previousPoint = document.querySelector('#point' + previousId + '')
-    let pointDistance = parseInt(window.getComputedStyle(this.currentPoint).left, 10) - parseInt(window.getComputedStyle(previousPoint).left, 10)
-
-    this.ratio = heroDistance / pointDistance
-  }
-
-  updateState (displacement) {
-    // console.log('anim left', displacement / this.ratio)
-
-    if (this.currentPoint) {
-      this.currentPoint.style.left = -(displacement / this.ratio) + 'px'
-    }
   }
 
   onClick (e) {
@@ -81,5 +57,40 @@ export default class Timeline extends DomComponent {
   }
 
   componentDidMount () {
+    console.log(store.levelId.get())
+    this.onLvlChange(0)
+    this.bind()
+  }
+
+  bind () {
+    this.listenStore('levelId', this.onLvlChange)
+    signals.moving.listen(this.updateState, this)
+  }
+
+  onLvlChange (id) {
+    let previousId = id - 1
+
+    let currentLevelX = 500
+    let nextLevelX = 1900
+    let heroDistance = nextLevelX - currentLevelX
+
+    this.currentPoint = document.querySelector('#point' + id + '')
+    let previousPoint = document.querySelector('#point' + previousId + '')
+
+    if (id === 0) {
+      this.pointDistance = window.innerWidth
+    } else {
+      this.pointDistance = parseInt(window.getComputedStyle(this.currentPoint).left, 10) - parseInt(window.getComputedStyle(previousPoint).left, 10)
+    }
+
+    this.ratio = heroDistance / this.pointDistance
+  }
+
+  updateState (displacement) {
+    // console.log('anim left', displacement / this.ratio)
+
+    if (this.currentPoint) {
+      this.currentPoint.style.left = -(displacement / this.ratio) + 'px'
+    }
   }
 }
