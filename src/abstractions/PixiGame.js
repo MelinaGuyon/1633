@@ -62,7 +62,6 @@ export default class Pixigame extends PixiComponent {
   onLvlChange (id) {
     this.addLevelsAround(id)
     this.destroyOtherLevels(id)
-    console.log('LEVELS ON SCENE', this.levels)
   }
 
   addLevelsAround (id) {
