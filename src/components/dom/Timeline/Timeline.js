@@ -1,15 +1,18 @@
 import { h } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
+import signals from 'state/signals'
+import anime from 'animejs'
 
 import './Timeline.styl'
 
 class Point extends DomComponent {
   template (props) {
     const loc = store.loc.get()
+    this.newPos = 0
 
     return (
-      <button class='chapter' data-id={props.id} />
+      <button class='point' id={'point' + props.id + ''} />
     )
   }
 
@@ -18,7 +21,31 @@ class Point extends DomComponent {
   }
 
   bind () {
+    this.listenStore('levelId', this.onLvlChange)
+    signals.moving.listen(this.updateState, this)
     this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+  }
+
+  onLvlChange (id) {
+    let previousId = id - 1
+
+    let currentLevelX = 1000
+    let nextLevelX = 4000
+    let heroDistance = nextLevelX - currentLevelX
+
+    this.currentPoint = document.querySelector('#point' + id + '')
+    let previousPoint = document.querySelector('#point' + previousId + '')
+    let pointDistance = parseInt(window.getComputedStyle(this.currentPoint).left, 10) - parseInt(window.getComputedStyle(previousPoint).left, 10)
+
+    this.ratio = heroDistance / pointDistance
+  }
+
+  updateState (displacement) {
+    // console.log('anim left', displacement / this.ratio)
+
+    if (this.currentPoint) {
+      this.currentPoint.style.left = -(displacement / this.ratio) + 'px'
+    }
   }
 
   onClick (e) {
@@ -40,12 +67,15 @@ export default class Timeline extends DomComponent {
   template ({ base }) {
     return (
       <section class='timeline'>
-        <Point type={'university'} id={0} />
-        <Point type={'university'} id={1} />
-        <Point type={'university'} id={2} />
-        <Point type={'university'} id={3} />
-        <Point type={'university'} id={4} />
-        <Point type={'university'} id={5} />
+        <div class='checkCircle' />
+        <div class='points'>
+          <Point type={'university'} id={0} />
+          <Point type={'university'} id={1} />
+          <Point type={'university'} id={2} />
+          <Point type={'university'} id={3} />
+          <Point type={'university'} id={4} />
+          <Point type={'university'} id={5} />
+        </div>
       </section>
     )
   }
