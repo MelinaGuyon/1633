@@ -57,7 +57,6 @@ export default class Timeline extends DomComponent {
   }
 
   componentDidMount () {
-    console.log(store.levelId.get())
     this.onLvlChange(0)
     this.bind()
   }
