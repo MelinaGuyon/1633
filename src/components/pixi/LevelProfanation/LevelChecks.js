@@ -1,11 +1,11 @@
 import PixiComponent from 'abstractions/PixiComponent'
 import Colliders from 'abstractions/Colliders'
-import store from 'state/store'
+import store from 'state/store';
 
 export default class LevelCheck extends PixiComponent {
   setup () {
     this.mains = []
-    this.mains.push(this.addComponent(Colliders, { layer: '1bg600', x: 20, y: -100, group: 'levelChecks', collide: true, tint: 0x00F000, cb: this.cb.bind(this, 0) }))
+    this.mains.push(this.addComponent(Colliders, { layer: '3bg600', x: 20, y: -100, group: 'levelChecks', collide: true, tint: 0x00F000, cb: this.cb.bind(this, 2) }))
   }
 
   cb (levelId, state) {

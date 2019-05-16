@@ -6,9 +6,7 @@ import MariecurieGame from 'components/pixi/PixiGame/MariecurieGame'
 import NapoleonbonaparteGame from 'components/pixi/PixiGame/NapoleonbonaparteGame'
 import RobertdesorbonGame from 'components/pixi/PixiGame/RobertdesorbonGame'
 import JacqueslemercierGame from 'components/pixi/PixiGame/JacqueslemercierGame'
-import MouseMv from 'components/dom/MouseMv/MouseMv'
 import Intro from 'components/dom/Intro/Intro'
-import mouse from 'controllers/mouse'
 
 import './Carrousel.styl'
 
@@ -38,14 +36,13 @@ class Button extends DomComponent {
 export default class Carrousel extends DomComponent {
   template ({ base }) {
     return (
-      <section class='carrousel'>
+      <section data-type="carrousel" class='carrousel mouse__close'>
         <Button type={'richelieu'} id={0} launchGame={this.launchGame} />
         <Button type={'mariecurie'} id={1} launchGame={this.launchGame} />
         <Button type={'robertdesorbon'} id={2} launchGame={this.launchGame} />
         <Button type={'jacqueslemercier'} id={3} launchGame={this.launchGame} />
         <Button type={'napoleonbonaparte'} id={4} launchGame={this.launchGame} />
         <Intro />
-        <MouseMv />
       </section>
     )
   }
@@ -76,7 +73,6 @@ export default class Carrousel extends DomComponent {
   }
 
   componentDidMount () {
-	  mouse.init(document.getElementsByClassName('game'))
 	  // debug to start directly
     if (store.directStart.get()) this.launchGame(0)
   }
