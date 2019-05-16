@@ -8,7 +8,7 @@ export default class Colliders extends PixiComponent {
     this.state = {}
 
     this.type = props.type || 'a'
-
+    this.name = props.name || null
     this.base = new Graphics()
     this.base.tint = props.tint || 0xFF00FF
     this.base.lineStyle(4, this.base.tint, 1)

@@ -1,3 +1,5 @@
+import store from "../state/store";
+
 function init (element) {
   let zoneClose = document.getElementsByClassName('mouse__close-zone')
   element[0].addEventListener('mousemove', onMouseMove)
@@ -30,6 +32,7 @@ function clickClose (event) {
   let type = element.getAttribute('data-type')
   type += ' mouse__close hide'
   event.target.closest('.mouse__close').className = type
+	store.pause.set(false)
 }
 
 export default {

@@ -30,6 +30,7 @@ export default class Pixigame extends PixiComponent {
     physics.createGroup('interests', { color: 0xffff00 })
     physics.createGroup('levelChecks', { color: 0xffff00 })
     physics.createGroup('hero', { color: 0x00ff00 })
+    physics.createGroup('tuto', { color: 0x3a99fc })
 
     this.bind()
     this.levels = {}
