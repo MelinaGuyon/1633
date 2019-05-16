@@ -21,10 +21,10 @@ const levels = {
   university: LevelUniversity,
   church: LevelChurch,
   profanation: LevelProfanation,
-  ceremony: LevelCeremony,
-  pharmacist: LevelPharmacist,
-  napoleon: LevelNapoleon,
-  recovery: LevelRecovery
+  // ceremony: LevelCeremony,
+  // pharmacist: LevelPharmacist,
+  // napoleon: LevelNapoleon,
+  // recovery: LevelRecovery
 }
 
 export default class Pixigame extends PixiComponent {

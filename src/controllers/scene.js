@@ -7,7 +7,8 @@ class SceneLayer extends PixiComponent {
   setup (props) {
     this.base = new Container()
     this.z = props.z
-    this.x = props.x
+    this.x = props.x || 1
+    this.id = props.id
     this.name = props.name
 
     this.base.x = Math.round(store.size.get().w / 2 * this.x)
@@ -18,6 +19,7 @@ class SceneLayer extends PixiComponent {
 class Scene extends PixiComponent {
   setup () {
     this.base = new Container()
+    this.sizes = []
     this.createLayers()
     this.resize()
   }
@@ -30,10 +32,11 @@ class Scene extends PixiComponent {
     // Create parallax layers
     for (let i = 0; i < layers.length; i++) {
       const name = layers[i][0]
-      let x = Number(name.substring(0, 1))
-      if (isNaN(x)) x = 1
-      const layer = this.addComponent(SceneLayer, { z: layers[i][1], x, name: name })
+      let id = Number(name.substring(0, 1))
+      if (isNaN(id)) id = 0
+      const layer = this.addComponent(SceneLayer, { z: layers[i][1], id, name: name })
       this.layers[name] = layer
+      this.sizes[layer.id] = 0
       if (!this[name]) this[name] = layer
     }
 
@@ -46,17 +49,28 @@ class Scene extends PixiComponent {
     layer.base.scale.y = z
     layer.scale = z
 
+    let offset = 0
+    for (let i = 1; i < layer.id; i++) {
+      offset += this.sizes[i]
+    }
+
     // TODO : test if we can active paralax, parralax only active between to range : when on screen
     if (layer.props.name === 'hero') {
-      layer.base.x = Math.round(store.size.get().w / 2 * layer.x)
+      layer.base.x = Math.round(store.size.get().w / 2)
       layer.base.y = Math.round(store.size.get().h / 2)
     } else {
       let p = layer.z * 0.001
       const x = camera.x + camera.x * p
       const y = camera.y + camera.y * p
-      layer.base.x = Math.round(store.size.get().w / 2 * layer.x + x)
+      layer.base.x = Math.round(store.size.get().w / 2 + x + offset)
       layer.base.y = Math.round(store.size.get().h / 2 + y)
     }
+  }
+
+  updateSizes (layer) {
+    // console.log(layer.base.width, layer.id)
+    // console.log(layer.id)
+    if (this.sizes[layer.id] < layer.base.width) this.sizes[layer.id] = layer.base.width + 200
   }
 
   resize (s) {
@@ -84,6 +98,12 @@ class Scene extends PixiComponent {
 
   update (dt) {
     let n = this.layersKeys.length
+    while (n--) {
+      let layer = this.layers[this.layersKeys[n]]
+      this.updateSizes(layer)
+    }
+
+    n = this.layersKeys.length
     while (n--) {
       let layer = this.layers[this.layersKeys[n]]
       this.goPos(layer)

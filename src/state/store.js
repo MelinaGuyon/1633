@@ -41,10 +41,10 @@ export default createStore({
     0: 'university',
     1: 'church',
     2: 'profanation',
-    3: 'ceremony',
-    4: 'pharmacist',
-    5: 'napoleon',
-    6: 'recovery'
+    // 3: 'ceremony',
+    // 4: 'pharmacist',
+    // 5: 'napoleon',
+    // 6: 'recovery'
   },
   levelId: null,
   levelInstance: null,
