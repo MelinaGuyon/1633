@@ -82,7 +82,6 @@ export default class Debug extends DomComponent {
   }
 
   componentDidMount () {
-	  console.log(store.debug.get())
 	  if ( !store.debug.get() ) {
     	document.querySelector('.debug').remove()
 	  }

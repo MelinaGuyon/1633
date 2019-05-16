@@ -2,7 +2,6 @@ function init (element) {
   let zoneClose = document.getElementsByClassName('mouse__close-zone')
   element[0].addEventListener('mousemove', onMouseMove)
   element[0].addEventListener('touchmove', onMouseMove)
-  console.log(zoneClose)
   for (let i = 0; i < zoneClose.length; i++) {
     zoneClose[i].addEventListener('click', clickClose)
   }

@@ -51,6 +51,5 @@ export default class Tutorial extends DomComponent {
     if (isAlreadyShow) {
 	    document.querySelector('.tutorial').remove()
     }
-	  console.log('Tutorial did mount')
   }
 }

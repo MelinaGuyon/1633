@@ -56,6 +56,5 @@ export default class Intro extends DomComponent {
   }
 
   componentDidMount () {
-    console.log('Tutorial did mount')
   }
 }
