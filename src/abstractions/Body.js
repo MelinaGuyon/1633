@@ -1,5 +1,7 @@
 import signals from 'state/signals'
 import { clamp } from '@internet/maths'
+import scene from 'controllers/scene'
+import store from 'state/store'
 
 export default class Body {
   constructor (props) {
@@ -20,8 +22,8 @@ export default class Body {
     // use to focus camera
     if (this.group === 'hero') {
       this.dir = null
-      this.minX = -window.innerWidth / 2
-      this.maxX = window.innerWidth * 3.8
+      this.minX = this.getMin() // peut reculer d'un demi écran
+      this.maxX = this.getMax()
       this.bind()
     }
 
@@ -113,10 +115,25 @@ export default class Body {
 
     if (this.x !== this.px || this.y !== this.py) {
       this.hasMoved = true
+      this.minX = this.getMin()
+      this.maxX = this.getMax()
       signals.moving.dispatch(this.x)
     } else {
       this.hasMoved = false
     }
+  }
+
+  getMin () {
+    return -store.size.get().w / 2
+  }
+
+  getMax () {
+    let max = 0
+    scene.sizes.forEach((size) => {
+      max += size
+    })
+    if (max < store.size.get().w * 2) max = store.size.get().w * 2
+    return max
   }
 
   collideWith (group, cb = null) {
