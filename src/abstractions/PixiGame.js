@@ -30,13 +30,13 @@ export default class Pixigame extends PixiComponent {
     physics.createGroup('interests', { color: 0xffff00 })
     physics.createGroup('levelChecks', { color: 0xffff00 })
     physics.createGroup('hero', { color: 0x00ff00 })
-    // physics.createGroup('timeline', { color: 0x00ff00 })
 
     this.bind()
     this.levels = {}
     this.createPerso()
-    // this.createTimeline()
     store.levelId.set(0)
+
+    // this.createTimeline()
   }
 
   bind () {
@@ -52,18 +52,30 @@ export default class Pixigame extends PixiComponent {
   // }
 
   onLvlChange (id) {
-    // this.destroyCurrentLvl()
+    // this.destroyPassedLevels(id)
+    this.addLevels(id)
 
-    const level = store.levelDict.get()[id]
-    if (!this.levels[level]) {
-			this.levels[level] = new levels[level]({ autosetup: true, name: level }) // eslint-disable-line
-    }
-
-    store.levelInstance.set(this.levels[level])
-    this.currentLevel = level
+    console.log('LEVELS ON SCENE', this.levels)
   }
 
-  destroyCurrentLvl () {
+  addLevels (id) {
+    // First time called : add current level if doesn't exist
+    const level = store.levelDict.get()[id]
+    if (!this.levels[level]) {
+      this.levels[level] = new levels[level]({ autosetup: true, name: level }) // eslint-disable-line
+    }
+    store.levelInstance.set(this.levels[level])
+    this.currentLevel = level
+
+    // Next levels
+    const nextLevel = store.levelDict.get()[id + 1]
+    if (!nextLevel) return
+    if (!this.levels[nextLevel]) {
+      this.levels[nextLevel] = new levels[nextLevel]({ autosetup: true, name: nextLevel }) // eslint-disable-line
+    }
+  }
+
+  destroyPassedLevels (id) {
     if (this.currentLevel && this.levels[this.currentLevel]) {
       this.levels[this.currentLevel].destroy()
       this.levels[this.currentLevel] = undefined
