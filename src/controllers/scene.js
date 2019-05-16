@@ -20,6 +20,7 @@ class Scene extends PixiComponent {
   setup () {
     this.base = new Container()
     this.sizes = []
+    this.offsets = []
     this.createLayers()
     this.resize()
   }
@@ -49,10 +50,12 @@ class Scene extends PixiComponent {
     layer.base.scale.y = z
     layer.scale = z
 
+    // calc offest of each chapters
     let offset = 0
     for (let i = 1; i < layer.id; i++) {
       offset += this.sizes[i]
     }
+    this.offsets[layer.id] = offset
 
     // TODO : test if we can active paralax, parralax only active between to range : when on screen
     if (layer.props.name === 'hero') {
@@ -68,8 +71,6 @@ class Scene extends PixiComponent {
   }
 
   updateSizes (layer) {
-    // console.log(layer.base.width, layer.id)
-    // console.log(layer.id)
     if (this.sizes[layer.id] < layer.base.width) this.sizes[layer.id] = layer.base.width + 200
   }
 
