@@ -27,9 +27,9 @@ function onMouseMove (event) {
 }
 
 function clickClose (event) {
-	let element = event.target.closest('.mouse__close')
-	let type = element.getAttribute('data-type')
-	type += ' mouse__close hide'
+  let element = event.target.closest('.mouse__close')
+  let type = element.getAttribute('data-type')
+  type += ' mouse__close hide'
   event.target.closest('.mouse__close').className = type
 }
 

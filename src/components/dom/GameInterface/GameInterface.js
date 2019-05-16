@@ -7,6 +7,7 @@ import Timeline from 'components/dom/Timeline/Timeline'
 import Chronologie from 'components/dom/Chronologie/Chronologie'
 import Subtitles from 'components/dom/Subtitles/Subtitles'
 import Tutorial from 'components/dom/Tutorial/Tutorial'
+import Debug from 'components/dom/Debug/Debug'
 import mouse from 'controllers/mouse'
 import './GameInterface.styl'
 
@@ -21,6 +22,7 @@ export default class GameInterface extends DomComponent {
         <Subtitles />
         <Tutorial />
         <MouseMv />
+	      <Debug />
       </section>
     )
   }
