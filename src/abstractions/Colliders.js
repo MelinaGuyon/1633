@@ -48,8 +48,7 @@ export default class Colliders extends PixiComponent {
   }
 
   calcInterestOffset () {
-    // scene.interestOffsets[this.levelId] = scene.offsets[this.levelId]
-    // console.log(scene.interestOffsets[3])
+    scene.interestOffsets[this.levelId] = scene.offsets[this.levelId] + this.base.x
   }
 
   componentWillUnmount () {
