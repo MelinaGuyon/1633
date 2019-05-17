@@ -68,6 +68,7 @@ export default class Body {
     this.attachment.py = this.attachment.fakeY || this.attachment.y
     this.attachment.fakeX = this.x + this.attachOffX
     this.attachment.fakeY = this.y + this.attachOffY
+    this.attachment.hasMoved = this.hasMoved
   }
 
   update (dt) {
@@ -117,7 +118,6 @@ export default class Body {
       this.hasMoved = true
       this.minX = this.getMin()
       this.maxX = this.getMax()
-      signals.moving.dispatch(this.x)
     } else {
       this.hasMoved = false
     }

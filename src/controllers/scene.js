@@ -21,6 +21,7 @@ class Scene extends PixiComponent {
     this.base = new Container()
     this.sizes = []
     this.offsets = []
+    this.interestOffsets = []
     this.createLayers()
     this.resize()
   }
@@ -51,6 +52,7 @@ class Scene extends PixiComponent {
     layer.scale = z
 
     // calc offest of each chapters
+    // TODO voir si on peut arreter de calculer un fois qu'on a déjà en stock
     let offset = 0
     for (let i = 1; i < layer.id; i++) {
       offset += this.sizes[i]
@@ -71,6 +73,7 @@ class Scene extends PixiComponent {
   }
 
   updateSizes (layer) {
+    // TODO voir si on peut arreter de calculer un fois qu'on a déjà en stock
     if (this.sizes[layer.id] < layer.base.width) this.sizes[layer.id] = layer.base.width + 200
   }
 
