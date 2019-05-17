@@ -2,7 +2,8 @@ import { h } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
 import signals from 'state/signals'
-import anime from 'animejs'
+import scene from 'controllers/scene'
+
 
 import './Timeline.styl'
 
@@ -51,6 +52,7 @@ export default class Timeline extends DomComponent {
           <Point type={'university'} id={3} />
           <Point type={'university'} id={4} />
           <Point type={'university'} id={5} />
+          <Point type={'university'} id={6} />
         </div>
       </section>
     )
@@ -67,40 +69,51 @@ export default class Timeline extends DomComponent {
   }
 
   onLvlChange (id) {
-    // this.displacement = 0
-    let previousId = id - 1
-
-    let currentLevelX = 500
-    let nextLevelX = 1200
-    let heroDistance = nextLevelX - currentLevelX
-
-    this.currentPoint = document.querySelector('#point' + id + '')
+    this.oldDisplacement = 0
+    this.updateLevel = true
 
     this.id = id
-    // console.log('left newPoint', window.getComputedStyle(this.currentPoint).left)
+    let previousId = id - 1
 
-    let previousPoint = document.querySelector('#point' + previousId + '')
+    let currentLevelX = scene.offsets[id + 1]
+    let nextLevelX = scene.offsets[id + 2]
+    let heroDistance
+    id !== 0 ? heroDistance = nextLevelX - currentLevelX : heroDistance = 700
+    // console.log('level distance', heroDistance)
 
-    if (id === 0) {
-      this.pointDistance = window.innerWidth
-    } else if (this.currentPoint) {
-      this.pointDistance = parseInt(window.getComputedStyle(this.currentPoint).left, 10) - parseInt(window.getComputedStyle(previousPoint).left, 10)
-      // this.pointDistance = window.innerWidth
+    this.checkCircleX = 400 + heroDistance / 2 // définir de vraies positions (correspondant aux pts d'intérêt)
+    document.querySelector('.checkCircle').style.left = this.checkCircleX + 'px'
+
+    this.currentPoint = document.querySelector('#point' + id + '')
+    this.currentPoint.style.background = 'red'
+    // eslint-disable-next-line no-unused-expressions
+    id !== 0 ? this.previousPoint = document.querySelector('#point' + previousId + '') : ''
+    id !== 0 ? this.currentPointX = parseInt(window.getComputedStyle(this.currentPoint).left, 10) : this.currentPointX = window.innerWidth
+    id !== 0 ? this.previousPointX = parseInt(window.getComputedStyle(this.previousPoint).left, 10) : this.previousPointX = 0
+    // console.log('current point x', this.currentPointX)
+    // console.log('previous point x', this.previousPointX)
+
+    if (this.currentPoint) {
+      this.pointDistance = this.currentPointX - this.previousPointX
     }
+    // console.log('point distance', this.pointDistance)
 
     this.ratio = heroDistance / this.pointDistance
-    console.log('ratio', this.ratio)
+    // console.log('ratio', this.ratio)
   }
 
   updateState (displacement) {
-    // réinitialiser displacement !!!
-    // console.log('displacement', displacement - window.innerWidth)
-    this.displacement = displacement // - window.innerWidth * this.id
+    if (this.updateLevel === true) {
+      this.oldDisplacement = displacement
+      // console.log('old displacement', this.oldDisplacement)
+      this.updateLevel = false
+    }
+    this.displacement = displacement - this.oldDisplacement
 
-    // console.log('POINT', this.id, 'anim left', this.displacement / this.ratio)
+    // console.log('displacement', this.displacement)
 
     if (this.currentPoint) {
-      this.currentPoint.style.left = -(this.displacement / this.ratio) + 'px'
+      this.currentPoint.style.left = -(this.displacement / this.ratio) + 100 + 'px'
     }
   }
 }
