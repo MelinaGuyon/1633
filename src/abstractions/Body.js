@@ -1,5 +1,7 @@
 import signals from 'state/signals'
 import { clamp } from '@internet/maths'
+import scene from 'controllers/scene'
+import store from 'state/store'
 
 export default class Body {
   constructor (props) {
@@ -17,7 +19,13 @@ export default class Body {
     this.px = this.x
     this.py = this.y
 
-    this.dir = null
+    // use to focus camera
+    if (this.group === 'hero') {
+      this.dir = null
+      this.minX = this.getMin() // peut reculer d'un demi écran
+      this.maxX = this.getMax()
+      this.bind()
+    }
 
     // all variables bellow is used by the physics controller
     this.container = props.container || null
@@ -33,8 +41,6 @@ export default class Body {
 
     this.hw = this.width * 0.5
     this.hh = this.height * 0.5
-
-    this.bind()
   }
 
   bind () {
@@ -72,7 +78,7 @@ export default class Body {
 
     dt = Math.min(dt, 35)
 
-    if (this.dir === 1) {
+    if (this.dir === 1 && this.x < this.maxX) {
       this.vx += (this.ax + this.gravity) * 0.0008 * dt
       this.vy += this.ay * 0.0008 * dt
       this.vx = clamp(this.vx, -this.vxMax, this.vxMax)
@@ -80,7 +86,7 @@ export default class Body {
 
       this.x += this.vx * dt
       this.y += this.vy * dt
-    } else if (this.dir === 0) {
+    } else if (this.dir === 0 && this.x > this.minX) {
       this.vx -= (this.ax + this.gravity) * 0.0008 * dt
       this.vy -= this.ay * 0.0008 * dt
       this.vx = clamp(this.vx, -this.vxMax, this.vxMax)
@@ -105,11 +111,29 @@ export default class Body {
       this.y += this.vy * dt
     }
 
+    this.x = Math.min(this.maxX, Math.max(this.minX, this.x))
+
     if (this.x !== this.px || this.y !== this.py) {
       this.hasMoved = true
+      this.minX = this.getMin()
+      this.maxX = this.getMax()
+      signals.moving.dispatch(this.x)
     } else {
       this.hasMoved = false
     }
+  }
+
+  getMin () {
+    return -store.size.get().w / 2
+  }
+
+  getMax () {
+    let max = 0
+    scene.sizes.forEach((size) => {
+      max += size
+    })
+    if (max < store.size.get().w * 2) max = store.size.get().w * 2
+    return max
   }
 
   collideWith (group, cb = null) {

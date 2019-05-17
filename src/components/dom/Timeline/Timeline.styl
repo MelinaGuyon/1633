@@ -4,13 +4,29 @@
   position: absolute
   z-index: 2
   bottom: 10%
+  height: 50px
+  line-height: 50px
 
-  .chapter
-    padding: 10px
-    background: black
+  .checkCircle
+    border: solid 1px
     border-radius: 10px
-    border: none
-    margin-right: 7%
-    margin-left: 7%
-    cursor: pointer
-    outline: none
+    width: 50px
+    height: 100%
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+
+  .points
+    position: absolute
+    right: 0
+
+    .point
+      width: 20px
+      height: 20px    
+      background: black
+      border-radius: 10px
+      border: none
+      cursor: pointer
+      outline: none
+      position: absolute
+      left: -50px

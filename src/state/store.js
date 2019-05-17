@@ -11,7 +11,6 @@ const ratio = window.devicePixelRatio <= 2 ? 1 : 1.5
 
 export default createStore({
   version: VERSION, // app version number
-  debug: true,
 
   // ---- i18n / base ----
   lang: window.__conf.lang,
@@ -64,6 +63,7 @@ export default createStore({
   frameDuration: 70, // default animation's frame duration
 
   // ---- Debug utilities ----
+  debug: isDev ? 0 : 0,
   mute: isDev ? 0 : 0, // Mute game
   useGui: isDev ? 1 : 0, // use datGui
   displayStats: isDev ? 1 : 0, // use stats (fps, drawcalls, ...)
