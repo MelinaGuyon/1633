@@ -58,23 +58,11 @@ export default class Timeline extends DomComponent {
   }
 
   componentDidMount () {
-    this.setup()
-    this.onLvlChange(0)
-    this.bind()
-  }
-
-  setup () {
-    this.timeline = document.querySelector('.timeline')
-    // this.timeline.style.width = longueur totale de l'xp
-
-    this.pointsPositions = [280, 1180, 2080, 2980, 3880, 4780, 5680]
-    console.log(this.pointsPositions)
-    // this.offsetinterests
-    this.points = document.querySelectorAll('.point')
-
-    for (let i = 0; i < this.points.length; i++) {
-      this.points[i].style.left = this.pointsPositions[i] + 'px'
-    }
+    let that = this
+    setTimeout(function () {
+      that.onLvlChange(0)
+      that.bind()
+    }, 1000)
   }
 
   bind () {
@@ -84,18 +72,30 @@ export default class Timeline extends DomComponent {
 
   onLvlChange (id) {
     this.id = id
+    this.oldDisplacement = 0
+    this.updateLevel = true
     this.currentPoint = document.querySelector('#point' + id + '')
     this.currentPoint.style.background = 'red'
+
+    this.chapterSize = scene.offsets[id + 2] - scene.offsets[id + 1]
+    // console.log('chapter size', this.chapterSize)
+
+    this.timelineSize = parseInt(window.getComputedStyle(document.querySelector('.timeline')).width, 10)
+    // console.log('timeline size', this.timelineSize)
   }
 
   updateState (displacement) {
-    document.querySelector('.timeline').style.left = -displacement + 'px'
+    if (this.updateLevel === true) {
+      this.oldDisplacement = displacement
+      this.updateLevel = false
+    }
 
-    console.log('displacement', displacement)
-    console.log('point position', this.pointsPositions[this.id])
+    this.displacement = (displacement - this.oldDisplacement) * this.chapterSize / this.timelineSize
+    console.log('displacement', this.displacement)
 
-    if (displacement >= this.pointsPositions[this.id]) {
-      this.currentPoint.style.background = 'green'
+    if (this.currentPoint) {
+      let margin = 30 * this.id
+      this.currentPoint.style.right = this.displacement - margin + 'px'
     }
   }
 }
