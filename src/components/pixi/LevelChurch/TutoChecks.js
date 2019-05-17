@@ -11,23 +11,21 @@ export default class TutoCheck extends PixiComponent {
   }
 
   openTuto (id) {
-    // Erreur ici, commenté en attendant
-    // cookie.createCookie('tuto', true, 30)
-    // let tutos = document.querySelectorAll('[data-tuto]')
+     cookie.createCookie('tuto', true, 30)
+     let tutos = document.querySelectorAll('[data-tuto]')
 
-    // for (let i = 0; i < tutos.length; i++) {
-    //   tutos[i].className = 'tutorial__item'
-    // }
+    for (let i = 0; i < tutos.length; i++) {
+      tutos[i].className = 'tutorial__item'
+    }
 
-    // let tuto = document.querySelector('[data-tuto=' + id)
-    // tuto.className = 'tutorial__item active'
+    let tuto = document.querySelector('[data-tuto=' + id)
+    tuto.className = 'tutorial__item active'
 
-    // let element = tuto.closest('.mouse__close')
-    // let type = element.getAttribute('data-type')
-    // type += ' mouse__close'
-    // tuto.closest('.mouse__close').className = type
-    // store.pause.set(true)
-    // console.log(this.mains[0].name)
+    let element = tuto.closest('.mouse__close')
+    let type = element.getAttribute('data-type')
+    type += ' mouse__close'
+    tuto.closest('.mouse__close').className = type
+    store.pause.set(true)
 
     for (let i = 0; i < this.mains.length; i++) {
       if (this.mains[i].name === id) {
@@ -38,7 +36,7 @@ export default class TutoCheck extends PixiComponent {
 
   cb (id, state) {
     if (state.collide) {
-      // this.openTuto(id)
+      this.openTuto(id)
     }
   }
 

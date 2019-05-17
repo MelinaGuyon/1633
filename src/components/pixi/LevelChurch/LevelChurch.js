@@ -1,8 +1,11 @@
+/* eslint-disable no-mixed-spaces-and-tabs,no-tabs,no-tabs */
+
 import Level from 'abstractions/Level'
 import Interests from './Interests'
 import LevelChecks from './LevelChecks'
 import Buildings from './CityBuildings'
 import TutoCheck from './TutoChecks'
+import SoundCheck from './SoundChecks'
 import cookie from '../../../controllers/cookie'
 
 export default class LevelChurch extends Level {
@@ -24,5 +27,6 @@ export default class LevelChurch extends Level {
 	  if (!isAlreadyShow) {
       this.addComponent(TutoCheck)
 	  }
+	  this.addComponent(SoundCheck)
   }
 }
