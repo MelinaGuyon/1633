@@ -62,7 +62,7 @@ export default class Timeline extends DomComponent {
     setTimeout(function () {
       that.onLvlChange(0)
       that.bind()
-    }, 1000)
+    }, 2000)
   }
 
   bind () {
@@ -71,27 +71,40 @@ export default class Timeline extends DomComponent {
   }
 
   onLvlChange (id) {
+    this.reboot = true
     this.id = id
     this.oldDisplacement = 0
     this.updateLevel = true
     this.currentPoint = document.querySelector('#point' + id + '')
     this.currentPoint.style.background = 'red'
 
-    this.chapterSize = scene.offsets[id + 2] - scene.offsets[id + 1]
-    // console.log('chapter size', this.chapterSize)
+    this.distanceToEnd = scene.interestOffsets[id + 1] - scene.offsets[id + 1]
+    this.distanceToPoint = scene.offsets[id + 2] - scene.interestOffsets[id + 1]
+    console.log('one', this.distanceToPoint)
+    console.log('two', this.distanceToEnd)
 
-    this.timelineSize = parseInt(window.getComputedStyle(document.querySelector('.timeline')).width, 10)
+    this.timelineSize = parseInt(window.getComputedStyle(document.querySelector('.timeline')).width, 10) / 2
     // console.log('timeline size', this.timelineSize)
   }
 
   updateState (displacement) {
+    // console.log(displacement)
     if (this.updateLevel === true) {
       this.oldDisplacement = displacement
       this.updateLevel = false
     }
 
-    this.displacement = (displacement - this.oldDisplacement) * this.chapterSize / this.timelineSize
-    console.log('displacement', this.displacement)
+    if (this.reboot === true) {
+      console.log('go to point')
+      this.distanceToDo = this.distanceToPoint
+      this.reboot = false
+    } else if (this.reboot === false) {
+      console.log('go to end')
+      this.distanceToDo = this.distanceToEnd
+    }
+
+    this.displacement = (displacement - this.oldDisplacement) * this.distanceToDo / this.timelineSize
+    // console.log('displacement', this.displacement)
 
     if (this.currentPoint) {
       let margin = 30 * this.id
