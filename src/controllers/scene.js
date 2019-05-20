@@ -10,7 +10,7 @@ class SceneLayer extends PixiComponent {
     this.x = props.x || 1
     this.id = props.id
     this.name = props.name
-    this.displacement = 0
+    this.displacementX = 0
 
     this.base.x = Math.round(store.size.get().w / 2 * this.x)
     this.base.y = Math.round(store.size.get().h / 2)
@@ -61,8 +61,6 @@ class Scene extends PixiComponent {
     }
     this.offsets[layer.id] = offset
 
-    // TODO : test if we can active paralax, parralax only active between to range : when on screen
-    // FIX PARALLAX
     if (layer.props.name === 'hero') {
       layer.base.x = Math.round(store.size.get().w / 2)
       layer.base.y = Math.round(store.size.get().h / 2)
@@ -72,10 +70,15 @@ class Scene extends PixiComponent {
         // l'offset du layer actuel + sa size divisée par 2, - la size du premier chapitre divisée par 2 vu que perso commence au centre
         const center = this.offsets[layer.id] + this.sizes[layer.id] / 2 - this.sizes[1] / 2
         const dx = camera.x + center
-        console.log(camera.x, center)
-        if (Math.abs(dx) < this.sizes[layer.id] / 2) console.log('IN')
+
+        if (Math.abs(dx) < this.sizes[layer.id] / 2) {
+          layer.displacementX = this.offsets[layer.id] + camera.x
+        } else if (Math.abs(camera.x) < this.offsets[layer.id]) {
+          layer.displacementX = this.offsets[layer.id] - this.sizes[1] / 2
+        }
       }
-      const x = camera.x + camera.x * p
+
+      const x = camera.x + layer.displacementX * p
       const y = camera.y + camera.y * p
       layer.base.x = Math.round(store.size.get().w / 2 + x + offset)
       layer.base.y = Math.round(store.size.get().h / 2 + y)
