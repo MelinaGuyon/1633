@@ -10,6 +10,7 @@ class SceneLayer extends PixiComponent {
     this.x = props.x || 1
     this.id = props.id
     this.name = props.name
+    this.displacement = 0
 
     this.base.x = Math.round(store.size.get().w / 2 * this.x)
     this.base.y = Math.round(store.size.get().h / 2)
@@ -53,6 +54,7 @@ class Scene extends PixiComponent {
 
     // calc offest of each chapters
     // TODO voir si on peut arreter de calculer un fois qu'on a déjà en stock
+    // ou plutot checker si on a changé de niveau
     let offset = 0
     for (let i = 1; i < layer.id; i++) {
       offset += this.sizes[i]
@@ -60,11 +62,19 @@ class Scene extends PixiComponent {
     this.offsets[layer.id] = offset
 
     // TODO : test if we can active paralax, parralax only active between to range : when on screen
+    // FIX PARALLAX
     if (layer.props.name === 'hero') {
       layer.base.x = Math.round(store.size.get().w / 2)
       layer.base.y = Math.round(store.size.get().h / 2)
     } else {
       let p = layer.z * 0.001
+      if (layer.props.name === '2bg600') {
+        // l'offset du layer actuel + sa size divisée par 2, - la size du premier chapitre divisée par 2 vu que perso commence au centre
+        const center = this.offsets[layer.id] + this.sizes[layer.id] / 2 - this.sizes[1] / 2
+        const dx = camera.x + center
+        console.log(camera.x, center)
+        if (Math.abs(dx) < this.sizes[layer.id] / 2) console.log('IN')
+      }
       const x = camera.x + camera.x * p
       const y = camera.y + camera.y * p
       layer.base.x = Math.round(store.size.get().w / 2 + x + offset)

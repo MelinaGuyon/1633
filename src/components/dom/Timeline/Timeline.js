@@ -4,7 +4,6 @@ import store from 'state/store'
 import signals from 'state/signals'
 import scene from 'controllers/scene'
 
-
 import './Timeline.styl'
 
 class Point extends DomComponent {
@@ -95,11 +94,11 @@ export default class Timeline extends DomComponent {
     }
 
     if (this.reboot === true) {
-      console.log('go to point')
+      // console.log('go to point')
       this.distanceToDo = this.distanceToPoint
       this.reboot = false
     } else if (this.reboot === false) {
-      console.log('go to end')
+      // console.log('go to end')
       this.distanceToDo = this.distanceToEnd
     }
 
