@@ -66,16 +66,16 @@ class Scene extends PixiComponent {
       layer.base.y = Math.round(store.size.get().h / 2)
     } else {
       let p = layer.z * 0.001
-      if (layer.props.name === '2bg600') {
-        // l'offset du layer actuel + sa size divisée par 2, - la size du premier chapitre divisée par 2 vu que perso commence au centre
-        const center = this.offsets[layer.id] + this.sizes[layer.id] / 2 - this.sizes[1] / 2
-        const dx = camera.x + center
+      // l'offset du layer actuel + sa size divisée par 2, - la size du premier chapitre divisée par 2 vu que perso commence au centre
+      const center = this.offsets[layer.id] + this.sizes[layer.id] / 2 - this.sizes[1] / 2
+      const dx = camera.x + center
 
-        if (Math.abs(dx) < this.sizes[layer.id] / 2) {
-          layer.displacementX = this.offsets[layer.id] + camera.x
-        } else if (Math.abs(camera.x) < this.offsets[layer.id]) {
-          layer.displacementX = this.offsets[layer.id] - this.sizes[1] / 2
-        }
+      if (Math.abs(dx) < this.sizes[layer.id] / 2) {
+        // displacement quand zone de parralax active pour chaque layer indépendemment
+        layer.displacementX = this.offsets[layer.id] + camera.x
+      } else if (Math.abs(camera.x) < this.offsets[layer.id]) {
+        // placement avec displacement initial pour ne pas popper quand on arrive sur le layer
+        layer.displacementX = this.sizes[layer.id] / 2
       }
 
       const x = camera.x + layer.displacementX * p

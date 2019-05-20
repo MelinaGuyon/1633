@@ -27,7 +27,7 @@ export default class SoundChecks extends PixiComponent {
 	      soundPlay = path
 	      timer = true
         this.removeTimer()
-	      console.log('sound play', path)
+	      // console.log('sound play', path)
       }
     }
   }
