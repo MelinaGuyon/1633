@@ -11,6 +11,7 @@ function init (element) {
 
   this.offsetsLeft = []
   this.offsetsTop = []
+  this.mouseTarget = null
 
   this.magnetsElements = document.querySelectorAll('.magnet')
   // for (let i = 0; i < this.magnetsElements.length; i++) {
@@ -44,7 +45,8 @@ function onMouseMove (event) {
     this.elementX = this.magnetsElements[i].offsetLeft + parseInt(getComputedStyle(this.magnetsElements[i]).width, 10) / 2
     this.elementY = this.magnetsElements[i].getBoundingClientRect().top + parseInt(getComputedStyle(this.magnetsElements[i]).height, 10) / 2
 
-    if (this.mouseX <= this.elementX + 40 && this.mouseX >= this.elementX - 40 && this.mouseY >= this.elementY - 40 && this.mouseY <= this.elementY + 40) {      
+    if (this.mouseTarget !== this.magnetsElements[i] && this.mouseX <= this.elementX + 40 && this.mouseX >= this.elementX - 40 && this.mouseY >= this.elementY - 40 && this.mouseY <= this.elementY + 40) {      
+      this.mouseTarget = this.magnetsElements[i]
       anime({
         targets: this.mouse,
         left: [this.mouse.offsetLeft, this.elementX],
