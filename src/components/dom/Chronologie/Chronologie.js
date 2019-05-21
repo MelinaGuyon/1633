@@ -135,6 +135,7 @@ export default class Chronologie extends DomComponent {
   onChronologieClick (chronologieStatus) {
     if (chronologieStatus === 'appearing') {
       document.querySelector('#chronologie').className = 'visible'
+      // console.log('offset', document.querySelector('#fact' + store.chapterId.get() + '').offsetTop)
       setTimeout(function () { document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + store.chapterId.get() + '').offsetTop) }, 1000)
     } else if (chronologieStatus === 'disappearing') {
       document.querySelector('#chronologie').className = 'hidden'

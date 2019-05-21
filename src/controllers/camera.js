@@ -3,6 +3,7 @@ import store from 'state/store'
 import { lerp, map, clamp, damp } from '@internet/maths'
 import preciseDamp from 'utils/preciseDamp'
 import PixiComponent from 'abstractions/PixiComponent'
+import signals from 'state/signals'
 
 class Camera {
   setup (props) {
@@ -27,6 +28,12 @@ class Camera {
     }
     this.x = tx
     this.y = ty
+
+    // C'est ici qu'est le reel X car il se fait animer en smooth
+    if (this.target && this.target.hasMoved) {
+      signals.moving.dispatch(Math.round(this.x * -1))
+      // console.log(Math.round(this.x * -1))
+    }
   }
 
   setTarget (gameobject, opts = {}) {

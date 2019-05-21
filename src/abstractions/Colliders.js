@@ -22,6 +22,7 @@ export default class Colliders extends PixiComponent {
     this.height = this.base.height
     this.collide = props.collide
     this.group = props.group
+    this.levelId = props.levelId || null
 
     this.cb = props.cb
 
@@ -39,10 +40,15 @@ export default class Colliders extends PixiComponent {
       this.body.attach(this.base)
 
       this.body.collideWith('hero', (state) => {
+        if (this.group === 'interests' && this.levelId) this.calcInterestOffset()
         this.state.collide = state.collide
         this.cb(state)
       })
     }
+  }
+
+  calcInterestOffset () {
+    scene.interestOffsets[this.levelId] = scene.offsets[this.levelId] + this.base.x
   }
 
   componentWillUnmount () {

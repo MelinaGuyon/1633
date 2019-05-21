@@ -4,16 +4,14 @@ import store from 'state/store'
 import signals from 'state/signals'
 import scene from 'controllers/scene'
 
-
 import './Timeline.styl'
 
 class Point extends DomComponent {
   template (props) {
     const loc = store.loc.get()
-    this.newPos = 0
 
     return (
-      <button class='point' id={'point' + props.id + ''} />
+      <button class='point' id={'point' + props.id + ''} data-id={props.id} />
     )
   }
 
@@ -59,8 +57,11 @@ export default class Timeline extends DomComponent {
   }
 
   componentDidMount () {
-    this.onLvlChange(0)
-    this.bind()
+    let that = this
+    setTimeout(function () {
+      that.onLvlChange(0)
+      that.bind()
+    }, 2000)
   }
 
   bind () {
@@ -69,51 +70,44 @@ export default class Timeline extends DomComponent {
   }
 
   onLvlChange (id) {
+    this.reboot = true
+    this.id = id
     this.oldDisplacement = 0
     this.updateLevel = true
-
-    this.id = id
-    let previousId = id - 1
-
-    let currentLevelX = scene.offsets[id + 1]
-    let nextLevelX = scene.offsets[id + 2]
-    let heroDistance
-    id !== 0 ? heroDistance = nextLevelX - currentLevelX : heroDistance = 700
-    // console.log('level distance', heroDistance)
-
-    this.checkCircleX = 400 + heroDistance / 2 // définir de vraies positions (correspondant aux pts d'intérêt)
-    document.querySelector('.checkCircle').style.left = this.checkCircleX + 'px'
-
     this.currentPoint = document.querySelector('#point' + id + '')
     this.currentPoint.style.background = 'red'
-    // eslint-disable-next-line no-unused-expressions
-    id !== 0 ? this.previousPoint = document.querySelector('#point' + previousId + '') : ''
-    id !== 0 ? this.currentPointX = parseInt(window.getComputedStyle(this.currentPoint).left, 10) : this.currentPointX = window.innerWidth
-    id !== 0 ? this.previousPointX = parseInt(window.getComputedStyle(this.previousPoint).left, 10) : this.previousPointX = 0
-    // console.log('current point x', this.currentPointX)
-    // console.log('previous point x', this.previousPointX)
 
-    if (this.currentPoint) {
-      this.pointDistance = this.currentPointX - this.previousPointX
-    }
-    // console.log('point distance', this.pointDistance)
+    this.distanceToEnd = scene.interestOffsets[id + 1] - scene.offsets[id + 1]
+    this.distanceToPoint = scene.offsets[id + 2] - scene.interestOffsets[id + 1]
+    console.log('one', this.distanceToPoint)
+    console.log('two', this.distanceToEnd)
 
-    this.ratio = heroDistance / this.pointDistance
-    // console.log('ratio', this.ratio)
+    this.timelineSize = parseInt(window.getComputedStyle(document.querySelector('.timeline')).width, 10) / 2
+    // console.log('timeline size', this.timelineSize)
   }
 
   updateState (displacement) {
+    // console.log(displacement)
     if (this.updateLevel === true) {
       this.oldDisplacement = displacement
-      // console.log('old displacement', this.oldDisplacement)
       this.updateLevel = false
     }
-    this.displacement = displacement - this.oldDisplacement
 
+    if (this.reboot === true) {
+      // console.log('go to point')
+      this.distanceToDo = this.distanceToPoint
+      this.reboot = false
+    } else if (this.reboot === false) {
+      // console.log('go to end')
+      this.distanceToDo = this.distanceToEnd
+    }
+
+    this.displacement = (displacement - this.oldDisplacement) * this.distanceToDo / this.timelineSize
     // console.log('displacement', this.displacement)
 
     if (this.currentPoint) {
-      this.currentPoint.style.left = -(this.displacement / this.ratio) + 100 + 'px'
+      let margin = 30 * this.id
+      this.currentPoint.style.right = this.displacement - margin + 'px'
     }
   }
 }
