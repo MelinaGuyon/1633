@@ -7,6 +7,7 @@ import Buildings from './CityBuildings'
 import TutoCheck from './TutoChecks'
 import SoundCheck from './SoundChecks'
 import cookie from '../../../controllers/cookie'
+import LevelLight from "./LevelLight";
 
 export default class LevelChurch extends Level {
   setup () {
@@ -28,5 +29,6 @@ export default class LevelChurch extends Level {
       this.addComponent(TutoCheck)
 	  }
 	  this.addComponent(SoundCheck)
+	  this.addComponent(LevelLight)
   }
 }
