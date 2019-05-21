@@ -102,59 +102,45 @@ export default class Timeline extends DomComponent {
     this.pointDist = this.size / 2
 
     this.persoDist = 600
-
-
-    // this.reboot = true
-    // this.oldDisplacement = 0
-    // this.updateLevel = true
-    // this.currentPoint = document.querySelector('#point' + id + '')
-    // this.currentPoint.style.background = 'red'
-
-    // this.distanceToEnd = scene.interestOffsets[id + 1] - scene.offsets[id + 1]
-    // this.distanceToPoint = scene.offsets[id + 2] - scene.interestOffsets[id + 1]
-
-    // this.timelineSize = parseInt(window.getComputedStyle(document.querySelector('.timeline')).width, 10) / 2
   }
 
   mooving (displacement) {
 
     if (!this.currentPoint) return
 
-    let dist
-    if (this.currenPointId === 1) dist = (scene.interestOffsets[this.currenPointId] - scene.offsets[this.currenPointId])
-    else dist = (scene.interestOffsets[this.currenPointId] - scene.offsets[this.currenPointId]) + scene.sizes[this.currenPointId] / 2
+    let distStart
+    let actualMooveStart
+    let distEnd
+    let actualMooveEnd
+    let ratio
+    let x
 
-    let actualMoove
-    if (this.currenPointId === 1) actualMoove = displacement
-    else actualMoove = displacement - scene.offsets[this.currenPointId - 1] - scene.sizes[1] / 2
+    if (this.currenPointId === 1) distStart = (scene.interestOffsets[this.currenPointId] - scene.offsets[this.currenPointId])
+    else distStart = (scene.interestOffsets[this.currenPointId] - scene.offsets[this.currenPointId]) + scene.sizes[this.currenPointId] / 2
 
-    const ratio = actualMoove / dist
+    if (this.currenPointId === 1) actualMooveStart = displacement
+    else actualMooveStart = displacement - scene.offsets[this.currenPointId - 1] - scene.sizes[1] / 2
 
-    const x = this.pointDist * ratio
+    if (actualMooveStart > distStart) {
+      // distEnd = 243
+      if (this.currenPointId === 1) distEnd = scene.sizes[this.currenPointId] / 2 - distStart
+      // else distEnd = (scene.offsets[this.currenPointId] + 1) - distStart - scene.sizes[this.currenPointId] / 2
+
+      if (this.currenPointId === 1) actualMooveEnd = displacement - distStart
+
+      console.log(distEnd, scene.sizes[this.currenPointId], distStart)
+    }
+
+    if (!distEnd && !actualMooveEnd) {
+      ratio = actualMooveStart / distStart
+      ratio = Math.max(0, Math.min(1, ratio))
+      x = this.pointDist * ratio - 10
+    } else {
+      ratio = actualMooveEnd / distEnd
+      ratio = Math.max(0, Math.min(1, ratio))
+      x = (this.pointDist * ratio - 10) + this.pointDist
+    }
+
     this.currentPoint.base.style.transform = `translateX(-${x}px)`
-
-
-    // if (this.updateLevel === true) {
-    //   this.oldDisplacement = displacement
-    //   this.updateLevel = false
-    // }
-
-    // if (this.reboot === true) {
-    //   // console.log('go to point')
-    //   this.distanceToDo = this.distanceToPoint
-    //   this.reboot = false
-    // } else if (this.reboot === false) {
-    //   // console.log('go to end')
-    //   this.distanceToDo = this.distanceToEnd
-    // }
-
-    // this.displacement = (displacement - this.oldDisplacement) * this.distanceToDo / this.timelineSize
-    // // console.log('displacement', this.displacement)
-
-    // if (this.currentPoint) {
-    //   let margin = 30 * this.id
-    //   this.currentPoint.style.right = this.displacement - margin + 'px'
-    // }
-
   }
 }
