@@ -161,7 +161,7 @@ export default class Timeline extends DomComponent {
     ratioCircle = Math.max(0, Math.min(1, ratioCircle))
     width = this.circleSize * (1 - ratioCircle)
 
-    if (ratioCircle === 0) this.circleWrapper.classList.add('transition')
+    if (ratioCircle === 0 || ratioCircle === 1) this.circleWrapper.classList.add('transition')
     else this.circleWrapper.classList.remove('transition')
 
     if (ratioCircle > 0 && ratioCircle < 1) this.currentPoint.base.classList.add('hidden')
