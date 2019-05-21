@@ -79,8 +79,8 @@ export default class Timeline extends DomComponent {
 
     this.distanceToEnd = scene.interestOffsets[id + 1] - scene.offsets[id + 1]
     this.distanceToPoint = scene.offsets[id + 2] - scene.interestOffsets[id + 1]
-    console.log('one', this.distanceToPoint)
-    console.log('two', this.distanceToEnd)
+    // console.log('one', this.distanceToPoint)
+    // console.log('two', this.distanceToEnd)
 
     this.timelineSize = parseInt(window.getComputedStyle(document.querySelector('.timeline')).width, 10) / 2
     // console.log('timeline size', this.timelineSize)
