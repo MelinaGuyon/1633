@@ -8,7 +8,8 @@ import './Timeline.styl'
 
 class Point extends DomComponent {
   template (props) {
-    this.x = 0
+    this.initialX = 25 * props.initialX
+    this.endingX = 25 * props.endingX
 
     return (
       <button class='point magnet' id={'point' + props.id + ''} data-id={props.id} />
@@ -17,6 +18,7 @@ class Point extends DomComponent {
 
   componentDidMount () {
     this.bind()
+    this.setPosition()
   }
 
   componentWillUnmount () {
@@ -29,6 +31,10 @@ class Point extends DomComponent {
 
   unbind () {
     this.base.removeEventListener('click', this.onClick)
+  }
+
+  setPosition () {
+    this.base.style.transform = `translateX(-${this.initialX}px)`
   }
 
   onClick (e) {
@@ -56,7 +62,7 @@ export default class Timeline extends DomComponent {
       this.points[i] = el
     }
     for (let i = 0; i < this.levelsLength; i++) {
-      points.push(<Point ref={refPoint(i)} id={i} />)
+      points.push(<Point ref={refPoint(i)} initialX={this.levelsLength - 1 - i} endingX={i} />)
     }
 
     return (
@@ -84,22 +90,20 @@ export default class Timeline extends DomComponent {
   }
 
   unbind () {
-    // check how to unlisten
-    // this.unlistenStore('levelId', this.onLvlChange)
-    // signals.moving.unlisten(this.mooving, this)
+    this.unlistenStore('levelId', this.onLvlChange)
+    signals.moving.unlisten(this.mooving)
   }
 
   initParams () {
     /// need to be called at resize also
     this.size = this.timeline.offsetWidth
+    this.pointSize = this.points[0].base.offsetWidth
   }
 
   onLvlChange (id) {
     this.currenPointId = id + 1
     this.currentPoint = this.points[id]
     this.pointDist = this.size / 2
-
-    this.persoDist = 600
   }
 
   mooving (displacement) {
@@ -126,14 +130,16 @@ export default class Timeline extends DomComponent {
       else actualMooveEnd = displacement - scene.offsets[this.currenPointId - 1] - scene.sizes[1] / 2 - distStart
     }
 
+    console.log(this.currentPoint.initialX)
+
     if (!distEnd && !actualMooveEnd) {
       ratio = actualMooveStart / distStart
       ratio = Math.max(0, Math.min(1, ratio))
-      x = this.pointDist * ratio - 10
+      x = (this.pointDist - this.currentPoint.initialX) * ratio + this.currentPoint.initialX
     } else {
       ratio = actualMooveEnd / distEnd
       ratio = Math.max(0, Math.min(1, ratio))
-      x = (this.pointDist * ratio - 10) + this.pointDist
+      x = ((this.pointDist - this.currentPoint.endingX - this.pointSize) * ratio) + this.pointDist
     }
 
     this.currentPoint.base.style.transform = `translateX(-${x}px)`
