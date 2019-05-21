@@ -1,6 +1,6 @@
 import Level from 'abstractions/Level'
 import Buildings from './CityBuildings'
-import LevelChecks from './LevelChecks'
+import Interests from './Interests'
 
 export default class LevelNapoleon extends Level {
   setup () {
@@ -14,6 +14,6 @@ export default class LevelNapoleon extends Level {
   }
 
   addColliders () {
-    // this.addComponent(LevelChecks)
+    this.addComponent(Interests)
   }
 }

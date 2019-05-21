@@ -1,6 +1,5 @@
 import Level from 'abstractions/Level'
 import Interests from './Interests'
-import LevelChecks from './LevelChecks'
 import Buildings from './CityBuildings'
 
 export default class LevelPharmacist extends Level {
@@ -16,6 +15,5 @@ export default class LevelPharmacist extends Level {
 
   addColliders () {
     this.addComponent(Interests)
-    // this.addComponent(LevelChecks)
   }
 }
