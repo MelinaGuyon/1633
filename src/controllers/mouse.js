@@ -12,11 +12,11 @@ function init (element) {
   this.offsetsLeft = []
   this.offsetsTop = []
 
-  let magnetsElements = document.querySelectorAll('.magnet')
-  for (let i = 0; i < magnetsElements.length; i++) {
-    this.offsetsLeft.push(magnetsElements[i].offsetLeft)
-    this.offsetsTop.push(magnetsElements[i].getBoundingClientRect().top)
-  }
+  this.magnetsElements = document.querySelectorAll('.magnet')
+  // for (let i = 0; i < this.magnetsElements.length; i++) {
+  //   this.offsetsLeft.push(this.magnetsElements[i].offsetLeft)
+  //   this.offsetsTop.push(this.magnetsElements[i].getBoundingClientRect().top)
+  // }
 }
 
 function onMouseMove (event) {
@@ -37,14 +37,20 @@ function onMouseMove (event) {
   // }
 
   this.mouse = document.querySelector('.mouse.active')
-  for (let i = 0; i < this.offsetsLeft.length; i++) {
-    if (this.mouse.offsetLeft <= this.offsetsLeft[i] + 30 && this.mouse.offsetLeft >= this.offsetsLeft[i] - 30 
-      && this.mouse.offsetTop >= this.offsetsTop[i] - 30 && this.mouse.offsetTop <= this.offsetsTop[i] + 30) {
+  this.mouseX = this.mouse.offsetLeft + parseInt(getComputedStyle(this.mouse).width, 10) / 2
+  this.mouseY = this.mouse.offsetTop + parseInt(getComputedStyle(this.mouse).width, 10) / 2
+
+  for (let i = 0; i < this.magnetsElements.length; i++) {
+    this.elementX = this.magnetsElements[i].offsetLeft + parseInt(getComputedStyle(this.magnetsElements[i]).width, 10) / 2
+    this.elementY = this.magnetsElements[i].getBoundingClientRect().top + parseInt(getComputedStyle(this.magnetsElements[i]).height, 10) / 2
+
+    if (this.mouseX <= this.elementX + 40 && this.mouseX >= this.elementX - 40 && this.mouseY >= this.elementY - 40 && this.mouseY <= this.elementY + 40) {      
       anime({
         targets: this.mouse,
-        left: this.offsetsLeft[i],
-        top: this.offsetsTop[i],
+        left: [this.mouse.offsetLeft, this.elementX],
+        top: [this.mouse.offsetTop, this.elementY],
         easing: 'easeInOutQuad',
+        delay: 100,
         duration: 100
       })
     }
