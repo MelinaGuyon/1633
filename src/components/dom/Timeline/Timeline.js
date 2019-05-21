@@ -95,8 +95,6 @@ export default class Timeline extends DomComponent {
   }
 
   onLvlChange (id) {
-    console.log('LEVEL CHANGE', id)
-
     this.currenPointId = id + 1
     this.currentPoint = this.points[id]
     this.pointDist = this.size / 2
@@ -105,7 +103,6 @@ export default class Timeline extends DomComponent {
   }
 
   mooving (displacement) {
-
     if (!this.currentPoint) return
 
     let distStart
