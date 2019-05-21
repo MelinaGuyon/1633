@@ -10,7 +10,8 @@ class SceneLayer extends PixiComponent {
     this.x = props.x || 1
     this.id = props.id
     this.name = props.name
-    this.displacementX = 0
+    this.parralaxValue = props.parralaxValue // ref value given in sceneLayers
+    this.displacementX = 0 // displacement value in px du to parallax value
 
     this.base.x = Math.round(store.size.get().w / 2 * this.x)
     this.base.y = Math.round(store.size.get().h / 2)
@@ -52,7 +53,7 @@ class Scene extends PixiComponent {
       const name = layers[i][0]
       let id = Number(name.substring(0, 1))
       if (isNaN(id)) id = 0
-      const layer = this.addComponent(SceneLayer, { z: layers[i][1], id, name: name })
+      const layer = this.addComponent(SceneLayer, { z: layers[i][1], parralaxValue: layers[i][2], id, name: name })
       this.layers[name] = layer
       this.sizes[layer.id] = 0
       if (!this[name]) this[name] = layer
@@ -62,10 +63,12 @@ class Scene extends PixiComponent {
   }
 
   goPos (layer) {
-    let z = this.scale
-    layer.base.scale.x = z
-    layer.base.scale.y = z
-    layer.scale = z
+    let s = this.scale
+    layer.base.scale.x = s
+    layer.base.scale.y = s
+    layer.scale = s
+
+    // console.log(layer.base.z)
 
     // calc offest of each chapters
     if (this.needsUpdate) {
@@ -80,7 +83,7 @@ class Scene extends PixiComponent {
       layer.base.x = Math.round(store.size.get().w / 2)
       layer.base.y = Math.round(store.size.get().h / 2)
     } else {
-      let p = layer.z * 0.001
+      let p = layer.parralaxValue * 0.001
       // l'offset du layer actuel + sa size divisée par 2, - la size du premier chapitre divisée par 2 vu que perso commence au centre
       const center = this.offsets[layer.id] + this.sizes[layer.id] / 2 - this.sizes[1] / 2
       const dx = camera.x + center
