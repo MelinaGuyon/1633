@@ -8,8 +8,8 @@ import './Timeline.styl'
 
 class Point extends DomComponent {
   template (props) {
-    this.initialX = 25 * props.initialX
-    this.endingX = 25 * props.endingX
+    this.initialX = 60 * props.initialX
+    this.endingX = 60 * props.endingX
 
     return (
       <button class='point magnet' id={'point' + props.id + ''} data-id={props.id} />
@@ -67,7 +67,8 @@ export default class Timeline extends DomComponent {
 
     return (
       <section class='timeline' ref={addRef(this, 'timeline')}>
-        <div class='checkCircle' />
+        <div class='whiteCircle' />
+        <div class='redCircle' />
         <div class='points'>
           {points}
         </div>
@@ -129,8 +130,6 @@ export default class Timeline extends DomComponent {
       if (this.currenPointId === 1) actualMooveEnd = displacement - distStart
       else actualMooveEnd = displacement - scene.offsets[this.currenPointId - 1] - scene.sizes[1] / 2 - distStart
     }
-
-    console.log(this.currentPoint.initialX)
 
     if (!distEnd && !actualMooveEnd) {
       ratio = actualMooveStart / distStart
