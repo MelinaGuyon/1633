@@ -1,4 +1,4 @@
-import { h } from '@internet/dom'
+import { h, addRef } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
 import signals from 'state/signals'
@@ -8,7 +8,7 @@ import './Timeline.styl'
 
 class Point extends DomComponent {
   template (props) {
-    const loc = store.loc.get()
+    this.x = 0
 
     return (
       <button class='point magnet' id={'point' + props.id + ''} data-id={props.id} />
@@ -48,29 +48,34 @@ class Point extends DomComponent {
 
 export default class Timeline extends DomComponent {
   template ({ base }) {
+    this.levelsLength = Object.keys(store.levelDict.get()).length
+    this.points = Array(this.levelsLength)
+
+    const points = []
+    const refPoint = i => el => {
+      this.points[i] = el
+    }
+    for (let i = 0; i < this.levelsLength; i++) {
+      points.push(<Point ref={refPoint(i)} id={i} />)
+    }
+
     return (
-      <section class='timeline'>
+      <section class='timeline' ref={addRef(this, 'timeline')}>
         <div class='checkCircle' />
         <div class='points'>
-          <Point type={'university'} id={0} />
-          <Point type={'university'} id={1} />
-          <Point type={'university'} id={2} />
-          <Point type={'university'} id={3} />
-          <Point type={'university'} id={4} />
-          <Point type={'university'} id={5} />
-          <Point type={'university'} id={6} />
+          {points}
         </div>
       </section>
     )
   }
 
   componentDidMount () {
-    // let that = this
-    // setTimeout(function () {
-    //   that.onLvlChange(0)
-    //   that.bind()
-    // }, 2000)
     this.bind()
+    this.initParams()
+  }
+
+  componentWillUnmount () {
+    this.unbind()
   }
 
   bind () {
@@ -78,11 +83,28 @@ export default class Timeline extends DomComponent {
     signals.moving.listen(this.mooving, this)
   }
 
+  unbind () {
+    // check how to unlisten
+    // this.unlistenStore('levelId', this.onLvlChange)
+    // signals.moving.unlisten(this.mooving, this)
+  }
+
+  initParams () {
+    /// need to be called at resize also
+    this.size = this.timeline.offsetWidth
+  }
+
   onLvlChange (id) {
-    // console.log('here')
+    console.log('LEVEL CHANGE', id)
+
+    this.currenPointId = id + 1
+    this.currentPoint = this.points[id]
+    this.pointDist = this.size / 2
+
+    this.persoDist = 600
+
 
     // this.reboot = true
-    // this.id = id
     // this.oldDisplacement = 0
     // this.updateLevel = true
     // this.currentPoint = document.querySelector('#point' + id + '')
@@ -95,9 +117,22 @@ export default class Timeline extends DomComponent {
   }
 
   mooving (displacement) {
-    // console.log(displacement)
 
-    // console.log(scene.offsets)
+    if (!this.currentPoint) return
+
+    let dist
+    if (this.currenPointId === 1) dist = (scene.interestOffsets[this.currenPointId] - scene.offsets[this.currenPointId])
+    else dist = (scene.interestOffsets[this.currenPointId] - scene.offsets[this.currenPointId]) + scene.sizes[this.currenPointId] / 2
+
+    let actualMoove
+    if (this.currenPointId === 1) actualMoove = displacement
+    else actualMoove = displacement - scene.offsets[this.currenPointId - 1] - scene.sizes[1] / 2
+
+    const ratio = actualMoove / dist
+
+    const x = this.pointDist * ratio
+    this.currentPoint.base.style.transform = `translateX(-${x}px)`
+
 
     // if (this.updateLevel === true) {
     //   this.oldDisplacement = displacement
