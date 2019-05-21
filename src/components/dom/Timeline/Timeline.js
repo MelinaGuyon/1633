@@ -122,13 +122,11 @@ export default class Timeline extends DomComponent {
     else actualMooveStart = displacement - scene.offsets[this.currenPointId - 1] - scene.sizes[1] / 2
 
     if (actualMooveStart > distStart) {
-      // distEnd = 243
       if (this.currenPointId === 1) distEnd = scene.sizes[this.currenPointId] / 2 - distStart
-      // else distEnd = (scene.offsets[this.currenPointId] + 1) - distStart - scene.sizes[this.currenPointId] / 2
+      else distEnd = scene.sizes[this.currenPointId] - distStart
 
       if (this.currenPointId === 1) actualMooveEnd = displacement - distStart
-
-      console.log(distEnd, scene.sizes[this.currenPointId], distStart)
+      else actualMooveEnd = displacement - scene.offsets[this.currenPointId - 1] - scene.sizes[1] / 2 - distStart
     }
 
     if (!distEnd && !actualMooveEnd) {
