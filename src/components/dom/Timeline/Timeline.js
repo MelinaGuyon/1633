@@ -68,7 +68,9 @@ export default class Timeline extends DomComponent {
     return (
       <section class='timeline' ref={addRef(this, 'timeline')}>
         <div class='whiteCircle' />
-        <div class='redCircle' />
+        <div class='redCircleWrapper' ref={addRef(this, 'circleWrapper')}>
+          <div class='redCircle' />
+        </div>
         <div class='points'>
           {points}
         </div>
@@ -99,6 +101,7 @@ export default class Timeline extends DomComponent {
     /// need to be called at resize also
     this.size = this.timeline.offsetWidth
     this.pointSize = this.points[0].base.offsetWidth
+    this.circleSize = this.circleWrapper.offsetWidth
   }
 
   onLvlChange (id) {
@@ -110,6 +113,7 @@ export default class Timeline extends DomComponent {
   mooving (displacement) {
     if (!this.currentPoint) return
 
+    // points
     let distStart
     let actualMooveStart
     let distEnd
@@ -142,5 +146,24 @@ export default class Timeline extends DomComponent {
     }
 
     this.currentPoint.base.style.transform = `translateX(-${x}px)`
+
+    // circle
+    let range
+    let distCircle
+    let actualMooveCircle
+    let ratioCircle
+    let width
+
+    range = [this.size / 2 - this.circleSize / 2, this.size / 2 + this.circleSize / 2]
+    distCircle = range[1] - range[0]
+    actualMooveCircle = x - range[0]
+    ratioCircle = actualMooveCircle / distCircle
+    ratioCircle = Math.max(0, Math.min(1, ratioCircle))
+    width = this.circleSize * (1 - ratioCircle)
+
+    if (ratioCircle === 0) this.circleWrapper.classList.add('transition')
+    else this.circleWrapper.classList.remove('transition')
+
+    this.circleWrapper.style.width = `${width}px`
   }
 }
