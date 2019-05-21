@@ -11,7 +11,7 @@ class Point extends DomComponent {
     const loc = store.loc.get()
 
     return (
-      <button class='point' id={'point' + props.id + ''} data-id={props.id} />
+      <button class='point magnet' id={'point' + props.id + ''} data-id={props.id} />
     )
   }
 

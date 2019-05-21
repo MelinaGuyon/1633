@@ -33,7 +33,7 @@ class ChronologieButton extends DomComponent {
     const loc = store.loc.get()
 
     return (
-      <button class='nav' data-id={props.id}>{loc['nav.' + props.type]}</button>
+      <button class='nav magnet' data-id={props.id}>{loc['nav.' + props.type]}</button>
     )
   }
 
@@ -59,7 +59,7 @@ class SoundButton extends DomComponent {
     const loc = store.loc.get()
 
     return (
-      <button class='nav-sound' data-id={props.id}>son</button>
+      <button class='nav-sound magnet' data-id={props.id}>son</button>
     )
   }
 
