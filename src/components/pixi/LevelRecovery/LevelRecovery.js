@@ -16,6 +16,6 @@ export default class LevelRecovery extends Level {
   }
 
   addColliders () {
-    this.addComponent(LevelChecks)
+    // this.addComponent(LevelChecks)
   }
 }

@@ -73,11 +73,11 @@ class SoundButton extends DomComponent {
 
   onClick (e) {
     if (store.musicPlayed.current) {
-	    sound.pause('music_studio')
-	    e.target.innerHTML = 'remettre son'
+      sound.pause('music_studio')
+      e.target.innerHTML = 'remettre son'
     } else {
-	    sound.unpause('music_studio')
-	    e.target.innerHTML = 'couper son'
+      sound.unpause('music_studio')
+      e.target.innerHTML = 'couper son'
     }
   }
 }

@@ -16,6 +16,6 @@ export default class LevelProfanation extends Level {
 
   addColliders () {
     this.addComponent(Interests)
-    this.addComponent(LevelChecks)
+    // this.addComponent(LevelChecks)
   }
 }

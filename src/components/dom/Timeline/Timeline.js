@@ -19,8 +19,16 @@ class Point extends DomComponent {
     this.bind()
   }
 
+  componentWillUnmount () {
+    this.unbind()
+  }
+
   bind () {
     this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+  }
+
+  unbind () {
+    this.base.removeEventListener('click', this.onClick)
   }
 
   onClick (e) {
@@ -57,57 +65,61 @@ export default class Timeline extends DomComponent {
   }
 
   componentDidMount () {
-    let that = this
-    setTimeout(function () {
-      that.onLvlChange(0)
-      that.bind()
-    }, 2000)
+    // let that = this
+    // setTimeout(function () {
+    //   that.onLvlChange(0)
+    //   that.bind()
+    // }, 2000)
+    this.bind()
   }
 
   bind () {
     this.listenStore('levelId', this.onLvlChange)
-    signals.moving.listen(this.updateState, this)
+    signals.moving.listen(this.mooving, this)
   }
 
   onLvlChange (id) {
-    this.reboot = true
-    this.id = id
-    this.oldDisplacement = 0
-    this.updateLevel = true
-    this.currentPoint = document.querySelector('#point' + id + '')
-    this.currentPoint.style.background = 'red'
+    // console.log('here')
 
-    this.distanceToEnd = scene.interestOffsets[id + 1] - scene.offsets[id + 1]
-    this.distanceToPoint = scene.offsets[id + 2] - scene.interestOffsets[id + 1]
-    // console.log('one', this.distanceToPoint)
-    // console.log('two', this.distanceToEnd)
+    // this.reboot = true
+    // this.id = id
+    // this.oldDisplacement = 0
+    // this.updateLevel = true
+    // this.currentPoint = document.querySelector('#point' + id + '')
+    // this.currentPoint.style.background = 'red'
 
-    this.timelineSize = parseInt(window.getComputedStyle(document.querySelector('.timeline')).width, 10) / 2
-    // console.log('timeline size', this.timelineSize)
+    // this.distanceToEnd = scene.interestOffsets[id + 1] - scene.offsets[id + 1]
+    // this.distanceToPoint = scene.offsets[id + 2] - scene.interestOffsets[id + 1]
+
+    // this.timelineSize = parseInt(window.getComputedStyle(document.querySelector('.timeline')).width, 10) / 2
   }
 
-  updateState (displacement) {
+  mooving (displacement) {
     // console.log(displacement)
-    if (this.updateLevel === true) {
-      this.oldDisplacement = displacement
-      this.updateLevel = false
-    }
 
-    if (this.reboot === true) {
-      // console.log('go to point')
-      this.distanceToDo = this.distanceToPoint
-      this.reboot = false
-    } else if (this.reboot === false) {
-      // console.log('go to end')
-      this.distanceToDo = this.distanceToEnd
-    }
+    // console.log(scene.offsets)
 
-    this.displacement = (displacement - this.oldDisplacement) * this.distanceToDo / this.timelineSize
-    // console.log('displacement', this.displacement)
+    // if (this.updateLevel === true) {
+    //   this.oldDisplacement = displacement
+    //   this.updateLevel = false
+    // }
 
-    if (this.currentPoint) {
-      let margin = 30 * this.id
-      this.currentPoint.style.right = this.displacement - margin + 'px'
-    }
+    // if (this.reboot === true) {
+    //   // console.log('go to point')
+    //   this.distanceToDo = this.distanceToPoint
+    //   this.reboot = false
+    // } else if (this.reboot === false) {
+    //   // console.log('go to end')
+    //   this.distanceToDo = this.distanceToEnd
+    // }
+
+    // this.displacement = (displacement - this.oldDisplacement) * this.distanceToDo / this.timelineSize
+    // // console.log('displacement', this.displacement)
+
+    // if (this.currentPoint) {
+    //   let margin = 30 * this.id
+    //   this.currentPoint.style.right = this.displacement - margin + 'px'
+    // }
+
   }
 }

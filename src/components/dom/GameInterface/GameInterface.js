@@ -24,18 +24,33 @@ export default class GameInterface extends DomComponent {
         <Subtitles />
         <Tutorial />
         <MouseMv />
-	      <Debug />
+        <Debug />
       </section>
     )
   }
 
   componentDidMount () {
-    mouse.init(document.getElementsByClassName('game'))
     logger('Game interface did mount', '#47b342').log()
-    document.addEventListener('click', function (e) {
-      if (document.activeElement.toString() === '[object HTMLButtonElement]') {
-        document.activeElement.blur()
-      }
-    })
+
+    mouse.init(document.getElementsByClassName('game'))
+    this.bind()
+  }
+
+  componentWillUnmount () {
+    this.unbind()
+  }
+
+  bind () {
+    document.addEventListener('click', this.clearClick)
+  }
+
+  unbind () {
+    document.removeEventListener('click', this.clearClick)
+  }
+
+  clearClick (e) {
+    if (document.activeElement.toString() === '[object HTMLButtonElement]') {
+      document.activeElement.blur()
+    }
   }
 }

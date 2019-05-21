@@ -14,6 +14,6 @@ export default class LevelCeremony extends Level {
   }
 
   addColliders () {
-    this.addComponent(LevelChecks)
+    // this.addComponent(LevelChecks)
   }
 }

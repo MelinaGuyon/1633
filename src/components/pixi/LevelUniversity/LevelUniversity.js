@@ -18,6 +18,6 @@ export default class LevelUniversity extends Level {
 
   addColliders () {
     this.addComponent(Interests)
-    this.addComponent(LevelChecks)
+    // this.addComponent(LevelChecks)
   }
 }

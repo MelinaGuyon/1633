@@ -15,7 +15,6 @@ import LevelNapoleon from 'components/pixi/LevelNapoleon/LevelNapoleon'
 import LevelRecovery from 'components/pixi/LevelRecovery/LevelRecovery'
 
 import Perso from 'components/pixi/Perso/Perso'
-// import Timeline from 'components/pixi/Timeline/Timeline'
 
 const levels = {
   university: LevelUniversity,
@@ -45,8 +44,6 @@ export default class Pixigame extends PixiComponent {
     this.levels = {}
     this.createPerso()
     store.levelId.set(0)
-
-    // this.createTimeline()
   }
 
   bind () {
@@ -56,10 +53,6 @@ export default class Pixigame extends PixiComponent {
   createPerso () {
     this.perso = this.addComponent(Perso, { layer: 'hero' })
   }
-
-  // createTimeline () {
-  //   this.timeline = this.addComponent(Timeline, { layer: 'timeline' })
-  // }
 
   onLvlChange (id) {
     this.addLevelsAround(id)

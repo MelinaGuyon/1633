@@ -21,7 +21,7 @@ export default class LevelChurch extends Level {
 
   addColliders () {
     this.addComponent(Interests)
-    this.addComponent(LevelChecks)
+    // this.addComponent(LevelChecks)
 	  let isAlreadyShow
 	  isAlreadyShow = cookie.readCookie('tuto')
 	  if (!isAlreadyShow) {

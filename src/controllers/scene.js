@@ -108,6 +108,14 @@ class Scene extends PixiComponent {
     if (this.sizes[layer.id] < layer.base.width) this.sizes[layer.id] = layer.base.width + 200
   }
 
+  setLevelId () {
+    let levelId
+    for (let i = 1; i < this.offsets.length; i++) {
+      if ((this.offsets[i] - this.sizes[i] / 2) < camera.x * -1) levelId = i - 1
+    }
+    if (store.levelId.get() !== levelId) store.levelId.set(levelId)
+  }
+
   onLvlChange () {
     this.needsUpdate = true
   }
@@ -137,6 +145,8 @@ class Scene extends PixiComponent {
   }
 
   update (dt) {
+    this.setLevelId()
+
     let n = this.layersKeys.length
 
     while (n--) {
