@@ -154,7 +154,7 @@ export default class Timeline extends DomComponent {
     let ratioCircle
     let width
 
-    range = [this.size / 2 - this.circleSize / 2, this.size / 2 + this.circleSize / 2]
+    range = [this.size / 2 - this.circleSize / 2 - this.pointSize, this.size / 2 + this.circleSize / 2 - this.pointSize]
     distCircle = range[1] - range[0]
     actualMooveCircle = x - range[0]
     ratioCircle = actualMooveCircle / distCircle
@@ -163,6 +163,9 @@ export default class Timeline extends DomComponent {
 
     if (ratioCircle === 0) this.circleWrapper.classList.add('transition')
     else this.circleWrapper.classList.remove('transition')
+
+    if (ratioCircle > 0 && ratioCircle < 1) this.currentPoint.base.classList.add('hidden')
+    else this.currentPoint.base.classList.remove('hidden')
 
     this.circleWrapper.style.width = `${width}px`
   }
