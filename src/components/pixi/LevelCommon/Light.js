@@ -68,7 +68,6 @@ export default class Light extends PixiComponent {
     }
 
     const tint = props.tint || 0x550066
-    console.log(tint)
     this.alpha = props.alpha !== undefined ? props.alpha : 1
     delete props.alpha
 
@@ -79,6 +78,10 @@ export default class Light extends PixiComponent {
       this.refs.mock = this.addComponent(MockedTarget, Object.assign({}, props, { layer: this.targetLayer, x: 0, y: 0 }))
       this.target = this.refs.mock.base
       this.targetLayer = this.refs.mock.layer
+    }
+
+    if (props.animation) {
+      this.setAnime(props.animation)
     }
   }
 
@@ -95,6 +98,10 @@ export default class Light extends PixiComponent {
   setAlpha (alpha) {
     this.alpha = alpha
     this.setTint(this.tint)
+  }
+
+  setAnime (typeAnime) {
+    console.log('anime', typeAnime)
   }
 
   update () {

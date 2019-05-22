@@ -32,7 +32,7 @@ function clickClose (event) {
   let type = element.getAttribute('data-type')
   type += ' mouse__close hide'
   event.target.closest('.mouse__close').className = type
-	store.pause.set(false)
+	store.pause.set(true)
 }
 
 export default {
