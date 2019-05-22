@@ -38,6 +38,7 @@ export default class Light extends PixiComponent {
     this.layer = props.layer
 	  this.form = props.form // correspond a l url vers l'image de la forme que dois prendre la lumière
     this.targetLayer = targetLayer || props.layer
+    this.animation = props.animation
   }
 
   setup (props = {}) {
@@ -67,7 +68,6 @@ export default class Light extends PixiComponent {
     }
 
     const tint = props.tint || 0x550066
-
     this.alpha = props.alpha !== undefined ? props.alpha : 1
     delete props.alpha
 
