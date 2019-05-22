@@ -79,10 +79,6 @@ export default class Light extends PixiComponent {
       this.target = this.refs.mock.base
       this.targetLayer = this.refs.mock.layer
     }
-
-    if (props.animation) {
-      this.setAnime(props.animation)
-    }
   }
 
   componentWillUnmount () {
@@ -98,10 +94,6 @@ export default class Light extends PixiComponent {
   setAlpha (alpha) {
     this.alpha = alpha
     this.setTint(this.tint)
-  }
-
-  setAnime (typeAnime) {
-    console.log('anime', typeAnime)
   }
 
   update () {
