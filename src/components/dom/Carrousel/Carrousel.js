@@ -36,7 +36,7 @@ class Button extends DomComponent {
 export default class Carrousel extends DomComponent {
   template ({ base }) {
     return (
-      <section data-type="carrousel" class='carrousel mouse__close'>
+      <section data-type='carrousel' class='carrousel mouse__close'>
         <Button type={'richelieu'} id={0} launchGame={this.launchGame} />
         <Button type={'mariecurie'} id={1} launchGame={this.launchGame} />
         <Button type={'robertdesorbon'} id={2} launchGame={this.launchGame} />

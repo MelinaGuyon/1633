@@ -1,7 +1,6 @@
 import Level from 'abstractions/Level'
 import Buildings from './CityBuildings'
 import Interests from './Interests'
-import LevelChecks from './LevelChecks'
 import sound from 'controllers/sound'
 
 export default class LevelUniversity extends Level {
@@ -18,6 +17,5 @@ export default class LevelUniversity extends Level {
 
   addColliders () {
     this.addComponent(Interests)
-    this.addComponent(LevelChecks)
   }
 }

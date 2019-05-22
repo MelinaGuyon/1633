@@ -1,29 +1,135 @@
 .timeline
-  width: 100%
-  border: solid 1px
+  width: 90%
+  height 2px
   position: absolute
   z-index: 2
   bottom: 10%
-  height: 50px
   line-height: 50px
+  left: 50%
+  transform: translateX(-50%)
 
-  .checkCircle
-    border: solid 1px
-    border-radius: 10px
-    width: 50px
-    height: 50px
-    position: fixed
-    left: 50vw
+  &:before
+    content: ''
+    display: block
+    position: relative
+    top: 0
+    left: 0
+    background: #51596a
+    height 2px
+    width: calc(50% - 30px)
+
+  &:after
+    content: ''
+    display: block
+    position: absolute
+    top: 50%
+    right: 0
+    background: #51596a
+    height 2px
+    width: calc(50% - 30px)
+    transform: translateY(-50%)
+
+  .whiteCircle
+    z-index: 2
+    border: solid 1px #f0f1f3
+    border-radius: 50%
+    width: 60px
+    height: 60px
+    position: absolute
+    top: 50%
+    left: 50%
+    background: #0b1528
+    transform: translate(-50%, -50%)
+
+    &:before
+      content: ''
+      display: block
+      position: relative
+      top: 50%
+      left: 0
+      background: #f0f1f3
+      height 1px
+      width: 60px
+      transform: translate(-100%, -50%)
+
+    &:after
+      z-index 2
+      content: ''
+      display: block
+      position: relative
+      top: 49%
+      right: 0
+      background: #f0f1f3
+      height 1px
+      width: 60px
+      transform: translate(100%, -50%)
+
+  .redCircleWrapper
+    z-index 3
+    position: absolute
+    width: 180px
+    height: 60px
+    overflow: hidden
+    top: 1px
+    left: calc(50% - 90px)
+    transform: translateY(-50%)
+    // transition: width .3s ease-out
+
+    &.transition
+      transition: width .6s ease-out
+
+  .redCircle
+    z-index: 2
+    border: solid 1px #e68f83
+    border-radius: 50%
+    width: 60px
+    height: 60px
+    position: absolute
+    left: 60px
+
+    &:before
+      content: ''
+      display: block
+      position: relative
+      top: 50%
+      left: 0
+      background: #e68f83
+      height 1px
+      width: 60px
+      transform: translate(-100%, -50%)
+
+    &:after
+      z-index 2
+      content: ''
+      display: block
+      position: relative
+      top: 49%
+      right: 0
+      background: #e68f83
+      height 1px
+      width: 60px
+      transform: translate(100%, -50%)
 
   .points
+    z-index: 1
+    position: absolute
+    right: 0
+    top: 0px
+    width: 40px
+    height: 100%
+    display: flex
+    align-items: center
 
     .point
-      width: 20px
-      height: 20px    
-      background: black
+      width: 40px
+      height: 2px
+      background: #f0f1f3
       border-radius: 10px
       border: none
       cursor: pointer
       outline: none
       position: absolute
-      right: 0
+      transition: width .3s ease-out
+
+      &.hidden
+        width: 0

@@ -10,7 +10,8 @@ class SceneLayer extends PixiComponent {
     this.x = props.x || 1
     this.id = props.id
     this.name = props.name
-    this.displacementX = 0
+    this.parralaxValue = props.parralaxValue // ref value given in sceneLayers
+    this.displacementX = 0 // displacement value in px du to parallax value
 
     this.base.x = Math.round(store.size.get().w / 2 * this.x)
     this.base.y = Math.round(store.size.get().h / 2)
@@ -23,8 +24,23 @@ class Scene extends PixiComponent {
     this.sizes = []
     this.offsets = []
     this.interestOffsets = []
+    this.needsUpdate = true
+
+    this.bind()
     this.createLayers()
     this.resize()
+  }
+
+  componentWillUnmount () {
+    this.unbind()
+  }
+
+  bind () {
+    this.listenStore('levelId', this.onLvlChange)
+  }
+
+  unbind () {
+    this.unlistenStore('levelId', this.onLvlChange)
   }
 
   createLayers () {
@@ -37,7 +53,7 @@ class Scene extends PixiComponent {
       const name = layers[i][0]
       let id = Number(name.substring(0, 1))
       if (isNaN(id)) id = 0
-      const layer = this.addComponent(SceneLayer, { z: layers[i][1], id, name: name })
+      const layer = this.addComponent(SceneLayer, { z: layers[i][1], parralaxValue: layers[i][2], id, name: name })
       this.layers[name] = layer
       this.sizes[layer.id] = 0
       if (!this[name]) this[name] = layer
@@ -47,25 +63,27 @@ class Scene extends PixiComponent {
   }
 
   goPos (layer) {
-    let z = this.scale
-    layer.base.scale.x = z
-    layer.base.scale.y = z
-    layer.scale = z
+    let s = this.scale
+    layer.base.scale.x = s
+    layer.base.scale.y = s
+    layer.scale = s
+
+    // console.log(layer.base.z)
 
     // calc offest of each chapters
-    // TODO voir si on peut arreter de calculer un fois qu'on a déjà en stock
-    // ou plutot checker si on a changé de niveau
-    let offset = 0
-    for (let i = 1; i < layer.id; i++) {
-      offset += this.sizes[i]
+    if (this.needsUpdate) {
+      let offset = 0
+      for (let i = 1; i < layer.id; i++) {
+        offset += this.sizes[i]
+      }
+      this.offsets[layer.id] = offset
     }
-    this.offsets[layer.id] = offset
 
     if (layer.props.name === 'hero') {
       layer.base.x = Math.round(store.size.get().w / 2)
       layer.base.y = Math.round(store.size.get().h / 2)
     } else {
-      let p = layer.z * 0.001
+      let p = layer.parralaxValue * 0.001
       // l'offset du layer actuel + sa size divisée par 2, - la size du premier chapitre divisée par 2 vu que perso commence au centre
       const center = this.offsets[layer.id] + this.sizes[layer.id] / 2 - this.sizes[1] / 2
       const dx = camera.x + center
@@ -80,14 +98,26 @@ class Scene extends PixiComponent {
 
       const x = camera.x + layer.displacementX * p
       const y = camera.y + camera.y * p
-      layer.base.x = Math.round(store.size.get().w / 2 + x + offset)
+      layer.base.x = Math.round(store.size.get().w / 2 + x + this.offsets[layer.id])
       layer.base.y = Math.round(store.size.get().h / 2 + y)
     }
   }
 
   updateSizes (layer) {
-    // TODO voir si on peut arreter de calculer un fois qu'on a déjà en stock
+    if (!this.needsUpdate) return
     if (this.sizes[layer.id] < layer.base.width) this.sizes[layer.id] = layer.base.width + 200
+  }
+
+  setLevelId () {
+    let levelId
+    for (let i = 1; i < this.offsets.length; i++) {
+      if ((this.offsets[i] - this.sizes[i] / 2) < camera.x * -1) levelId = i - 1
+    }
+    if (store.levelId.get() !== levelId) store.levelId.set(levelId)
+  }
+
+  onLvlChange () {
+    this.needsUpdate = true
   }
 
   resize (s) {
@@ -110,11 +140,15 @@ class Scene extends PixiComponent {
     this.scale = scale
     store.sceneScale.set(scale)
 
+    this.needsUpdate = true
     super.resize(s)
   }
 
   update (dt) {
+    this.setLevelId()
+
     let n = this.layersKeys.length
+
     while (n--) {
       let layer = this.layers[this.layersKeys[n]]
       this.updateSizes(layer)
@@ -125,6 +159,9 @@ class Scene extends PixiComponent {
       let layer = this.layers[this.layersKeys[n]]
       this.goPos(layer)
     }
+
+    if (this.needsUpdate) this.needsUpdate = false
+
     super.update(dt)
   }
 }

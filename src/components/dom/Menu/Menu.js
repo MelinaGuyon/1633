@@ -33,7 +33,7 @@ class ChronologieButton extends DomComponent {
     const loc = store.loc.get()
 
     return (
-      <button class='nav' data-id={props.id}>{loc['nav.' + props.type]}</button>
+      <button class='nav magnet' data-id={props.id}>{loc['nav.' + props.type]}</button>
     )
   }
 
@@ -59,7 +59,7 @@ class SoundButton extends DomComponent {
     const loc = store.loc.get()
 
     return (
-      <button class='nav-sound' data-id={props.id}>son</button>
+      <button class='nav-sound magnet' data-id={props.id}>son</button>
     )
   }
 
@@ -73,11 +73,11 @@ class SoundButton extends DomComponent {
 
   onClick (e) {
     if (store.musicPlayed.current) {
-	    sound.pause('music_studio')
-	    e.target.innerHTML = 'remettre son'
+      sound.pause('music_studio')
+      e.target.innerHTML = 'remettre son'
     } else {
-	    sound.unpause('music_studio')
-	    e.target.innerHTML = 'couper son'
+      sound.unpause('music_studio')
+      e.target.innerHTML = 'couper son'
     }
   }
 }

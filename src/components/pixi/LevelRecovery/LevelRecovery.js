@@ -1,6 +1,6 @@
 import Level from 'abstractions/Level'
 import Buildings from './CityBuildings'
-import LevelChecks from './LevelChecks'
+import Interests from './Interests'
 import sound from 'controllers/sound'
 
 export default class LevelRecovery extends Level {
@@ -16,6 +16,6 @@ export default class LevelRecovery extends Level {
   }
 
   addColliders () {
-    this.addComponent(LevelChecks)
+    this.addComponent(Interests)
   }
 }

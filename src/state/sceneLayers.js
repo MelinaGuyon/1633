@@ -1,57 +1,43 @@
 // Layers used by the camera, to do parralax
 // no sorting is done after this.
-// keep them in a logical rendering order (back, middle, front)
-// -1000 : fixed
-// 0 : move normally
-// 1000 : move twice the speed
+// keep them in a logical rendering order
+// layer are rendering one by one: that is what give them z position, so you must keep the logic for each chapters
+// -1000 to 0 in bg
+// 0 to 1000 in fg
 
 export default [
-  ['fixed', -1000], // will not move
+  ['fixed', -1000, 0], // will not move
 
-  ['7bg800', -800],
-  ['7bg600', 0],
-  ['7bg400', -400],
-  ['7bg200', -200],
+  ['7bg200', -200, 200],
+  ['7bg100', -100, 100],
 
-  ['6bg800', -800],
-  ['6bg600', 0],
-  ['6bg400', -400],
-  ['6bg200', -200],
+  ['6bg200', -200, 200],
+  ['6bg100', -100, 100],
 
-  ['5bg800', -800],
-  ['5bg600', 0],
-  ['5bg400', -400],
-  ['5bg200', -200],
+  ['5bg200', -200, 200],
+  ['5bg100', -100, 100],
 
-  ['4bg800', -800],
-  ['4bg600', 0],
-  ['4bg400', -400],
-  ['4bg200', -200],
+  ['4bg200', -200, 200],
+  ['4bg100', -100, 100],
 
-  ['3bg800', -800],
-  ['3bg600', 200],
-  ['3bg400', -400],
-  ['3bg200', -200],
+  ['3bg200', -200, 200],
+  ['3bg100', -100, 100],
 
-  ['2bg800', -800],
-  ['2bg600', 200],
-  ['2bg400', 100],
-  ['2bg200', -200],
+  ['2bg200', -200, 200],
+  ['2bg100', -100, 100],
 
-  ['1bg800', -800],
-  ['1bg600', 0],
-  ['1bg400', -400],
-  ['1bg200', -200],
+  ['1bg200', -200, 200],
+  ['1bg100', -100, 100],
 
-  ['prehero', 0], // main layer, behind hero
-  ['hero', 0], // main layer, used only for the hero
+  ['prehero', 0, 0], // main layer, behind hero
+  ['hero', 0, 0], // main layer, used only for the hero
 
-  ['3f200', 200],
-  ['3f650', 650],
+  ['3f100', 100, 100],
+  ['3f200', 200, 200],
 
-  ['2f200', 200],
-  ['2f650', 650],
+  ['2f100', 100, 100],
+  ['2f200', 200, 200],
 
-  ['1f200', 200],
-  ['1f650', 650]
+  ['1f100', 100, 100],
+  ['1f200', 200, 200]
 ]

@@ -2,7 +2,6 @@
 
 import Level from 'abstractions/Level'
 import Interests from './Interests'
-import LevelChecks from './LevelChecks'
 import Buildings from './CityBuildings'
 import TutoCheck from './TutoChecks'
 import SoundCheck from './SoundChecks'
@@ -22,7 +21,6 @@ export default class LevelChurch extends Level {
 
   addColliders () {
     this.addComponent(Interests)
-    this.addComponent(LevelChecks)
 	  let isAlreadyShow
 	  isAlreadyShow = cookie.readCookie('tuto')
 	  if (!isAlreadyShow) {

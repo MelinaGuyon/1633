@@ -11,8 +11,8 @@ let timer = false
 export default class SoundChecks extends PixiComponent {
   setup () {
     this.mains = []
-    this.mains.push(this.addComponent(Colliders, { layer: '2bg600', x: 0, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 's1/s1-1'), name: 's1-1' }))
-    // this.mains.push(this.addComponent(Colliders, { layer: '2bg600', x: 800, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 's1/s1-2'), name: 's1-2' }))
+    this.mains.push(this.addComponent(Colliders, { layer: '2bg200', x: 0, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 's1/s1-1'), name: 's1-1' }))
+    // this.mains.push(this.addComponent(Colliders, { layer: '2bg200', x: 800, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 's1/s1-2'), name: 's1-2' }))
   }
 
   cb (path, state) {

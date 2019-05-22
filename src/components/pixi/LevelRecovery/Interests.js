@@ -8,7 +8,7 @@ export default class Interests extends PixiComponent {
     this.facts = []
 
     this.mains = []
-    this.mains.push(this.addComponent(Colliders, { layer: '1bg200', levelId: 1, x: 100, y: -100, group: 'interests', collide: true, tint: 0xFF0000, cb: this.cb.bind(this, 0) }))
+    this.mains.push(this.addComponent(Colliders, { layer: '7bg200', levelId: 7, x: 100, y: -100, group: 'interests', collide: true, tint: 0xFF0000, cb: this.cb.bind(this, 0) }))
     // this.mains.push(this.addComponent(Colliders, { layer: '2bg200', x: 400, y: -100, group: 'interests', collide: true, tint: 0xFF0000, cb: this.cb.bind(this, 1) }))
 
     this.bind()

@@ -21,7 +21,7 @@ function init () {
     height: window.innerHeight,
     antialias: false,
     resolution: store.pixelRatio.get(),
-    backgroundColor: 0xf9b85c,
+    backgroundColor: 0x0b1528,
     autoResize: false,
     roundPixels: true
   })
