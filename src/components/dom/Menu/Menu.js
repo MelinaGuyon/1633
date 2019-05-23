@@ -145,7 +145,7 @@ class AboutButton extends DomComponent {
     const loc = store.loc.get()
 
     return (
-      <button class='nav-about magnet' data-id={props.id}>{loc['nav.' + props.type]}</button>
+      <button class='nav nav-about magnet' data-id={props.id}>{loc['nav.' + props.type]}</button>
     )
   }
 
