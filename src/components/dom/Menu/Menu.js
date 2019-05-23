@@ -58,8 +58,13 @@ class ChronologieButton extends DomComponent {
 class SoundButton extends DomComponent {
   template (props) {
     return (
-      <button class='nav-sound magnet' data-id={props.id}>
-        ...
+      <button class='nav-sound__btn magnet' data-id={props.id}>
+        <div class='l1' />
+        <div class='l2' />
+        <div class='l3' />
+        <div class='l4' />
+        <div class='l5' />
+        <div class='l6' />
       </button>
     )
   }
@@ -75,12 +80,10 @@ class SoundButton extends DomComponent {
   onClick (e) {
     if (store.musicPlayed.current) {
       sound.pause('music_studio')
-      // e.target.innerHTML = 'remettre son'
       e.target.closest('.nav-sound__btn').className = 'nav-sound__btn pause'
     } else {
       sound.unpause('music_studio')
       e.target.closest('.nav-sound__btn').className = 'nav-sound__btn'
-      // e.target.innerHTML = 'couper son'
     }
   }
 }
@@ -90,9 +93,9 @@ class PlayPauseButton extends DomComponent {
     return (
       <button class='nav-playpause magnet' data-id={props.id}>
         <div class='nav-playpause__btn'>
-          <div class='b1' />
-          <div class='b2' />
-          <div class='b3' />
+          <div class='l1' />
+          <div class='l2' />
+          <div class='l3' />
         </div>
       </button>
     )
@@ -107,17 +110,12 @@ class PlayPauseButton extends DomComponent {
   }
 
   onClick (e) {
-    console.log(store.pause.get())
     if (!store.pause.get()) {
-      // sound.pause('music_studio')
-      // e.target.innerHTML = 'remettre son'
 	    store.pause.set(true)
       e.target.closest('.nav-playpause__btn').className = 'nav-playpause__btn pause'
     } else {
-      // sound.unpause('music_studio')
 	    store.pause.set(false)
       e.target.closest('.nav-playpause__btn').className = 'nav-playpause__btn'
-      // e.target.innerHTML = 'couper son'
     }
   }
 }

@@ -60,27 +60,68 @@
           display: block;
           transition: all 0.5s;
 
-        .b1
+        .l1
           -webkit-transform: translate(-0px,-3px) rotate(30deg);
           transform: translate(-0px,-3px) rotate(30deg);
 
-        .b2
+        .l2
           -webkit-transform: translate(-5px,0px) rotate(90deg);
           transform: translate(-5px,0px) rotate(90deg);
 
-        .b3
+        .l3
           -webkit-transform: translate(-0px,3px) rotate(-30deg);
           transform: translate(-0px,3px) rotate(-30deg);
 
         &.pause
-          .b1
+          .l1
             -webkit-transform: translate(3px,0px) rotate(90deg);
             transform: translate(3px,0px) rotate(90deg);
 
-          .b2
+          .l2
             -webkit-transform: translate(-3px,0px) rotate(90deg);
             transform: translate(-3px,0px) rotate(90deg);
 
-          .b3
+          .l3
             -webkit-transform: translate(-3px,0px) rotate(90deg);
             transform: translate(-3px,0px) rotate(90deg);
+
+    &-sound
+      &__btn
+        &.pause
+          .l1, .l2, .l3, .l4, .l5, .l6
+            animation none
+        div
+          height: 2px
+          width: 1px
+          display inline-block
+          margin-right 2px
+          background-color #fff
+          transition: 1s ease
+
+        .l1, .l3
+          animation-duration: 1s;
+          animation-name: sound;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+
+        .l2, .l5
+          animation-duration: .6s;
+          animation-name: sound;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+
+        .l4, .l6
+          animation-duration: 2s;
+          animation-name: sound;
+          animation-iteration-count: infinite;
+
+
+@keyframes sound {
+  from {
+    height: 0
+  }
+
+  to {
+    height: 5px
+  }
+}
