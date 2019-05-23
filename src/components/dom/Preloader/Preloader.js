@@ -1,13 +1,14 @@
 import './Preloader.styl'
 
 import { h, addRef } from '@internet/dom'
+import { raf } from '@internet/raf'
 import logger from 'utils/logger'
 import { loader, SCALE_MODES } from 'pixi.js'
 import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
 import cachebust from 'utils/cachebust'
 import sound from 'controllers/sound'
-import anime from 'animejs'
+import Inrtia from 'inrtia'
 
 function isFromAnim (tex, anims) {
   for (let k in anims) {
@@ -37,7 +38,34 @@ export default class Preloader extends DomComponent {
 
   componentDidMount () {
     this.log = logger('Preloader', '#47b342').log
+    this.bind()
+    this.initInertia()
     this.load()
+  }
+
+  componentWillUnmount () {
+    this.unbind()
+  }
+
+  bind () {
+    raf.add(this.updateInertia.bind(this))
+  }
+
+  unbind () {
+    raf.remove(this.updateInertia)
+  }
+
+  initInertia () {
+    const inrtiaOptions = {
+      value: 0,
+      friction: 40,
+      precision: 5,
+      perfectStop: true,
+      interpolation: 'linear'
+    }
+    this.inrtia = {
+      percent: new Inrtia(inrtiaOptions)
+    }
   }
 
   createTexFromAtlas (atlas, key) {
@@ -67,7 +95,7 @@ export default class Preloader extends DomComponent {
       const atlasesKeys = Object.keys(atlases)
       for (let k in atlases) loader.add(k, cachebust(atlases[k])) // add version to cachebust
 
-      // Trigger loading from Pixi Loader
+      loader.onProgress.add(() => { this.animeLoader(loader.progress) })
       loader.load((loader, resources) => {
         for (let k in resources) {
           if (~atlasesKeys.indexOf(k)) this.createTexFromAtlas(resources[k], k)
@@ -77,22 +105,34 @@ export default class Preloader extends DomComponent {
     })
   }
 
+  animeLoader (progress) {
+    this.inrtia.percent.to(progress)
+  }
+
+  updateInertia () {
+    if (!this.inrtia.percent.stopped) {
+      this.inrtia.percent.update()
+      this.wrapper.style.height = `${this.inrtia.percent.value}%`
+      if (this.inrtia.percent.value > 98) this.animationCompleted = true
+    }
+  }
+
   load () {
     sound.setup()
 
     Promise.all([this.pixiLoad()])
       .then(() => {
-        this.log('complete')
-        anime({
-          targets: this.wrapper,
-          height: [0, '100%'],
-          duration: 900,
-          easing: 'easeOutCubic',
-          complete: () => {
-            this.props.onComplete() // launch game
-            this.prld.classList.add('loaded')
-          }
-        })
+        this.intervalId = setInterval(() => {
+          if (this.animationCompleted) this.completeLoading()
+        }, 10)
       })
+  }
+
+  completeLoading () {
+    clearInterval(this.intervalId)
+    this.unbind()
+    this.log('complete')
+    this.props.onComplete() // launch game
+    this.prld.classList.add('loaded')
   }
 }
