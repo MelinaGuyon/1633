@@ -60,7 +60,13 @@ class SoundButton extends DomComponent {
     const loc = store.loc.get()
 
     return (
-      <button class='nav-sound magnet' data-id={props.id}>son</button>
+      <button class='nav-sound magnet' data-id={props.id}>
+        <div class='nav-sound__btn'>
+          <div class='b1' />
+          <div class='b2' />
+          <div class='b3' />
+        </div>
+      </button>
     )
   }
 
@@ -75,10 +81,12 @@ class SoundButton extends DomComponent {
   onClick (e) {
     if (store.musicPlayed.current) {
       sound.pause('music_studio')
-      e.target.innerHTML = 'remettre son'
+     // e.target.innerHTML = 'remettre son'
+      e.target.closest('.nav-sound__btn').className = 'nav-sound__btn pause'
     } else {
       sound.unpause('music_studio')
-      e.target.innerHTML = 'couper son'
+      e.target.closest('.nav-sound__btn').className = 'nav-sound__btn'
+     // e.target.innerHTML = 'couper son'
     }
   }
 }
@@ -147,27 +155,24 @@ class AboutButton extends DomComponent {
   }
 }
 
-
 class SocialButton extends DomComponent {
-	template (props) {
-		const loc = store.loc.get()
+  template (props) {
+    return (
+      <button class='nav-social magnet' data-id={props.id}> {props.type}</button>
+    )
+  }
 
-		return (
-			<button class='nav-social magnet' data-id={props.id}> {props.type}</button>
-		)
-	}
+  componentDidMount () {
+    this.bind()
+  }
 
-	componentDidMount () {
-		this.bind()
-	}
+  bind () {
+    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+  }
 
-	bind () {
-		this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
-	}
+  onClick (e) {
 
-	onClick (e) {
-
-	}
+  }
 }
 
 export default class Menu extends DomComponent {

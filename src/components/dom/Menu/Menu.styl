@@ -40,3 +40,47 @@
       outline: none
       display block
       margin 10px 0
+
+  .nav
+    &-sound
+      &__btn
+        position: relative;
+        height: 40px;
+        width: 40px;
+        display: block!important;
+
+        div
+          top: 15px;
+          left: 15px;
+          margin: -1px 0 0 -7px;
+          width: 13px;
+          height: 1px;
+          position: absolute;
+          background: #fff;
+          display: block;
+          transition: all 0.5s;
+
+        .b1
+          -webkit-transform: translate(-0px,-3px) rotate(30deg);
+          transform: translate(-0px,-3px) rotate(30deg);
+
+        .b2
+          -webkit-transform: translate(-5px,0px) rotate(90deg);
+          transform: translate(-5px,0px) rotate(90deg);
+
+        .b3
+          -webkit-transform: translate(-0px,3px) rotate(-30deg);
+          transform: translate(-0px,3px) rotate(-30deg);
+
+        &.pause
+          .b1
+            -webkit-transform: translate(3px,0px) rotate(90deg);
+            transform: translate(3px,0px) rotate(90deg);
+
+          .b2
+            -webkit-transform: translate(-3px,0px) rotate(90deg);
+            transform: translate(-3px,0px) rotate(90deg);
+
+          .b3
+            -webkit-transform: translate(-3px,0px) rotate(90deg);
+            transform: translate(-3px,0px) rotate(90deg);

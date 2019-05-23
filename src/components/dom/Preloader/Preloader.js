@@ -1,11 +1,14 @@
 import './Preloader.styl'
 
+import { h, addRef } from '@internet/dom'
+import { raf } from '@internet/raf'
 import logger from 'utils/logger'
 import { loader, SCALE_MODES } from 'pixi.js'
 import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
 import cachebust from 'utils/cachebust'
 import sound from 'controllers/sound'
+import Inrtia from 'inrtia'
 
 function isFromAnim (tex, anims) {
   for (let k in anims) {
@@ -18,12 +21,51 @@ function isFromAnim (tex, anims) {
 
 export default class Preloader extends DomComponent {
   template ({ base }) {
-    return base
+    const loc = store.loc.get()
+    return (
+      <section class='prld fxd' ref={addRef(this, 'prld')}>
+        <div class='title-container-l1'>
+          <div class='title-container-l2'>
+            <h2 class='title-bordered'>{loc['site.title']}</h2>
+            <div class='title-wrapper' ref={addRef(this, 'wrapper')}>
+              <h2 class='title-full'>{loc['site.title']}</h2>
+            </div>
+          </div>
+        </div>
+      </section>
+    )
   }
 
   componentDidMount () {
     this.log = logger('Preloader', '#47b342').log
+    this.bind()
+    this.initInertia()
     this.load()
+  }
+
+  componentWillUnmount () {
+    this.unbind()
+  }
+
+  bind () {
+    raf.add(this.updateInertia.bind(this))
+  }
+
+  unbind () {
+    raf.remove(this.updateInertia)
+  }
+
+  initInertia () {
+    const inrtiaOptions = {
+      value: 0,
+      friction: 40,
+      precision: 5,
+      perfectStop: true,
+      interpolation: 'linear'
+    }
+    this.inrtia = {
+      percent: new Inrtia(inrtiaOptions)
+    }
   }
 
   createTexFromAtlas (atlas, key) {
@@ -53,7 +95,7 @@ export default class Preloader extends DomComponent {
       const atlasesKeys = Object.keys(atlases)
       for (let k in atlases) loader.add(k, cachebust(atlases[k])) // add version to cachebust
 
-      // Trigger loading from Pixi Loader
+      loader.onProgress.add(() => { this.animeLoader(loader.progress) })
       loader.load((loader, resources) => {
         for (let k in resources) {
           if (~atlasesKeys.indexOf(k)) this.createTexFromAtlas(resources[k], k)
@@ -63,15 +105,34 @@ export default class Preloader extends DomComponent {
     })
   }
 
+  animeLoader (progress) {
+    this.inrtia.percent.to(progress)
+  }
+
+  updateInertia () {
+    if (!this.inrtia.percent.stopped) {
+      this.inrtia.percent.update()
+      this.wrapper.style.height = `${this.inrtia.percent.value}%`
+      if (this.inrtia.percent.value > 98) this.animationCompleted = true
+    }
+  }
+
   load () {
     sound.setup()
 
     Promise.all([this.pixiLoad()])
       .then(() => {
-        this.log('complete')
-        this.props.onComplete()
-	      let loader = document.querySelector('.prld')
-        loader.classList.add('load')
+        this.intervalId = setInterval(() => {
+          if (this.animationCompleted) this.completeLoading()
+        }, 10)
       })
+  }
+
+  completeLoading () {
+    clearInterval(this.intervalId)
+    this.unbind()
+    this.log('complete')
+    this.props.onComplete() // launch game
+    this.prld.classList.add('loaded')
   }
 }
