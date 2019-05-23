@@ -57,11 +57,39 @@ class ChronologieButton extends DomComponent {
 
 class SoundButton extends DomComponent {
   template (props) {
-    const loc = store.loc.get()
-
     return (
       <button class='nav-sound magnet' data-id={props.id}>
-        <div class='nav-sound__btn'>
+        ...
+      </button>
+    )
+  }
+
+  componentDidMount () {
+    this.bind()
+  }
+
+  bind () {
+    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+  }
+
+  onClick (e) {
+    if (store.musicPlayed.current) {
+      sound.pause('music_studio')
+      // e.target.innerHTML = 'remettre son'
+      e.target.closest('.nav-sound__btn').className = 'nav-sound__btn pause'
+    } else {
+      sound.unpause('music_studio')
+      e.target.closest('.nav-sound__btn').className = 'nav-sound__btn'
+      // e.target.innerHTML = 'couper son'
+    }
+  }
+}
+
+class PlayPauseButton extends DomComponent {
+  template (props) {
+    return (
+      <button class='nav-playpause magnet' data-id={props.id}>
+        <div class='nav-playpause__btn'>
           <div class='b1' />
           <div class='b2' />
           <div class='b3' />
@@ -79,37 +107,18 @@ class SoundButton extends DomComponent {
   }
 
   onClick (e) {
-    if (store.musicPlayed.current) {
-      sound.pause('music_studio')
-     // e.target.innerHTML = 'remettre son'
-      e.target.closest('.nav-sound__btn').className = 'nav-sound__btn pause'
+    console.log(store.pause.get())
+    if (!store.pause.get()) {
+      // sound.pause('music_studio')
+      // e.target.innerHTML = 'remettre son'
+	    store.pause.set(true)
+      e.target.closest('.nav-playpause__btn').className = 'nav-playpause__btn pause'
     } else {
-      sound.unpause('music_studio')
-      e.target.closest('.nav-sound__btn').className = 'nav-sound__btn'
-     // e.target.innerHTML = 'couper son'
+      // sound.unpause('music_studio')
+	    store.pause.set(false)
+      e.target.closest('.nav-playpause__btn').className = 'nav-playpause__btn'
+      // e.target.innerHTML = 'couper son'
     }
-  }
-}
-
-class MenuButton extends DomComponent {
-  template (props) {
-    const loc = store.loc.get()
-
-    return (
-      <button class='nav-menu magnet' data-id={props.id}>...</button>
-    )
-  }
-
-  componentDidMount () {
-    this.bind()
-  }
-
-  bind () {
-    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
-  }
-
-  onClick (e) {
-
   }
 }
 
@@ -185,8 +194,8 @@ export default class Menu extends DomComponent {
         </div>
         <div class='menu__left-center'>
           <LangButton type={'lang'} id={3} />
-          <MenuButton type={'menu'} id={4} />
           <SoundButton type={'sound'} id={5} />
+          <PlayPauseButton type={'playpause'} id={4} />
         </div>
         <div class='menu__right-center'>
           <SocialButton type={'fb'} />
