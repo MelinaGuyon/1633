@@ -7,9 +7,39 @@
   left: 0
   z-index 30
   display block
-  
-  p, span
-    color: #fff
+  transition: opacity .3s ease-out
 
-  &.load
-    display: none
+  .title-container-l1
+    position: absolute
+    width: 100%
+    height 100%
+    display: flex
+    justify-content: center
+    align-items: center
+
+  .title-container-l2
+    position relative
+
+    .title-wrapper
+      position absolute
+      top: 0
+      height 0
+      overflow hidden
+
+  h2
+    letter-spacing: 28px
+    font-size: 140px
+    color: #fff
+    position relative
+
+    &.title-bordered
+      color: black
+      text-shadow: 1px 0 0 #333, -1px 0 0 #333, 0 1px 0 #333, 0 -1px 0 #333, 1px 1px #333, -1px -1px 0 #333, 1px -1px 0 #333, -1px 1px 0 #333;
+
+
+    &.title-full
+      // opacity : 0
+
+  &.loaded
+    opacity: 0
+    pointer-events: none

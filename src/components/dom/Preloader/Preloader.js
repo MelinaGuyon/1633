@@ -1,11 +1,13 @@
 import './Preloader.styl'
 
+import { h, addRef } from '@internet/dom'
 import logger from 'utils/logger'
 import { loader, SCALE_MODES } from 'pixi.js'
 import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
 import cachebust from 'utils/cachebust'
 import sound from 'controllers/sound'
+import anime from 'animejs'
 
 function isFromAnim (tex, anims) {
   for (let k in anims) {
@@ -18,7 +20,19 @@ function isFromAnim (tex, anims) {
 
 export default class Preloader extends DomComponent {
   template ({ base }) {
-    return base
+    const loc = store.loc.get()
+    return (
+      <section class='prld fxd' ref={addRef(this, 'prld')}>
+        <div class='title-container-l1'>
+          <div class='title-container-l2'>
+            <h2 class='title-bordered'>{loc['site.title']}</h2>
+            <div class='title-wrapper' ref={addRef(this, 'wrapper')}>
+              <h2 class='title-full'>{loc['site.title']}</h2>
+            </div>
+          </div>
+        </div>
+      </section>
+    )
   }
 
   componentDidMount () {
@@ -69,9 +83,16 @@ export default class Preloader extends DomComponent {
     Promise.all([this.pixiLoad()])
       .then(() => {
         this.log('complete')
-        this.props.onComplete()
-	      let loader = document.querySelector('.prld')
-        loader.classList.add('load')
+        anime({
+          targets: this.wrapper,
+          height: [0, '100%'],
+          duration: 900,
+          easing: 'easeOutCubic',
+          complete: () => {
+            this.props.onComplete() // launch game
+            this.prld.classList.add('loaded')
+          }
+        })
       })
   }
 }

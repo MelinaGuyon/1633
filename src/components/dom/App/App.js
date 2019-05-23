@@ -19,9 +19,8 @@ export default class App extends DomComponent {
     this.render(
       <Preloader
         ref={addRef(this, 'preloader')}
-        base={this.base.querySelector('.prld')}
         onComplete={this.fastbind('didPreload')}
-      />)
+      />, this.base)
   }
 
   didPreload () {
