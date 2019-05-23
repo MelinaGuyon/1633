@@ -75,7 +75,7 @@ export default createStore({
 
   // ---- assets to preload ----
   atlases: {
-    sheet: 'assets/test1.json',
+    sheet: 'assets/pharmacien.json',
     smoothsheet: 'assets/atlas-smooth.json'
   },
   images: {
