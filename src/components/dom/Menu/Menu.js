@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs,no-tabs */
 import { h } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
@@ -82,18 +83,89 @@ class SoundButton extends DomComponent {
   }
 }
 
+class MenuButton extends DomComponent {
+  template (props) {
+    const loc = store.loc.get()
+
+    return (
+      <button class='nav-menu magnet' data-id={props.id}>...</button>
+    )
+  }
+
+  componentDidMount () {
+    this.bind()
+  }
+
+  bind () {
+    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+  }
+
+  onClick (e) {
+
+  }
+}
+
+class LangButton extends DomComponent {
+  template (props) {
+    return (
+      <button class='nav-lang magnet' data-id={props.id}>EN</button>
+    )
+  }
+
+  componentDidMount () {
+    this.bind()
+  }
+
+  bind () {
+    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+  }
+
+  onClick (e) {
+
+  }
+}
+
+class AboutButton extends DomComponent {
+  template (props) {
+    const loc = store.loc.get()
+
+    return (
+      <button class='nav-about magnet' data-id={props.id}>{loc['nav.' + props.type]}</button>
+    )
+  }
+
+  componentDidMount () {
+    this.bind()
+  }
+
+  bind () {
+    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+  }
+
+  onClick (e) {
+
+  }
+}
+
 export default class Menu extends DomComponent {
   template ({ base }) {
     return (
       <section class='menu'>
-        <Button type={'university'} id={0} />
-        <Button type={'church'} id={1} />
-        <Button type={'profanation'} id={2} />
-        <ChronologieButton type={'chronologie'} id={3} />
-        <SoundButton type={'sound'} id={4} />
+        <div class='menu__top-right'>
+          <ChronologieButton type={'chronologie'} id={1} />
+          <AboutButton type={'about'} id={2} />
+        </div>
+        <div class='menu__left-center'>
+          <LangButton type={'lang'} id={3} />
+          <MenuButton type={'menu'} id={4} />
+          <SoundButton type={'sound'} id={5} />
+        </div>
       </section>
     )
   }
+  // <Button type={'university'} id={0} />
+  // <Button type={'church'} id={1} />
+  // <Button type={'profanation'} id={2} />
 
   componentDidMount () {
   }
