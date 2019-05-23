@@ -147,6 +147,29 @@ class AboutButton extends DomComponent {
   }
 }
 
+
+class SocialButton extends DomComponent {
+	template (props) {
+		const loc = store.loc.get()
+
+		return (
+			<button class='nav-social magnet' data-id={props.id}> {props.type}</button>
+		)
+	}
+
+	componentDidMount () {
+		this.bind()
+	}
+
+	bind () {
+		this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+	}
+
+	onClick (e) {
+
+	}
+}
+
 export default class Menu extends DomComponent {
   template ({ base }) {
     return (
@@ -159,6 +182,11 @@ export default class Menu extends DomComponent {
           <LangButton type={'lang'} id={3} />
           <MenuButton type={'menu'} id={4} />
           <SoundButton type={'sound'} id={5} />
+        </div>
+        <div class='menu__right-center'>
+          <SocialButton type={'fb'} />
+          <SocialButton type={'twi'} />
+          <SocialButton type={'in'} />
         </div>
       </section>
     )
