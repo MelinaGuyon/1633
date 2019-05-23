@@ -8,9 +8,7 @@ import './MouseMv.styl'
 export default class MouseMv extends DomComponent {
 	template ({ base }) {
 		return (
-			<section class='mouse'>
-				X
-			</section>
+			<section class='mouse'></section>
 		)
 	}
 
