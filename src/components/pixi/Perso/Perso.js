@@ -12,7 +12,7 @@ export default class Perso extends PixiComponent {
     this.oldDirection = null
     this.state = {}
 
-    this.refs.perso = this.addChild('animation-static/animation')
+    this.refs.perso = this.addChild('pharmacien-b.png')
     this.anim = new Animator(this.refs.perso)
     // this.anim.play('animation-static/animation', { loop: true, frameDuration: 600 })
     this.base.fakeX = 0

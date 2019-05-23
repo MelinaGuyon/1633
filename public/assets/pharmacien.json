@@ -1,0 +1,66 @@
+{"frames": {
+
+"pharmacien-a.png":
+{
+	"frame": {"x":1,"y":634,"w":363,"h":307},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":17,"w":363,"h":307},
+	"sourceSize": {"w":378,"h":337},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pharmacien-b.png":
+{
+	"frame": {"x":1236,"y":1,"w":151,"h":266},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":0,"w":151,"h":266},
+	"sourceSize": {"w":168,"h":266},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pharmacien-c.png":
+{
+	"frame": {"x":310,"y":634,"w":619,"h":318},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":5,"w":619,"h":318},
+	"sourceSize": {"w":626,"h":335},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pharmacien-d.png":
+{
+	"frame": {"x":931,"y":634,"w":281,"h":414},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":281,"h":414},
+	"sourceSize": {"w":283,"h":416},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pharmacien-e.png":
+{
+	"frame": {"x":1236,"y":269,"w":141,"h":219},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":141,"h":219},
+	"sourceSize": {"w":142,"h":219},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pharmacien-f.png":
+{
+	"frame": {"x":1,"y":1,"w":1233,"h":631},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":0,"w":1233,"h":631},
+	"sourceSize": {"w":1299,"h":631},
+	"anchor": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "pharmacien.png",
+	"format": "RGBA8888",
+	"size": {"w":1388,"h":998},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:754d0dbe47c7ac1cfc4f835dabde9ea5:2804a812e408b61cff240ec584e41a17:7c47770840da98c044c00eec6446cf02$"
+}
+}
