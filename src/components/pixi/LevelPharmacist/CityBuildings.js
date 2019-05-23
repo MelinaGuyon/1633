@@ -4,8 +4,12 @@ import Building from './CityBuilding'
 export default class CityBuildings extends PixiComponent {
   setup () {
     this.mains = []
-    this.mains.push(this.addComponent(Building, { layer: '5bg200', x: 0, y: -162, scale: 0.4, tint: 0x77ddff }))
-    this.mains.push(this.addComponent(Building, { layer: '5bg200', x: 0, type: 'a', scale: 0.4, y: -150 }))
+    this.mains.push(this.addComponent(Building, { layer: '5bg100', x: 300, type: 'a', scale: 0.9, y: -50 }))
+    this.mains.push(this.addComponent(Building, { layer: '5bg200', x: 300, type: 'b', y: -50, scale: 0.9 }))
+    this.mains.push(this.addComponent(Building, { layer: '5bg300', x: 300, type: 'c', scale: 0.9, y: -50 }))
+    this.mains.push(this.addComponent(Building, { layer: '5bg200', x: -200, type: 'd', scale: 0.9, y: -100 }))
+    this.mains.push(this.addComponent(Building, { layer: '5bg300', x: -500, type: 'e', scale: 0.9, y: -150 }))
+    this.mains.push(this.addComponent(Building, { layer: '5bg400', x: 0, type: 'f', scale: 0.9, y: -50 }))
   }
 
   componentWillUnmount () {
