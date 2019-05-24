@@ -20,12 +20,19 @@ function init (element) {
 
   initInertia(this)
   bind(this)
+
+  // this.mouseTarget = null
+  // this.mouse = document.querySelector('.mouse')
+  // this.mouseWidth = getComputedStyle(this.mouse).width
+  // this.mouseHeight = getComputedStyle(this.mouse).height
+
+  // this.magnetsElements = document.querySelectorAll('.magnet')
 }
 
 function bind (ctx) {
   window.addEventListener('mousemove', handleMove.bind(ctx), { passive: true })
   raf.add(updateInertia.bind(ctx))
-  // setTimeout(() => { bindEls(ctx) }, 1000)
+  setTimeout(() => { bindEls(ctx) }, 1000)
 }
 
 function bindEls (ctx) {
@@ -72,22 +79,6 @@ function handleMove (event) {
   const y = event.clientY - val
   this.inrtia.x.to(x)
   this.inrtia.y.to(y)
-
-  this.domElsConcerned = document.querySelectorAll('.magnet')
-  for (let i = 0; i < this.domElsConcerned.length; i++) {
-    this.elX = parseInt(this.domElsConcerned[i].getBoundingClientRect().left, 10)
-    this.elY = parseInt(this.domElsConcerned[i].getBoundingClientRect().top, 10)
-
-    // console.log(this.elX, event.clientX)
-
-    if (event.clientX <= this.elX + 60 && event.clientX >= this.elX - 60 
-      && event.clientY >= this.elY - 60 && event.clientY <= this.elY + 60) {
-      handleMouseEnter(this, this.domElsConcerned[i])
-    }
-    else {
-      handleMouseLeave(this)
-    }
-  }
 }
 
 function updateInertia () {
@@ -99,18 +90,17 @@ function updateInertia () {
   }
 }
 
-function handleMouseEnter (ctx, el) {
-  console.log('enter')
-  reveal(ctx, el)
+function handleMouseEnter (el, event) {
+  reveal(this, el)
 }
 
-function handleMouseLeave (ctx) {
-  console.log('leave')
-  reset(ctx)
+function handleMouseLeave (event) {
+  reset(this)
 }
 
 function reveal (ctx, el) {
   ctx.cursorContainer.classList.add('reveal')
+  console.log(el)
   ctx.elementX = parseInt(el.offsetLeft, 10) - 5
   ctx.elementY = parseInt(el.getBoundingClientRect().top, 10) - 2.5
   ctx.elementWidth = parseInt(getComputedStyle(el).width, 10) + 10
@@ -120,6 +110,8 @@ function reveal (ctx, el) {
     targets: ctx.cursorContainer,
     width: ctx.elementWidth,
     height: ctx.elementHeight,
+    // left: ctx.elementX,
+    // top: ctx.elementY,
     easing: 'easeOutCubic',
     duration: 500
   })
@@ -144,27 +136,78 @@ function reset (ctx) {
   ctx.innerRing.style.removeProperty('border')
 }
 
-// function onMouseMove (element, event) {
-// // store a reference to the data
-// // the reason for this is because of multitouch
-// // we want to track the movement of this particular touch
-// this.data = event.data
-// let mouseDiv = document.getElementsByClassName('mouse')
+/////////////////////////////////////////////////////////////////////
 
-// // if (event.target.className === 'mouse__close-zone' || event.target.closest('.mouse__close-zone')) {
-//   mouseDiv[0].className = 'mouse active'
-// // } else {
-// //   mouseDiv[0].className = 'mouse'
-// // }
-// }
+function onMouseMove (element, event) {
+  // store a reference to the data
+  // the reason for this is because of multitouch
+  // we want to track the movement of this particular touch
+  this.data = event.data
+  let x = event.clientX
+  let y = event.clientY
+  let mouseDiv = document.getElementsByClassName('mouse')
 
-// function clickClose (event) {
-//   let element = event.target.closest('.mouse__close')
-//   let type = element.getAttribute('data-type')
-//   type += ' mouse__close hide'
-//   event.target.closest('.mouse__close').className = type
-//   store.pause.set(true)
-// }
+  // if (event.target.className === 'mouse__close-zone' || event.target.closest('.mouse__close-zone')) {
+	  mouseDiv[0].className = 'mouse active'
+	  mouseDiv[0].style.left = (x - 15) + 'px'
+	  mouseDiv[0].style.top = (y - 15) + 'px'
+  // } else {
+  //   mouseDiv[0].className = 'mouse'
+  // }
+
+  this.mouseX = x
+  this.mouseY = y
+
+  for (let i = 0; i < this.magnetsElements.length; i++) {
+
+    this.elementX = parseInt(this.magnetsElements[i].offsetLeft, 10) - 5
+    this.elementY = parseInt(this.magnetsElements[i].getBoundingClientRect().top, 10) - 2.5
+    this.elementWidth = parseInt(getComputedStyle(this.magnetsElements[i]).width, 10) + 10
+    this.elementHeight = parseInt(getComputedStyle(this.magnetsElements[i]).height, 10) + 5
+
+    if (this.mouseTarget !== this.magnetsElements[i] && this.mouseX <= this.elementX + 60 && this.mouseX >= this.elementX - 60 && this.mouseY >= this.elementY - 60 && this.mouseY <= this.elementY + 60) {
+
+      this.mouseTarget = this.magnetsElements[i]
+      console.log('magnet')
+
+      // anime({
+      //   targets: this.mouse,
+      //   left: [this.mouse.offsetLeft, this.elementX],
+      //   top: [this.mouse.offsetTop, this.elementY],
+      //   width: [this.mouseWidth, this.elementWidth],
+      //   height: [this.mouseHeight, this.elementHeight],
+      //   easing: 'easeOutCubic',
+      //   duration: 500
+      // })
+
+      let that = this
+
+      setTimeout(function () {
+        that.magnetDone = true
+      }, 800)
+    }
+  }
+
+  if (this.magnetDone === true) {
+    // anime({
+    //   targets: this.mouse,
+    //   width: [getComputedStyle(this.mouse).width, this.mouseWidth],
+    //   height: [getComputedStyle(this.mouse).height, this.mouseHeight],
+    //   easing: 'easeOutCubic',
+    //   duration: 100
+    // })
+
+    this.magnetDone = false
+  }
+}
+
+function clickClose (event) {
+  let element = event.target.closest('.mouse__close')
+  let type = element.getAttribute('data-type')
+  type += ' mouse__close hide'
+  event.target.closest('.mouse__close').className = type
+  store.pause.set(true)
+}
 
 export default {
   init
