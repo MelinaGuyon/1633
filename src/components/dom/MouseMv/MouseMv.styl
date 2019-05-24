@@ -12,19 +12,11 @@
     width: 66px
     height: 66px
 
-  &.target
-    width: 26px
-    height: 26px
-
-  &.hold
-    width: 32px
-    height: 32px
+    .ring
+      border: solid #c8c8c8 1px
 
     .dot
-      width: 14px
-      height: 14px
-      border-radius: 50%
-      transform-origin: center
+      background: #c8c8c8
 
   .dot
     position: absolute
@@ -33,13 +25,13 @@
     transform: translate(-50)
     width: 2px
     height: 2px
-    background: #c8c8c8
+    background: #e68f83
     opacity: 0.7
     border-radius: 0px
-    transition: border-radius .3s ease, width .3s ease, height .3s ease
+    transition: background .3s ease, border-radius .3s ease, width .3s ease, height .3s ease
 
   .ring
-    border: solid #ffffff
+    border: solid #e68f83 1px
     position: absolute
     top: 0
     left: 0
@@ -47,21 +39,4 @@
     height: 100%
     border-radius: 50%
     animation: rotate .8s linear infinite
-
-    .outer, .inner
-      position: absolute
-      top: 0
-      left: 0
-      width: 100%
-      height: 100%
-      display: inline-block
-
-    .outer
-      transform: scaleX(0.0625)
-      filter: blur(2px)
-
-    .inner
-      border: 1px solid rgba(0,0,0,0.25)
-      transform: scaleX(16)
-      border-radius: 50%
-      transition: border .3s ease
+    transition: border .3s ease-out

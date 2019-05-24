@@ -37,12 +37,8 @@ function bindEls () {
 }
 
 function unbind () {
-  // window.removeEventListener('mousemove', handleMove, { passive: true })
-  // domElsConcerned.forEach((el) => {
-  //   el.removeEventListener('mouseenter', handleMouseEnter, { passive: true })
-  //   el.removeEventListener('mouseleave', handleMouseLeave, { passive: true })
-  // })
-  // raf.remove(updateInertia)
+  window.removeEventListener('mousemove', handleMove, { passive: true })
+  raf.remove(updateInertia)
 }
 
 function initInertia () {
@@ -66,8 +62,6 @@ function handleMove (event) {
 
   let val = 26
   if (cursorContainer.classList.contains('reveal')) val = 33
-  else if (cursorContainer.classList.contains('target')) val = 13
-  else if (cursorContainer.classList.contains('hold')) val = 10
 
   const x = event.clientX - val
   const y = event.clientY - val
