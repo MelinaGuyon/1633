@@ -122,9 +122,10 @@ export default class Preloader extends DomComponent {
 
     Promise.all([this.pixiLoad()])
       .then(() => {
-        this.intervalId = setInterval(() => {
-          if (this.animationCompleted) this.completeLoading()
-        }, 10)
+        // this.intervalId = setInterval(() => {
+        //   if (this.animationCompleted) this.completeLoading()
+        // }, 10)
+        this.completeLoading() // temp
       })
   }
 
