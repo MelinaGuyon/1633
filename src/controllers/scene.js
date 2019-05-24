@@ -83,7 +83,7 @@ class Scene extends PixiComponent {
     } else {
       let p = layer.parralaxValue * 0.001
       // l'offset du layer actuel + sa size divisée par 2, - la size du premier chapitre divisée par 2 vu que perso commence au centre
-      const center = this.offsets[layer.id] + this.sizes[layer.id] / 2 - this.sizes[1] / 2
+      const center = this.offsets[layer.id]
       const dx = camera.x + center
 
       if (Math.abs(dx) < this.sizes[layer.id] / 2) {

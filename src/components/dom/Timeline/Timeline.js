@@ -145,8 +145,6 @@ export default class Timeline extends DomComponent {
       x = ((this.pointDist - this.currentPoint.endingX - this.pointSize) * ratio) + this.pointDist
     }
 
-    console.log(actualMooveStart, distStart)
-
     this.currentPoint.base.style.transform = `translateX(-${x}px)`
 
     // circle
