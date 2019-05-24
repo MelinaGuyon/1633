@@ -3,49 +3,49 @@ import anime from 'animejs'
 import Inrtia from 'inrtia'
 import { raf } from '@internet/raf'
 
+let domElsConcerned
+let coords = []
+let inrtia
+
+let cursorContainer
+let dot
+let ring
+let boundingDot
+
 function init (element) {
-  // let zoneClose = document.getElementsByClassName('mouse__close-zone')
-  // element[0].addEventListener('mousemove', onMouseMove.bind(this, element))
-  // element[0].addEventListener('touchmove', onMouseMove)
-  // for (let i = 0; i < zoneClose.length; i++) {
-  //   zoneClose[i].addEventListener('click', clickClose)
-  // }
+  cursorContainer = document.querySelector('.cursor-container')
+  dot = cursorContainer.querySelector('.dot')
+  ring = cursorContainer.querySelector('.ring')
+  boundingDot = dot.getBoundingClientRect()
 
-  this.cursorContainer = document.querySelector('.cursor-container')
-  this.dot = this.cursorContainer.querySelector('.dot')
-  this.ring = this.cursorContainer.querySelector('.ring')
-  this.innerRing = this.ring.querySelector('.inner')
-  this.boundingDot = this.dot.getBoundingClientRect()
-  this.boundingRing = this.ring.getBoundingClientRect()
-
-  initInertia(this)
-  bind(this)
+  initInertia()
+  bind()
+  bindEls()
 }
 
-function bind (ctx) {
-  window.addEventListener('mousemove', handleMove.bind(ctx), { passive: true })
-  raf.add(updateInertia.bind(ctx))
-  // setTimeout(() => { bindEls(ctx) }, 1000)
+function bind () {
+  window.addEventListener('mousemove', handleMove, { passive: true })
+  raf.add(updateInertia)
 }
 
-function bindEls (ctx) {
-  ctx.domElsConcerned = document.querySelectorAll('.magnet')
-  ctx.domElsConcerned.forEach((el) => {
-    el.addEventListener('mouseenter', handleMouseEnter.bind(ctx, el), { passive: true })
-    el.addEventListener('mouseleave', handleMouseLeave.bind(ctx), { passive: true })
+function bindEls () {
+  domElsConcerned = document.querySelectorAll('.magnet')
+  domElsConcerned.forEach((el, index) => {
+    const coord = el.getBoundingClientRect()
+    coords[index] = { el: el, left: coord.left, top: coord.top, centerX: coord.left + coord.width / 2, centerY: coord.top + coord.height / 2 }
   })
 }
 
 function unbind () {
-  window.removeEventListener('mousemove', this.handleMove, { passive: true })
-  this.domElsConcerned.forEach((el) => {
-    el.removeEventListener('mouseenter', this.handleMouseEnter, { passive: true })
-    el.removeEventListener('mouseleave', this.handleMouseLeave, { passive: true })
-  })
-  raf.remove(this.updateInertia)
+  // window.removeEventListener('mousemove', handleMove, { passive: true })
+  // domElsConcerned.forEach((el) => {
+  //   el.removeEventListener('mouseenter', handleMouseEnter, { passive: true })
+  //   el.removeEventListener('mouseleave', handleMouseLeave, { passive: true })
+  // })
+  // raf.remove(updateInertia)
 }
 
-function initInertia (ctx) {
+function initInertia () {
   const inrtiaOptions = {
     value: 0,
     friction: 10,
@@ -53,118 +53,52 @@ function initInertia (ctx) {
     perfectStop: true,
     interpolation: 'linear'
   }
-  ctx.inrtia = {
+  inrtia = {
     x: new Inrtia(inrtiaOptions),
     y: new Inrtia(inrtiaOptions)
   }
 }
 
 function handleMove (event) {
-  this.dot.style.left = (event.clientX - this.boundingDot.width / 2) + 'px'
-  this.dot.style.top = (event.clientY - this.boundingDot.height / 2) + 'px'
+  let magnet = false
+  dot.style.left = (event.clientX - boundingDot.width / 2) + 'px'
+  dot.style.top = (event.clientY - boundingDot.height / 2) + 'px'
 
   let val = 26
-  if (this.cursorContainer.classList.contains('reveal')) val = 33
-  else if (this.cursorContainer.classList.contains('target')) val = 13
-  else if (this.cursorContainer.classList.contains('hold')) val = 10
+  if (cursorContainer.classList.contains('reveal')) val = 33
+  else if (cursorContainer.classList.contains('target')) val = 13
+  else if (cursorContainer.classList.contains('hold')) val = 10
 
   const x = event.clientX - val
   const y = event.clientY - val
-  this.inrtia.x.to(x)
-  this.inrtia.y.to(y)
 
-  this.domElsConcerned = document.querySelectorAll('.magnet')
-  for (let i = 0; i < this.domElsConcerned.length; i++) {
-    this.elX = parseInt(this.domElsConcerned[i].getBoundingClientRect().left, 10)
-    this.elY = parseInt(this.domElsConcerned[i].getBoundingClientRect().top, 10)
+  for (let i = 0; i < coords.length; i++) {
+    let dx = Math.abs(coords[i].centerX - event.clientX)
+    let dy = Math.abs(coords[i].centerY - event.clientY)
 
-    // console.log(this.elX, event.clientX)
-
-    if (event.clientX <= this.elX + 60 && event.clientX >= this.elX - 60 
-      && event.clientY >= this.elY - 60 && event.clientY <= this.elY + 60) {
-      handleMouseEnter(this, this.domElsConcerned[i])
+    if (dx < 20 && dy < 20) {
+      magnet = true
+      inrtia.x.to(coords[i].centerX - val)
+      inrtia.y.to(coords[i].centerY - val)
+      cursorContainer.classList.add('reveal')
     }
-    else {
-      handleMouseLeave(this)
-    }
+  }
+
+  if (!magnet) {
+    inrtia.x.to(x)
+    inrtia.y.to(y)
+    cursorContainer.classList.remove('reveal')
   }
 }
 
 function updateInertia () {
-  if (!this.inrtia.x.stopped || !this.inrtia.y.stopped) {
-    this.inrtia.y.update()
-    this.inrtia.x.update()
-    this.ring.style.left = this.inrtia.x.value + 'px'
-    this.ring.style.top = this.inrtia.y.value + 'px'
+  if (!inrtia.x.stopped || !inrtia.y.stopped) {
+    inrtia.y.update()
+    inrtia.x.update()
+    ring.style.left = inrtia.x.value + 'px'
+    ring.style.top = inrtia.y.value + 'px'
   }
 }
-
-function handleMouseEnter (ctx, el) {
-  console.log('enter')
-  reveal(ctx, el)
-}
-
-function handleMouseLeave (ctx) {
-  console.log('leave')
-  reset(ctx)
-}
-
-function reveal (ctx, el) {
-  ctx.cursorContainer.classList.add('reveal')
-  ctx.elementX = parseInt(el.offsetLeft, 10) - 5
-  ctx.elementY = parseInt(el.getBoundingClientRect().top, 10) - 2.5
-  ctx.elementWidth = parseInt(getComputedStyle(el).width, 10) + 10
-  ctx.elementHeight = parseInt(getComputedStyle(el).height, 10) + 5
-
-  anime({
-    targets: ctx.cursorContainer,
-    width: ctx.elementWidth,
-    height: ctx.elementHeight,
-    easing: 'easeOutCubic',
-    duration: 500
-  })
-}
-
-function reset (ctx) {
-  anime({
-    targets: ctx.cursorContainer,
-    width: 52,
-    height: 52,
-    easing: 'easeOutCubic',
-    duration: 500
-  })
-
-  if (ctx.cursorContainer.classList.contains('hold')) {
-    const x = ctx.inrtia.x.targetValue - 16
-    const y = ctx.inrtia.y.targetValue - 16
-    ctx.inrtia.x.to(x)
-    ctx.inrtia.y.to(y)
-  }
-  ctx.cursorContainer.classList.remove('reveal', 'target', 'hold')
-  ctx.innerRing.style.removeProperty('border')
-}
-
-// function onMouseMove (element, event) {
-// // store a reference to the data
-// // the reason for this is because of multitouch
-// // we want to track the movement of this particular touch
-// this.data = event.data
-// let mouseDiv = document.getElementsByClassName('mouse')
-
-// // if (event.target.className === 'mouse__close-zone' || event.target.closest('.mouse__close-zone')) {
-//   mouseDiv[0].className = 'mouse active'
-// // } else {
-// //   mouseDiv[0].className = 'mouse'
-// // }
-// }
-
-// function clickClose (event) {
-//   let element = event.target.closest('.mouse__close')
-//   let type = element.getAttribute('data-type')
-//   type += ' mouse__close hide'
-//   event.target.closest('.mouse__close').className = type
-//   store.pause.set(true)
-// }
 
 export default {
   init
