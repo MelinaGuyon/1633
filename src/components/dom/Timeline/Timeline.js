@@ -125,14 +125,14 @@ export default class Timeline extends DomComponent {
     else distStart = (scene.interestOffsets[this.currenPointId] - scene.offsets[this.currenPointId]) + scene.sizes[this.currenPointId] / 2
 
     if (this.currenPointId === 1) actualMooveStart = displacement
-    else actualMooveStart = displacement - scene.offsets[this.currenPointId - 1] - scene.sizes[1] / 2
+    else actualMooveStart = displacement - scene.offsets[this.currenPointId - 1] - scene.sizes[this.currenPointId - 1] / 2
 
     if (actualMooveStart > distStart) {
       if (this.currenPointId === 1) distEnd = scene.sizes[this.currenPointId] / 2 - distStart
       else distEnd = scene.sizes[this.currenPointId] - distStart
 
       if (this.currenPointId === 1) actualMooveEnd = displacement - distStart
-      else actualMooveEnd = displacement - scene.offsets[this.currenPointId - 1] - scene.sizes[1] / 2 - distStart
+      else actualMooveEnd = displacement - scene.offsets[this.currenPointId - 1] - scene.sizes[this.currenPointId - 1] / 2 - distStart
     }
 
     if (!distEnd && !actualMooveEnd) {
@@ -144,6 +144,8 @@ export default class Timeline extends DomComponent {
       ratio = Math.max(0, Math.min(1, ratio))
       x = ((this.pointDist - this.currentPoint.endingX - this.pointSize) * ratio) + this.pointDist
     }
+
+    console.log(actualMooveStart, distStart)
 
     this.currentPoint.base.style.transform = `translateX(-${x}px)`
 
