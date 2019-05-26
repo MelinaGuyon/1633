@@ -7,6 +7,7 @@ import { loader, SCALE_MODES } from 'pixi.js'
 import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
 import cachebust from 'utils/cachebust'
+import Glass from 'components/dom/Glass/Glass'
 import sound from 'controllers/sound'
 import Inrtia from 'inrtia'
 
@@ -24,6 +25,7 @@ export default class Preloader extends DomComponent {
     const loc = store.loc.get()
     return (
       <section class='prld fxd' ref={addRef(this, 'prld')}>
+        <Glass />
         <div class='title-container-l1'>
           <div class='title-container-l2 magnet'>
             <h2 class='title-bordered'>{loc['site.title']}</h2>

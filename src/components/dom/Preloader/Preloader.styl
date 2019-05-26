@@ -35,8 +35,13 @@
     position relative
 
     &.title-bordered
-      color: $light-salmon
-      text-shadow: 1px 0 0 $salmon, -1px 0 0 $salmon, 0 1px 0 $salmon, 0 -1px 0 $salmon, 1px 1px $salmon, -1px -1px 0 $salmon, 1px -1px 0 $salmon, -1px 1px 0 $salmon;
+      color: transparent;
+      -webkit-text-stroke: 1px $salmon;
+      text-shadow: none;
+
+      .ie &
+        color: $light-salmon
+        text-shadow: 1px 0 0 $salmon, -1px 0 0 $salmon, 0 1px 0 $salmon, 0 -1px 0 $salmon, 1px 1px $salmon, -1px -1px 0 $salmon, 1px -1px 0 $salmon, -1px 1px 0 $salmon;
 
   &.loaded
     opacity: 0
