@@ -73,7 +73,7 @@ export default class Carrousel extends DomComponent {
   }
 
   componentDidMount () {
-	  // debug to start directly
-    if (store.directStart.get()) this.launchGame(0)
+    // debug to start directly
+    if (store.skipCarousel.get()) this.launchGame(0)
   }
 }

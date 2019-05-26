@@ -62,12 +62,13 @@ export default createStore({
 
   frameDuration: 70, // default animation's frame duration
 
-  // ---- Debug utilities ----
+  // ---- Debug utilities: 0 means false, 1 means true ----
   debug: isDev ? 0 : 0,
-  mute: isDev ? 0 : 0, // Mute game
+  mute: isDev ? 0 : 0,
   useGui: isDev ? 1 : 0, // use datGui
   displayStats: isDev ? 1 : 0, // use stats (fps, drawcalls, ...)
-  directStart: true,
+  skipCarousel: isDev ? 1 : 0,
+  skipLoading: isDev ? 0 : 0,
 
   // ---- game ----
   pause: false, // Is the game paused
