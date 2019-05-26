@@ -1,5 +1,5 @@
 .prld
-  background #000000
+  background: $light-salmon
   width: 100vw
   height: 100vh
   position fixed
@@ -27,14 +27,16 @@
       overflow hidden
 
   h2
-    letter-spacing: 28px
-    font-size: 140px
-    color: #fff
+    font-family: Eczar-Bold
+    letter-spacing: 120px
+    text-indent: 120px
+    font-size: 160px
+    color: $salmon
     position relative
 
     &.title-bordered
-      color: black
-      text-shadow: 1px 0 0 #333, -1px 0 0 #333, 0 1px 0 #333, 0 -1px 0 #333, 1px 1px #333, -1px -1px 0 #333, 1px -1px 0 #333, -1px 1px 0 #333;
+      color: $light-salmon
+      text-shadow: 1px 0 0 $salmon, -1px 0 0 $salmon, 0 1px 0 $salmon, 0 -1px 0 $salmon, 1px 1px $salmon, -1px -1px 0 $salmon, 1px -1px 0 $salmon, -1px 1px 0 $salmon;
 
   &.loaded
     opacity: 0

@@ -25,7 +25,7 @@ export default class Preloader extends DomComponent {
     return (
       <section class='prld fxd' ref={addRef(this, 'prld')}>
         <div class='title-container-l1'>
-          <div class='title-container-l2'>
+          <div class='title-container-l2 magnet'>
             <h2 class='title-bordered'>{loc['site.title']}</h2>
             <div class='title-wrapper' ref={addRef(this, 'wrapper')}>
               <h2 class='title-full'>{loc['site.title']}</h2>

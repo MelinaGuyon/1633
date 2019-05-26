@@ -1,7 +1,7 @@
 import store from '../state/store'
-import anime from 'animejs'
 import Inrtia from 'inrtia'
 import { raf } from '@internet/raf'
+import signals from 'state/signals'
 
 let domElsConcerned
 let coords = []
@@ -25,6 +25,7 @@ function init (element) {
 
 function bind () {
   window.addEventListener('mousemove', handleMove, { passive: true })
+  signals.newDom.listen(bindEls)
   raf.add(updateInertia)
 }
 
@@ -37,6 +38,7 @@ function bindEls () {
 }
 
 function unbind () {
+  signals.newDom.unlisten(bindEls)
   window.removeEventListener('mousemove', handleMove, { passive: true })
   raf.remove(updateInertia)
 }

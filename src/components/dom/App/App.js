@@ -3,9 +3,12 @@ import './App.styl'
 import { h, addRef } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
 import pixi from 'controllers/pixi'
+import mouse from 'controllers/mouse'
 
 import Preloader from 'components/dom/Preloader/Preloader'
+import MouseMv from 'components/dom/MouseMv/MouseMv'
 import GameInterface from 'components/dom/GameInterface/GameInterface'
+
 
 export default class App extends DomComponent {
   template ({ base }) {
@@ -21,6 +24,12 @@ export default class App extends DomComponent {
         ref={addRef(this, 'preloader')}
         onComplete={this.fastbind('didPreload')}
       />, this.base)
+    this.render(
+      <MouseMv
+        ref={addRef(this, 'mouse')}
+      />, this.base)
+
+    mouse.init(document.getElementsByClassName('game'))
   }
 
   didPreload () {

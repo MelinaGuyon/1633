@@ -44,6 +44,7 @@ export default class Body {
   }
 
   bind () {
+    // TODO : unbind
     signals.goLeft.listen(this.updateState, this)
     signals.goRight.listen(this.updateState, this)
     signals.stop.listen(this.updateState, this)

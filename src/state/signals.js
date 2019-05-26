@@ -6,7 +6,8 @@ const signals = {
   goRight: new Signal(),
   space: new Signal(),
   moving: new Signal(),
-  stop: new Signal()
+  stop: new Signal(),
+  newDom: new Signal()
 }
 
 export default signals
