@@ -12,6 +12,8 @@ let dot
 let ring
 let boundingDot
 
+let customListen = {}
+
 function init (element) {
   cursorContainer = document.querySelector('.cursor-container')
   dot = cursorContainer.querySelector('.dot')
@@ -24,7 +26,7 @@ function init (element) {
 }
 
 function bind () {
-  window.addEventListener('mousemove', handleMove, { passive: true })
+  customListen['mouse'] = store['mouse'].listen(handleMove)
   signals.newDom.listen(bindEls)
   raf.add(updateInertia)
 }
@@ -38,8 +40,9 @@ function bindEls () {
 }
 
 function unbind () {
+  // TODO : launch unbind
+  store['mouse'].unlisten(customListen['mouse'])
   signals.newDom.unlisten(bindEls)
-  window.removeEventListener('mousemove', handleMove, { passive: true })
   raf.remove(updateInertia)
 }
 
@@ -57,20 +60,20 @@ function initInertia () {
   }
 }
 
-function handleMove (event) {
+function handleMove (mouse) {
   let magnet = false
-  dot.style.left = (event.clientX - boundingDot.width / 2) + 'px'
-  dot.style.top = (event.clientY - boundingDot.height / 2) + 'px'
+  dot.style.left = (mouse.x - boundingDot.width / 2) + 'px'
+  dot.style.top = (mouse.y - boundingDot.height / 2) + 'px'
 
   let val = 26
   if (cursorContainer.classList.contains('reveal')) val = 33
 
-  const x = event.clientX - val
-  const y = event.clientY - val
+  const x = mouse.x - val
+  const y = mouse.y - val
 
   for (let i = 0; i < coords.length; i++) {
-    let dx = Math.abs(coords[i].centerX - event.clientX)
-    let dy = Math.abs(coords[i].centerY - event.clientY)
+    let dx = Math.abs(coords[i].centerX - mouse.x)
+    let dy = Math.abs(coords[i].centerY - mouse.y)
 
     if (dx < 20 && dy < 20) {
       magnet = true

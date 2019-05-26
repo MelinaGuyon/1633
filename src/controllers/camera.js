@@ -29,7 +29,7 @@ class Camera {
     this.x = tx
     this.y = ty
 
-    // C'est ici qu'est le reel X car il se fait animer en smooth
+    // C'est ici qu'est le reel X car il se fait animer en smooth juste en haut
     if (this.target && this.target.hasMoved) {
       signals.moving.dispatch(Math.round(this.x * -1))
       // console.log(Math.round(this.x * -1))

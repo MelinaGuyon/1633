@@ -77,6 +77,8 @@ class Fact extends DomComponent {
   bind () {
     // this.listenStore('factsStatus', this.onFactUnlocked)
     this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+
+    // TODO : écouter le mouse store
     this.base.addEventListener('mousemove', this.fastbind('onMouseMove', 1))
   }
 
