@@ -43,6 +43,8 @@ export default class Preloader extends DomComponent {
     this.bind()
     this.initInertia()
     this.load()
+
+    this.prld.classList.add('is-visible')
   }
 
   componentWillUnmount () {

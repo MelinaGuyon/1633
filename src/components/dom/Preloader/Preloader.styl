@@ -1,5 +1,4 @@
 .prld
-  background: $light-salmon
   width: 100vw
   height: 100vh
   position fixed
@@ -7,7 +6,14 @@
   left: 0
   z-index 30
   display block
-  transition: opacity .3s ease-out
+  background: $white
+  transition: opacity .3s ease-out, background .3s ease-out
+
+  &.is-visible
+    background: $light-salmon
+
+    .title-container-l1
+      opacity: 1
 
   .title-container-l1
     position: absolute
@@ -16,6 +22,8 @@
     display: flex
     justify-content: center
     align-items: center
+    opacity: 0
+    transition: opacity .3s ease-out
 
   .title-container-l2
     position relative
