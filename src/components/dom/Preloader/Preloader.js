@@ -27,7 +27,7 @@ export default class Preloader extends DomComponent {
       <section class='prld fxd' ref={addRef(this, 'prld')}>
         <Glass />
         <div class='title-container-l1'>
-          <div class='title-container-l2 magnet'>
+          <div class='title-container-l2'>
             <h2 class='title-bordered'>{loc['site.title']}</h2>
             <div class='title-wrapper' ref={addRef(this, 'wrapper')}>
               <h2 class='title-full'>{loc['site.title']}</h2>
@@ -126,10 +126,10 @@ export default class Preloader extends DomComponent {
 
     Promise.all([this.pixiLoad()])
       .then(() => {
-        // if (store.skipLoading.get()) return this.completeLoading()
-        // this.intervalId = setInterval(() => {
-        //   if (this.animationCompleted) this.completeLoading()
-        // }, 10)
+        if (store.skipLoading.get()) return this.completeLoading()
+        this.intervalId = setInterval(() => {
+          if (this.animationCompleted) this.completeLoading()
+        }, 10)
       })
   }
 

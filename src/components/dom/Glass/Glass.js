@@ -100,8 +100,8 @@ export default class Glass extends DomComponent {
         translateY: [0, transformValues[index][1]],
         rotate: [0, transformValues[index][2]],
         opacity: [0, 1],
-        duration: 600,
-        easing: 'easeOutQuad',
+        duration: 900,
+        easing: 'easeInOutQuad',
         complete: () => {
           const coord = el.base.getBoundingClientRect()
           this.coords[index] = { el: el.base, left: coord.left, top: coord.top, centerX: coord.left + el.base.offsetWidth / 2, centerY: coord.top + el.base.offsetHeight / 2 }
@@ -130,9 +130,9 @@ export default class Glass extends DomComponent {
       let dx = this.coords[index].centerX - mouse.x
       let dy = this.coords[index].centerY - mouse.y
 
-      if (dx < 140 && dx > -140 && dy < 140 && dy > -140) {
-        let x = transformValues[index][0] + dx / 3
-        let y = transformValues[index][1] + dy / 3
+      if (dx < 180 && dx > -180 && dy < 180 && dy > -180) {
+        let x = transformValues[index][0] + dx / 4
+        let y = transformValues[index][1] + dy / 4
 
         el.inrtia.x.to(x)
         el.inrtia.y.to(y)
