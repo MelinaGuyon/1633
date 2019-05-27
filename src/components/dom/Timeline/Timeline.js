@@ -121,17 +121,18 @@ export default class Timeline extends DomComponent {
     let ratio
     let x
 
-    if (this.currenPointId === 1) distStart = (scene.interestOffsets[this.currenPointId] - scene.offsets[this.currenPointId])
+
+    if (this.currenPointId === 1) distStart = (scene.interestOffsets[this.currenPointId] - scene.offsets[this.currenPointId]) + scene.sizes[1] / 2
     else distStart = (scene.interestOffsets[this.currenPointId] - scene.offsets[this.currenPointId]) + scene.sizes[this.currenPointId] / 2
 
-    if (this.currenPointId === 1) actualMooveStart = displacement
+    if (this.currenPointId === 1) actualMooveStart = displacement - scene.sizes[1] / 2
     else actualMooveStart = displacement - scene.offsets[this.currenPointId - 1] - scene.sizes[this.currenPointId - 1] / 2
 
     if (actualMooveStart > distStart) {
-      if (this.currenPointId === 1) distEnd = scene.sizes[this.currenPointId] / 2 - distStart
+      if (this.currenPointId === 1) distEnd = scene.sizes[this.currenPointId] / 2 - distStart + scene.sizes[1] / 2
       else distEnd = scene.sizes[this.currenPointId] - distStart
 
-      if (this.currenPointId === 1) actualMooveEnd = displacement - distStart
+      if (this.currenPointId === 1) actualMooveEnd = displacement - distStart - scene.sizes[1] / 2
       else actualMooveEnd = displacement - scene.offsets[this.currenPointId - 1] - scene.sizes[this.currenPointId - 1] / 2 - distStart
     }
 

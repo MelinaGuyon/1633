@@ -125,11 +125,11 @@ export default class Body {
   }
 
   getMin () {
-    return -store.size.get().w / 2
+    return 0
   }
 
   getMax () {
-    let max = 0
+    let max = scene.sizes[1] * 2
     scene.sizes.forEach((size) => {
       max += size
     })

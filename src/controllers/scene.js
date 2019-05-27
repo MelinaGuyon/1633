@@ -70,7 +70,7 @@ class Scene extends PixiComponent {
 
     // calc offest of each chapters
     if (this.needsUpdate) {
-      let offset = 0
+      let offset = this.sizes[1]
       for (let i = 1; i < layer.id; i++) {
         offset += (this.sizes[i] / 2) + this.sizes[i + 1] / 2
       }
@@ -104,7 +104,6 @@ class Scene extends PixiComponent {
   updateSizes (layer) {
     if (!this.needsUpdate) return
     if (this.sizes[layer.id] < layer.base.width) this.sizes[layer.id] = layer.base.width + 0
-    // console.log(this.sizes, this.offsets)
   }
 
   setLevelId () {
