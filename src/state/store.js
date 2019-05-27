@@ -69,10 +69,12 @@ export default createStore({
   useGui: isDev ? 1 : 0, // use datGui
   displayStats: isDev ? 1 : 0, // use stats (fps, drawcalls, ...)
   skipCarousel: isDev ? 1 : 0,
-  skipLoading: isDev ? 1 : 0,
+  skipLoading: isDev ? 0 : 0,
 
   // ---- game ----
-  pause: false, // Is the game paused
+  loaded: false, // Is app loaded
+  started: false, // Is app started
+  pause: false, // Is the current game paused
   musicPlayed: false,
 
   // ---- assets to preload ----

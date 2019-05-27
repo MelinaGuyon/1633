@@ -10,6 +10,7 @@ import cachebust from 'utils/cachebust'
 import Glass from 'components/dom/Glass/Glass'
 import sound from 'controllers/sound'
 import Inrtia from 'inrtia'
+import mouse from 'controllers/mouse'
 
 function isFromAnim (tex, anims) {
   for (let k in anims) {
@@ -25,7 +26,7 @@ export default class Preloader extends DomComponent {
     const loc = store.loc.get()
     return (
       <section class='prld fxd' ref={addRef(this, 'prld')}>
-        <Glass />
+        <Glass ref={addRef(this, 'glass')} />
         <div class='title-container-l1'>
           <div class='title-container-l2'>
             <h2 class='title-bordered'>{loc['site.title']}</h2>
@@ -110,6 +111,7 @@ export default class Preloader extends DomComponent {
   }
 
   animeLoader (progress) {
+    // TODO : change with animejs
     this.inrtia.percent.to(progress)
   }
 
@@ -117,7 +119,12 @@ export default class Preloader extends DomComponent {
     if (!this.inrtia.percent.stopped) {
       this.inrtia.percent.update()
       this.wrapper.style.height = `${this.inrtia.percent.value}%`
-      if (this.inrtia.percent.value > 98) this.animationCompleted = true
+      if (this.inrtia.percent.value > 98 && !this.animationCompleted) {
+        this.animationCompleted = true
+        store.loaded.set(true)
+        // signal new instruction
+        if (!store.skipLoading.get()) mouse.bindHolding(this.glass.construct)
+      }
     }
   }
 
@@ -128,7 +135,7 @@ export default class Preloader extends DomComponent {
       .then(() => {
         if (store.skipLoading.get()) return this.completeLoading()
         this.intervalId = setInterval(() => {
-          if (this.animationCompleted) this.completeLoading()
+          if (this.animationCompleted && store.started.get()) this.completeLoading()
         }, 10)
       })
   }

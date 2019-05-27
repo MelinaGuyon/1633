@@ -14,6 +14,11 @@ let boundingDot
 
 let customListen = {}
 
+let holdingPercent = 0
+let holding
+let holdingCb = null
+let intervalHolding
+
 function init (element) {
   cursorContainer = document.querySelector('.cursor-container')
   dot = cursorContainer.querySelector('.dot')
@@ -31,6 +36,13 @@ function bind () {
   raf.add(updateInertia)
 }
 
+function bindHolding (cb) {
+  document.addEventListener('mousedown', mousedown)
+  document.addEventListener('mouseup', mouseup)
+  intervalHolding = window.setInterval(checkHolding, 10)
+  holdingCb = cb
+}
+
 function bindEls () {
   domElsConcerned = document.querySelectorAll('.magnet')
   domElsConcerned.forEach((el, index) => {
@@ -40,10 +52,15 @@ function bindEls () {
 }
 
 function unbind () {
-  // TODO : launch unbind
   store['mouse'].unlisten(customListen['mouse'])
   signals.newDom.unlisten(bindEls)
   raf.remove(updateInertia)
+}
+
+function unbindHolding () {
+  document.removeEventListener('mousedown', mousedown)
+  document.removeEventListener('mouseup', mouseup)
+  clearInterval(intervalHolding)
 }
 
 function initInertia () {
@@ -99,6 +116,26 @@ function updateInertia () {
   }
 }
 
+function mousedown () {
+  holding = true
+}
+
+function mouseup () {
+  holding = false
+}
+
+function checkHolding () {
+  if (holding) holdingPercent += 0.5
+  else holdingPercent = 0
+  holdingPercent = Math.max(0, Math.min(100, holdingPercent))
+  console.log(holdingPercent)
+  if (holdingPercent === 100) {
+    unbindHolding()
+    holdingCb()
+  }
+}
+
 export default {
-  init
+  init,
+  bindHolding
 }

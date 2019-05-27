@@ -4,8 +4,11 @@ import { raf } from '@internet/raf'
 import anime from 'animejs'
 import Inrtia from 'inrtia'
 import after from 'lodash/after'
+import delay from 'lodash/delay'
+import signals from 'state/signals'
 
 import './Glass.styl'
+import store from 'state/store';
 
 const transformValues = [
   [-450, -200, 0],
@@ -73,8 +76,8 @@ export default class Glass extends DomComponent {
   }
 
   componentDidMount () {
-    setTimeout(this.setPosition.bind(this), 1000)
-    setTimeout(this.construct.bind(this), 5000) // temp
+    delay(this.setPosition.bind(this), 500) // better anim perf
+    this.construct = this.fastbind('construct')
   }
 
   bind () {
@@ -83,7 +86,6 @@ export default class Glass extends DomComponent {
   }
 
   unbind () {
-    // TODO : do the unbind
     this.unlistenStore('mouse', this.handleMoove)
     raf.remove(this.updateInertia)
   }
@@ -120,7 +122,10 @@ export default class Glass extends DomComponent {
         translateY: el.initialY,
         rotate: '0deg',
         duration: 900,
-        easing: 'easeInOutQuart'
+        easing: 'easeInOutQuart',
+        complete: () => {
+          delay(() => store.started.set(true), 600)
+        }
       })
     })
   }
