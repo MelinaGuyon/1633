@@ -84,6 +84,7 @@ function handleMove (mouse) {
 
   let val = 26
   if (cursorContainer.classList.contains('reveal')) val = 33
+  if (cursorContainer.classList.contains('hold')) val = 18
 
   const x = mouse.x - val
   const y = mouse.y - val
@@ -111,6 +112,7 @@ function updateInertia () {
   if (!inrtia.x.stopped || !inrtia.y.stopped) {
     inrtia.y.update()
     inrtia.x.update()
+
     ring.style.left = inrtia.x.value + 'px'
     ring.style.top = inrtia.y.value + 'px'
   }
@@ -118,19 +120,24 @@ function updateInertia () {
 
 function mousedown () {
   holding = true
+  cursorContainer.classList.add('hold')
+  handleMove(store.mouse.get())
 }
 
 function mouseup () {
   holding = false
+  cursorContainer.classList.remove('hold')
+  handleMove(store.mouse.get())
 }
 
 function checkHolding () {
-  if (holding) holdingPercent += 0.5
+  if (holding) holdingPercent += 1
   else holdingPercent = 0
   holdingPercent = Math.max(0, Math.min(100, holdingPercent))
-  console.log(holdingPercent)
+
   if (holdingPercent === 100) {
     unbindHolding()
+    mouseup()
     holdingCb()
   }
 }
