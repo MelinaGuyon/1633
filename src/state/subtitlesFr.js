@@ -1,14 +1,14 @@
 export default [
   [
-    ['Je m’appelle Min-Ho, je suis Nord-Coréen.', 0],
-    ['J’ai fui mon pays natal à 16 ans, et lui étais', 3000],
-    ['jusqu’alors toujours resté fidèle.', 6000],
-    ['Il était pour moi le meilleur pays au monde,', 8000],
-    ['car je ne connaissais rien d’autre.', 11000]
+    ['Bonjour voyageur. Bienvenue en Sorbonne', 0],
+    ['Vous avez aujourd\'hui la chance de pouvoir', 3000],
+    ['découvrir l\'étonnante histoire de ce célèbre batiment.', 6000]
   ],
   [
-    ['J’ai évolué jour après jour dans un monde artificiel,', 0],
-    ['dont les valeurs ne sont qu’une façade.', 3000]
+    ['Il semblerait que nous ayons quitté Paris.', 0],
+    ['Allons-nous suivre les péripéthies du crâne de ville en ville ?', 3000],
+    ['Après avoir été retiré de son tombeau lors de.', 6000],
+    ['la Révolution par le jeune Cheval, le disparut totalement', 8000]
   ],
   [
     ['C’est l’image d’un pays solide et fier qui est présentée,', 0],

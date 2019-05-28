@@ -9,9 +9,9 @@ export default class SoundChecks extends PixiComponent {
   setup () {
     this.mains = []
     // ic dans cb :
-    // 0 = soundId car on veut lancer le son 0
+    // 1 = soundId car on veut lancer le son 1
     // 0 = collidersId car c'est le colliders 0 de cette classe
-    this.mains.push(this.addComponent(Colliders, { layer: '2bg100', x: -100, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 's1/s1-1', 0, 0), name: 's1-1' }))
+    this.mains.push(this.addComponent(Colliders, { layer: '3bg200', x: 100, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 's1/s1-2', 1, 0), name: 's1-2' }))
   }
 
   cb (path, soundId, collidersId, state) {

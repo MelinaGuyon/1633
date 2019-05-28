@@ -50,7 +50,6 @@ export default class Colliders extends PixiComponent {
   calcInterestOffset () {
     // TODO :: calcul is always done ! To remove
     scene.interestOffsets[this.levelId] = scene.offsets[this.levelId] + this.base.x
-    // console.log('interest', scene.interestOffsets)
   }
 
   componentWillUnmount () {

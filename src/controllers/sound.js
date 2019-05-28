@@ -7,6 +7,8 @@ const samples = {}
 let hidden = [] // Used to store the good visibility change method
 let muted = false
 let setupped = false
+let soundPlay = false
+
 function setup () {
   if (setupped) return
   setupped = true
@@ -33,6 +35,10 @@ function setup () {
   if (hidden[0]) document.addEventListener(hidden[0], onVisibilityChange, false)
   store.mute.listen(toggleMute)
   toggleMute(store.mute.get())
+}
+
+function setSoundPlay (sound) {
+  soundPlay = sound
 }
 
 function toggleMute (bool) {
@@ -97,5 +103,7 @@ export default {
   unpause,
   play,
   stop,
-  update
+  update,
+  setSoundPlay,
+  soundIsPlaying: () => { return soundPlay }
 }

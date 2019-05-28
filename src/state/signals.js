@@ -8,7 +8,8 @@ const signals = {
   moving: new Signal(),
   stop: new Signal(),
   newDom: new Signal(),
-  newIndication: new Signal()
+  newIndication: new Signal(),
+  writeSubtitles: new Signal()
 }
 
 export default signals

@@ -1,20 +1,36 @@
-import { h } from '@internet/dom'
+import { h, addRef } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
+import signals from 'state/signals'
 import anime from 'animejs'
 import { map, delay } from 'lodash'
 
 import './Subtitles.styl'
 
-class SubtitlesContent extends DomComponent {
+export default class Subtitles extends DomComponent {
   template (props) {
-    const loc = store.loc.get()
     this.actualLength = 0
     this.globalIndex = 0
 
     return (
-      <div class='subtitles-content' data-id={props.id}>{loc['nav.' + props.type]}</div>
+      <section class='subtitles' ref={addRef(this, 'subtiltles')} >
+        <div class='subtitles-content' ref={addRef(this, 'subtiltlesContent')} />
+      </section>
     )
+  }
+
+  componentDidMount () {
+    this.bind()
+  }
+
+  bind () {
+    // TODO : unbind
+    signals.writeSubtitles.listen(this.initWritting, this)
+  }
+
+  initWritting (index) {
+    console.log('je passe', index, this.globalIndex)
+    this.writeSubtitles(store.subtitles.get()[index], index)
   }
 
   writeSubtitles (block, blockIndex) {
@@ -30,36 +46,19 @@ class SubtitlesContent extends DomComponent {
   writeOne (line) {
     // vérification qu'il s'agit toujours du même bloc de sous-titres sinon return
     if (line.blockIndex !== this.globalIndex) return
-    document.querySelector('.subtitles-content').innerHTML = line.text
-    if (line.lineIndex === this.actualLength) delay(this.remove, 2000)
+    this.subtiltlesContent.innerHTML = line.text
+    if (line.lineIndex === this.actualLength) delay(this.remove.bind(this), 2000)
   }
 
   remove () {
-    document.querySelector('.subtitles-content').innerHTML = ''
+    this.subtiltlesContent.innerHTML = ''
   }
 
   hideSubtitles () {
-    document.querySelector('.subtitles').classList.add('is-hidden')
+    this.subtiltles.classList.add('is-hidden')
   }
 
   showSubtitles () {
-    document.querySelector('.subtitles').classList.remove('is-hidden')
-  }
-
-  componentDidMount () {
-    this.writeSubtitles(store.subtitles.get()[4], 4)
-  }
-}
-
-export default class Subtitles extends DomComponent {
-  template ({ base }) {
-    return (
-      <section class='subtitles'>
-        <SubtitlesContent type={'subtitles'} id={0} />
-      </section>
-    )
-  }
-
-  componentDidMount () {
+    this.subtiltles.classList.remove('is-hidden')
   }
 }
