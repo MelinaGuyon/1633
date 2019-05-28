@@ -40,7 +40,7 @@ const commonCSSLoaders = [
     options: {
       sourceMap: false,
       'include css': true,
-      import: ['~style/fonts', '~style/colors', '~style/mq']
+      import: ['~style/variables', '~style/fonts', '~style/colors', '~style/mq']
     }
   }
 ]

@@ -7,7 +7,8 @@ const signals = {
   space: new Signal(),
   moving: new Signal(),
   stop: new Signal(),
-  newDom: new Signal()
+  newDom: new Signal(),
+  newIndication: new Signal()
 }
 
 export default signals

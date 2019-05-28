@@ -11,6 +11,7 @@ import Glass from 'components/dom/Glass/Glass'
 import sound from 'controllers/sound'
 import Inrtia from 'inrtia'
 import mouse from 'controllers/mouse'
+import signals from 'state/signals'
 
 function isFromAnim (tex, anims) {
   for (let k in anims) {
@@ -119,11 +120,13 @@ export default class Preloader extends DomComponent {
     if (!this.inrtia.percent.stopped) {
       this.inrtia.percent.update()
       this.wrapper.style.height = `${this.inrtia.percent.value}%`
-      if (this.inrtia.percent.value > 98 && !this.animationCompleted) {
+      if (this.inrtia.percent.value > 95 && !this.animationCompleted) {
         this.animationCompleted = true
         store.loaded.set(true)
-        // signal new instruction
-        if (!store.skipLoading.get()) mouse.bindHolding(this.glass.construct)
+        if (!store.skipLoading.get()) {
+          signals.newIndication.dispatch(1)
+          mouse.bindHolding(this.glass.construct)
+        }
       }
     }
   }

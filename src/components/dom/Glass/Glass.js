@@ -115,6 +115,7 @@ export default class Glass extends DomComponent {
 
   construct () {
     this.unbind()
+    signals.newIndication.dispatch(0)
     this.singleGlass.forEach((el) => {
       anime({
         targets: el.base,
