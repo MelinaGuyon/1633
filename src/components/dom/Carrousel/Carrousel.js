@@ -45,6 +45,7 @@ export default class Carrousel extends DomComponent {
         <Button active='' type={'robertdesorbon'} id={2} launchGame={this.launchGame} />
         <Button active='' type={'jacqueslemercier'} id={3} launchGame={this.launchGame} />
         <Button active='' type={'napoleonbonaparte'} id={4} launchGame={this.launchGame} />
+        <span class='carrousel__form'></span>
         <Intro />
       </section>
     )
