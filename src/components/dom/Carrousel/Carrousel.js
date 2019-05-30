@@ -13,8 +13,9 @@ import './Carrousel.styl'
 class Button extends DomComponent {
   template (props) {
     const loc = store.loc.get()
+    let className = 'carrousel__choice ' + props.active
     return (
-      <button class='carrousel__choice' data-id={props.id}>{loc['carrousel.' + props.type]}</button>
+      <div class={className} data-id={props.id} data-text={loc['carrousel.' + props.type]}><span>{loc['carrousel.' + props.type]}<strong></strong></span></div>
     )
   }
 
@@ -37,11 +38,13 @@ export default class Carrousel extends DomComponent {
   template ({ base }) {
     return (
       <section data-type='carrousel' class='carrousel mouse__close'>
-        <Button type={'richelieu'} id={0} launchGame={this.launchGame} />
-        <Button type={'mariecurie'} id={1} launchGame={this.launchGame} />
-        <Button type={'robertdesorbon'} id={2} launchGame={this.launchGame} />
-        <Button type={'jacqueslemercier'} id={3} launchGame={this.launchGame} />
-        <Button type={'napoleonbonaparte'} id={4} launchGame={this.launchGame} />
+        <div className="carrousel__textScrolling">
+          <Button active='active' type={'richelieu'} id={0} launchGame={this.launchGame} />
+        </div>
+        <Button active='' type={'mariecurie'} id={1} launchGame={this.launchGame} />
+        <Button active='' type={'robertdesorbon'} id={2} launchGame={this.launchGame} />
+        <Button active='' type={'jacqueslemercier'} id={3} launchGame={this.launchGame} />
+        <Button active='' type={'napoleonbonaparte'} id={4} launchGame={this.launchGame} />
         <Intro />
       </section>
     )
@@ -74,6 +77,6 @@ export default class Carrousel extends DomComponent {
 
   componentDidMount () {
     // debug to start directly
-    if (store.skipCarousel.get()) this.launchGame(0)
+   // if (store.skipCarousel.get()) this.launchGame(0)
   }
 }
