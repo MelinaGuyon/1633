@@ -67,7 +67,9 @@
         top:0;
         -webkit-background-clip: text;
         background-image: url(https://dummyimage.com/600x400/ffffff/fff);
-        background-size: inherit;
+        background-repeat: no-repeat;
+        background-position: 141px;
+        background-size 521px
 
       span
         animation: defilement 10s infinite linear;
@@ -111,22 +113,22 @@
 
 @keyframes defilement {
   0% {
-    transform: translateX(0);
-    background-position: 300px
+   // transform: translateX(0);
+    // background-position: 141px
   }
   100% {
-    transform: translateX(-100%);
-    background-position: 100px
+   // transform: translateX(-100%);
+   // background-position: 1700px
   }
 }
 
 @keyframes defilement2 {
   0% {
-    transform: translateX(100%);
-    background-position: 100px
+   //transform: translateX(100%);
+    //background-position: -1277px
   }
   100% {
-    transform: translateX(0);
-    background-position: 300px
+   //transform: translateX(0);
+   // background-position: 141px
   }
 }
