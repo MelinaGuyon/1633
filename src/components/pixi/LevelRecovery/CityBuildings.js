@@ -4,10 +4,14 @@ import Light from 'components/pixi/LevelCommon/Light'
 
 export default class CityBuildings extends PixiComponent {
   setup () {
+
     this.mains = []
-    this.mains.push(this.addComponent(Building, { layer: '7bg200', x: 0, y: -162, tint: 0x00ff00 }))
-    this.mains.push(this.addComponent(Building, { layer: '7bg200', x: 0, type: 'a', y: -150, tint: 0x00ff00 }))
-    this.mains.push(this.addComponent(Light, { layer: '7bg200', form: 'light/main', target: this.base, x: 7, y: -63, tint: 0x886600, alpha: 1, scale: [0.3, 0.27] }))
+    this.mains.push(this.addComponent(Building, { layer: '7bg400', x: 0, type: 'a', scale: 0.9, y: -50 })) // big
+    this.mains.push(this.addComponent(Building, { layer: '7bg300', x: -440, type: 'b', scale: 0.9, y: -150 }))
+    this.mains.push(this.addComponent(Building, { layer: '7bg200', x: -220, type: 'c', scale: 0.9, y: -50 }))
+    this.mains.push(this.addComponent(Building, { layer: '7bg200', x: 300, type: 'd', scale: 0.9, y: -50 }))
+    this.mains.push(this.addComponent(Building, { layer: '7bg200', x: 300, type: 'e', scale: 0.9 }))
+    this.mains.push(this.addComponent(Building, { layer: '7bg100', x: 300, type: 'f', scale: 0.9, y: 50 }))
   }
 
   componentWillUnmount () {
