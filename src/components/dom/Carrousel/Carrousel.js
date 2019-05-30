@@ -15,7 +15,30 @@ class Button extends DomComponent {
     const loc = store.loc.get()
     let className = 'carrousel__choice ' + props.active
     return (
-      <div class={className} data-id={props.id} data-text={loc['carrousel.' + props.type]}><span>{loc['carrousel.' + props.type]}<strong></strong></span></div>
+      <div class={className} data-id={props.id} data-text={loc['carrousel.' + props.type]}><span>{loc['carrousel.' + props.type]}<strong /></span></div>
+    )
+  }
+
+  componentDidMount () {
+    this.bind()
+  }
+
+  bind () {
+    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+  }
+
+  onClick (e) {
+    e.target.parentNode.classList.add('hidden')
+    const id = Number(e.target.getAttribute('data-id'))
+    this.props.launchGame && this.props.launchGame(id)
+  }
+}
+
+class Story extends DomComponent {
+  template (props) {
+    const loc = store.loc.get()
+    return (
+      <div class='carrousel__story' data-id={props.id}><span>{loc['carrousel.story']} <span class="carrousel__story__number">{props.id}</span></span></div>
     )
   }
 
@@ -38,14 +61,17 @@ export default class Carrousel extends DomComponent {
   template ({ base }) {
     return (
       <section data-type='carrousel' class='carrousel mouse__close'>
-        <div className="carrousel__textScrolling">
-          <Button active='active' type={'richelieu'} id={0} launchGame={this.launchGame} />
+	      <div>
+          <Story id={0} />
+          <div className='carrousel__textScrolling'>
+            <Button active='active' type={'richelieu'} id={0} launchGame={this.launchGame} />
+          </div>
         </div>
         <Button active='' type={'mariecurie'} id={1} launchGame={this.launchGame} />
         <Button active='' type={'robertdesorbon'} id={2} launchGame={this.launchGame} />
         <Button active='' type={'jacqueslemercier'} id={3} launchGame={this.launchGame} />
         <Button active='' type={'napoleonbonaparte'} id={4} launchGame={this.launchGame} />
-        <span class='carrousel__form'></span>
+        <span class='carrousel__form' />
         <Intro />
       </section>
     )
@@ -78,6 +104,6 @@ export default class Carrousel extends DomComponent {
 
   componentDidMount () {
     // debug to start directly
-   // if (store.skipCarousel.get()) this.launchGame(0)
+    // if (store.skipCarousel.get()) this.launchGame(0)
   }
 }
