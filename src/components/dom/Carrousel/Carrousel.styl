@@ -65,6 +65,9 @@
         display: inline-block;
         white-space: nowrap;
         top:0;
+        -webkit-background-clip: text;
+        background-image: url(https://dummyimage.com/600x400/ffffff/fff);
+        background-size: inherit;
 
       span
         animation: defilement 10s infinite linear;
@@ -107,11 +110,23 @@
     display: none
 
 @keyframes defilement {
-  0% {transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(0);
+    background-position: 300px
+  }
+  100% {
+    transform: translateX(-100%);
+    background-position: 100px
+  }
 }
 
 @keyframes defilement2 {
-  0% {transform: translateX(100%); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(100%);
+    background-position: 100px
+  }
+  100% {
+    transform: translateX(0);
+    background-position: 300px
+  }
 }
