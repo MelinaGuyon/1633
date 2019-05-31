@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs,no-tabs,no-tabs */
 import { DomComponent } from 'abstractions/DomComponent'
 import { h, addRef } from '@internet/dom'
 import store from 'state/store'
@@ -10,11 +11,78 @@ import Intro from 'components/dom/Intro/Intro'
 
 import './Carrousel.styl'
 
+class Form extends DomComponent {
+  template (props) {
+    const loc = store.loc.get()
+    let clasName = 'carrousel__form__content ' + props.active
+    return (
+      <div class={clasName} launchGame={props.launchGame} type={props.type} data-id={props.id}>
+        <div class='carrousel__form'>
+          <Story id={0} type={props.type} />
+          <div className='carrousel__textScrolling'>
+            <Text type={props.type} />
+          </div>
+        </div>
+        <div className='carrousel__textScrolling'>
+          <Button type={props.type} id={0} />
+        </div>
+      </div>
+    )
+  }
+
+  componentDidMount () {
+    this.bind()
+  }
+
+  bind () {
+    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+  }
+
+  fadeOut (el) {
+	  el.classList.add('opacity')
+	  setTimeout(function () {
+      el.classList.add('hidden')
+    }, 2000)
+  }
+
+  onClick (e) {
+	  this.fadeOut(e.target.parentNode.parentNode)
+    const id = Number(e.target.getAttribute('data-id'))
+    this.props.launchGame && this.props.launchGame(id)
+  }
+}
+
 class Button extends DomComponent {
   template (props) {
     const loc = store.loc.get()
     return (
-      <button class='carrousel__choice' data-id={props.id}>{loc['carrousel.' + props.type]}</button>
+      <div class='carrousel__choice ' data-text={loc['carrousel.' + props.type]}><span>{loc['carrousel.' + props.type]}<strong /></span></div>
+    )
+  }
+}
+
+class Text extends DomComponent {
+  template (props) {
+    const loc = store.loc.get()
+    return (
+      <div class='carrousel__choice ' data-text={loc['carrousel.' + props.type]}><span>{loc['carrousel.' + props.type]}<strong /></span></div>
+    )
+  }
+}
+
+class Story extends DomComponent {
+  template (props) {
+    const loc = store.loc.get()
+    return (
+      <div class='carrousel__story' data-id={props.id}><span>{loc['carrousel.story']} <span class='carrousel__story__number'>{props.id}</span></span></div>
+    )
+  }
+}
+
+class ButtonGoNext extends DomComponent {
+  template (props) {
+    return (
+      <button>Go suivant</button>
     )
   }
 
@@ -27,22 +95,42 @@ class Button extends DomComponent {
   }
 
   onClick (e) {
-    e.target.parentNode.classList.add('hidden')
-    const id = Number(e.target.getAttribute('data-id'))
-    this.props.launchGame && this.props.launchGame(id)
+    this.props.goNext()
   }
+}
+
+class ButtonGoPrev extends DomComponent {
+  template (props) {
+    return (
+      <button>Go avant</button>
+    )
+  }
+
+	componentDidMount () {
+		this.bind()
+	}
+
+	bind () {
+		this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+	}
+
+	onClick (e) {
+		this.props.goPrev()
+	}
 }
 
 export default class Carrousel extends DomComponent {
   template ({ base }) {
     return (
       <section data-type='carrousel' class='carrousel mouse__close'>
-        <Button type={'richelieu'} id={0} launchGame={this.launchGame} />
-        <Button type={'mariecurie'} id={1} launchGame={this.launchGame} />
-        <Button type={'robertdesorbon'} id={2} launchGame={this.launchGame} />
-        <Button type={'jacqueslemercier'} id={3} launchGame={this.launchGame} />
-        <Button type={'napoleonbonaparte'} id={4} launchGame={this.launchGame} />
+        <Form active={'active'} type={'richelieu'} id={0} launchGame={this.launchGame} />
+        <Form active={''} type={'mariecurie'} id={1} launchGame={this.launchGame} />
+        <Form active={''} type={'robertdesorbon'} id={2} launchGame={this.launchGame} />
+        <Form active={''} type={'jacqueslemercier'} id={3} launchGame={this.launchGame} />
+        <Form active={''} type={'napoleonbonaparte'} id={4} launchGame={this.launchGame} />
         <Intro />
+        <ButtonGoPrev goPrev={this.goPrev} />
+        <ButtonGoNext goNext={this.goNext} />
       </section>
     )
   }
@@ -50,7 +138,7 @@ export default class Carrousel extends DomComponent {
   launchGame (id) {
     // store.levelId.set(id)
     // Mount the Pixi Game component
-    document.querySelector('.carrousel').classList.add('hidden') // Temporary
+    document.querySelector('.carrousel').classList.add('hidden') // TODO REMOVE Temporary
     switch (id) {
       case 0:
         this.game = new RichelieuGame({ autosetup: true })
@@ -72,8 +160,43 @@ export default class Carrousel extends DomComponent {
     }
   }
 
+  goNext () {
+    console.log(' au suivant ')
+  }
+
+  goPrev () {
+	  console.log(' on retourne avant ')
+  }
+
   componentDidMount () {
     // debug to start directly
     if (store.skipCarousel.get()) this.launchGame(0)
+
+	  this.scrollListen()
+  }
+
+  scrollListen () {
+    let lastPostitionScroll = 0
+    let ticking = false
+
+    console.log('here')
+
+    function scrolling (posScroll) {
+      // faire quelque chose avec la position du scroll
+      console.log('scroool')
+    }
+
+    window.addEventListener('scroll', function (e) {
+      lastPostitionScroll = window.scrollY
+      console.log('???')
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          scrolling(lastPostitionScroll)
+          ticking = false
+        })
+      }
+
+      ticking = true
+    })
   }
 }
