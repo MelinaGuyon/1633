@@ -23,6 +23,28 @@
     z-index 2
     top: 20vh
 
+    &:after
+      content: ''
+      width: 1px
+      background-color #fff
+      height: 60px
+      display block
+      position absolute
+      left: 50%
+      transform translateX(-50%)
+      top: -70px
+
+    &:before
+      content: ''
+      width: 1px
+      background-color #fff
+      height: 120px
+      display block
+      position absolute
+      left: 50%
+      transform translateX(-50%)
+      bottom: -130px
+
     &__number
       font-family: Roboto;
       font-size: 16px;
@@ -32,16 +54,18 @@
       line-height: 0.88;
       letter-spacing: 1px;
       color: #ffffff;
+      vertical-align: super;
 
   &__form
-    width: 521px;
-    height: 818.7px;
+    width: 37vw;
+    height: 85vh;
     background-color: #242146;
     display block;
     border-radius 400px 400px 0px 0px
     z-index 1
     overflow: hidden
     position relative
+    transition .3s ease
 
     .carrousel__choice
       color #fff
@@ -52,20 +76,40 @@
       left: 50%;
       transform: translate(-50%, -50%);
       position absolute
-      width: 521px;
-      height: 818.7px;
+      width: 37vw;
+      height: 85vh;
+      transition .3s ease
+
+      &:hover
+        width: 57vw;
+        height: 105vh;
+
+        .carrousel__form
+          width: 57vw;
+          height: 105vh;
+
+          .carrousel__choice
+            color $salmon
+
+        .carrousel__textScrolling
+          bottom 180px
+          color $salmon
+
+        .carrousel__choice
+          -webkit-text-stroke: 1px $salmon;
 
   &__textScrolling
     display: block;
     padding: 0;
     overflow: hidden;
-    bottom: 260px
+    bottom: 100px
     position fixed
-    width: 100vw;
-    max-width: 100vw;
+    width: 120vw;
+    max-width: 120vw;
     height: 200px;
     z-index 2
-    left: -280px;
+    left: -34vw;
+    transition 0s
 
     div
       position: absolute;
@@ -87,7 +131,7 @@
         margin-right: 10px
 
       strong
-        margin 0 70px
+        margin 0 30px
 
       &:after
         position: absolute;
