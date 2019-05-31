@@ -38,12 +38,22 @@
     height: 818.7px;
     background-color: #242146;
     display block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     border-radius 400px 400px 0px 0px
     z-index 1
+    overflow: hidden
+    position relative
+
+    .carrousel__choice
+      color #fff
+
+    &__content
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position absolute
+      width: 521px;
+      height: 818.7px;
 
   &__textScrolling
     display: block;
@@ -55,6 +65,7 @@
     max-width: 100vw;
     height: 200px;
     z-index 2
+    left: -280px;
 
     div
       position: absolute;
@@ -66,10 +77,10 @@
         white-space: nowrap;
         top:0;
         -webkit-background-clip: text;
-        background-image: url(https://dummyimage.com/600x400/ffffff/fff);
-        background-repeat: no-repeat;
-        background-position: 141px;
-        background-size 521px
+        //background-image: url(https://dummyimage.com/600x400/ffffff/fff);
+        //background-repeat: no-repeat;
+        //background-position: 141px;
+        //background-size 521px
 
       span
         animation: defilement 10s infinite linear;
@@ -113,22 +124,22 @@
 
 @keyframes defilement {
   0% {
-   // transform: translateX(0);
+   transform: translateX(0);
     // background-position: 141px
   }
   100% {
-   // transform: translateX(-100%);
+   transform: translateX(-100%);
    // background-position: 1700px
   }
 }
 
 @keyframes defilement2 {
   0% {
-   //transform: translateX(100%);
+   transform: translateX(100%);
     //background-position: -1277px
   }
   100% {
-   //transform: translateX(0);
+   transform: translateX(0);
    // background-position: 141px
   }
 }

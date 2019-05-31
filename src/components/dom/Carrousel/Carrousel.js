@@ -34,26 +34,26 @@ class Button extends DomComponent {
   }
 }
 
+class Text extends DomComponent {
+  template (props) {
+    const loc = store.loc.get()
+	  let className = 'carrousel__choice ' + props.active
+    return (
+	    <div class={className} data-text={loc['carrousel.' + props.type]}><span>{loc['carrousel.' + props.type]}<strong /></span></div>
+    )
+  }
+}
+
 class Story extends DomComponent {
   template (props) {
     const loc = store.loc.get()
     return (
-      <div class='carrousel__story' data-id={props.id}><span>{loc['carrousel.story']} <span class="carrousel__story__number">{props.id}</span></span></div>
+      <div class='carrousel__story' data-id={props.id}><span>{loc['carrousel.story']} <span class='carrousel__story__number'>{props.id}</span></span></div>
     )
   }
 
   componentDidMount () {
     this.bind()
-  }
-
-  bind () {
-    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
-  }
-
-  onClick (e) {
-    e.target.parentNode.classList.add('hidden')
-    const id = Number(e.target.getAttribute('data-id'))
-    this.props.launchGame && this.props.launchGame(id)
   }
 }
 
@@ -61,8 +61,13 @@ export default class Carrousel extends DomComponent {
   template ({ base }) {
     return (
       <section data-type='carrousel' class='carrousel mouse__close'>
-	      <div>
-          <Story id={0} />
+        <div class='carrousel__form__content'>
+          <div class='carrousel__form'>
+            <Story id={0} type={'richelieu'} />
+	          <div className='carrousel__textScrolling'>
+	            <Text active='active' type={'richelieu'} />
+	          </div>
+          </div>
           <div className='carrousel__textScrolling'>
             <Button active='active' type={'richelieu'} id={0} launchGame={this.launchGame} />
           </div>
@@ -71,7 +76,6 @@ export default class Carrousel extends DomComponent {
         <Button active='' type={'robertdesorbon'} id={2} launchGame={this.launchGame} />
         <Button active='' type={'jacqueslemercier'} id={3} launchGame={this.launchGame} />
         <Button active='' type={'napoleonbonaparte'} id={4} launchGame={this.launchGame} />
-        <span class='carrousel__form' />
         <Intro />
       </section>
     )
