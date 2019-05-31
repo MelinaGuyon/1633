@@ -138,7 +138,7 @@ export default class Carrousel extends DomComponent {
   launchGame (id) {
     // store.levelId.set(id)
     // Mount the Pixi Game component
-    // document.querySelector('.carrousel').classList.add('hidden') // Temporary
+    document.querySelector('.carrousel').classList.add('hidden') // TODO REMOVE Temporary
     switch (id) {
       case 0:
         this.game = new RichelieuGame({ autosetup: true })
@@ -170,7 +170,7 @@ export default class Carrousel extends DomComponent {
 
   componentDidMount () {
     // debug to start directly
-    // if (store.skipCarousel.get()) this.launchGame(0)
+    if (store.skipCarousel.get()) this.launchGame(0)
 
 	  this.scrollListen()
   }
