@@ -80,6 +80,10 @@
       width: 37vw;
       height: 85vh;
       transition .3s ease
+      display none
+
+      &.active
+        display block
 
       &:hover
         width: 57vw;
@@ -156,13 +160,10 @@
     //line-height: 0.89;
     letter-spacing: 6px;
     color: rgba(255, 255, 255, 0);
-    display none
-
-    &.active
-      display block
-      animation-duration: 6s;
-      animation-name: textDefilement;
-      animation-iteration-count: infinite;
+    display block
+    animation-duration: 6s;
+    animation-name: textDefilement;
+    animation-iteration-count: infinite;
 
   &.hidden
     display: none
