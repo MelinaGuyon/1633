@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs,no-tabs,no-tabs */
 import { DomComponent } from 'abstractions/DomComponent'
 import { h, addRef } from '@internet/dom'
 import store from 'state/store'
@@ -10,12 +11,21 @@ import Intro from 'components/dom/Intro/Intro'
 
 import './Carrousel.styl'
 
-class Button extends DomComponent {
+class Form extends DomComponent {
   template (props) {
     const loc = store.loc.get()
-    let className = 'carrousel__choice ' + props.active
     return (
-      <div class={className} data-id={props.id} data-text={loc['carrousel.' + props.type]}><span>{loc['carrousel.' + props.type]}<strong /></span></div>
+      <div class='carrousel__form__content' launchGame={props.launchGame} type={'richelieu'} data-id={0}>
+        <div class='carrousel__form'>
+          <Story id={0} type={'richelieu'} />
+          <div className='carrousel__textScrolling'>
+            <Text active='active' type={'richelieu'} />
+          </div>
+        </div>
+        <div className='carrousel__textScrolling'>
+          <Button active='active' type={'richelieu'} id={0} />
+        </div>
+      </div>
     )
   }
 
@@ -27,10 +37,27 @@ class Button extends DomComponent {
     this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
   }
 
+  fadeOut (el) {
+	  el.classList.add('opacity')
+	  setTimeout(function () {
+      el.classList.add('hidden')
+    }, 2000)
+  }
+
   onClick (e) {
-    e.target.parentNode.classList.add('hidden')
+	  this.fadeOut(e.target.parentNode.parentNode)
     const id = Number(e.target.getAttribute('data-id'))
     this.props.launchGame && this.props.launchGame(id)
+  }
+}
+
+class Button extends DomComponent {
+  template (props) {
+    const loc = store.loc.get()
+    let className = 'carrousel__choice ' + props.active
+    return (
+      <div class={className} data-text={loc['carrousel.' + props.type]}><span>{loc['carrousel.' + props.type]}<strong /></span></div>
+    )
   }
 }
 
@@ -39,7 +66,7 @@ class Text extends DomComponent {
     const loc = store.loc.get()
 	  let className = 'carrousel__choice ' + props.active
     return (
-	    <div class={className} data-text={loc['carrousel.' + props.type]}><span>{loc['carrousel.' + props.type]}<strong /></span></div>
+      <div class={className} data-text={loc['carrousel.' + props.type]}><span>{loc['carrousel.' + props.type]}<strong /></span></div>
     )
   }
 }
@@ -51,27 +78,13 @@ class Story extends DomComponent {
       <div class='carrousel__story' data-id={props.id}><span>{loc['carrousel.story']} <span class='carrousel__story__number'>{props.id}</span></span></div>
     )
   }
-
-  componentDidMount () {
-    this.bind()
-  }
 }
 
 export default class Carrousel extends DomComponent {
   template ({ base }) {
     return (
       <section data-type='carrousel' class='carrousel mouse__close'>
-        <div class='carrousel__form__content'>
-          <div class='carrousel__form'>
-            <Story id={0} type={'richelieu'} />
-	          <div className='carrousel__textScrolling'>
-	            <Text active='active' type={'richelieu'} />
-	          </div>
-          </div>
-          <div className='carrousel__textScrolling'>
-            <Button active='active' type={'richelieu'} id={0} launchGame={this.launchGame} />
-          </div>
-        </div>
+        <Form launchGame={this.launchGame} />
         <Button active='' type={'mariecurie'} id={1} launchGame={this.launchGame} />
         <Button active='' type={'robertdesorbon'} id={2} launchGame={this.launchGame} />
         <Button active='' type={'jacqueslemercier'} id={3} launchGame={this.launchGame} />
@@ -84,7 +97,7 @@ export default class Carrousel extends DomComponent {
   launchGame (id) {
     // store.levelId.set(id)
     // Mount the Pixi Game component
-    document.querySelector('.carrousel').classList.add('hidden') // Temporary
+    //document.querySelector('.carrousel').classList.add('hidden') // Temporary
     switch (id) {
       case 0:
         this.game = new RichelieuGame({ autosetup: true })

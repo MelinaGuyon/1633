@@ -6,6 +6,7 @@
   left: 0
   top: 0
   z-index 3
+  transition 1s ease
 
   &__story
     font-family: Roboto;
@@ -165,6 +166,9 @@
 
   &.hidden
     display: none
+
+  &.opacity
+    opacity: 0
 
 @keyframes defilement {
   0% {
