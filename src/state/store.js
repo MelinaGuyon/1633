@@ -45,7 +45,11 @@ export default createStore({
     3: 'ceremony',
     4: 'pharmacist',
     5: 'napoleon',
-    6: 'recovery'
+    6: 'recovery',
+    7: 'ceremonie',
+    8: 'sorbonne',
+    9: 'tombeau',
+    10: 'photo'
   },
   levelId: null,
   levelInstance: null,
