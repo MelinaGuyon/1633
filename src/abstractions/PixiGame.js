@@ -13,6 +13,10 @@ import LevelCeremony from 'components/pixi/LevelCeremony/LevelCeremony'
 import LevelPharmacist from 'components/pixi/LevelPharmacist/LevelPharmacist'
 import LevelNapoleon from 'components/pixi/LevelNapoleon/LevelNapoleon'
 import LevelRecovery from 'components/pixi/LevelRecovery/LevelRecovery'
+import LevelCeremonie from 'components/pixi/LevelCeremonie/LevelCeremonie'
+import LevelSorbonne from 'components/pixi/LevelSorbonne/LevelSorbonne'
+import LevelTombeau from 'components/pixi/LevelTombeau/LevelTombeau'
+import LevelPhoto from 'components/pixi/LevelPhoto/LevelPhoto'
 
 import Perso from 'components/pixi/Perso/Perso'
 
@@ -23,7 +27,11 @@ const levels = {
   ceremony: LevelCeremony,
   pharmacist: LevelPharmacist,
   napoleon: LevelNapoleon,
-  recovery: LevelRecovery
+  recovery: LevelRecovery,
+  ceremonie: LevelCeremonie,
+  sorbonne: LevelSorbonne,
+  // tombeau: LevelTombeau,
+  // photo: LevelPhoto
 }
 
 export default class Pixigame extends PixiComponent {
@@ -69,6 +77,7 @@ export default class Pixigame extends PixiComponent {
 
     // Current Level
     const level = store.levelDict.get()[id]
+    console.log(level)
     if (level && !this.levels[level]) {
       this.levels[level] = new levels[level]({ autosetup: true, name: level }) // eslint-disable-line
     }
