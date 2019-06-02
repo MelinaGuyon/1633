@@ -55,14 +55,18 @@ class Fact extends DomComponent {
     const loc = store.loc.get()
 
     return (
-      <div class='fact' ref={addRef(this, 'fact')}>
-        <img class='character' ref={addRef(this, 'character')} src={props.content.img} />
-        <div class='factContent' ref={addRef(this, 'content')} >
-          {loc['chronologie.fact'] + (props.id + 1)}
-          <p class='date'>{props.content.date}</p>
-          <p class='name'>{props.content.historyName}</p>
+      <div class='fact locked' ref={addRef(this, 'fact')}>
+        <div class='content-container'>
+          <img class='character' ref={addRef(this, 'character')} src={props.content.img} />
+          <div class='content' ref={addRef(this, 'content')} >
+            {loc['chronologie.fact'] + (props.id + 1)}
+            <p class='date'>{props.content.date}</p>
+            <p class='name'>{props.content.historyName}</p>
+            <p class='title'>{props.content.title}</p>
+          </div>
         </div>
 
+        <h2 class='locked-title'>{props.content.title}</h2>
         <Glass ref={addRef(this, 'glass')} parrent />
       </div>
     )
@@ -74,7 +78,7 @@ class Fact extends DomComponent {
 
   bind () {
     // TODO : écouter le mouse store car sinon il y en aura des dizaines + mettre les glass
-    this.base.addEventListener('mousemove', this.fastbind('onMouseMove', 1))
+    // this.base.addEventListener('mousemove', this.fastbind('onMouseMove', 1))
   }
 
   onMouseMove (e) {
@@ -152,7 +156,9 @@ export default class Chronologie extends DomComponent {
   }
 
   onFactUnlocked (id) {
-    this.facts[store.currentHistory.get()][id].content.style.opacity = 0.5 // TEMP
+    this.facts[store.currentHistory.get()][id].base.classList.remove('locked')
+    // console.log
+
     document.querySelector('.message').className = 'message active'
     setTimeout(() => {
       document.querySelector('.message').className = 'message'

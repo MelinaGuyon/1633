@@ -1,7 +1,7 @@
 #chronologie
   width: 100vw
   height: 100vh
-  background: white
+  background: $light-salmon
   position: absolute
   z-index: $indexChronologie
   top: 0
@@ -20,46 +20,74 @@
     position: relative
     width: 100vw
     height: 100vh
-    background: url('https://www.st-wandrille.com/images/hautdepage/im-abbay.jpg')
-    background-size: cover
 
-  .fact-unlocked
-  	opacity: 1
+    .glass
+      opacity: 0
 
-  .background
-  	width: 300px
+    .locked-title
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      opacity: 0
+      transform: translate(-50%, -50%)
+      z-index 2
+      -webkit-text-stroke: 1px $salmon;
+      font-family: Eczar;
+      font-size: 80px;
+      text-align: center;
+      color: transparent;
+      letter-spacing: 4px
+      line-height: 90px
 
-  .factContent
-    position absolute
-    color: black
-    background: white
-    width: 40%
-    height: 60%
-    top: 50%
-    left: 50%
-    opacity: 0.5
-    padding: 40px
-    opacity: 0.2
-    transform: translate(0%, -50%)
+    &.locked
+      .glass
+        opacity 1
 
-  .character
-    float: left
-    width: 25%
-    margin-left: 10%
-    margin-right: 10%
-    margin-top: 150px
+      .locked-title
+        opacity: 1
 
-  .factButtons
-    margin-left: 45%
-    margin-top: 20px
+      .content-container
+        opacity 0
 
-  .factButtons li
-    display: inline-block
-    margin-right: 10px
+  .content-container
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
 
-  .buttonFact
-    height: 30px
-    width: 100px
+    .character
+      width: 300px;
+      margin-right: 20px
 
-  .date, .name
-    font-size: 40px
+    .content
+      color: black
+      background: white
+      width: 40%
+      height: 60%
+      opacity: 0.5
+      padding: 40px
+      margin-left: 20px
+
+    .factButtons
+      margin-left: 45%
+      margin-top: 20px
+
+    .factButtons li
+      display: inline-block
+      margin-right: 10px
+
+    .buttonFact
+      height: 30px
+      width: 100px
+
+    .date
+      margin-top: 20px
+      font-size: 40px
+
+    .name
+      font-size: 40px
+
+    .title
+      margin-top: 20px
+      font-size: 30px
