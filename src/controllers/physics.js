@@ -23,6 +23,8 @@ function addBody (props) {
 }
 
 function removeBody (body) {
+  // if no body : body is already removed
+  if (!body) return
   const index = groups[body.group].indexOf(body)
   if (!body.destroyed) body.destroy()
   if (!~index) return

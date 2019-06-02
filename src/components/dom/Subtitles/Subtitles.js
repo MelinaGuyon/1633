@@ -29,7 +29,6 @@ export default class Subtitles extends DomComponent {
   }
 
   initWritting (index) {
-    console.log('je passe', index, this.globalIndex)
     this.writeSubtitles(store.subtitles.get()[index], index)
   }
 

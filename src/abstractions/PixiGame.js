@@ -29,7 +29,7 @@ const levels = {
   napoleon: LevelNapoleon,
   recovery: LevelRecovery,
   ceremonie: LevelCeremonie,
-  sorbonne: LevelSorbonne,
+  sorbonne: LevelSorbonne
   // tombeau: LevelTombeau,
   // photo: LevelPhoto
 }
