@@ -29,7 +29,7 @@ export default class Subtitles extends DomComponent {
   }
 
   initWritting (index) {
-    this.writeSubtitles(store.subtitles.get()[index], index)
+    // this.writeSubtitles(store.subtitles.get()[index], index)
   }
 
   writeSubtitles (block, blockIndex) {
