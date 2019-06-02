@@ -123,6 +123,10 @@ export default class Chronologie extends DomComponent {
 
   onFactUnlocked (id) {
     this.facts[id].content.style.opacity = 0.5 // TEMP
+    document.querySelector('.message').className = 'message active'
+	  setTimeout(function () {
+      document.querySelector('.message').className = 'message'
+    }, 1000)
   }
 
   onChronologieClick (chronologieStatus) {
