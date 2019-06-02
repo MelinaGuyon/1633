@@ -129,9 +129,26 @@ export default class Chronologie extends DomComponent {
   }
 
   bind () {
-    window.addEventListener('mousewheel', this.fastbind('onScroll', 1))
     signals.factUnlock.listen(this.fastbind('onFactUnlocked', 1))
     this.listenStore('chronologieStatus', this.onChronologieClick)
+  }
+
+  internalBind () {
+    window.addEventListener('mousewheel', this.fastbind('getOffset', 1))
+    this.facts.forEach((tab) => {
+      tab.forEach((el) => {
+        el.glass.bind()
+      })
+    })
+  }
+
+  internalUnbind () {
+    window.removeEventListener('mousewheel', this.getOffset)
+    this.facts.forEach((tab) => {
+      tab.forEach((el) => {
+        el.glass.unbind()
+      })
+    })
   }
 
   onFactUnlocked (id) {
@@ -146,12 +163,16 @@ export default class Chronologie extends DomComponent {
     if (chronologieStatus === 'appearing') {
       this.chronologie.scrollTop = this.facts[store.currentHistory.get()][store.chronologieId.get()].base.offsetTop
       this.chronologie.classList.add('visible')
+      this.getOffset()
+      this.internalBind()
     } else if (chronologieStatus === 'disappearing') {
       this.chronologie.classList.remove('visible')
+      this.internalUnbind()
     }
   }
 
-  onScroll () {
+  getOffset () {
+    // TODO :: to get on resize too
     store.chronologieOffset.set({ x: this.chronologie.offsetWidth, y: this.chronologie.scrollTop })
   }
 }

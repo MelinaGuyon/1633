@@ -83,7 +83,6 @@ export default class Glass extends DomComponent {
   }
 
   bind () {
-    console.log('bind')
     this.listenStore('mouse', this.handleMoove)
     raf.add(this.fastbind('updateInertia'))
   }
@@ -95,7 +94,7 @@ export default class Glass extends DomComponent {
 
   setPosition () {
     const callback = after(this.number, () => {
-      this.bind()
+      if (!this.parrent) this.bind()
     })
 
     this.singleGlass.forEach((el, index) => {
@@ -144,8 +143,6 @@ export default class Glass extends DomComponent {
       }
       let dx = this.coords[index].centerX - mouse.x - offsetX
       let dy = this.coords[index].centerY - mouse.y - offsetY
-
-      // if (index === 0) console.log(dx, dy)
 
       if (dx < 180 && dx > -180 && dy < 180 && dy > -180) {
         let x = transformValues[index][0] + dx / 4
