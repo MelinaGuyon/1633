@@ -51,8 +51,14 @@ class Scene extends PixiComponent {
     // Create parallax layers
     for (let i = 0; i < layers.length; i++) {
       const name = layers[i][0]
-      let id = Number(name.substring(0, 1))
-      if (isNaN(id)) id = 0
+
+      let id = 0
+      let oneTaken = Number(name.substring(0, 1))
+      let twoTaken = Number(name.substring(0, 2))
+
+      if (!isNaN(oneTaken)) id = oneTaken
+      if (!isNaN(twoTaken)) id = twoTaken
+
       const layer = this.addComponent(SceneLayer, { z: layers[i][1], parralaxValue: layers[i][2], id, name: name })
       this.layers[name] = layer
       this.sizes[layer.id] = 0

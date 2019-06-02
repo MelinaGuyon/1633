@@ -29,9 +29,9 @@ const levels = {
   napoleon: LevelNapoleon,
   recovery: LevelRecovery,
   ceremonie: LevelCeremonie,
-  sorbonne: LevelSorbonne
-  // tombeau: LevelTombeau,
-  // photo: LevelPhoto
+  sorbonne: LevelSorbonne,
+  tombeau: LevelTombeau,
+  photo: LevelPhoto
 }
 
 export default class Pixigame extends PixiComponent {

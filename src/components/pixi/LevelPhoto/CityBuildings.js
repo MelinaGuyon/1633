@@ -6,8 +6,13 @@ export default class CityBuildings extends PixiComponent {
   setup () {
 
     this.mains = []
-    this.mains.push(this.addComponent(Building, { layer: '11bg400', x: 0, type: 'a', scale: 0.9, y: -50 })) // big
-    this.mains.push(this.addComponent(Building, { layer: '11bg300', x: -440, type: 'b', scale: 0.9, y: -150 }))
+    this.mains.push(this.addComponent(Building, { layer: '11bg600', x: 0, type: 'a', y: -50 })) // big
+    this.mains.push(this.addComponent(Building, { layer: '11bg500', x: 0, type: 'b', y: -150 }))
+    this.mains.push(this.addComponent(Building, { layer: '11bg400', x: 300, type: 'c', y: 20 }))
+    this.mains.push(this.addComponent(Building, { layer: '11bg300', x: -70, type: 'd', y: 50 }))
+    this.mains.push(this.addComponent(Building, { layer: '11bg200', x: -350, type: 'e', y: -30 }))
+    this.mains.push(this.addComponent(Building, { layer: '11bg100', x: -550, type: 'f', y: -30 }))
+    this.mains.push(this.addComponent(Building, { layer: '11bg100', x: 250, type: 'g', y: 80 }))
   }
 
   componentWillUnmount () {
