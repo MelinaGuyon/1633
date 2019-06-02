@@ -45,7 +45,7 @@ export default class Pixigame extends PixiComponent {
     physics.createGroup('interests', { color: 0xffff00 })
     physics.createGroup('hero', { color: 0x00ff00 })
     physics.createGroup('tuto', { color: 0x3a99fc })
-    physics.createGroup('sound', { color: 0x461220 })
+    physics.createGroup('sound', { color: 0x000000 })
 
     this.bind()
     this.levels = {}
