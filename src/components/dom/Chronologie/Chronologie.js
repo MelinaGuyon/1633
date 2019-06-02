@@ -3,6 +3,7 @@ import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
 import anime from 'animejs'
 import signals from 'state/signals'
+import sortBy from 'lodash/sortBy'
 
 import './Chronologie.styl'
 
@@ -53,9 +54,13 @@ class Fact extends DomComponent {
     const loc = store.loc.get()
 
     return (
-      <div class='fact' id={props.type} data-id={props.id} ref={addRef(this, 'fact')}>
-        <img class='character' ref={addRef(this, 'character')} data-id={props.id} src='http://www.europexplo.fr/wp-content/uploads/2016/08/MAZARIN.png' />
-        <div class='factContent' ref={addRef(this, 'content')} data-id={props.id}>{loc['chronologie.fact'] + (props.id + 1)}</div>
+      <div class='fact' ref={addRef(this, 'fact')}>
+        <img class='character' ref={addRef(this, 'character')} src='http://www.europexplo.fr/wp-content/uploads/2016/08/MAZARIN.png' />
+        <div class='factContent' ref={addRef(this, 'content')} >
+          {loc['chronologie.fact'] + (props.id + 1)}
+          <p class='date'>{props.content.date}</p>
+          <p class='name'>{props.content.historyName}</p>
+        </div>
       </div>
     )
   }
@@ -91,17 +96,22 @@ class Fact extends DomComponent {
 
 export default class Chronologie extends DomComponent {
   template ({ base }) {
-    // TODO :: Need to be dynamic with ALL interest of ALL Sorbonne
-    // Faire différents tableau de facts / de ref de facts, et pointer dans le bon
-    this.number = 11
-    this.facts = Array(this.number)
+    this.historyNumber = 2 // temp
+    this.chronologieDatas = store.chronologie.get()[0]
+    this.chronologieDatas = sortBy(this.chronologieDatas, [(d) => { return d.date }])
+    this.chronologieNumber = this.chronologieDatas.length
+    this.facts = Array(this.historyNumber)
+
+    for (let i = 0; i < this.historyNumber; i++) {
+      this.facts[i] = []
+    }
 
     const facts = []
     const refFacts = i => el => {
-      this.facts[i] = el
+      this.facts[this.chronologieDatas[i].historyId].push(el)
     }
-    for (let i = 0; i < this.number; i++) {
-      facts.push(<Fact ref={refFacts(i)} id={i} />)
+    for (let i = 0; i < this.chronologieNumber; i++) {
+      facts.push(<Fact ref={refFacts(i)} id={i} content={this.chronologieDatas[i]} />)
     }
 
     return (
@@ -116,7 +126,6 @@ export default class Chronologie extends DomComponent {
   }
 
   bind () {
-    // this.listenStore('factsStatus', this.onFactUnlocked)
     signals.factUnlock.listen(this.fastbind('onFactUnlocked', 1))
     this.listenStore('chronologieStatus', this.onChronologieClick)
   }
@@ -131,7 +140,7 @@ export default class Chronologie extends DomComponent {
 
   onChronologieClick (chronologieStatus) {
     if (chronologieStatus === 'appearing') {
-      this.chronologie.scrollTop = this.facts[store.chronologieId.get()].base.offsetTop
+      this.chronologie.scrollTop = this.facts[store.currentHistory.get()][store.chronologieId.get()].base.offsetTop
       this.chronologie.classList.add('visible')
     } else if (chronologieStatus === 'disappearing') {
       this.chronologie.classList.remove('visible')

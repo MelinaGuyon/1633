@@ -136,7 +136,6 @@ export default class Carrousel extends DomComponent {
   }
 
   launchGame (id) {
-    // store.levelId.set(id)
     // Mount the Pixi Game component
     document.querySelector('.carrousel').classList.add('hidden') // TODO REMOVE Temporary
     switch (id) {
@@ -158,6 +157,7 @@ export default class Carrousel extends DomComponent {
       default:
         console.log('error')
     }
+    store.currentHistory.set(id)
   }
 
   goNext () {

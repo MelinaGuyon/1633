@@ -5,6 +5,8 @@ import languages from '../languages'
 import sceneLayers from './sceneLayers'
 import subtitlesFr from './subtitlesFr'
 import subtitlesEn from './subtitlesEn'
+import chronologieFr from './chronologieFr'
+import chronologieEn from './chronologieEn'
 
 const isDev = IS_DEV
 const ratio = window.devicePixelRatio <= 2 ? 1 : 1.5
@@ -25,6 +27,7 @@ export default createStore({
   sceneScale: 1,
 
   // ---- history ----
+  currentHistory: 0,
   history: {
     0: 'richelieu',
     1: 'mariecurie',
@@ -54,15 +57,9 @@ export default createStore({
   levelSecurity: 2,
 
   // ---- chronologie ----
+  chronologie: window.__conf.lang === 'fr' ? chronologieFr : chronologieEn,
   chronologieStatus: null,
   chronologieId: null,
-  factsStatus: [
-    'locked',
-    'locked',
-    'locked',
-    'locked',
-    'locked'
-  ],
 
   frameDuration: 70, // default animation's frame duration
 

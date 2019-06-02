@@ -8,7 +8,7 @@ import delay from 'lodash/delay'
 import signals from 'state/signals'
 
 import './Glass.styl'
-import store from 'state/store';
+import store from 'state/store'
 
 const transformValues = [
   [-450, -200, 0],
