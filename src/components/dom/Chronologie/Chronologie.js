@@ -2,6 +2,7 @@ import { h, addRef } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
 import anime from 'animejs'
+import signals from 'state/signals'
 
 import './Chronologie.styl'
 
@@ -54,7 +55,7 @@ class Fact extends DomComponent {
     return (
       <div class='fact' id={props.type} data-id={props.id} ref={addRef(this, 'fact')}>
         <img class='character' ref={addRef(this, 'character')} data-id={props.id} src='http://www.europexplo.fr/wp-content/uploads/2016/08/MAZARIN.png' />
-        <div class='factContent' data-id={props.id}>{loc['chronologie.fact'] + (props.id + 1)}</div>
+        <div class='factContent' ref={addRef(this, 'content')} data-id={props.id}>{loc['chronologie.fact'] + (props.id + 1)}</div>
       </div>
     )
   }
@@ -116,13 +117,13 @@ export default class Chronologie extends DomComponent {
 
   bind () {
     // this.listenStore('factsStatus', this.onFactUnlocked)
+    signals.factUnlock.listen(this.fastbind('onFactUnlocked', 1))
     this.listenStore('chronologieStatus', this.onChronologieClick)
   }
 
-  // onFactUnlocked (id) {
-  //   console.log('FACT UNLOCKED', id)
-  //   console.log('factsStatus updated', store.factsStatus.get())
-  // }
+  onFactUnlocked (id) {
+    this.facts[id].content.style.opacity = 0.5 // TEMP
+  }
 
   onChronologieClick (chronologieStatus) {
     if (chronologieStatus === 'appearing') {

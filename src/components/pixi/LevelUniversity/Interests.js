@@ -34,9 +34,7 @@ export default class Interests extends PixiComponent {
 
   unlock (id) {
     if (id >= 0) {
-      store.factsStatus.current[id] = 'unlocked'
-      // TODO :: ON ALL INTERESTS :: need to send an event
-      document.querySelector('#fact' + id + ' .factContent').style.opacity = 0.5
+      signals.factUnlock.dispatch(id)
     }
   }
 

@@ -9,7 +9,8 @@ const signals = {
   stop: new Signal(),
   newDom: new Signal(),
   newIndication: new Signal(),
-  writeSubtitles: new Signal()
+  writeSubtitles: new Signal(),
+  factUnlock: new Signal()
 }
 
 export default signals
