@@ -78,13 +78,13 @@ class Fact extends DomComponent {
 
   bind () {
     // TODO : écouter le mouse store car sinon il y en aura des dizaines + mettre les glass
-    // this.base.addEventListener('mousemove', this.fastbind('onMouseMove', 1))
+    this.base.addEventListener('mousemove', this.fastbind('onMouseMove', 1))
   }
 
   onMouseMove (e) {
-    // let container = this.fact
-    // let character = this.character
-    // this.parallaxIt(e, container, character, -70)
+    let container = this.fact
+    let character = this.character
+    this.parallaxIt(e, container, character, -70)
   }
 
   parallaxIt (e, container, target, movement) {
@@ -157,7 +157,6 @@ export default class Chronologie extends DomComponent {
 
   onFactUnlocked (id) {
     this.facts[store.currentHistory.get()][id].base.classList.remove('locked')
-    // console.log
 
     document.querySelector('.message').className = 'message active'
     setTimeout(() => {
