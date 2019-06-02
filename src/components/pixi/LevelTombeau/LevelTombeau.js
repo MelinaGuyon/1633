@@ -1,6 +1,7 @@
 import Level from 'abstractions/Level'
 import Buildings from './CityBuildings'
 import Interests from './Interests'
+import SoundChecks from "./SoundChecks"
 
 export default class LevelTombeau extends Level {
   setup () {
@@ -16,5 +17,6 @@ export default class LevelTombeau extends Level {
 
   addColliders () {
     this.addComponent(Interests)
+	  this.addComponent(SoundChecks)
   }
 }
