@@ -1,5 +1,6 @@
 import { h, addRef } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
+import Glass from 'components/dom/Glass/Glass'
 import store from 'state/store'
 import anime from 'animejs'
 import signals from 'state/signals'
@@ -61,6 +62,8 @@ class Fact extends DomComponent {
           <p class='date'>{props.content.date}</p>
           <p class='name'>{props.content.historyName}</p>
         </div>
+
+        <Glass ref={addRef(this, 'glass')} parrent />
       </div>
     )
   }
@@ -75,9 +78,9 @@ class Fact extends DomComponent {
   }
 
   onMouseMove (e) {
-    let container = this.fact
-    let character = this.character
-    this.parallaxIt(e, container, character, -70)
+    // let container = this.fact
+    // let character = this.character
+    // this.parallaxIt(e, container, character, -70)
   }
 
   parallaxIt (e, container, target, movement) {
@@ -126,6 +129,7 @@ export default class Chronologie extends DomComponent {
   }
 
   bind () {
+    window.addEventListener('mousewheel', this.fastbind('onScroll', 1))
     signals.factUnlock.listen(this.fastbind('onFactUnlocked', 1))
     this.listenStore('chronologieStatus', this.onChronologieClick)
   }
@@ -133,7 +137,7 @@ export default class Chronologie extends DomComponent {
   onFactUnlocked (id) {
     this.facts[store.currentHistory.get()][id].content.style.opacity = 0.5 // TEMP
     document.querySelector('.message').className = 'message active'
-	  setTimeout(function () {
+    setTimeout(() => {
       document.querySelector('.message').className = 'message'
     }, 1000)
   }
@@ -145,5 +149,9 @@ export default class Chronologie extends DomComponent {
     } else if (chronologieStatus === 'disappearing') {
       this.chronologie.classList.remove('visible')
     }
+  }
+
+  onScroll () {
+    store.chronologieOffset.set({ x: this.chronologie.offsetWidth, y: this.chronologie.scrollTop })
   }
 }

@@ -55,7 +55,9 @@ class SingleGlass extends DomComponent {
 }
 
 export default class Glass extends DomComponent {
-  template ({ base }) {
+  template (props) {
+    this.parrent = props.parrent
+
     this.number = 7
     this.singleGlass = Array(this.number)
     this.coords = []
@@ -81,6 +83,7 @@ export default class Glass extends DomComponent {
   }
 
   bind () {
+    console.log('bind')
     this.listenStore('mouse', this.handleMoove)
     raf.add(this.fastbind('updateInertia'))
   }
@@ -133,8 +136,16 @@ export default class Glass extends DomComponent {
 
   handleMoove (mouse) {
     this.singleGlass.forEach((el, index) => {
-      let dx = this.coords[index].centerX - mouse.x
-      let dy = this.coords[index].centerY - mouse.y
+      let offsetX = 0
+      let offsetY = 0
+      if (this.parrent) {
+        offsetX = store.chronologieOffset.get().x
+        offsetY = store.chronologieOffset.get().y
+      }
+      let dx = this.coords[index].centerX - mouse.x - offsetX
+      let dy = this.coords[index].centerY - mouse.y - offsetY
+
+      // if (index === 0) console.log(dx, dy)
 
       if (dx < 180 && dx > -180 && dy < 180 && dy > -180) {
         let x = transformValues[index][0] + dx / 4

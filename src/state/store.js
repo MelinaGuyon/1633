@@ -57,6 +57,7 @@ export default createStore({
   levelSecurity: 2,
 
   // ---- chronologie ----
+  chronologieOffset: { x: window.innerWidth, y: 0 },
   chronologie: window.__conf.lang === 'fr' ? chronologieFr : chronologieEn,
   chronologieStatus: null,
   chronologieId: null,
