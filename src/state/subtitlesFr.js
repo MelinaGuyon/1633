@@ -5,21 +5,23 @@ export default [
     ['découvrir l\'étonnante histoire de ce célèbre batiment.', 6000]
   ],
   [
-    ['Il semblerait que nous ayons quitté Paris.', 0],
-    ['Allons-nous suivre les péripéthies du crâne de ville en ville ?', 3000],
-    ['Après avoir été retiré de son tombeau lors de.', 6000],
-    ['la Révolution par le jeune Cheval, le disparut totalement', 8000]
+    ['Parmi les milliers d’étudiants ayant fréquenté la Sorbonne, Richelieu est l’un des plus connus.', 0],
+    ['Célèbre ministre de Louis XIII, homme religieux, intelligent, ambitieux,  Armand Jean du Plessis de Richelieu naquit en 1585 au sein d’une grande fratrie.', 7200],
+    ['Promis aux armes, il assuma finalement la charge d’évêché de Luçon.', 20000],
+    ['Homme de responsabilité, le cardinal fut aussi proviseur de la Sorbonne, des années plus tard...', 24000],
+    ['Sa profonde volonté de renforcer le pouvoir royal engendra un regain d’autorité, appelé aujourd’hui “l’absolutisme."', 31000],
+    ['', 44000]
   ],
   [
-    ['C’est l’image d’un pays solide et fier qui est présentée,', 0],
-    ['pendant que nous mourons de faim derrière ses murs.', 2500]
+    ['Voici notre Richelieu jeune, en 1606,', 0],
+    ['lors de son arrivée en Sorbonne, devant les portes de la chapelle médiévale..', 5000],
+    ['', 10000]
   ],
   [
-    ['J’ai vu une petite fille de deux ans affamée, succomber sous mes yeux.', 0],
-    ['Vous voyez, quand une personne meurt, les mouches sont les premières à le savoir.', 3000],
-    ['Même si elle respirait encore, elles se sont rassemblées', 7000],
-    ['autour de ses yeux et de sa bouche comme des folles…', 10000],
-    ['C’est à ce moment que j’ai décidé de fuir. ', 12000]
+    ['Jetez donc un coup d’œil à ces vitraux qui, pour une fois, n’illustrent pas la Bible.', 0],
+    ['Ils racontent une toute autre histoire, particulièrement rocambolesque...', 7500],
+    ['Celle… d’un crâne. Un crâne d’importance…', 11000],
+    ['', 20000]
   ],
   [
     ['On glorifie notre puissante armée, grande défenseuse des peuples,', 0],
