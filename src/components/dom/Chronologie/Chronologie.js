@@ -8,8 +8,6 @@ import './Chronologie.styl'
 
 class PreviousButton extends DomComponent {
   template (props) {
-    const loc = store.loc.get()
-
     return (
       <button class='buttonFact' data-id={props.id}>Fait précédent</button>
     )
@@ -25,15 +23,12 @@ class PreviousButton extends DomComponent {
 
   onClick (e) {
     let previousFactId = Number(e.target.getAttribute('data-id')) - 1
-    // eslint-disable-next-line no-unused-expressions
-    previousFactId >= 0 ? document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + previousFactId + '').offsetTop) : ''
+    if (previousFactId >= 0) document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + previousFactId + '').offsetTop)
   }
 }
 
 class NextButton extends DomComponent {
   template (props) {
-    const loc = store.loc.get()
-
     return (
       <button class='buttonFact' data-id={props.id}>Fait suivant</button>
     )
@@ -49,8 +44,7 @@ class NextButton extends DomComponent {
 
   onClick (e) {
     let nextFactId = Number(e.target.getAttribute('data-id')) + 1
-    // eslint-disable-next-line no-unused-expressions
-    nextFactId < store.factsStatus.get().length ? document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + nextFactId + '').offsetTop) : ''
+    if (nextFactId < store.factsStatus.get().length) document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + nextFactId + '').offsetTop)
   }
 }
 
@@ -61,11 +55,7 @@ class Fact extends DomComponent {
     return (
       <div class='fact' id={props.type} data-id={props.id}>
         <img class='character' data-id={props.id} src='http://www.europexplo.fr/wp-content/uploads/2016/08/MAZARIN.png' />
-        <div class='factContent' data-id={props.id}>{loc['fact.' + props.type]}</div>
-        {/* <ul class='factButtons'>
-          <li><PreviousButton id={props.id} /></li>
-          <li><NextButton id={props.id} /></li>
-        </ul> */}
+        <div class='factContent' data-id={props.id}>{loc['chronologie.fact'] + (props.id + 1)}</div>
       </div>
     )
   }
@@ -78,15 +68,15 @@ class Fact extends DomComponent {
     // this.listenStore('factsStatus', this.onFactUnlocked)
     this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
 
-    // TODO : écouter le mouse store
+    // TODO : écouter le mouse store + mettre les glass
     this.base.addEventListener('mousemove', this.fastbind('onMouseMove', 1))
   }
 
-  onClick (e) {
-    // let id = Number(e.target.getAttribute('data-id'))
-    // store.factsStatus.current[id] = 'unlocked'
-    // document.querySelector('#fact' + id + ' .factContent').style.opacity = 0.5
-  }
+  // onClick (e) {
+  //  let id = Number(e.target.getAttribute('data-id'))
+  //  store.factsStatus.current[id] = 'unlocked'
+  //  document.querySelector('#fact' + id + ' .factContent').style.opacity = 0.5
+  // }
 
   // onFactUnlocked (id) {
   //   console.log('FACT UNLOCKED', id)
@@ -115,6 +105,7 @@ class Fact extends DomComponent {
 
 export default class Chronologie extends DomComponent {
   template ({ base }) {
+    // TODO :: Need to be dynamic with ALL interest of ALL Sorbonne
     return (
       <section id='chronologie'>
         <Fact type={'fact0'} id={0} />
@@ -122,6 +113,12 @@ export default class Chronologie extends DomComponent {
         <Fact type={'fact2'} id={2} />
         <Fact type={'fact3'} id={3} />
         <Fact type={'fact4'} id={4} />
+        <Fact type={'fact5'} id={5} />
+        <Fact type={'fact6'} id={6} />
+        <Fact type={'fact7'} id={7} />
+        <Fact type={'fact8'} id={8} />
+        <Fact type={'fact9'} id={9} />
+        <Fact type={'fact10'} id={10} />
       </section>
     )
   }
@@ -137,8 +134,8 @@ export default class Chronologie extends DomComponent {
   onChronologieClick (chronologieStatus) {
     if (chronologieStatus === 'appearing') {
       document.querySelector('#chronologie').className = 'visible'
-      // console.log('offset', document.querySelector('#fact' + store.chapterId.get() + '').offsetTop)
-      setTimeout(function () { document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + store.chapterId.get() + '').offsetTop) }, 1000)
+      // TODO :: not working
+      // setTimeout(function () { document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + store.chapterId.get() + '').offsetTop) }, 1000)
     } else if (chronologieStatus === 'disappearing') {
       document.querySelector('#chronologie').className = 'hidden'
     }

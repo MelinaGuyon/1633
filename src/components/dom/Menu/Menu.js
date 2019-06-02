@@ -47,7 +47,7 @@ class ChronologieButton extends DomComponent {
   }
 
   onClick (e) {
-    if (store.chronologieStatus.get() != 'appearing') {
+    if (store.chronologieStatus.get() !== 'appearing') {
       store.chronologieStatus.set('appearing')
     } else {
       store.chronologieStatus.set('disappearing')
@@ -203,9 +203,6 @@ export default class Menu extends DomComponent {
       </section>
     )
   }
-  // <Button type={'university'} id={0} />
-  // <Button type={'church'} id={1} />
-  // <Button type={'profanation'} id={2} />
 
   componentDidMount () {
   }
