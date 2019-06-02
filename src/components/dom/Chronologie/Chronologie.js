@@ -55,7 +55,7 @@ class Fact extends DomComponent {
 
     return (
       <div class='fact' ref={addRef(this, 'fact')}>
-        <img class='character' ref={addRef(this, 'character')} src='http://www.europexplo.fr/wp-content/uploads/2016/08/MAZARIN.png' />
+        <img class='character' ref={addRef(this, 'character')} src={props.content.img} />
         <div class='factContent' ref={addRef(this, 'content')} >
           {loc['chronologie.fact'] + (props.id + 1)}
           <p class='date'>{props.content.date}</p>
