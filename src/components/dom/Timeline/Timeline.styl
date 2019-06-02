@@ -2,7 +2,7 @@
   width: 90%
   height 2px
   position: absolute
-  z-index: 2
+  z-index: $indexTimeline
   bottom: 10%
   line-height: 50px
   left: 50%
@@ -114,20 +114,25 @@
     position: absolute
     right: 0
     top: 0px
-    width: 40px
+    width: 20px
     height: 100%
     display: flex
     align-items: center
 
     .point
-      width: 40px
-      height: 2px
-      background: #f0f1f3
-      border-radius: 10px
+      width: 20px
       border: none
       outline: none
+      padding: 14px 0
       position: absolute
+      overflow hidden
       transition: width .3s ease-out
+
+      .point-inner
+        width: 20px
+        height: 2px
+        background: #f0f1f3
+        border-radius: 10px
 
       &.hidden
         width: 0

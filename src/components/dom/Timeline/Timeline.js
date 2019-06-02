@@ -8,11 +8,13 @@ import './Timeline.styl'
 
 class Point extends DomComponent {
   template (props) {
-    this.initialX = 60 * props.initialX
-    this.endingX = 60 * props.endingX
+    this.initialX = 36 * props.initialX
+    this.endingX = 36 * props.endingX
 
     return (
-      <button class='point magnet' id={'point' + props.id + ''} data-id={props.id} />
+      <div class='point magnet' id={'point' + props.id + ''} data-id={props.id}>
+        <div class='point-inner' />
+      </div>
     )
   }
 
@@ -39,16 +41,12 @@ class Point extends DomComponent {
 
   onClick (e) {
     const id = Number(e.target.getAttribute('data-id'))
-    if (store.chronologieStatus.get() === 'appearing' && store.chapterId.get(id) !== id) {
-      document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + id + '').offsetTop)
+    if (store.chronologieStatus.get() !== 'appearing') {
+      store.chronologieId.set(id)
+      store.chronologieStatus.set('appearing')
     } else {
-      if (store.chronologieStatus.get() !== 'appearing') {
-        store.chronologieStatus.set('appearing')
-      } else {
-        store.chronologieStatus.set('disappearing')
-      }
+      store.chronologieStatus.set('disappearing')
     }
-    store.chapterId.set(id)
   }
 }
 
@@ -62,7 +60,7 @@ export default class Timeline extends DomComponent {
       this.points[i] = el
     }
     for (let i = 0; i < this.levelsLength; i++) {
-      points.push(<Point ref={refPoint(i)} initialX={this.levelsLength - 1 - i} endingX={i} />)
+      points.push(<Point ref={refPoint(i)} id={i} initialX={this.levelsLength - 1 - i} endingX={i} />)
     }
 
     return (
@@ -98,7 +96,7 @@ export default class Timeline extends DomComponent {
   }
 
   initParams () {
-    /// need to be called at resize also
+    /// need to be called at resize also + place passed points
     this.size = this.timeline.offsetWidth
     this.pointSize = this.points[0].base.offsetWidth
     this.circleSize = this.circleWrapper.offsetWidth
