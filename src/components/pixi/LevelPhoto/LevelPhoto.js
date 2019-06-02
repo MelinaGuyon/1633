@@ -2,6 +2,7 @@ import Level from 'abstractions/Level'
 import Buildings from './CityBuildings'
 import Interests from './Interests'
 import sound from 'controllers/sound'
+import SoundCheck from "./SoundChecks"
 
 export default class LevelPhoto extends Level {
   setup () {
@@ -17,5 +18,7 @@ export default class LevelPhoto extends Level {
 
   addColliders () {
     this.addComponent(Interests)
+	  this.addComponent(SoundCheck)
+
   }
 }

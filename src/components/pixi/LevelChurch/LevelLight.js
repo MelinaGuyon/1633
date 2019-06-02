@@ -7,7 +7,7 @@ import Timeline from 'utils/Timeline'
 export default class LevelLight extends PixiComponent {
   setup () {
     this.mains = []
-    let light1 = this.addComponent(Light, { layer: '1f200', form: 'light/main', target: this.base, x: 100, y: -100, tint: 0xff0000, alpha: 1, scale: [0.3, 0.27], animation: 'flamme' })
+    /** let light1 = this.addComponent(Light, { layer: '1f200', form: 'light/main', target: this.base, x: 100, y: -100, tint: 0xff0000, alpha: 1, scale: [0.3, 0.27], animation: 'flamme' })
     this.mains.push(light1)
 	  this.blinky = new Timeline([
 		  [function () {
@@ -33,7 +33,7 @@ export default class LevelLight extends PixiComponent {
 	  this.timer(410, () => {
 		  if (this.destroyed) return
 		  this.blinky.play(0)
-	  })
+	  })**/
   }
 
   componentWillUnmount () {
