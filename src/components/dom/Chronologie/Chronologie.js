@@ -55,15 +55,15 @@ class Fact extends DomComponent {
     const loc = store.loc.get()
 
     return (
-      <div class='fact' ref={addRef(this, 'fact')}>
-        {/* <div class='fact locked' ref={addRef(this, 'fact')}> */}
+      // <div class='fact' ref={addRef(this, 'fact')}>
+      <div class='fact locked' ref={addRef(this, 'fact')}>
         <div class='content-container'>
           <img class='character' ref={addRef(this, 'character')} src={props.content.img} />
           <div class='content' ref={addRef(this, 'content')} >
             {/* {loc['chronologie.fact'] + (props.id + 1)} */}
             <p class='date'>{props.content.date}</p>
-            <p class='name'>{props.content.historyName}</p>
             <p class='title'>{props.content.title}</p>
+            <p class='name'>{props.content.historyName}</p>
             <p class='text'>{props.content.text}</p>
           </div>
         </div>
