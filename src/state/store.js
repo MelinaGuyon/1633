@@ -81,8 +81,7 @@ export default createStore({
 
   // ---- assets to preload ----
   atlases: {
-    sheet: 'assets/assets.json',
-    smoothsheet: 'assets/atlas-smooth.json'
+    sheet: 'assets/pixi/assets-0.json'
   },
   images: {
     rotate: 'assets/gif/rotate.gif'

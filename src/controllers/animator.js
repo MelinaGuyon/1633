@@ -64,6 +64,10 @@ export default class Animator {
     this.switchAnim(anim, opts.firstFrame, false, opts.loop)
   }
 
+  stop () {
+    this.loop = false
+  }
+
   update (dt) {
     this.timer.update(dt)
   }
