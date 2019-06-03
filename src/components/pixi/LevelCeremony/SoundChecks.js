@@ -23,8 +23,6 @@ export default class SoundChecks extends PixiComponent {
       } else {
         sound.play(path)
       }
-      // remove colliders body to prevent other collide
-      this.components[collidersId].removeBody()
       signals.writeSubtitles.dispatch(soundId)
       sound.setSoundPlay(path)
     }
