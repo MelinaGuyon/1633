@@ -89,7 +89,7 @@ const dev = {
 const prod = {
   mode: 'production',
   devtool: false,
-  // stats: 'errors-only',
+  stats: 'errors-only',
   rules: [
     {
       test: /\.styl$/,

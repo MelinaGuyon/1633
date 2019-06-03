@@ -5,7 +5,7 @@ module.exports = {
     base: '/'
   },
   'prod': {
-    domain: 'https://miumiu.com',
-    base: '/miumiu-twist/'
+    domain: 'https://ri.stinkstudios.fr',
+    base: '/'
   }
 }
