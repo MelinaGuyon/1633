@@ -12,6 +12,7 @@ import logger from 'utils/logger'
 import signals from 'state/signals'
 
 import './GameInterface.styl'
+import store from "../../../state/store";
 
 export default class GameInterface extends DomComponent {
   template ({ base }) {
@@ -33,6 +34,7 @@ export default class GameInterface extends DomComponent {
     signals.newDom.dispatch()
     logger('Game interface did mount', '#47b342').log()
     this.bind()
+	  this.openTuto('keyboard') //toto remove only for test
   }
 
   componentWillUnmount () {
@@ -46,6 +48,30 @@ export default class GameInterface extends DomComponent {
   unbind () {
     document.removeEventListener('click', this.clearClick)
   }
+
+	openTuto (id) {
+		//cookie.createCookie('tuto', true, 30)
+		let tutos = document.querySelectorAll('[data-tuto]')
+
+		for (let i = 0; i < tutos.length; i++) {
+			tutos[i].className = 'tutorial__item'
+		}
+
+		let tuto = document.querySelector('[data-tuto=' + id)
+		tuto.className = 'tutorial__item active'
+
+		let element = tuto.closest('.mouse__close')
+		let type = element.getAttribute('data-type')
+		type += ' mouse__close'
+		tuto.closest('.mouse__close').className = type
+		store.pause.set(true)
+
+		for (let i = 0; i < this.mains.length; i++) {
+			if (this.mains[i].name === id) {
+				this.mains[i].destroy()
+			}
+		}
+	}
 
   clearClick (e) {
     if (document.activeElement.toString() === '[object HTMLButtonElement]') {

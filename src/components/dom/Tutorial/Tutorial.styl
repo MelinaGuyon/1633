@@ -1,5 +1,4 @@
 .tutorial
-
   .button
     position fixed
     bottom: 0
@@ -8,18 +7,35 @@
     button
       margin 10px
 
+  &__close
+    position absolute
+    right: -80px
+    top: -80px
+    color: $salmon
+    background-color transparent
+    font-size 30px
+    border 0px
+
+  &__center
+    position absolute
+    left: 50%
+    top: 50%
+    transform translate(-50%, -50%)
+
   &__item
     display none
-    background #000000
+    background-image: linear-gradient(to bottom, rgba(0, 2, 4, 0.99), rgba(16, 29, 55, 0.99));
     width: 100vw
     height: 100vh
     position fixed
     top: 0
     left: 0
-    z-index 20
+    z-index 80
     
     p, span
-      color: #fff
+      color: $salmon
+      text-align center
+      line-height 24px
 
     &.active
       display block

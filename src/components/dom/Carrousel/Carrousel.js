@@ -13,7 +13,6 @@ import './Carrousel.styl'
 
 class Form extends DomComponent {
   template (props) {
-    const loc = store.loc.get()
     let clasName = 'carrousel__form__content ' + props.active
     return (
       <div class={clasName} launchGame={props.launchGame} type={props.type} data-id={props.id}>
@@ -21,9 +20,11 @@ class Form extends DomComponent {
           <Story id={0} type={props.type} />
           <div className='carrousel__textScrolling'>
             <Text type={props.type} />
+            <Text type={props.type} />
           </div>
         </div>
         <div className='carrousel__textScrolling'>
+          <Button type={props.type} id={0} />
           <Button type={props.type} id={0} />
         </div>
       </div>

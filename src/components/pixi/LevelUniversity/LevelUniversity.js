@@ -3,6 +3,8 @@ import Buildings from './CityBuildings'
 import Interests from './Interests'
 import sound from 'controllers/sound'
 import SoundCheck from './SoundChecks'
+import cookie from 'controllers/cookie'
+import TutoCheck from './TutoChecks'
 
 export default class LevelUniversity extends Level {
   setup () {
@@ -19,5 +21,10 @@ export default class LevelUniversity extends Level {
   addColliders () {
     this.addComponent(Interests)
 	  this.addComponent(SoundCheck)
+	  let isAlreadyShow
+	  isAlreadyShow = cookie.readCookie('tuto')
+	  if (!isAlreadyShow) {
+		  this.addComponent(TutoCheck)
+	  }
   }
 }
