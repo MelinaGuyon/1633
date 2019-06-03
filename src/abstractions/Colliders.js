@@ -6,7 +6,6 @@ import scene from 'controllers/scene'
 export default class Colliders extends PixiComponent {
   setup (props) {
     this.state = {}
-    console.log(props.tint)
     this.type = props.type || 'a'
     this.name = props.name || null
     this.base = new Graphics()

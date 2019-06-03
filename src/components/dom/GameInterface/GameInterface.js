@@ -34,7 +34,7 @@ export default class GameInterface extends DomComponent {
     signals.newDom.dispatch()
     logger('Game interface did mount', '#47b342').log()
     this.bind()
-	  this.openTuto('keyboard') // toto remove only for test
+    if (!store.skipTuto.get()) this.openTuto('keyboard') // toto remove only for test
   }
 
   componentWillUnmount () {

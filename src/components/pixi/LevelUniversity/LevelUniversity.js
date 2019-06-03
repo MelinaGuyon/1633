@@ -5,6 +5,7 @@ import sound from 'controllers/sound'
 import SoundCheck from './SoundChecks'
 import cookie from 'controllers/cookie'
 import TutoCheck from './TutoChecks'
+import store from 'state/store'
 
 export default class LevelUniversity extends Level {
   setup () {
@@ -23,7 +24,7 @@ export default class LevelUniversity extends Level {
 	  this.addComponent(SoundCheck)
 	  let isAlreadyShow
 	  isAlreadyShow = cookie.readCookie('tuto')
-	  if (!isAlreadyShow) {
+	  if (!isAlreadyShow && !store.skipTuto.get()) {
 		  this.addComponent(TutoCheck)
 	  }
   }
