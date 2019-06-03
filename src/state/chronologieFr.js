@@ -36,33 +36,7 @@ export default [
       text: 'La famille Armez conserva le crâne durant plus de 60 ans. Le prêtre Nicolas, qui ne le récupéra pas plus tard qu’en 1805, le confia au pharmacien Hamon de Saint-Brieuc, qui lui appliquera un traitement anti-insecte et un verni. "La famille Armez appartient à la haute bourgeoisie de Bretagne : elle est fixée depuis le XVIIIème siècle dans la commune de Plourivo, près de Saint-Brieuc. Nicolas Armez, président du Conseil général des Côtes-du-Nord en 1808, fut député [...] à la chambre des Cent Jours, en 1815 : son fils a été plusieurs fois député des Côtes-du-Nord sous Louis-Philippe et son petit-fils, Louis Armez, né en 1848, maire de Plourivo en 1871, a été nommé plusieurs fois depuis 1876 député républicain de Saint-Brieuc."',
       img: 'http://www.infobretagne.com/images/plourivo_6.jpg'
     },
-    {
-      historyId: 1,
-      historyName: 'La Mécène Curieuse',
-      date: 1840,
-      title: 'Culte de la Révolution',
-      sceneTitle: '...',
-      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Marie-Louise_Peyrat%2C_marquise_Arconeti-Visconti.jpg/260px-Marie-Louise_Peyrat%2C_marquise_Arconeti-Visconti.jpg'
-    },
-    {
-      historyId: 1,
-      historyName: 'La Mécène Curieuse',
-      date: 1850,
-      title: 'Curieuse à la Sorbonne',
-      sceneTitle: '...',
-      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Marie-Louise_Peyrat%2C_marquise_Arconeti-Visconti.jpg/260px-Marie-Louise_Peyrat%2C_marquise_Arconeti-Visconti.jpg'
-    },
-    {
-      historyId: 1,
-      historyName: 'La Mécène Curieuse',
-      date: 1860,
-      title: 'Curieuse à l\'Assemblée nationale',
-      sceneTitle: '...',
-      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Marie-Louise_Peyrat%2C_marquise_Arconeti-Visconti.jpg/260px-Marie-Louise_Peyrat%2C_marquise_Arconeti-Visconti.jpg'
-    },
+
     {
       historyId: 0,
       historyName: 'Le Crâne Profané',
@@ -82,13 +56,40 @@ export default [
       img: 'https://histoiredelart.fr/uploads/gallery/55bfc46da6de1628801054.jpg'
     },
     {
-      historyId: 1,
-      historyName: 'La Femme des Sciences',
-      date: 1867,
-      title: 'Enfance sous l\'occupation',
+      historyId: 0,
+      historyName: 'Le Crâne Profané',
+      date: 1895,
+      title: 'Petite profanation',
       sceneTitle: '...',
-      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
-      img: 'https://www.sciencesetavenir.fr/assets/img/2017/11/07/cover-r4x3w1000-5a01cdfa18d26-marie-curie-tekniska-museet.jpg'
+      text: 'Voici la description de l’événement transmise par le consul Auguste François, photographe de la relique pour l’événement et invité par le ministre Hanotaux : “[...] je recevais [...] une invitation à le rejoindre le lendemain à la chapelle de la Sorbonne, et, souligné, de me munir d\'un appareil de photographie. A défaut d\'autre explication, je devinais qu\'il y avait quelque affaire concernant Richelieu. Le lendemain, exact au rendez-vous, je trouvais dans la sacristie de la chapelle une assemblée qui comprenait : la Princesse de Monaco (veuve du Duc de Richelieu) ; le Recteur de l\'Université, Gréard ; Roujon, Directeur des Beaux-Arts ; le peintre Detaille ; l\'architecte des monuments nationaux, Nénot ; le chapelain de la Sorbonne, l\'abbé Poulain, historien de Richelieu en concurrence avec Hanotaux. [...] Nénot, à qui je demandais le but de la réunion, me fit alors savoir que nous allions exhumer Richelieu et authentifier ce qui reste du Grand Cardinal. [...] Hanotaux [...] me prie de fixer tout cela sur une plaque de photographie.”',
+      img: 'http://augfrancois.chez-alice.fr/AF%20Exhu_fichiers/image012.jpg'
+    },
+    {
+      historyId: 0,
+      historyName: 'Le Crâne Profané',
+      date: 1895,
+      title: 'Petite profanation',
+      sceneTitle: '...',
+      text: 'Voici la description de l’événement transmise par le consul Auguste François, photographe de la relique pour l’événement et invité par le ministre Hanotaux : “[...] je recevais [...] une invitation à le rejoindre le lendemain à la chapelle de la Sorbonne, et, souligné, de me munir d\'un appareil de photographie. A défaut d\'autre explication, je devinais qu\'il y avait quelque affaire concernant Richelieu. Le lendemain, exact au rendez-vous, je trouvais dans la sacristie de la chapelle une assemblée qui comprenait : la Princesse de Monaco (veuve du Duc de Richelieu) ; le Recteur de l\'Université, Gréard ; Roujon, Directeur des Beaux-Arts ; le peintre Detaille ; l\'architecte des monuments nationaux, Nénot ; le chapelain de la Sorbonne, l\'abbé Poulain, historien de Richelieu en concurrence avec Hanotaux. [...] Nénot, à qui je demandais le but de la réunion, me fit alors savoir que nous allions exhumer Richelieu et authentifier ce qui reste du Grand Cardinal. [...] Hanotaux [...] me prie de fixer tout cela sur une plaque de photographie.”',
+      img: 'http://augfrancois.chez-alice.fr/AF%20Exhu_fichiers/image012.jpg'
+    },
+    {
+      historyId: 0,
+      historyName: 'Le Crâne Profané',
+      date: 1895,
+      title: 'Petite profanation',
+      sceneTitle: '...',
+      text: 'Voici la description de l’événement transmise par le consul Auguste François, photographe de la relique pour l’événement et invité par le ministre Hanotaux : “[...] je recevais [...] une invitation à le rejoindre le lendemain à la chapelle de la Sorbonne, et, souligné, de me munir d\'un appareil de photographie. A défaut d\'autre explication, je devinais qu\'il y avait quelque affaire concernant Richelieu. Le lendemain, exact au rendez-vous, je trouvais dans la sacristie de la chapelle une assemblée qui comprenait : la Princesse de Monaco (veuve du Duc de Richelieu) ; le Recteur de l\'Université, Gréard ; Roujon, Directeur des Beaux-Arts ; le peintre Detaille ; l\'architecte des monuments nationaux, Nénot ; le chapelain de la Sorbonne, l\'abbé Poulain, historien de Richelieu en concurrence avec Hanotaux. [...] Nénot, à qui je demandais le but de la réunion, me fit alors savoir que nous allions exhumer Richelieu et authentifier ce qui reste du Grand Cardinal. [...] Hanotaux [...] me prie de fixer tout cela sur une plaque de photographie.”',
+      img: 'http://augfrancois.chez-alice.fr/AF%20Exhu_fichiers/image012.jpg'
+    },
+    {
+      historyId: 0,
+      historyName: 'Le Crâne Profané',
+      date: 1895,
+      title: 'Petite profanation',
+      sceneTitle: '...',
+      text: 'Voici la description de l’événement transmise par le consul Auguste François, photographe de la relique pour l’événement et invité par le ministre Hanotaux : “[...] je recevais [...] une invitation à le rejoindre le lendemain à la chapelle de la Sorbonne, et, souligné, de me munir d\'un appareil de photographie. A défaut d\'autre explication, je devinais qu\'il y avait quelque affaire concernant Richelieu. Le lendemain, exact au rendez-vous, je trouvais dans la sacristie de la chapelle une assemblée qui comprenait : la Princesse de Monaco (veuve du Duc de Richelieu) ; le Recteur de l\'Université, Gréard ; Roujon, Directeur des Beaux-Arts ; le peintre Detaille ; l\'architecte des monuments nationaux, Nénot ; le chapelain de la Sorbonne, l\'abbé Poulain, historien de Richelieu en concurrence avec Hanotaux. [...] Nénot, à qui je demandais le but de la réunion, me fit alors savoir que nous allions exhumer Richelieu et authentifier ce qui reste du Grand Cardinal. [...] Hanotaux [...] me prie de fixer tout cela sur une plaque de photographie.”',
+      img: 'http://augfrancois.chez-alice.fr/AF%20Exhu_fichiers/image012.jpg'
     },
     {
       historyId: 0,
@@ -125,6 +126,42 @@ export default [
       sceneTitle: '...',
       text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
       img: 'https://i.skyrock.net/4066/88154066/pics/3164101714_1_2_chqV5UvC.jpg'
+    },
+    {
+      historyId: 1,
+      historyName: 'La Mécène Curieuse',
+      date: 1840,
+      title: 'Culte de la Révolution',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Marie-Louise_Peyrat%2C_marquise_Arconeti-Visconti.jpg/260px-Marie-Louise_Peyrat%2C_marquise_Arconeti-Visconti.jpg'
+    },
+    {
+      historyId: 1,
+      historyName: 'La Mécène Curieuse',
+      date: 1850,
+      title: 'Curieuse à la Sorbonne',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Marie-Louise_Peyrat%2C_marquise_Arconeti-Visconti.jpg/260px-Marie-Louise_Peyrat%2C_marquise_Arconeti-Visconti.jpg'
+    },
+    {
+      historyId: 1,
+      historyName: 'La Mécène Curieuse',
+      date: 1860,
+      title: 'Curieuse à l\'Assemblée nationale',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Marie-Louise_Peyrat%2C_marquise_Arconeti-Visconti.jpg/260px-Marie-Louise_Peyrat%2C_marquise_Arconeti-Visconti.jpg'
+    },
+    {
+      historyId: 1,
+      historyName: 'La Femme des Sciences',
+      date: 1867,
+      title: 'Enfance sous l\'occupation',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'https://www.sciencesetavenir.fr/assets/img/2017/11/07/cover-r4x3w1000-5a01cdfa18d26-marie-curie-tekniska-museet.jpg'
     }
   ]
 ]
