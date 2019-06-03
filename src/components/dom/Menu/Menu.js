@@ -59,7 +59,7 @@ class ChronologieButton extends DomComponent {
 class SoundButton extends DomComponent {
   template (props) {
     return (
-      <button class='nav-sound__btn magnet' data-id={props.id}>
+      <button class='nav-sound__btn magnet pause ' data-id={props.id}>
         <div class='l1' />
         <div class='l2' />
         <div class='l3' />
@@ -81,10 +81,10 @@ class SoundButton extends DomComponent {
   onClick (e) {
     if (store.musicPlayed.current) {
       sound.pause('music_studio')
-      e.target.closest('.nav-sound__btn').className = 'nav-sound__btn pause'
+      e.target.closest('.nav-sound__btn').className = 'nav-sound__btn'
     } else {
       sound.unpause('music_studio')
-      e.target.closest('.nav-sound__btn').className = 'nav-sound__btn'
+      e.target.closest('.nav-sound__btn').className = 'nav-sound__btn pause'
     }
   }
 }
