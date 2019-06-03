@@ -5,7 +5,11 @@ module.exports = {
     base: '/'
   },
   'prod': {
-    domain: 'https://ri.stinkstudios.fr',
-    base: '/'
+    domain: 'http://aliciabaudry.garden',
+    base: '/projets/sorbonne/'
   }
+  // prod': {
+  //   domain: 'https://ri.stinkstudios.fr',
+  //   base: '/'
+  // }
 }
