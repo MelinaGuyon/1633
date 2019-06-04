@@ -60,12 +60,13 @@ export default class ChronologieTimeline extends DomComponent {
     let halfHeight = store.size.get().h / 2
     let ratio = infos.dist / halfHeight
     let stick = this.refCurrentStick + Math.round(ratio * this.plageAround)
+    let opacity = 1 - Math.abs(ratio)
 
     this.currentStick = stick
-    this.updateStick(infos.el.date, false)
+    this.updateStick(infos.el.date, opacity)
   }
 
-  updateStick (text) {
+  updateStick (text, opacity) {
     this.sticks.forEach((el) => {
       el.stick.style.transform = 'scaleX(0.22)'
     })
@@ -76,6 +77,7 @@ export default class ChronologieTimeline extends DomComponent {
     this.sticks[this.currentStick].stick.style.transform = 'scaleX(1)'
     this.span.style.transform = `translateY(calc(-220% + ${this.sticks[this.currentStick].base.offsetTop - this.chronoTimeline.offsetTop / 2}px))`
     this.span.innerText = text
+    this.span.style.opacity = opacity
 
     this.sticks[this.currentStick + 1].stick.style.transform = 'scaleX(0.7)'
     this.sticks[this.currentStick + 2].stick.style.transform = 'scaleX(0.5)'
