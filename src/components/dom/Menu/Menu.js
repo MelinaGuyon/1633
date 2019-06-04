@@ -48,7 +48,7 @@ class ChronologieButton extends DomComponent {
 
   onClick (e) {
     if (store.chronologieStatus.get() !== 'appearing') {
-      store.chronologieId.set(0)
+      store.chronologieId.set('top')
       store.chronologieStatus.set('appearing')
     } else {
       store.chronologieStatus.set('disappearing')

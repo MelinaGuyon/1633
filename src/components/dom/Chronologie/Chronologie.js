@@ -170,9 +170,10 @@ export default class Chronologie extends DomComponent {
     }, 1000)
   }
 
-  onChronologieClick (chronologieStatus) {
+  onChronologieClick (chronologieStatus, top) {
     if (chronologieStatus === 'appearing') {
-      this.chronologie.scrollTop = this.facts[store.currentHistory.get()][store.chronologieId.get()].base.offsetTop
+      if (store.chronologieId.get() === 'top') this.chronologie.scrollTop = 0
+      else this.chronologie.scrollTop = this.facts[store.currentHistory.get()][store.chronologieId.get()].base.offsetTop
       this.chronologie.classList.add('visible')
       this.getOffset()
       this.internalBind()
