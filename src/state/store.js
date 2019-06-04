@@ -62,7 +62,7 @@ export default createStore({
   chronologieStatus: null,
   chronologieId: null,
   chronologieIdsTable: [],
-  chronologieCurrent: 0,
+  chronologieCurrent: {},
 
   frameDuration: 70, // default animation's frame duration
 

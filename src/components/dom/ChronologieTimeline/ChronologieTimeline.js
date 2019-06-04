@@ -1,6 +1,7 @@
 import { h, addRef } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
+import delay from 'lodash/delay'
 
 import './ChronologieTimeline.styl'
 
@@ -10,7 +11,6 @@ class Stick extends DomComponent {
     return (
       <div class='stick-container' ref={addRef(this, 'stick-container')}>
         <div class='stick' ref={addRef(this, 'stick')} />
-        <span ref={addRef(this, 'span')}>1253</span>
       </div>
     )
   }
@@ -21,7 +21,8 @@ export default class ChronologieTimeline extends DomComponent {
     this.stickNumber = 65
     this.currentStick = 33
     this.refCurrentStick = 33
-    this.plageAround = 8
+    this.plageAround = 18
+    this.currentIndex = 0
     this.sticks = Array(this.stickNumber)
 
     const sticks = []
@@ -35,7 +36,12 @@ export default class ChronologieTimeline extends DomComponent {
     return (
       <div class='chrono-timeline' ref={addRef(this, 'chronoTimeline')}>
         <div class='container'>
-          {sticks}
+          <div class='span-container'>
+            <span ref={addRef(this, 'span')}>1253</span>
+          </div>
+          <div class='stick-global-container'>
+            {sticks}
+          </div>
         </div>
       </div>
     )
@@ -56,21 +62,20 @@ export default class ChronologieTimeline extends DomComponent {
     let stick = this.refCurrentStick + Math.round(ratio * this.plageAround)
 
     this.currentStick = stick
-    this.updateStick(infos.el.date)
+    this.updateStick(infos.el.date, false)
   }
 
   updateStick (text) {
     this.sticks.forEach((el) => {
       el.stick.style.transform = 'scaleX(0.22)'
-      el.span.style.opacity = '0'
-      el.span.innerText = text
     })
 
     this.sticks[this.currentStick - 2].stick.style.transform = 'scaleX(0.5)'
     this.sticks[this.currentStick - 1].stick.style.transform = 'scaleX(0.7)'
 
     this.sticks[this.currentStick].stick.style.transform = 'scaleX(1)'
-    this.sticks[this.currentStick].span.style.opacity = '1'
+    this.span.style.transform = `translateY(calc(-220% + ${this.sticks[this.currentStick].base.offsetTop - this.chronoTimeline.offsetTop / 2}px))`
+    this.span.innerText = text
 
     this.sticks[this.currentStick + 1].stick.style.transform = 'scaleX(0.7)'
     this.sticks[this.currentStick + 2].stick.style.transform = 'scaleX(0.5)'
