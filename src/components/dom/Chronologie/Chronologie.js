@@ -200,6 +200,7 @@ export default class Chronologie extends DomComponent {
   }
 
   checkCurrent () {
+    // TODO :: to get on resize too
     let current
     let distCurrent = 10000
     this.factsOrdered.forEach((fact, index) => {
@@ -210,6 +211,5 @@ export default class Chronologie extends DomComponent {
       }
     })
     store.chronologieCurrent.set({ index: current, el: this.factsOrdered[current], dist: distCurrent })
-    console.log(current, distCurrent)
   }
 }

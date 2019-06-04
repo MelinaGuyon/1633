@@ -41,10 +41,24 @@ export default class ChronologieTimeline extends DomComponent {
 
   componentDidMount () {
     this.updateStick()
+    this.bind()
+  }
+
+  bind () {
+    this.listenStore('chronologieCurrent', this.updateCurrent)
+  }
+
+  updateCurrent (infos) {
+    this.currentStick = infos.index + 5
+    this.updateStick()
+    console.log(infos)
   }
 
   updateStick () {
-    console.log(this.sticks)
+    this.sticks.forEach((el) => {
+      el.base.style.transform = 'scaleX(0.2)'
+    })
+
     this.sticks[this.currentStick - 2].base.style.transform = 'scaleX(0.5)'
     this.sticks[this.currentStick - 1].base.style.transform = 'scaleX(0.7)'
 
