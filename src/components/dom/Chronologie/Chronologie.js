@@ -55,12 +55,10 @@ class Fact extends DomComponent {
     const loc = store.loc.get()
 
     return (
-      // <div class='fact' ref={addRef(this, 'fact')}>
       <div class='fact locked' ref={addRef(this, 'fact')}>
         <div class='content-container'>
           <img class='character' ref={addRef(this, 'character')} src={props.content.img} />
           <div class='content' ref={addRef(this, 'content')} >
-            {/* {loc['chronologie.fact'] + (props.id + 1)} */}
             <p class='date'>{props.content.date}</p>
             <p class='title'>{props.content.title}</p>
             <p class='name'>{props.content.historyName}</p>
@@ -105,8 +103,14 @@ class Fact extends DomComponent {
 
 export default class Chronologie extends DomComponent {
   template ({ base }) {
-    this.historyNumber = 2 // temp
-    this.chronologieDatas = store.chronologie.get()[0]
+    this.historyNumber = 3 // temp, need to be replace with a real History number getted from store
+
+    // get indexes order according to history played
+    this.order = store.chronologie.get().order[store.currentHistory.get()]
+    store.chronologieIdsTable.set(this.order)
+
+    // get all datas of the entire chronology
+    this.chronologieDatas = store.chronologie.get().chrono
     this.chronologieDatas = sortBy(this.chronologieDatas, [(d) => { return d.date }])
     this.chronologieNumber = this.chronologieDatas.length
     this.facts = Array(this.historyNumber)

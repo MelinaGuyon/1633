@@ -11,7 +11,6 @@ export default class LevelTombeau extends Level {
   }
 
   createLand () {
-    console.log('OUI')
     this.addComponent(Buildings)
   }
 

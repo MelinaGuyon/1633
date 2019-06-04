@@ -61,6 +61,7 @@ export default createStore({
   chronologie: window.__conf.lang === 'fr' ? chronologieFr : chronologieEn,
   chronologieStatus: null,
   chronologieId: null,
+  chronologieIdsTable: [],
 
   frameDuration: 70, // default animation's frame duration
 

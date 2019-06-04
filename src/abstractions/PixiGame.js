@@ -77,7 +77,6 @@ export default class Pixigame extends PixiComponent {
 
     // Current Level
     const level = store.levelDict.get()[id]
-    console.log(level)
     if (level && !this.levels[level]) {
       this.levels[level] = new levels[level]({ autosetup: true, name: level }) // eslint-disable-line
     }

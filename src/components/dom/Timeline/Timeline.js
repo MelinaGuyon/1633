@@ -12,7 +12,7 @@ class Point extends DomComponent {
     this.endingX = 36 * props.endingX
 
     return (
-      <div class='point magnet' id={'point' + props.id + ''} data-id={props.id}>
+      <div class='point magnet' data-id={(store.chronologieIdsTable.get()[props.id])}>
         <div class='point-inner' />
       </div>
     )

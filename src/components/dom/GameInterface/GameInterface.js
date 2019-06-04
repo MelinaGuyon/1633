@@ -20,8 +20,8 @@ export default class GameInterface extends DomComponent {
       <section class='game'>
         <Menu />
         <Carrousel />
-        <Timeline />
         <Chronologie />
+        <Timeline />
         <Subtitles />
         <Tutorial />
         <Message />
