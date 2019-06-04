@@ -53,6 +53,7 @@ class NextButton extends DomComponent {
 class Fact extends DomComponent {
   template (props) {
     const loc = store.loc.get()
+    this.date = props.content.date
 
     return (
       <div class='fact locked' ref={addRef(this, 'fact')}>

@@ -8,12 +8,27 @@
   .container
     position relative
 
-    .stick
+    .stick-container
+      position relative
       width: 24px
       height 1px
-      transform: scaleX(0.2)
-      background: black
       margin: 5px 0
       transform-origin: right;
       transition:  transform 0.3s $quad-ease-out;
+
+      .stick
+        width: 24px
+        height 1px
+        transform: scaleX(0.2)
+        background: $light-black
+        transform-origin: right;
+        transition:  transform 0.3s $quad-ease-out;
+
+      span
+        font-size: 12px
+        position absolute
+        left: -34px
+        top 50%
+        transform: translateY(-50%)
+        opacity: 0
 

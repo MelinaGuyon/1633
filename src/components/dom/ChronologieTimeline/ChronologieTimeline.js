@@ -8,7 +8,9 @@ class Stick extends DomComponent {
   template (props) {
 
     return (
-      <div class='stick' ref={addRef(this, 'chronoTimeline')}>
+      <div class='stick-container' ref={addRef(this, 'stick-container')}>
+        <div class='stick' ref={addRef(this, 'stick')} />
+        <span ref={addRef(this, 'span')}>1253</span>
       </div>
     )
   }
@@ -19,7 +21,7 @@ export default class ChronologieTimeline extends DomComponent {
     this.stickNumber = 65
     this.currentStick = 33
     this.refCurrentStick = 33
-    this.plageAround = 29
+    this.plageAround = 8
     this.sticks = Array(this.stickNumber)
 
     const sticks = []
@@ -54,20 +56,23 @@ export default class ChronologieTimeline extends DomComponent {
     let stick = this.refCurrentStick + Math.round(ratio * this.plageAround)
 
     this.currentStick = stick
-    this.updateStick()
+    this.updateStick(infos.el.date)
   }
 
-  updateStick () {
+  updateStick (text) {
     this.sticks.forEach((el) => {
-      el.base.style.transform = 'scaleX(0.2)'
+      el.stick.style.transform = 'scaleX(0.22)'
+      el.span.style.opacity = '0'
+      el.span.innerText = text
     })
 
-    this.sticks[this.currentStick - 2].base.style.transform = 'scaleX(0.5)'
-    this.sticks[this.currentStick - 1].base.style.transform = 'scaleX(0.7)'
+    this.sticks[this.currentStick - 2].stick.style.transform = 'scaleX(0.5)'
+    this.sticks[this.currentStick - 1].stick.style.transform = 'scaleX(0.7)'
 
-    this.sticks[this.currentStick].base.style.transform = 'scaleX(1)'
+    this.sticks[this.currentStick].stick.style.transform = 'scaleX(1)'
+    this.sticks[this.currentStick].span.style.opacity = '1'
 
-    this.sticks[this.currentStick + 1].base.style.transform = 'scaleX(0.7)'
-    this.sticks[this.currentStick + 2].base.style.transform = 'scaleX(0.5)'
+    this.sticks[this.currentStick + 1].stick.style.transform = 'scaleX(0.7)'
+    this.sticks[this.currentStick + 2].stick.style.transform = 'scaleX(0.5)'
   }
 }

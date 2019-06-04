@@ -135,6 +135,7 @@ export default class Glass extends DomComponent {
 
   handleMoove (mouse) {
     this.singleGlass.forEach((el, index) => {
+      if (!this.coords[index]) return
       let offsetX = 0
       let offsetY = 0
       if (this.parrent) {
