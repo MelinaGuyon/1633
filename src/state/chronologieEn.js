@@ -1,5 +1,8 @@
-export default [
-  [
+export default {
+  order: [
+    [0, 1, 1, 2, 3, 3, 3, 4, 4, 5, 6]
+  ],
+  chrono: [
     {
       historyId: 0,
       historyName: 'Le Crâne Profané',
@@ -65,42 +68,6 @@ export default [
       img: 'http://augfrancois.chez-alice.fr/AF%20Exhu_fichiers/image012.jpg'
     },
     {
-      historyId: 0,
-      historyName: 'Le Crâne Profané',
-      date: 1895,
-      title: 'Petite profanation',
-      sceneTitle: '...',
-      text: 'Voici la description de l’événement transmise par le consul Auguste François, photographe de la relique pour l’événement et invité par le ministre Hanotaux : “[...] je recevais [...] une invitation à le rejoindre le lendemain à la chapelle de la Sorbonne, et, souligné, de me munir d\'un appareil de photographie. A défaut d\'autre explication, je devinais qu\'il y avait quelque affaire concernant Richelieu. Le lendemain, exact au rendez-vous, je trouvais dans la sacristie de la chapelle une assemblée qui comprenait : la Princesse de Monaco (veuve du Duc de Richelieu) ; le Recteur de l\'Université, Gréard ; Roujon, Directeur des Beaux-Arts ; le peintre Detaille ; l\'architecte des monuments nationaux, Nénot ; le chapelain de la Sorbonne, l\'abbé Poulain, historien de Richelieu en concurrence avec Hanotaux. [...] Nénot, à qui je demandais le but de la réunion, me fit alors savoir que nous allions exhumer Richelieu et authentifier ce qui reste du Grand Cardinal. [...] Hanotaux [...] me prie de fixer tout cela sur une plaque de photographie.”',
-      img: 'http://augfrancois.chez-alice.fr/AF%20Exhu_fichiers/image012.jpg'
-    },
-    {
-      historyId: 0,
-      historyName: 'Le Crâne Profané',
-      date: 1895,
-      title: 'Petite profanation',
-      sceneTitle: '...',
-      text: 'Voici la description de l’événement transmise par le consul Auguste François, photographe de la relique pour l’événement et invité par le ministre Hanotaux : “[...] je recevais [...] une invitation à le rejoindre le lendemain à la chapelle de la Sorbonne, et, souligné, de me munir d\'un appareil de photographie. A défaut d\'autre explication, je devinais qu\'il y avait quelque affaire concernant Richelieu. Le lendemain, exact au rendez-vous, je trouvais dans la sacristie de la chapelle une assemblée qui comprenait : la Princesse de Monaco (veuve du Duc de Richelieu) ; le Recteur de l\'Université, Gréard ; Roujon, Directeur des Beaux-Arts ; le peintre Detaille ; l\'architecte des monuments nationaux, Nénot ; le chapelain de la Sorbonne, l\'abbé Poulain, historien de Richelieu en concurrence avec Hanotaux. [...] Nénot, à qui je demandais le but de la réunion, me fit alors savoir que nous allions exhumer Richelieu et authentifier ce qui reste du Grand Cardinal. [...] Hanotaux [...] me prie de fixer tout cela sur une plaque de photographie.”',
-      img: 'http://augfrancois.chez-alice.fr/AF%20Exhu_fichiers/image012.jpg'
-    },
-    {
-      historyId: 0,
-      historyName: 'Le Crâne Profané',
-      date: 1895,
-      title: 'Petite profanation',
-      sceneTitle: '...',
-      text: 'Voici la description de l’événement transmise par le consul Auguste François, photographe de la relique pour l’événement et invité par le ministre Hanotaux : “[...] je recevais [...] une invitation à le rejoindre le lendemain à la chapelle de la Sorbonne, et, souligné, de me munir d\'un appareil de photographie. A défaut d\'autre explication, je devinais qu\'il y avait quelque affaire concernant Richelieu. Le lendemain, exact au rendez-vous, je trouvais dans la sacristie de la chapelle une assemblée qui comprenait : la Princesse de Monaco (veuve du Duc de Richelieu) ; le Recteur de l\'Université, Gréard ; Roujon, Directeur des Beaux-Arts ; le peintre Detaille ; l\'architecte des monuments nationaux, Nénot ; le chapelain de la Sorbonne, l\'abbé Poulain, historien de Richelieu en concurrence avec Hanotaux. [...] Nénot, à qui je demandais le but de la réunion, me fit alors savoir que nous allions exhumer Richelieu et authentifier ce qui reste du Grand Cardinal. [...] Hanotaux [...] me prie de fixer tout cela sur une plaque de photographie.”',
-      img: 'http://augfrancois.chez-alice.fr/AF%20Exhu_fichiers/image012.jpg'
-    },
-    {
-      historyId: 0,
-      historyName: 'Le Crâne Profané',
-      date: 1895,
-      title: 'Petite profanation',
-      sceneTitle: '...',
-      text: 'Voici la description de l’événement transmise par le consul Auguste François, photographe de la relique pour l’événement et invité par le ministre Hanotaux : “[...] je recevais [...] une invitation à le rejoindre le lendemain à la chapelle de la Sorbonne, et, souligné, de me munir d\'un appareil de photographie. A défaut d\'autre explication, je devinais qu\'il y avait quelque affaire concernant Richelieu. Le lendemain, exact au rendez-vous, je trouvais dans la sacristie de la chapelle une assemblée qui comprenait : la Princesse de Monaco (veuve du Duc de Richelieu) ; le Recteur de l\'Université, Gréard ; Roujon, Directeur des Beaux-Arts ; le peintre Detaille ; l\'architecte des monuments nationaux, Nénot ; le chapelain de la Sorbonne, l\'abbé Poulain, historien de Richelieu en concurrence avec Hanotaux. [...] Nénot, à qui je demandais le but de la réunion, me fit alors savoir que nous allions exhumer Richelieu et authentifier ce qui reste du Grand Cardinal. [...] Hanotaux [...] me prie de fixer tout cela sur une plaque de photographie.”',
-      img: 'http://augfrancois.chez-alice.fr/AF%20Exhu_fichiers/image012.jpg'
-    },
-    {
       historyId: 1,
       historyName: 'Le Confesseur',
       date: 1201,
@@ -128,7 +95,7 @@ export default [
       img: 'https://i.skyrock.net/4066/88154066/pics/3164101714_1_2_chqV5UvC.jpg'
     },
     {
-      historyId: 1,
+      historyId: 2,
       historyName: 'La Mécène Curieuse',
       date: 1840,
       title: 'Culte de la Révolution',
@@ -137,7 +104,7 @@ export default [
       img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Marie-Louise_Peyrat%2C_marquise_Arconeti-Visconti.jpg/260px-Marie-Louise_Peyrat%2C_marquise_Arconeti-Visconti.jpg'
     },
     {
-      historyId: 1,
+      historyId: 2,
       historyName: 'La Mécène Curieuse',
       date: 1850,
       title: 'Curieuse à la Sorbonne',
@@ -146,7 +113,7 @@ export default [
       img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Marie-Louise_Peyrat%2C_marquise_Arconeti-Visconti.jpg/260px-Marie-Louise_Peyrat%2C_marquise_Arconeti-Visconti.jpg'
     },
     {
-      historyId: 1,
+      historyId: 2,
       historyName: 'La Mécène Curieuse',
       date: 1860,
       title: 'Curieuse à l\'Assemblée nationale',
@@ -155,7 +122,7 @@ export default [
       img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Marie-Louise_Peyrat%2C_marquise_Arconeti-Visconti.jpg/260px-Marie-Louise_Peyrat%2C_marquise_Arconeti-Visconti.jpg'
     },
     {
-      historyId: 1,
+      historyId: 3,
       historyName: 'La Femme des Sciences',
       date: 1867,
       title: 'Enfance sous l\'occupation',
@@ -164,4 +131,4 @@ export default [
       img: 'https://www.sciencesetavenir.fr/assets/img/2017/11/07/cover-r4x3w1000-5a01cdfa18d26-marie-curie-tekniska-museet.jpg'
     }
   ]
-]
+}
