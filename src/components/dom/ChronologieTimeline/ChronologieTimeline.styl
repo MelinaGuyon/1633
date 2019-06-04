@@ -1,0 +1,19 @@
+.chrono-timeline
+  z-index: $indexChronologieTimeline
+  position fixed
+  right: 40px;
+  top 50%
+  transform: translateY(-50%)
+
+  .container
+    position relative
+
+    .stick
+      width: 24px
+      height 1px
+      transform: scaleX(0.2)
+      background: black
+      margin: 5px 0
+      transform-origin: right;
+      transition:  transform 0.3s $quad-ease-out;
+

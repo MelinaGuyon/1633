@@ -73,7 +73,12 @@ class Fact extends DomComponent {
   }
 
   componentDidMount () {
+    this.initParams()
     this.bind()
+  }
+
+  initParams () {
+    this.top = this.fact.offsetTop
   }
 
   bind () {
@@ -114,6 +119,7 @@ export default class Chronologie extends DomComponent {
     this.chronologieDatas = sortBy(this.chronologieDatas, [(d) => { return d.date }])
     this.chronologieNumber = this.chronologieDatas.length
     this.facts = Array(this.historyNumber)
+    this.factsOrdered = Array(this.chronologieNumber)
 
     for (let i = 0; i < this.historyNumber; i++) {
       this.facts[i] = []
@@ -122,7 +128,9 @@ export default class Chronologie extends DomComponent {
     const facts = []
     const refFacts = i => el => {
       this.facts[this.chronologieDatas[i].historyId].push(el)
+      this.factsOrdered[i] = el
     }
+
     for (let i = 0; i < this.chronologieNumber; i++) {
       facts.push(<Fact ref={refFacts(i)} id={i} content={this.chronologieDatas[i]} />)
     }
@@ -144,7 +152,8 @@ export default class Chronologie extends DomComponent {
   }
 
   internalBind () {
-    window.addEventListener('mousewheel', this.fastbind('getOffset', 1))
+    window.addEventListener('mousewheel', this.fastbind('getChronologieOffset', 1))
+    window.addEventListener('mousewheel', this.fastbind('checkCurrent', 1))
     this.facts.forEach((tab) => {
       tab.forEach((el) => {
         el.glass.bind()
@@ -153,7 +162,8 @@ export default class Chronologie extends DomComponent {
   }
 
   internalUnbind () {
-    window.removeEventListener('mousewheel', this.getOffset)
+    window.removeEventListener('mousewheel', this.getChronologieOffset)
+    window.removeEventListener('mousewheel', this.checkCurrent)
     this.facts.forEach((tab) => {
       tab.forEach((el) => {
         el.glass.unbind()
@@ -175,7 +185,8 @@ export default class Chronologie extends DomComponent {
       if (store.chronologieId.get() === 'top') this.chronologie.scrollTop = 0
       else this.chronologie.scrollTop = this.facts[store.currentHistory.get()][store.chronologieId.get()].base.offsetTop
       this.chronologie.classList.add('visible')
-      this.getOffset()
+      this.getChronologieOffset()
+      this.checkCurrent()
       this.internalBind()
     } else if (chronologieStatus === 'disappearing') {
       this.chronologie.classList.remove('visible')
@@ -183,8 +194,22 @@ export default class Chronologie extends DomComponent {
     }
   }
 
-  getOffset () {
+  getChronologieOffset () {
     // TODO :: to get on resize too
     store.chronologieOffset.set({ x: this.chronologie.offsetWidth, y: this.chronologie.scrollTop })
+  }
+
+  checkCurrent () {
+    let current
+    let distCurrent = 10000
+    this.factsOrdered.forEach((fact, index) => {
+      let dist = Math.abs(this.chronologie.scrollTop - fact.top)
+      if (dist < distCurrent) {
+        distCurrent = this.chronologie.scrollTop - fact.top
+        current = index
+      }
+    })
+    store.chronologieCurrent.set({ index: current, el: this.factsOrdered[current], dist: distCurrent })
+    console.log(current, distCurrent)
   }
 }
