@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>4</int>
         <key>texturePackerVersion</key>
-        <string>4.12.1</string>
+        <string>4.11.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -82,15 +82,15 @@
         <key>atfFormats</key>
         <string></string>
         <key>textureFormat</key>
-        <enum type="SettingsBase::TextureFormat">png</enum>
+        <enum type="SettingsBase::TextureFormat">png8</enum>
         <key>borderPadding</key>
         <uint>0</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>4200</int>
+            <int>8192</int>
             <key>height</key>
-            <int>4200</int>
+            <int>8192</int>
         </QSize>
         <key>fixedTextureSize</key>
         <QSize>
@@ -132,11 +132,11 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename></filename>
+                <filename>../../../../../assets-{n}.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
-        <false/>
+        <true/>
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
@@ -1060,6 +1060,58 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">perso/perso0.png</key>
+            <key type="filename">perso/perso1.png</key>
+            <key type="filename">perso/perso10.png</key>
+            <key type="filename">perso/perso11.png</key>
+            <key type="filename">perso/perso12.png</key>
+            <key type="filename">perso/perso13.png</key>
+            <key type="filename">perso/perso14.png</key>
+            <key type="filename">perso/perso15.png</key>
+            <key type="filename">perso/perso16.png</key>
+            <key type="filename">perso/perso17.png</key>
+            <key type="filename">perso/perso18.png</key>
+            <key type="filename">perso/perso19.png</key>
+            <key type="filename">perso/perso2.png</key>
+            <key type="filename">perso/perso20.png</key>
+            <key type="filename">perso/perso21.png</key>
+            <key type="filename">perso/perso22.png</key>
+            <key type="filename">perso/perso23.png</key>
+            <key type="filename">perso/perso24.png</key>
+            <key type="filename">perso/perso25.png</key>
+            <key type="filename">perso/perso26.png</key>
+            <key type="filename">perso/perso27.png</key>
+            <key type="filename">perso/perso28.png</key>
+            <key type="filename">perso/perso29.png</key>
+            <key type="filename">perso/perso3.png</key>
+            <key type="filename">perso/perso30.png</key>
+            <key type="filename">perso/perso31.png</key>
+            <key type="filename">perso/perso32.png</key>
+            <key type="filename">perso/perso33.png</key>
+            <key type="filename">perso/perso34.png</key>
+            <key type="filename">perso/perso35.png</key>
+            <key type="filename">perso/perso36.png</key>
+            <key type="filename">perso/perso37.png</key>
+            <key type="filename">perso/perso38.png</key>
+            <key type="filename">perso/perso39.png</key>
+            <key type="filename">perso/perso4.png</key>
+            <key type="filename">perso/perso5.png</key>
+            <key type="filename">perso/perso6.png</key>
+            <key type="filename">perso/perso7.png</key>
+            <key type="filename">perso/perso8.png</key>
+            <key type="filename">perso/perso9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>93,170,185,340</rect>
+                <key>scale9Paddings</key>
+                <rect>93,170,185,340</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
         </map>
         <key>fileList</key>
         <array>
@@ -1072,6 +1124,7 @@
             <filename>08-sorbonne</filename>
             <filename>09-photo</filename>
             <filename>01-profanation</filename>
+            <filename>perso</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
