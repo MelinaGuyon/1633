@@ -1,8 +1,8 @@
 import { h, addRef } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
+import store from 'state/store'
 
 import './ChronologieTimeline.styl'
-import { timingSafeEqual } from 'crypto';
 
 class Stick extends DomComponent {
   template (props) {
@@ -16,11 +16,11 @@ class Stick extends DomComponent {
 
 export default class ChronologieTimeline extends DomComponent {
   template ({ base }) {
-    console.log('timelien chrono')
     this.stickNumber = 65
     this.currentStick = 33
+    this.refCurrentStick = 33
+    this.plageAround = 29
     this.sticks = Array(this.stickNumber)
-
 
     const sticks = []
     const refSticks = i => el => {
@@ -49,9 +49,12 @@ export default class ChronologieTimeline extends DomComponent {
   }
 
   updateCurrent (infos) {
-    this.currentStick = infos.index + 5
+    let halfHeight = store.size.get().h / 2
+    let ratio = infos.dist / halfHeight
+    let stick = this.refCurrentStick + Math.round(ratio * this.plageAround)
+
+    this.currentStick = stick
     this.updateStick()
-    console.log(infos)
   }
 
   updateStick () {
