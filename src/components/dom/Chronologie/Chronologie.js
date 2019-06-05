@@ -189,9 +189,11 @@ export default class Chronologie extends DomComponent {
       this.getChronologieOffset()
       this.checkCurrent()
       this.internalBind()
+      this.updateTimelineVisibility(true)
     } else if (chronologieStatus === 'disappearing') {
       this.chronologie.classList.remove('visible')
       this.internalUnbind()
+      this.updateTimelineVisibility(false)
     }
   }
 
@@ -212,5 +214,9 @@ export default class Chronologie extends DomComponent {
       }
     })
     store.chronologieCurrent.set({ index: current, el: this.factsOrdered[current], dist: distCurrent })
+  }
+
+  updateTimelineVisibility (bool) {
+    store.chronologieTimelineVisible.set(bool)
   }
 }

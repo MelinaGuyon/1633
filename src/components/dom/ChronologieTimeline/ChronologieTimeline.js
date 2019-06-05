@@ -1,13 +1,11 @@
 import { h, addRef } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
-import delay from 'lodash/delay'
 
 import './ChronologieTimeline.styl'
 
 class Stick extends DomComponent {
   template (props) {
-
     return (
       <div class='stick-container' ref={addRef(this, 'stick-container')}>
         <div class='stick' ref={addRef(this, 'stick')} />
@@ -54,6 +52,12 @@ export default class ChronologieTimeline extends DomComponent {
 
   bind () {
     this.listenStore('chronologieCurrent', this.updateCurrent)
+    this.listenStore('chronologieTimelineVisible', this.updateTimeline)
+  }
+
+  updateTimeline (visible) {
+    if (visible) this.chronoTimeline.classList.add('visible')
+    else this.chronoTimeline.classList.remove('visible')
   }
 
   updateCurrent (infos) {
