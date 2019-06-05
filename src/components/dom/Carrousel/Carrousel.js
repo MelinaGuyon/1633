@@ -124,12 +124,12 @@ export default class Carrousel extends DomComponent {
   template ({ base }) {
     return (
       <section data-type='carrousel' class='carrousel mouse__close'>
+        <Intro />
         <Form active={'active'} type={'richelieu'} id={0} launchGame={this.launchGame} />
         <Form active={''} type={'mariecurie'} id={1} launchGame={this.launchGame} />
         <Form active={''} type={'robertdesorbon'} id={2} launchGame={this.launchGame} />
         <Form active={''} type={'jacqueslemercier'} id={3} launchGame={this.launchGame} />
         <Form active={''} type={'napoleonbonaparte'} id={4} launchGame={this.launchGame} />
-        <Intro />
         <ButtonGoPrev goPrev={this.goPrev} />
         <ButtonGoNext goNext={this.goNext} />
       </section>

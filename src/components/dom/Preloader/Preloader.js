@@ -12,6 +12,8 @@ import sound from 'controllers/sound'
 import Inrtia from 'inrtia'
 import mouse from 'controllers/mouse'
 import signals from 'state/signals'
+import anime from 'animejs'
+import delay from 'lodash/delay'
 
 function isFromAnim (tex, anims) {
   for (let k in anims) {
@@ -29,12 +31,13 @@ export default class Preloader extends DomComponent {
       <section class='prld fxd' ref={addRef(this, 'prld')}>
         <Glass ref={addRef(this, 'glass')} />
         <div class='title-container-l1'>
-          <div class='title-container-l2'>
+          <div class='title-container-l2' ref={addRef(this, 'title')}>
             <h2 class='title-bordered'>{loc['site.title']}</h2>
             <div class='title-wrapper' ref={addRef(this, 'wrapper')}>
               <h2 class='title-full'>{loc['site.title']}</h2>
             </div>
           </div>
+          <p class='baseline' ref={addRef(this, 'baseline')}>Il était une fois la Sorbonne</p>
         </div>
       </section>
     )
@@ -144,10 +147,47 @@ export default class Preloader extends DomComponent {
   }
 
   completeLoading () {
-    clearInterval(this.intervalId)
+    clearInterval(this.intervalId) // stop check if animation is done
     this.unbind()
     this.log('complete')
-    this.props.onComplete() // launch game
-    this.prld.classList.add('loaded')
+    // this.props.onComplete() // launch game
+    // this.prld.classList.add('loaded')
+
+    const tl1 = anime.timeline({
+      easing: 'easeInOutQuad',
+      duration: 600
+    })
+    const tl2 = anime.timeline({
+      easing: 'easeInOutQuad',
+      duration: 600
+    })
+    const tl3 = anime.timeline({
+      easing: 'easeInOutQuad',
+      duration: 600
+    })
+
+    tl1
+      .add({
+        targets: this.glass.base,
+        opacity: 0
+      })
+
+    tl2
+      .add({
+        targets: this.title,
+        opacity: 0.2
+      })
+
+    tl3
+      .add({
+        targets: this.baseline,
+        opacity: 1,
+        delay: 300,
+        complete: () => {
+          delay(() => { this.prld.classList.add('state2')}, 300)
+          delay(() => { this.prld.classList.add('state3')}, 600)
+          delay(() => { this.prld.classList.add('state4')}, 900)
+        }
+      })
   }
 }
