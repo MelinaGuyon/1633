@@ -11,6 +11,7 @@ export default class Subtitles extends DomComponent {
   template (props) {
     this.actualLength = 0
     this.globalIndex = 0
+    this.actualReading = 0
 
     return (
       <section class='subtitles' ref={addRef(this, 'subtiltles')} >
@@ -29,24 +30,25 @@ export default class Subtitles extends DomComponent {
   }
 
   initWritting (index) {
-    // this.writeSubtitles(store.subtitles.get()[index], index)
+    console.log('writting')
+    this.writeSubtitles(store.subtitles.get()[index], index, Date.now())
   }
 
-  writeSubtitles (block, blockIndex) {
+  writeSubtitles (block, blockIndex, datetime) {
     this.actualLength = block.length - 1
     this.globalIndex = blockIndex
-    map(block, this.write.bind(this, blockIndex))
+    this.actualReading = datetime
+    map(block, this.write.bind(this, blockIndex, datetime))
   }
 
-  write (blockIndex, line, lineIndex) {
-    delay(this.writeOne.bind(this), line[1], { text: line[0], lineIndex, blockIndex })
+  write (blockIndex, datetime, line, lineIndex) {
+    delay(this.writeOne.bind(this), line[1], { text: line[0], lineIndex, blockIndex, datetime })
   }
 
   writeOne (line) {
     // vérification qu'il s'agit toujours du même bloc de sous-titres sinon return
-    if (line.blockIndex !== this.globalIndex) return
+    if (line.blockIndex !== this.globalIndex || line.datetime !== this.actualReading) return
     this.subtiltlesContent.innerHTML = line.text
-    if (line.lineIndex === this.actualLength) delay(this.remove.bind(this), 2000)
   }
 
   remove () {

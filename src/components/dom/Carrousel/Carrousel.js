@@ -180,8 +180,6 @@ export default class Carrousel extends DomComponent {
     let lastPostitionScroll = 0
     let ticking = false
 
-    console.log('here')
-
     function scrolling (posScroll) {
       // faire quelque chose avec la position du scroll
       console.log('scroool')

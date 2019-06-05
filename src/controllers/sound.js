@@ -69,14 +69,10 @@ function onVisibilityChange () {
 
 function play (key, opts = {}) {
   // log('Play ' + key)
-  // Special case for jump and land: play the sound corresponding to the current level
-  if (key === 'player_jump' || key === 'player_land') {
-    const level = store.levelDict.get()[store.level.get()]
-    if (level === 'sky') key += '_cape'
-    else if (level === 'space' || level === 'end') key += '_space'
+  if (samples[key]) {
+    // console.log(samples[key], samples[key].state.playing, key)
+    samples[key].play(opts)
   }
-
-  if (samples[key]) samples[key].play(opts)
 }
 
 function stop (key, opts = {}) {
@@ -95,6 +91,11 @@ function update (dt) {
   for (let k in samples) samples[k].update(dt)
 }
 
+function soundIsPlaying (dt) {
+  if (!samples[soundPlay]) return { sound: soundPlay, playing: false }
+  else return { sound: soundPlay, playing: samples[soundPlay].state.playing }
+}
+
 export default {
   setup,
   mute,
@@ -105,5 +106,5 @@ export default {
   stop,
   update,
   setSoundPlay,
-  soundIsPlaying: () => { return soundPlay }
+  soundIsPlaying
 }

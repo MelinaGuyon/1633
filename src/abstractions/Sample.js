@@ -70,7 +70,7 @@ export default class Sample {
     }
     this.state.paused = false
     this.state.playing = true
-	  store.musicPlayed.set(true)
+    store.musicPlayed.set(true)
   }
 
   pause (opts = {}) {
@@ -132,6 +132,7 @@ export default class Sample {
       this.state.id = null
       this.state.sound = null
       this.playing = false
+      this.state.playing = false
     } else {
       this.state.paused = false
       if (this.state.fadeOutMax > 0) { return }
