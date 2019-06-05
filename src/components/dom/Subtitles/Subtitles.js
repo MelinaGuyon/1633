@@ -25,12 +25,10 @@ export default class Subtitles extends DomComponent {
   }
 
   bind () {
-    // TODO : unbind
     signals.writeSubtitles.listen(this.initWritting, this)
   }
 
   initWritting (index) {
-    console.log('writting')
     this.writeSubtitles(store.subtitles.get()[index], index, Date.now())
   }
 
