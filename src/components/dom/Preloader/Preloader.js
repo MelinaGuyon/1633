@@ -140,11 +140,16 @@ export default class Preloader extends DomComponent {
 
     Promise.all([this.pixiLoad()])
       .then(() => {
-        if (store.skipLoading.get()) return this.completeLoading()
+        if (store.skipLoading.get()) return this.directCompleteLoading()
         this.intervalId = setInterval(() => {
           if (this.animationCompleted && store.started.get()) this.completeLoading()
         }, 10)
       })
+  }
+
+  directCompleteLoading () {
+    this.props.onComplete() // launch game
+    this.prld.classList.add('loaded')
   }
 
   completeLoading () {
