@@ -29,6 +29,7 @@ export default class Preloader extends DomComponent {
     const loc = store.loc.get()
     return (
       <section class='prld fxd' ref={addRef(this, 'prld')}>
+        <div class='fakeBg' ref={addRef(this, 'bg')}></div>
         <Glass ref={addRef(this, 'glass')} />
         <div class='title-container-l1'>
           <div class='title-container-l2' ref={addRef(this, 'title')}>
@@ -150,20 +151,18 @@ export default class Preloader extends DomComponent {
     clearInterval(this.intervalId) // stop check if animation is done
     this.unbind()
     this.log('complete')
-    // this.props.onComplete() // launch game
-    // this.prld.classList.add('loaded')
 
     const tl1 = anime.timeline({
       easing: 'easeInOutQuad',
-      duration: 600
+      duration: 700
     })
     const tl2 = anime.timeline({
       easing: 'easeInOutQuad',
-      duration: 600
+      duration: 700
     })
     const tl3 = anime.timeline({
       easing: 'easeInOutQuad',
-      duration: 600
+      duration: 700
     })
 
     tl1
@@ -175,18 +174,31 @@ export default class Preloader extends DomComponent {
     tl2
       .add({
         targets: this.title,
-        opacity: 0.2
+        opacity: 0.3
+      })
+      .add({
+        targets: this.title,
+        opacity: 0,
+        delay: 3000
       })
 
     tl3
       .add({
         targets: this.baseline,
         opacity: 1,
-        delay: 300,
+        delay: 500,
         complete: () => {
-          delay(() => { this.prld.classList.add('state2')}, 300)
-          delay(() => { this.prld.classList.add('state3')}, 600)
-          delay(() => { this.prld.classList.add('state4')}, 900)
+          delay(() => { this.bg.classList.add('visible')}, 300)
+        }
+      })
+      .add({
+        targets: this.baseline,
+        opacity: 0,
+        delay: 3000 - 500,
+        complete: () => {
+          this.props.onComplete() // launch game
+          delay(() => { this.prld.classList.add('loaded')}, 600)
+
         }
       })
   }
