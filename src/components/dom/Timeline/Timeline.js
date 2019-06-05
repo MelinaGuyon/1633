@@ -145,6 +145,7 @@ export default class Timeline extends DomComponent {
     }
 
     this.currentPoint.base.style.transform = `translateX(-${x}px)`
+    signals.newDom.dispatch()
 
     // circle
     let range

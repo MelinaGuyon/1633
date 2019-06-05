@@ -33,9 +33,9 @@ export default class GameInterface extends DomComponent {
   }
 
   componentDidMount () {
-    signals.newDom.dispatch()
     logger('Game interface did mount', '#47b342').log()
     this.bind()
+    signals.newDom.dispatch()
     if (!store.skipTuto.get()) this.openTuto('keyboard') // toto remove only for test
   }
 
@@ -44,10 +44,12 @@ export default class GameInterface extends DomComponent {
   }
 
   bind () {
+    this.listenStore('size', this.resize)
     document.addEventListener('click', this.clearClick)
   }
 
   unbind () {
+    this.unlistenStore('size', this.resize)
     document.removeEventListener('click', this.clearClick)
   }
 
@@ -80,5 +82,9 @@ export default class GameInterface extends DomComponent {
     if (document.activeElement.toString() === '[object HTMLButtonElement]') {
       document.activeElement.blur()
     }
+  }
+
+  resize () {
+    signals.newDom.dispatch()
   }
 }
