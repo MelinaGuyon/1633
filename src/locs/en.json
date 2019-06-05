@@ -1,8 +1,9 @@
 {
   "common": {
-    "site.name": "1235",
-    "site.title": "1235",
+    "site.name": "1253",
+    "site.title": "1253",
     "site.description": "What's upon a time La Sorbonne",
+    "site.baseline": "What's upon a time La Sorbonne",
     "og.title": "1633",
     "og.decription": "Discover the Sorbonne's chronicles",
     "preloader.text": "Loading",

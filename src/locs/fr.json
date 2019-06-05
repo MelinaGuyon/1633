@@ -1,8 +1,9 @@
 {
   "common": {
-    "site.name": "1235",
-    "site.title": "1235",
+    "site.name": "1253",
+    "site.title": "1253",
     "site.description": "Il était une fois La Sorbonne",
+    "site.baseline": "Il était une fois La Sorbonne",
     "og.title": "1633",
     "og.decription": "Découvrez les chroniques de la Sorbonne",
     "preloader.text": "Chargement",

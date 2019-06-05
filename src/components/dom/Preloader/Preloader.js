@@ -38,7 +38,7 @@ export default class Preloader extends DomComponent {
               <h2 class='title-full'>{loc['site.title']}</h2>
             </div>
           </div>
-          <p class='baseline' ref={addRef(this, 'baseline')}>Il était une fois la Sorbonne</p>
+          <p class='baseline' ref={addRef(this, 'baseline')}>{loc['site.baseline']}</p>
         </div>
       </section>
     )
