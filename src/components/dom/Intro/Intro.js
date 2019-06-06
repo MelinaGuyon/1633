@@ -1,7 +1,6 @@
 import { h } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
-import MouseMv from 'components/dom/MouseMv/MouseMv'
-import sound from '../../../controllers/sound'
+import sound from 'controllers/sound'
 import store from 'state/store'
 import logger from 'utils/logger'
 
@@ -13,7 +12,11 @@ export default class Intro extends DomComponent {
     return (
       <section class='intro '>
         <div class='container'>
-          <p class='centerText'>{loc['intro.text']}</p>
+          <p class='centerText'>{loc['intro.text']}
+            <br />
+            <span class='magnet'>{loc['intro.skip']}</span>
+          </p>
+
         </div>
       </section>
     )
