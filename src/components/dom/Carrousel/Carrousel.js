@@ -216,5 +216,6 @@ export default class Carrousel extends DomComponent {
         console.log('error')
     }
     store.currentHistory.set(id)
+    store.launched.set(true)
   }
 }

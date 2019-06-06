@@ -195,6 +195,7 @@ export default class Menu extends DomComponent {
   bind () {
     this.listenStore('menuLight', this.fastbind('updateMenu', 1))
     this.listenStore('menuSocials', this.fastbind('updateSocials', 1))
+    this.listenStore('launched', this.fastbind('updateSocials'))
   }
 
   updateMenu (light) {
@@ -203,13 +204,14 @@ export default class Menu extends DomComponent {
   }
 
   updateSocials (socials) {
+    let gameLaunched = store.launched.get()
     if (!socials) {
       this.socials.forEach((el) => {
         el.base.classList.remove('magnet')
       })
       this.socialContainer.classList.add('hidden')
       signals.newDom.dispatch()
-    } else {
+    } else if (!gameLaunched) {
       this.socials.forEach((el) => {
         el.base.classList.add('magnet')
       })
