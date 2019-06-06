@@ -30,7 +30,7 @@ export default class Preloader extends DomComponent {
     return (
       <section class='prld fxd' ref={addRef(this, 'prld')}>
         <div class='fakeBg' ref={addRef(this, 'bg')} />
-        <Glass ref={addRef(this, 'glass')} />
+        <Glass ref={addRef(this, 'glass')} autostart={false} />
         <div class='title-container-l1'>
           <div class='title-container-l2' ref={addRef(this, 'title')}>
             <h2 class='title-bordered'>{loc['site.title']}</h2>
@@ -115,6 +115,31 @@ export default class Preloader extends DomComponent {
     })
   }
 
+  loadImage (k) {
+    return new Promise(resolve => {
+      const el = document.createElement('img')
+      el.onload = () => {
+        el.onload = undefined
+        store.images.get()[k] = el
+        resolve()
+      }
+      el.src = cachebust(store.images.get()[k])
+    })
+  }
+
+  imagesLoad () {
+    const imagesToPreload = store.imagesToPreload.get()
+    const images = store.images.get()
+    const p = []
+    for (let i = 0; i < imagesToPreload.length; i++) {
+      const k = imagesToPreload[i]
+      if (!images[k]) continue
+      p.push(this.loadImage(k))
+    }
+    store.imagesToPreload.set([])
+    return Promise.all(p)
+  }
+
   animeLoader (progress) {
     // TODO : change with animejs
     this.inrtia.percent.to(progress)
@@ -138,9 +163,10 @@ export default class Preloader extends DomComponent {
   load () {
     sound.setup()
 
-    Promise.all([this.pixiLoad()])
+    Promise.all([this.imagesLoad(), this.pixiLoad()])
       .then(() => {
         if (store.skipLoading.get()) return this.directCompleteLoading()
+        this.glass.start()
         this.intervalId = setInterval(() => {
           if (this.animationCompleted && store.started.get()) this.completeLoading()
         }, 10)

@@ -56,6 +56,7 @@ class SingleGlass extends DomComponent {
 
 export default class Glass extends DomComponent {
   template (props) {
+    this.autostart = props.autostart
     this.parrent = props.parrent
 
     this.number = 7
@@ -78,8 +79,12 @@ export default class Glass extends DomComponent {
   }
 
   componentDidMount () {
-    delay(this.setPosition.bind(this), 500) // better anim perf
+    if (this.autostart) delay(this.setPosition.bind(this), 500) // better anim perf
     this.construct = this.fastbind('construct')
+  }
+
+  start () {
+    this.setPosition()
   }
 
   bind () {

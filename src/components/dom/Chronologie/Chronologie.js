@@ -52,7 +52,6 @@ class NextButton extends DomComponent {
 
 class Fact extends DomComponent {
   template (props) {
-    const loc = store.loc.get()
     this.date = props.content.date
 
     return (
@@ -68,7 +67,7 @@ class Fact extends DomComponent {
         </div>
 
         <h2 class='locked-title'>{props.content.title}</h2>
-        <Glass ref={addRef(this, 'glass')} parrent />
+        <Glass ref={addRef(this, 'glass')} autostart parrent />
       </div>
     )
   }
