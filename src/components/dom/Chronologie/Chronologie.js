@@ -184,6 +184,7 @@ export default class Chronologie extends DomComponent {
 
   onChronologieClick (chronologieStatus, top) {
     if (chronologieStatus === 'appearing') {
+      this.chronologie.classList.remove('smooth')
       if (store.chronologieId.get() === 'top') this.chronologie.scrollTop = 0
       else this.chronologie.scrollTop = this.facts[store.currentHistory.get()][store.chronologieId.get()].base.offsetTop
       this.chronologie.classList.add('visible')
@@ -224,25 +225,21 @@ export default class Chronologie extends DomComponent {
   }
 
   goToDate (date) {
-    console.log('go to date', date)
-
     let index
     let newDate = null
     this.factsOrdered.forEach((fact, i) => {
-      // console.log(fact.date, date)
       if (fact.date > date && !newDate) {
         index = i
         newDate = fact.date
-        this.chronologie.scrollTop = this.factsOrdered[index].base.offsetTop
-        this.checkCurrent()
-        console.log(index, fact.date)
       }
     })
     if (!newDate) {
       index = this.factsOrdered.length - 1
-      this.chronologie.scrollTop = this.factsOrdered[index].base.offsetTop
-      this.checkCurrent()
     }
+
+    this.chronologie.classList.add('smooth')
+    this.chronologie.scrollTop = this.factsOrdered[index].base.offsetTop
+    this.checkCurrent()
   }
 
   updateTimelineVisibility (bool) {
