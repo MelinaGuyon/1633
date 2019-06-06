@@ -3,6 +3,7 @@ import { DomComponent } from 'abstractions/DomComponent'
 import sound from 'controllers/sound'
 import store from 'state/store'
 import logger from 'utils/logger'
+import delay from 'lodash/delay'
 
 import './Intro.styl'
 
@@ -16,7 +17,6 @@ export default class Intro extends DomComponent {
             <br />
             <span class='magnet' ref={addRef(this, 'skip')}>{loc['intro.skip']}</span>
           </p>
-
         </div>
       </section>
     )
@@ -24,8 +24,8 @@ export default class Intro extends DomComponent {
 
   componentDidMount () {
     logger('Intro did mount', '#47b342').log()
-    this.launchIntro()
     this.bind()
+    delay(this.fastbind('launchIntro', 1), 1000)
   }
 
   bind () {
@@ -37,8 +37,8 @@ export default class Intro extends DomComponent {
   }
 
   launchIntro () {
-    sound.play('voixoff/intro_bis')
-    sound.setSoundPlay('voixoff/intro_bis')
+    sound.play('voixoff-acteur/intro')
+    sound.setSoundPlay('voixoff-acteur/intro')
     this.intervalId = setInterval(() => {
       if (!sound.soundIsPlaying().playing) this.finished()
     }, 500)
@@ -47,7 +47,7 @@ export default class Intro extends DomComponent {
   finished () {
     clearInterval(this.intervalId)
     this.unbind()
-    sound.stop('voixoff/intro_bis')
+    sound.stop('voixoff-acteur/intro')
 
     this.props.onComplete()
   }

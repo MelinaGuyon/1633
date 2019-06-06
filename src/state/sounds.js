@@ -18,7 +18,9 @@ const sfxs = {
   'voixoff/chap_6': { loop: false, fadeOut: 900 },
   'voixoff/chap_7': { loop: false, fadeOut: 900 },
   'voixoff/chap_8': { loop: false, fadeOut: 900 },
-  'voixoff/epilogue': { loop: false, fadeOut: 900 }
+  'voixoff/epilogue': { loop: false, fadeOut: 900 },
+
+  'voixoff-acteur/intro': { loop: false, fadeOut: 900 }
 }
 
 export default { sfxs, musics }
