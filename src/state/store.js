@@ -64,6 +64,7 @@ export default createStore({
   chronologieId: null,
   chronologieIdsTable: [],
   chronologieCurrent: {},
+  chronologieDate: null,
   chronologieTimelineVisible: false,
 
   // ---- Debug utilities: 0 means false, 1 means true ----

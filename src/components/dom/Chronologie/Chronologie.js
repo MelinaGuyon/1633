@@ -55,7 +55,7 @@ class Fact extends DomComponent {
     this.date = props.content.date
 
     return (
-      <div class='fact locked' ref={addRef(this, 'fact')}>
+      <div class='fact ' ref={addRef(this, 'fact')}>
         <div class='content-container'>
           <img class='character' ref={addRef(this, 'character')} src={props.content.img} />
           <div class='content' ref={addRef(this, 'content')} >
@@ -83,7 +83,7 @@ class Fact extends DomComponent {
 
   bind () {
     // TODO : écouter le mouse store car sinon il y en aura des dizaines + mettre les glass
-    this.base.addEventListener('mousemove', this.fastbind('onMouseMove', 1))
+    // this.base.addEventListener('mousemove', this.fastbind('onMouseMove', 1))
   }
 
   onMouseMove (e) {
@@ -152,6 +152,7 @@ export default class Chronologie extends DomComponent {
   }
 
   internalBind () {
+    this.listenStore('chronologieDate', this.fastbind('goToDate', 1))
     window.addEventListener('mousewheel', this.fastbind('getChronologieOffset', 1))
     window.addEventListener('mousewheel', this.fastbind('checkCurrent', 1))
     this.facts.forEach((tab) => {
@@ -162,6 +163,7 @@ export default class Chronologie extends DomComponent {
   }
 
   internalUnbind () {
+    this.unlistenStore('chronologieDate', this.goToDate)
     window.removeEventListener('mousewheel', this.getChronologieOffset)
     window.removeEventListener('mousewheel', this.checkCurrent)
     this.facts.forEach((tab) => {
@@ -219,6 +221,28 @@ export default class Chronologie extends DomComponent {
       }
     })
     store.chronologieCurrent.set({ index: current, el: this.factsOrdered[current], date: this.factsOrdered[current].date })
+  }
+
+  goToDate (date) {
+    console.log('go to date', date)
+
+    let index
+    let newDate = null
+    this.factsOrdered.forEach((fact, i) => {
+      // console.log(fact.date, date)
+      if (fact.date > date && !newDate) {
+        index = i
+        newDate = fact.date
+        this.chronologie.scrollTop = this.factsOrdered[index].base.offsetTop
+        this.checkCurrent()
+        console.log(index, fact.date)
+      }
+    })
+    if (!newDate) {
+      index = this.factsOrdered.length - 1
+      this.chronologie.scrollTop = this.factsOrdered[index].base.offsetTop
+      this.checkCurrent()
+    }
   }
 
   updateTimelineVisibility (bool) {

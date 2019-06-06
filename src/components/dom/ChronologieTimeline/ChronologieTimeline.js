@@ -63,6 +63,7 @@ export default class ChronologieTimeline extends DomComponent {
     this.chronoTimeline.addEventListener('mouseleave', this.fastbind('reset', 1))
     this.sticks.forEach((el) => {
       el.base.addEventListener('mouseover', this.fastbind('stickMousehover', 1))
+      el.base.addEventListener('click', this.fastbind('stickClick', 1))
     })
   }
 
@@ -70,6 +71,7 @@ export default class ChronologieTimeline extends DomComponent {
     this.chronoTimeline.removeEventListener('mouseleave', this.reset)
     this.sticks.forEach((el) => {
       el.base.removeEventListener('mouseover', this.stickMousehover)
+      el.base.removeEventListener('click', this.stickClick)
     })
   }
 
@@ -111,7 +113,7 @@ export default class ChronologieTimeline extends DomComponent {
 
     this.sticks[this.currentStick].stick.style.transform = 'scaleX(1)'
     if (!hovering) {
-      this.span.style.transform = `translateY(calc(-51% + ${this.sticks[this.currentStick].base.offsetTop}px))`
+      this.span.style.transform = `translateY(calc(-25% + ${this.sticks[this.currentStick].base.offsetTop}px))`
       this.span.innerText = text
       this.text = text
     }
@@ -136,11 +138,17 @@ export default class ChronologieTimeline extends DomComponent {
     if (this.sticks[id - 1]) this.sticks[id - 1].stick.style.transform = 'scaleX(0.7)'
 
     this.sticks[id].stick.style.transform = 'scaleX(1)'
-    this.span.style.transform = `translateY(calc(-51% + ${this.sticks[id].base.offsetTop}px))`
+    this.span.style.transform = `translateY(calc(-25% + ${this.sticks[id].base.offsetTop}px))`
     this.span.innerText = this.startDate + this.yearsPlage * id
 
     if (this.sticks[id + 1]) this.sticks[id + 1].stick.style.transform = 'scaleX(0.7)'
     if (this.sticks[id + 2]) this.sticks[id + 2].stick.style.transform = 'scaleX(0.5)'
+  }
+
+  stickClick (e) {
+    let id = Number(e.target.closest('.stick-container').getAttribute('data-id'))
+    let date = this.startDate + this.yearsPlage * id
+    store.chronologieDate.set(date)
   }
 
   reset () {
