@@ -224,6 +224,19 @@ export default class Chronologie extends DomComponent {
     store.chronologieCurrent.set({ index: current, el: this.factsOrdered[current], date: this.factsOrdered[current].date })
   }
 
+  unbindedCheckCurrent (scrollTop) {
+    let current
+    let distCurrent = 10000
+    this.factsOrdered.forEach((fact, index) => {
+      let dist = Math.abs(scrollTop - fact.top)
+      if (dist < distCurrent) {
+        distCurrent = scrollTop - fact.top
+        current = index
+      }
+    })
+    store.chronologieCurrent.set({ index: current, el: this.factsOrdered[current], date: this.factsOrdered[current].date })
+  }
+
   goToDate (date) {
     let index
     let newDate = null
@@ -237,9 +250,10 @@ export default class Chronologie extends DomComponent {
       index = this.factsOrdered.length - 1
     }
 
+    let top = this.factsOrdered[index].base.offsetTop
+    this.unbindedCheckCurrent(top)
     this.chronologie.classList.add('smooth')
-    this.chronologie.scrollTop = this.factsOrdered[index].base.offsetTop
-    this.checkCurrent()
+    this.chronologie.scrollTop = top
   }
 
   updateTimelineVisibility (bool) {
