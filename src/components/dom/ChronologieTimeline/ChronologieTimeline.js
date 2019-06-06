@@ -1,8 +1,14 @@
 import { h, addRef } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
+import sortBy from 'lodash/sortBy'
 
 import './ChronologieTimeline.styl'
+
+const chrono = sortBy(store.chronologie.get().chrono, [(d) => { return d.date }])
+const startDate = 1200
+const endDate = 2020
+const yearsPlage = 20
 
 class Stick extends DomComponent {
   template (props) {
@@ -14,16 +20,20 @@ class Stick extends DomComponent {
   }
 
   componentDidMount () {
+    this.date = startDate + yearsPlage * this.props.id
+    chrono.forEach((el) => {
+      const dist = Math.abs(el.date - this.date)
+      if (this.date < el.date && dist <= 20) {
+        // this.stickContainer.classList.add('magnet')
+        this.clickable = true
+      }
+    })
   }
 }
 
 export default class ChronologieTimeline extends DomComponent {
   template ({ base }) {
-    this.startDate = 1200
-    this.endDate = 2020
-    this.yearsPlage = 20
-
-    this.stickNumber = (this.endDate - this.startDate) / this.yearsPlage
+    this.stickNumber = (endDate - startDate) / yearsPlage
     this.currentStick = 0
     this.currentIndex = null
 
@@ -62,16 +72,20 @@ export default class ChronologieTimeline extends DomComponent {
   internalBind () {
     this.chronoTimeline.addEventListener('mouseleave', this.fastbind('reset', 1))
     this.sticks.forEach((el) => {
-      el.base.addEventListener('mouseover', this.fastbind('stickMousehover', 1))
-      el.base.addEventListener('click', this.fastbind('stickClick', 1))
+      if (el.clickable) {
+        el.base.addEventListener('mouseover', this.fastbind('stickMousehover', 1))
+        el.base.addEventListener('click', this.fastbind('stickClick', 1))
+      }
     })
   }
 
   internalUnbind () {
     this.chronoTimeline.removeEventListener('mouseleave', this.reset)
     this.sticks.forEach((el) => {
-      el.base.removeEventListener('mouseover', this.stickMousehover)
-      el.base.removeEventListener('click', this.stickClick)
+      if (el.clickable) {
+        el.base.removeEventListener('mouseover', this.stickMousehover)
+        el.base.removeEventListener('click', this.stickClick)
+      }
     })
   }
 
@@ -87,12 +101,12 @@ export default class ChronologieTimeline extends DomComponent {
 
   updateCurrent (infos) {
     if (this.currentIndex !== infos.index) {
-      let dateCompteur = this.startDate
+      let dateCompteur = startDate
       let date
       let index
       for (let i = 0; i < this.stickNumber; i++) {
-        dateCompteur = this.startDate + this.yearsPlage * i
-        if (infos.date > dateCompteur) {
+        dateCompteur = startDate + yearsPlage * i
+        if (infos.date >= dateCompteur) {
           date = dateCompteur
           index = i
         }
@@ -105,21 +119,21 @@ export default class ChronologieTimeline extends DomComponent {
 
   updateStick (text, hovering) {
     this.sticks.forEach((el) => {
-      if (!hovering)el.stick.style.transform = 'scaleX(0.22)'
+      if (!hovering)el.stick.style.transform = 'scaleX(0.22) translateY(-50%)'
     })
 
-    if (this.sticks[this.currentStick - 2]) this.sticks[this.currentStick - 2].stick.style.transform = 'scaleX(0.5)'
-    if (this.sticks[this.currentStick - 1]) this.sticks[this.currentStick - 1].stick.style.transform = 'scaleX(0.7)'
+    if (this.sticks[this.currentStick - 2]) this.sticks[this.currentStick - 2].stick.style.transform = 'scaleX(0.5) translateY(-50%)'
+    if (this.sticks[this.currentStick - 1]) this.sticks[this.currentStick - 1].stick.style.transform = 'scaleX(0.7) translateY(-50%)'
 
-    this.sticks[this.currentStick].stick.style.transform = 'scaleX(1)'
+    this.sticks[this.currentStick].stick.style.transform = 'scaleX(1) translateY(-50%)'
     if (!hovering) {
       this.span.style.transform = `translateY(calc(-25% + ${this.sticks[this.currentStick].base.offsetTop}px))`
       this.span.innerText = text
       this.text = text
     }
 
-    if (this.sticks[this.currentStick + 1]) this.sticks[this.currentStick + 1].stick.style.transform = 'scaleX(0.7)'
-    if (this.sticks[this.currentStick + 2]) this.sticks[this.currentStick + 2].stick.style.transform = 'scaleX(0.5)'
+    if (this.sticks[this.currentStick + 1]) this.sticks[this.currentStick + 1].stick.style.transform = 'scaleX(0.7) translateY(-50%)'
+    if (this.sticks[this.currentStick + 2]) this.sticks[this.currentStick + 2].stick.style.transform = 'scaleX(0.5) translateY(-50%)'
   }
 
   stickMousehover (e) {
@@ -130,24 +144,24 @@ export default class ChronologieTimeline extends DomComponent {
   updateStickHover (id) {
     this.sticks.forEach((el, index) => {
       if (index <= this.currentStick + 2 && index >= this.currentStick - 2) return
-      el.stick.style.transform = 'scaleX(0.22)'
+      el.stick.style.transform = 'scaleX(0.22) translateY(-50%)'
     })
     this.updateStick('', true)
 
-    if (this.sticks[id - 2]) this.sticks[id - 2].stick.style.transform = 'scaleX(0.5)'
-    if (this.sticks[id - 1]) this.sticks[id - 1].stick.style.transform = 'scaleX(0.7)'
+    if (this.sticks[id - 2]) this.sticks[id - 2].stick.style.transform = 'scaleX(0.5) translateY(-50%)'
+    if (this.sticks[id - 1]) this.sticks[id - 1].stick.style.transform = 'scaleX(0.7) translateY(-50%)'
 
-    this.sticks[id].stick.style.transform = 'scaleX(1)'
+    this.sticks[id].stick.style.transform = 'scaleX(1) translateY(-50%)'
     this.span.style.transform = `translateY(calc(-25% + ${this.sticks[id].base.offsetTop}px))`
-    this.span.innerText = this.startDate + this.yearsPlage * id
+    this.span.innerText = startDate + yearsPlage * id
 
-    if (this.sticks[id + 1]) this.sticks[id + 1].stick.style.transform = 'scaleX(0.7)'
-    if (this.sticks[id + 2]) this.sticks[id + 2].stick.style.transform = 'scaleX(0.5)'
+    if (this.sticks[id + 1]) this.sticks[id + 1].stick.style.transform = 'scaleX(0.7) translateY(-50%)'
+    if (this.sticks[id + 2]) this.sticks[id + 2].stick.style.transform = 'scaleX(0.5) translateY(-50%)'
   }
 
   stickClick (e) {
     let id = Number(e.target.closest('.stick-container').getAttribute('data-id'))
-    let date = this.startDate + this.yearsPlage * id
+    let date = startDate + yearsPlage * id
     store.chronologieDate.set(date)
   }
 

@@ -241,7 +241,7 @@ export default class Chronologie extends DomComponent {
     let index
     let newDate = null
     this.factsOrdered.forEach((fact, i) => {
-      if (fact.date > date && !newDate) {
+      if (fact.date >= date && !newDate) {
         index = i
         newDate = fact.date
       }
