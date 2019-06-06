@@ -22,7 +22,7 @@ export default class ChronologieTimeline extends DomComponent {
 
     this.stickNumber = (this.endDate - this.startDate) / this.yearsPlage
     this.currentStick = 0
-    this.currentIndex = 0
+    this.currentIndex = null
 
     this.sticks = Array(this.stickNumber)
 
@@ -63,32 +63,21 @@ export default class ChronologieTimeline extends DomComponent {
 
   updateCurrent (infos) {
 
-    // if (this.currentIndex !== infos.index) {
-    //   console.log(infos)
-    // }
-
-    // console.log(infos.date)
-    let dateCompteur = this.startDate
-    let date
-    let index
-    for (let i = 0; i < this.stickNumber; i++) {
-      dateCompteur = this.startDate + this.yearsPlage * i
-      if (infos.date > dateCompteur) {
-        date = dateCompteur
-        index = i
+    if (this.currentIndex !== infos.index) {
+      let dateCompteur = this.startDate
+      let date
+      let index
+      for (let i = 0; i < this.stickNumber; i++) {
+        dateCompteur = this.startDate + this.yearsPlage * i
+        if (infos.date > dateCompteur) {
+          date = dateCompteur
+          index = i
+        }
       }
+      this.currentStick = index
+      this.currentIndex = infos.index
+      this.updateStick(date)
     }
-
-    console.log(date, index)
-    this.currentStick = index
-
-    // let halfHeight = store.size.get().h / 2
-    // let ratio = infos.dist / halfHeight
-    // let stick = this.refCurrentStick + Math.round(ratio * this.plageAround)
-    // let opacity = 1 - Math.abs(ratio)
-
-    // this.currentStick = stick
-    this.updateStick(date)
   }
 
   updateStick (text, opacity) {
