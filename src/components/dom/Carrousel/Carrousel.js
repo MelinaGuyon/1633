@@ -8,6 +8,7 @@ import NapoleonbonaparteGame from 'components/pixi/PixiGame/NapoleonbonaparteGam
 import RobertdesorbonGame from 'components/pixi/PixiGame/RobertdesorbonGame'
 import JacqueslemercierGame from 'components/pixi/PixiGame/JacqueslemercierGame'
 import Intro from 'components/dom/Intro/Intro'
+import anime from 'animejs'
 
 import './Carrousel.styl'
 
@@ -124,16 +125,72 @@ export default class Carrousel extends DomComponent {
   template ({ base }) {
     return (
       <section data-type='carrousel' class='carrousel mouse__close'>
-        <Intro />
-        <Form active={'active'} type={'richelieu'} id={0} launchGame={this.launchGame} />
-        <Form active={''} type={'mariecurie'} id={1} launchGame={this.launchGame} />
-        <Form active={''} type={'robertdesorbon'} id={2} launchGame={this.launchGame} />
-        <Form active={''} type={'jacqueslemercier'} id={3} launchGame={this.launchGame} />
-        <Form active={''} type={'napoleonbonaparte'} id={4} launchGame={this.launchGame} />
-        <ButtonGoPrev goPrev={this.goPrev} />
-        <ButtonGoNext goNext={this.goNext} />
+        <Intro onComplete={this.fastbind('activeCarousel')} ref={addRef(this, 'intro')} />
+        <div class='carrousel-wrapper' ref={addRef(this, 'carouselWrapper')}>
+          <Form active={'active'} type={'richelieu'} id={0} launchGame={this.launchGame} />
+          <Form active={''} type={'mariecurie'} id={1} launchGame={this.launchGame} />
+          <Form active={''} type={'robertdesorbon'} id={2} launchGame={this.launchGame} />
+          <Form active={''} type={'jacqueslemercier'} id={3} launchGame={this.launchGame} />
+          <Form active={''} type={'napoleonbonaparte'} id={4} launchGame={this.launchGame} />
+          <ButtonGoPrev goPrev={this.goPrev} />
+          <ButtonGoNext goNext={this.goNext} />
+        </div>
       </section>
     )
+  }
+
+  componentDidMount () {
+    if (store.skipCarousel.get()) this.launchGame(0)
+  }
+
+  activeCarousel () {
+    anime({
+      targets: this.intro.base,
+      opacity: 0,
+      duration: 600,
+      easing: 'easeOutQuad',
+      complete: () => { this.intro.base.classList.add('hidden') }
+    })
+    anime({
+      targets: this.carouselWrapper,
+      opacity: 1,
+      duration: 600,
+      delay: 800,
+      easing: 'easeOutQuad',
+      complete: () => { this.carouselWrapper.classList.add('visible') }
+    })
+
+    // this.scrollListen()
+  }
+
+  goNext () {
+    console.log(' au suivant ')
+  }
+
+  goPrev () {
+	  console.log(' on retourne avant ')
+  }
+
+  scrollListen () {
+    let lastPostitionScroll = 0
+    let ticking = false
+
+    function scrolling (posScroll) {
+      console.log('scroool')
+    }
+
+    window.addEventListener('scroll', function (e) {
+      lastPostitionScroll = window.scrollY
+      console.log('???')
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          scrolling(lastPostitionScroll)
+          ticking = false
+        })
+      }
+
+      ticking = true
+    })
   }
 
   launchGame (id) {
@@ -159,43 +216,5 @@ export default class Carrousel extends DomComponent {
         console.log('error')
     }
     store.currentHistory.set(id)
-  }
-
-  goNext () {
-    console.log(' au suivant ')
-  }
-
-  goPrev () {
-	  console.log(' on retourne avant ')
-  }
-
-  componentDidMount () {
-    // debug to start directly
-    if (store.skipCarousel.get()) this.launchGame(0)
-
-	  this.scrollListen()
-  }
-
-  scrollListen () {
-    let lastPostitionScroll = 0
-    let ticking = false
-
-    function scrolling (posScroll) {
-      // faire quelque chose avec la position du scroll
-      console.log('scroool')
-    }
-
-    window.addEventListener('scroll', function (e) {
-      lastPostitionScroll = window.scrollY
-      console.log('???')
-      if (!ticking) {
-        window.requestAnimationFrame(function () {
-          scrolling(lastPostitionScroll)
-          ticking = false
-        })
-      }
-
-      ticking = true
-    })
   }
 }

@@ -119,7 +119,6 @@ export default class Timeline extends DomComponent {
     let ratio
     let x
 
-
     if (this.currenPointId === 1) distStart = (scene.interestOffsets[this.currenPointId] - scene.offsets[this.currenPointId]) + scene.sizes[1] / 2
     else distStart = (scene.interestOffsets[this.currenPointId] - scene.offsets[this.currenPointId]) + scene.sizes[this.currenPointId] / 2
 
