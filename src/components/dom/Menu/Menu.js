@@ -1,33 +1,11 @@
 /* eslint-disable no-mixed-spaces-and-tabs,no-tabs */
-import { h } from '@internet/dom'
+import { h, addRef } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
+import signals from 'state/signals'
 
 import './Menu.styl'
 import sound from '../../../controllers/sound'
-
-class Button extends DomComponent {
-  template (props) {
-    const loc = store.loc.get()
-
-    return (
-      <button class='nav' data-id={props.id}>{loc['nav.' + props.type]}</button>
-    )
-  }
-
-  componentDidMount () {
-    this.bind()
-  }
-
-  bind () {
-    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
-  }
-
-  onClick (e) {
-    const id = Number(e.target.getAttribute('data-id'))
-    store.levelId.set(id)
-  }
-}
 
 class ChronologieButton extends DomComponent {
   template (props) {
@@ -65,7 +43,6 @@ class SoundButton extends DomComponent {
         <div class='l3' />
         <div class='l4' />
         <div class='l5' />
-        <div class='l6' />
       </button>
     )
   }
@@ -123,6 +100,7 @@ class PlayPauseButton extends DomComponent {
 
 class LangButton extends DomComponent {
   template (props) {
+    // TODO :: mettre la bonne langue + le href
     return (
       <button class='nav-lang magnet' data-id={props.id}>EN</button>
     )
@@ -185,8 +163,13 @@ class SocialButton extends DomComponent {
 
 export default class Menu extends DomComponent {
   template ({ base }) {
+    this.socials = Array(this.levelsLength)
+    const refSocials = i => el => {
+      this.socials[i] = el
+    }
+
     return (
-      <section class='menu'>
+      <section class='menu' ref={addRef(this, 'menu')}>
         <div class='menu__top-right'>
           <ChronologieButton type={'chronologie'} id={1} />
           <AboutButton type={'about'} id={2} />
@@ -196,15 +179,42 @@ export default class Menu extends DomComponent {
           <SoundButton type={'sound'} id={5} />
           <PlayPauseButton type={'playpause'} id={4} />
         </div>
-        <div class='menu__right-center'>
-          <SocialButton type={'fb'} />
-          <SocialButton type={'twi'} />
-          <SocialButton type={'in'} />
+        <div class='menu__right-center' ref={addRef(this, 'socialContainer')}>
+          <SocialButton ref={refSocials(0)} type={'fb'} />
+          <SocialButton ref={refSocials(1)} type={'tw'} />
+          <SocialButton ref={refSocials(2)} type={'in'} />
         </div>
       </section>
     )
   }
 
   componentDidMount () {
+    this.bind()
+  }
+
+  bind () {
+    this.listenStore('menuLight', this.fastbind('updateMenu', 1))
+    this.listenStore('menuSocials', this.fastbind('updateSocials', 1))
+  }
+
+  updateMenu (light) {
+    if (light) this.menu.classList.add('light')
+    else this.menu.classList.remove('light')
+  }
+
+  updateSocials (socials) {
+    if (!socials) {
+      this.socials.forEach((el) => {
+        el.base.classList.remove('magnet')
+      })
+      this.socialContainer.classList.add('hidden')
+      signals.newDom.dispatch()
+    } else {
+      this.socials.forEach((el) => {
+        el.base.classList.add('magnet')
+      })
+      this.socialContainer.classList.remove('hidden')
+      signals.newDom.dispatch()
+    }
   }
 }

@@ -190,11 +190,15 @@ export default class Chronologie extends DomComponent {
       this.internalBind()
       this.updateTimelineVisibility(true)
       store.pause.set(true)
+      store.menuLight.set(true)
+      store.menuSocials.set(false)
     } else if (chronologieStatus === 'disappearing') {
       this.chronologie.classList.remove('visible')
       this.internalUnbind()
       this.updateTimelineVisibility(false)
       store.pause.set(false)
+      store.menuLight.set(false)
+      store.menuSocials.set(true)
     }
   }
 

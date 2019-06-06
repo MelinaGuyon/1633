@@ -141,7 +141,6 @@ export default class Preloader extends DomComponent {
   }
 
   animeLoader (progress) {
-    // TODO : change with animejs
     this.inrtia.percent.to(progress)
   }
 

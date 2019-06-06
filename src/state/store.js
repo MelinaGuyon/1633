@@ -25,6 +25,7 @@ export default createStore({
   mouse: [0, 0],
   pixelRatio: ratio,
   sceneScale: 1,
+  frameDuration: 70, // default animation's frame duration
 
   // ---- history ----
   currentHistory: 0,
@@ -65,15 +66,13 @@ export default createStore({
   chronologieCurrent: {},
   chronologieTimelineVisible: false,
 
-  frameDuration: 70, // default animation's frame duration
-
   // ---- Debug utilities: 0 means false, 1 means true ----
   debug: isDev ? 0 : 0,
   mute: isDev ? 0 : 0,
   useGui: isDev ? 1 : 0, // use datGui
   displayStats: isDev ? 1 : 0, // use stats (fps, drawcalls, ...)
   skipCarousel: isDev ? 0 : 0,
-  skipLoading: isDev ? 0 : 0,
+  skipLoading: isDev ? 1 : 0,
   skipTuto: isDev ? 1 : 1,
 
   // ---- game ----
@@ -81,6 +80,8 @@ export default createStore({
   started: false, // Is app started
   pause: false, // Is the current game paused
   musicPlayed: false,
+  menuLight: false,
+  menuSocials: true,
 
   // ---- assets to preload ----
   atlases: {

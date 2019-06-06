@@ -1,6 +1,20 @@
 .menu
   width: 100%
 
+  &.light
+    .menu__top-right button
+      color: $light-black
+
+    .menu__left-center button
+      color: $light-black
+      border: 1px solid rgba(0, 0, 0, 0.5)
+
+    .nav-sound__btn div
+      background: $light-black
+
+    .nav-playpause__btn div
+      background: $light-black
+
   &__top-right
     position absolute
     right: 50px
@@ -10,6 +24,7 @@
     button
       padding: 10px 10px
       margin-right: 30px
+      transition: color 0.6s $quad-ease-out;
 
       &:last-child
         margin: -10px
@@ -24,14 +39,16 @@
     button
       border: 1px solid rgba(255, 255, 255, 0.3)
       border-radius: 100%
-      height: 40px
-      width: 40px
+      height: 34px
+      width: 34px
+      font-size: 10px;
       background-color transparent
-      color #fff
+      color: $white
       cursor: none
       outline: none
       display block
       margin 14px 0
+      transition: color 0.6s $quad-ease-out, border 0.6s $quad-ease-out;;
 
   &__right-center
     right: 50px
@@ -39,11 +56,17 @@
     transform translateY(-50%)
     position: absolute
     z-index: $indexMenu
+    font-family: RobotoCondensed-Light
+    transition: opacity .3s $quad-ease-out;
+
+    &.hidden
+      opacity 0
+      pointer-events: none;
 
     button
       border: 0px
       background-color transparent
-      color #fff
+      color: $white
       outline: none
       display block
       padding: 5px
@@ -52,53 +75,58 @@
 
   .nav
     background-color transparent
-    color: #f7b0a5
+    color: $white
     border 0px
     cursor: none
     font-weight: bold
+    font-family: RobotoCondensed-Light
+    letter-spacing: 2px
+    font-size: 14px
+    text-transform: lowercase
 
     &-playpause
       &__btn
         position: relative;
-        height: 40px;
-        width: 40px;
+        height: 34px;
+        width: 34px;
         display: block!important;
 
         div
-          top: 20px;
-          left: 20px;
+          top: 17px;
+          left: 19px;
           margin: -1px 0 0 -7px;
-          width: 13px;
+          width: 10px;
           height: 1px;
           position: absolute;
           background: #fff;
           display: block;
           transition: all 0.5s;
+          transition: background 0.6s $quad-ease-out;
 
         .l1
           -webkit-transform: translate(-0px,-3px) rotate(30deg);
           transform: translate(-0px,-3px) rotate(30deg);
 
         .l2
-          -webkit-transform: translate(-5px,0px) rotate(90deg);
-          transform: translate(-5px,0px) rotate(90deg);
+          -webkit-transform: translate(-4px,0px) rotate(90deg);
+          transform: translate(-4px,0px) rotate(90deg);
 
         .l3
-          -webkit-transform: translate(-0px,3px) rotate(-30deg);
-          transform: translate(-0px,3px) rotate(-30deg);
+          -webkit-transform: translate(-0px,2px) rotate(-30deg);
+          transform: translate(-0px,2px) rotate(-30deg);
 
         &.pause
           .l1
-            -webkit-transform: translate(3px,0px) rotate(90deg);
-            transform: translate(3px,0px) rotate(90deg);
+            -webkit-transform: translate(2px,0px) rotate(90deg);
+            transform: translate(2px,0px) rotate(90deg);
 
           .l2
-            -webkit-transform: translate(-3px,0px) rotate(90deg);
-            transform: translate(-3px,0px) rotate(90deg);
+            -webkit-transform: translate(-4px,0px) rotate(90deg);
+            transform: translate(-4px,0px) rotate(90deg);
 
           .l3
-            -webkit-transform: translate(-3px,0px) rotate(90deg);
-            transform: translate(-3px,0px) rotate(90deg);
+            -webkit-transform: translate(-4px,0px) rotate(90deg);
+            transform: translate(-4px,0px) rotate(90deg);
 
     &-sound
       &__btn
@@ -109,23 +137,24 @@
           height: 2px
           width: 1px
           display inline-block
-          margin-right 2px
-          background-color #fff
+          margin 1px
+          background-color: $white
           transition: 1s ease
+          transition: background 0.6s $quad-ease-out;
 
-        .l1, .l3
+        .l1, .l4
           animation-duration: 1s;
           animation-name: sound;
           animation-iteration-count: infinite;
           animation-direction: alternate;
 
-        .l2, .l5
+        .l2
           animation-duration: .6s;
           animation-name: sound;
           animation-iteration-count: infinite;
           animation-direction: alternate;
 
-        .l4, .l6
+        .l3, .l5
           animation-duration: 2s;
           animation-name: sound;
           animation-iteration-count: infinite;
