@@ -107,17 +107,17 @@ class ButtonGoPrev extends DomComponent {
     )
   }
 
-	componentDidMount () {
-		this.bind()
-	}
+  componentDidMount () {
+    this.bind()
+  }
 
-	bind () {
-		this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
-	}
+  bind () {
+    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+  }
 
-	onClick (e) {
-		this.props.goPrev()
-	}
+  onClick (e) {
+    this.props.goPrev()
+  }
 }
 
 export default class Carrousel extends DomComponent {

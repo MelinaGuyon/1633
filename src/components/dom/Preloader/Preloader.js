@@ -29,7 +29,7 @@ export default class Preloader extends DomComponent {
     const loc = store.loc.get()
     return (
       <section class='prld fxd' ref={addRef(this, 'prld')}>
-        <div class='fakeBg' ref={addRef(this, 'bg')}></div>
+        <div class='fakeBg' ref={addRef(this, 'bg')} />
         <Glass ref={addRef(this, 'glass')} />
         <div class='title-container-l1'>
           <div class='title-container-l2' ref={addRef(this, 'title')}>

@@ -215,7 +215,7 @@ export default class Chronologie extends DomComponent {
         current = index
       }
     })
-    store.chronologieCurrent.set({ index: current, el: this.factsOrdered[current], dist: distCurrent })
+    store.chronologieCurrent.set({ index: current, el: this.factsOrdered[current], date: this.factsOrdered[current].date })
   }
 
   updateTimelineVisibility (bool) {

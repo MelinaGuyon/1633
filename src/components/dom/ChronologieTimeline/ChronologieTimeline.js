@@ -16,11 +16,14 @@ class Stick extends DomComponent {
 
 export default class ChronologieTimeline extends DomComponent {
   template ({ base }) {
-    this.stickNumber = 65
-    this.currentStick = 33
-    this.refCurrentStick = 33
-    this.plageAround = 18
+    this.startDate = 1200
+    this.endDate = 2020
+    this.yearsPlage = 20
+
+    this.stickNumber = (this.endDate - this.startDate) / this.yearsPlage
+    this.currentStick = 0
     this.currentIndex = 0
+
     this.sticks = Array(this.stickNumber)
 
     const sticks = []
@@ -34,9 +37,7 @@ export default class ChronologieTimeline extends DomComponent {
     return (
       <div class='chrono-timeline' ref={addRef(this, 'chronoTimeline')}>
         <div class='container'>
-          <div class='span-container'>
-            <span ref={addRef(this, 'span')}>1253</span>
-          </div>
+          <span ref={addRef(this, 'span')}>1253</span>
           <div class='stick-global-container'>
             {sticks}
           </div>
@@ -61,13 +62,33 @@ export default class ChronologieTimeline extends DomComponent {
   }
 
   updateCurrent (infos) {
-    let halfHeight = store.size.get().h / 2
-    let ratio = infos.dist / halfHeight
-    let stick = this.refCurrentStick + Math.round(ratio * this.plageAround)
-    let opacity = 1 - Math.abs(ratio)
 
-    this.currentStick = stick
-    this.updateStick(infos.el.date, opacity)
+    // if (this.currentIndex !== infos.index) {
+    //   console.log(infos)
+    // }
+
+    // console.log(infos.date)
+    let dateCompteur = this.startDate
+    let date
+    let index
+    for (let i = 0; i < this.stickNumber; i++) {
+      dateCompteur = this.startDate + this.yearsPlage * i
+      if (infos.date > dateCompteur) {
+        date = dateCompteur
+        index = i
+      }
+    }
+
+    console.log(date, index)
+    this.currentStick = index
+
+    // let halfHeight = store.size.get().h / 2
+    // let ratio = infos.dist / halfHeight
+    // let stick = this.refCurrentStick + Math.round(ratio * this.plageAround)
+    // let opacity = 1 - Math.abs(ratio)
+
+    // this.currentStick = stick
+    this.updateStick(date)
   }
 
   updateStick (text, opacity) {
@@ -75,15 +96,15 @@ export default class ChronologieTimeline extends DomComponent {
       el.stick.style.transform = 'scaleX(0.22)'
     })
 
-    this.sticks[this.currentStick - 2].stick.style.transform = 'scaleX(0.5)'
-    this.sticks[this.currentStick - 1].stick.style.transform = 'scaleX(0.7)'
+    if (this.sticks[this.currentStick - 2]) this.sticks[this.currentStick - 2].stick.style.transform = 'scaleX(0.5)'
+    if (this.sticks[this.currentStick - 1]) this.sticks[this.currentStick - 1].stick.style.transform = 'scaleX(0.7)'
 
     this.sticks[this.currentStick].stick.style.transform = 'scaleX(1)'
-    this.span.style.transform = `translateY(calc(-220% + ${this.sticks[this.currentStick].base.offsetTop - this.chronoTimeline.offsetTop / 2}px))`
+    this.span.style.transform = `translateY(calc(-51% + ${this.sticks[this.currentStick].base.offsetTop}px))`
     this.span.innerText = text
-    this.span.style.opacity = opacity
+    // this.span.style.opacity = opacity
 
-    this.sticks[this.currentStick + 1].stick.style.transform = 'scaleX(0.7)'
-    this.sticks[this.currentStick + 2].stick.style.transform = 'scaleX(0.5)'
+    if (this.sticks[this.currentStick + 1]) this.sticks[this.currentStick + 1].stick.style.transform = 'scaleX(0.7)'
+    if (this.sticks[this.currentStick + 2]) this.sticks[this.currentStick + 2].stick.style.transform = 'scaleX(0.5)'
   }
 }
