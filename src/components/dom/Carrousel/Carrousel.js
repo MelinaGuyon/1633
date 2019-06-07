@@ -20,13 +20,15 @@ class Form extends DomComponent {
         <div class='carrousel__form'>
           <Story id={0} type={props.type} />
           <div className='carrousel__textScrolling'>
-            <Text type={props.type} />
-            <Text type={props.type} />
+	          <Button type={props.type} active={'active'} />
+            <Button type={props.type} active={'hide'} />
+	          <Button type={props.type} active={'hide'} />
           </div>
         </div>
         <div className='carrousel__textScrolling'>
-          <Button type={props.type} id={0} />
-          <Button type={props.type} id={0} />
+          <Button type={props.type} id={0} active={'active'} />
+          <Button type={props.type} id={0} active={'hide'} />
+          <Button type={props.type} id={0} active={'hide'} />
         </div>
       </div>
     )
@@ -56,18 +58,20 @@ class Form extends DomComponent {
 
 class Button extends DomComponent {
   template (props) {
-    const loc = store.loc.get()
+	  let className = 'carrousel__choice ' + props.active
+	  const loc = store.loc.get()
     return (
-      <div class='carrousel__choice ' data-text={loc['carrousel.' + props.type]}><span>{loc['carrousel.' + props.type]}<strong /></span></div>
+      <div class={className} data-text={loc['carrousel.' + props.type]}><span>{loc['carrousel.' + props.type]}</span></div>
     )
   }
 }
 
 class Text extends DomComponent {
   template (props) {
+	  let className = 'carrousel__form__content ' + props.active
     const loc = store.loc.get()
     return (
-      <div class='carrousel__choice ' data-text={loc['carrousel.' + props.type]}><span>{loc['carrousel.' + props.type]}<strong /></span></div>
+      <div class={className} data-text={loc['carrousel.' + props.type]}><span>{loc['carrousel.' + props.type]}</span></div>
     )
   }
 }
