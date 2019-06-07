@@ -175,11 +175,11 @@ export default class Chronologie extends DomComponent {
 
   onFactUnlocked (id) {
     this.facts[store.currentHistory.get()][id].base.classList.remove('locked')
-
-    document.querySelector('.message').className = 'message active'
-    setTimeout(() => {
-      document.querySelector('.message').className = 'message'
-    }, 1000)
+    // ancien message
+    // document.querySelector('.message').className = 'message active'
+    // setTimeout(() => {
+    //   document.querySelector('.message').className = 'message'
+    // }, 1000)
   }
 
   onChronologieClick (chronologieStatus, top) {
