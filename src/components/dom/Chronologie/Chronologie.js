@@ -26,11 +26,7 @@ class PreviousButton extends DomComponent {
   onClick (e) {
     let previousFactId = Number(e.target.getAttribute('data-id')) - 1
     if (previousFactId >= 0) {
-      document.querySelector('#chronologie').classList.add('smooth')
-      document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + previousFactId + '').offsetTop)
-      this.props.goToDateOnTimeline(this.props.factDate)
-
-      // document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + previousFactId + '').offsetTop)
+      this.props.goToDateOnChronoButton(this.props.factDate, previousFactId)
     }
   }
 }
@@ -55,9 +51,7 @@ class NextButton extends DomComponent {
     let factsArray = this.props.factsArray
     console.log(this.props.factDate)
     if (nextFactId < factsArray.length) {
-      document.querySelector('#chronologie').classList.add('smooth')
-      document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + nextFactId + '').offsetTop)
-      this.props.goToDateOnTimeline(this.props.factDate)
+      this.props.goToDateOnChronoButton(this.props.factDate, nextFactId)
     }
   }
 }
@@ -71,12 +65,12 @@ class Fact extends DomComponent {
         <div class='content-container'>
           <img class='character' ref={addRef(this, 'character')} src={props.content.img} />
           <div class='content' ref={addRef(this, 'content')} >
-            <PreviousButton id={props.id} factDate={props.content.date} goToDateOnTimeline={props.goToDateOnTimeline} />
+            <PreviousButton id={props.id} factDate={props.content.date} goToDateOnChronoButton={props.goToDateOnChronoButton} />
             <p class='date'>{props.content.date}</p>
             <p class='title'>{props.content.title}</p>
             <p class='name'>{props.content.historyName}</p>
             <p class='text'>{props.content.text}</p>
-            <NextButton id={props.id} factsArray={props.factsArray} factDate={props.content.date} goToDateOnTimeline={props.goToDateOnTimeline} />
+            <NextButton id={props.id} factsArray={props.factsArray} factDate={props.content.date} goToDateOnChronoButton={props.goToDateOnChronoButton} />
           </div>
         </div>
 
@@ -146,7 +140,7 @@ export default class Chronologie extends DomComponent {
     }
 
     for (let i = 0; i < this.chronologieNumber; i++) {
-      facts.push(<Fact ref={refFacts(i)} id={i} content={this.chronologieDatas[i]} factsArray={this.factsOrdered} goToDateOnTimeline={this.goToDateOnTimeline.bind(this)} />)
+      facts.push(<Fact ref={refFacts(i)} id={i} content={this.chronologieDatas[i]} factsArray={this.factsOrdered} goToDateOnChronoButton={this.goToDateOnChronoButton.bind(this)} />)
     }
 
     return (
@@ -270,7 +264,7 @@ export default class Chronologie extends DomComponent {
     this.chronologie.scrollTop = top
   }
 
-  goToDateOnTimeline (date) {
+  goToDateOnChronoButton (date, factId) {
     let index
     let newDate = null
     this.factsOrdered.forEach((fact, i) => {
@@ -285,6 +279,9 @@ export default class Chronologie extends DomComponent {
 
     let top = this.factsOrdered[index].base.offsetTop
     this.unbindedCheckCurrent(top)
+
+    this.chronologie.classList.add('smooth')
+    this.chronologie.scrollTo(0, document.querySelector('#fact' + factId + '').offsetTop)
   }
 
   updateTimelineVisibility (bool) {
