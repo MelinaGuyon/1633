@@ -7,6 +7,7 @@ import subtitlesFr from './subtitlesFr'
 import subtitlesEn from './subtitlesEn'
 import chronologieFr from './chronologieFr'
 import chronologieEn from './chronologieEn'
+import levels from './levels'
 
 const isDev = IS_DEV
 const ratio = window.devicePixelRatio <= 2 ? 1 : 1.5
@@ -40,19 +41,7 @@ export default createStore({
   // ---- scene ----
   sceneLayers,
   subtitles: window.__conf.lang === 'fr' ? subtitlesFr : subtitlesEn,
-  levelDict: {
-    0: 'university',
-    1: 'church',
-    2: 'profanation',
-    3: 'ceremony',
-    4: 'pharmacist',
-    5: 'napoleon',
-    6: 'recovery',
-    7: 'ceremonie',
-    8: 'sorbonne',
-    9: 'tombeau',
-    10: 'photo'
-  },
+  levelDict: levels[0],
   levelId: null,
   levelInstance: null,
   levelSecurity: 2,

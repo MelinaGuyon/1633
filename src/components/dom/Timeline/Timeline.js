@@ -11,11 +11,48 @@ class SceneTitle extends DomComponent {
   template (props) {
     return (
       <div class='scene-title'>
-        <p class='number'>Scène <span>04</span></p>
-        <p class='title'>Oeuvre mortuaire</p>
-        <p class='date'>1866</p>
+        <p class='number'><span class='span1' ref={addRef(this, 'scene')} /><span class='span2' ref={addRef(this, 'number')} /></p>
+        <p class='title' ref={addRef(this, 'title')} />
+        <p class='date' ref={addRef(this, 'date')} />
       </div>
     )
+  }
+
+  update (id) {
+    if (!id) id = 0
+    let infos = store.levelDict.get()[id]
+    if (!infos || this.id === id) return
+    this.id = id
+    this.sceneText = 'Scène'
+    this.numberText = (id + 1) + ''
+    if (this.numberText.length === 1) this.numberText = '0' + this.numberText
+    this.titleText = infos.title
+    this.dateText = infos.date
+
+    this.animate()
+  }
+
+  animate () {
+    anime({
+      targets: this.base,
+      opacity: 0,
+      duration: 600,
+      easing: 'easeOutCubic',
+      complete: () => {
+        this.scene.innerText = this.sceneText
+        this.number.innerText = this.numberText
+        this.title.innerText = this.titleText
+        this.date.innerText = this.dateText
+
+        anime({
+          targets: this.base,
+          opacity: 1,
+          duration: 600,
+          easing: 'easeOutCubic',
+          delay: 300
+        })
+      }
+    })
   }
 }
 
@@ -76,7 +113,7 @@ export default class Timeline extends DomComponent {
 
     return (
       <section class='timeline' ref={addRef(this, 'timeline')}>
-        <SceneTitle />
+        <SceneTitle ref={addRef(this, 'sceneTitle')} />
         <div class='whiteCircle' ref={addRef(this, 'whiteCircle')}>
           <div class='halo' ref={addRef(this, 'halo')}/>
         </div>
@@ -121,6 +158,7 @@ export default class Timeline extends DomComponent {
   }
 
   onLvlChange (id) {
+    this.sceneTitle.update(id)
     this.currenPointId = id + 1
     this.currentPoint = this.points[id]
     this.pointDist = this.size / 2

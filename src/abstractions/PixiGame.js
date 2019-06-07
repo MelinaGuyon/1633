@@ -69,14 +69,14 @@ export default class Pixigame extends PixiComponent {
   addLevelsAround (id) {
     // Previous level
     for (let i = 1; i <= store.levelSecurity.get(); i++) {
-      const previousLevel = store.levelDict.get()[id - i]
+      const previousLevel = store.levelDict.get()[id - i] ? store.levelDict.get()[id - i].keyTitle : null
       if (previousLevel && !this.levels[previousLevel]) {
         this.levels[previousLevel] = new levels[previousLevel]({ autosetup: true, name: previousLevel }) // eslint-disable-line
       }
     }
 
     // Current Level
-    const level = store.levelDict.get()[id]
+    const level = store.levelDict.get()[id] ? store.levelDict.get()[id].keyTitle : null
     if (level && !this.levels[level]) {
       this.levels[level] = new levels[level]({ autosetup: true, name: level }) // eslint-disable-line
     }
@@ -85,7 +85,7 @@ export default class Pixigame extends PixiComponent {
 
     // Next level
     for (let i = 1; i <= store.levelSecurity.get(); i++) {
-      const nextLevel = store.levelDict.get()[id + i]
+      const nextLevel = store.levelDict.get()[id + i] ? store.levelDict.get()[id + i].keyTitle : null
       if (nextLevel && !this.levels[nextLevel]) {
         this.levels[nextLevel] = new levels[nextLevel]({ autosetup: true, name: nextLevel }) // eslint-disable-line
       }
