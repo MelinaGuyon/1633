@@ -11,8 +11,11 @@ class Point extends DomComponent {
     this.initialX = 36 * props.initialX
     this.endingX = 36 * props.endingX
 
+    this.id = store.chronologieIdsTable.get()[props.id]
+    this.inCircle = false
+
     return (
-      <div class='point magnet' data-id={(store.chronologieIdsTable.get()[props.id])}>
+      <div class='point magnet' data-id={this.id}>
         <div class='point-inner' />
       </div>
     )
@@ -40,13 +43,8 @@ class Point extends DomComponent {
   }
 
   onClick (e) {
-    const id = Number(e.target.getAttribute('data-id'))
-    if (store.chronologieStatus.get() !== 'appearing') {
-      store.chronologieId.set(id)
-      store.chronologieStatus.set('appearing')
-    } else {
-      store.chronologieStatus.set('disappearing')
-    }
+    store.chronologieId.set(this.id)
+    store.chronologieStatus.set('appearing')
   }
 }
 
@@ -65,7 +63,7 @@ export default class Timeline extends DomComponent {
 
     return (
       <section class='timeline' ref={addRef(this, 'timeline')}>
-        <div class='whiteCircle' />
+        <div class='whiteCircle' ref={addRef(this, 'whiteCircle')}/>
         <div class='redCircleWrapper' ref={addRef(this, 'circleWrapper')}>
           <div class='redCircle' />
         </div>
@@ -86,11 +84,13 @@ export default class Timeline extends DomComponent {
   }
 
   bind () {
+    this.whiteCircle.addEventListener('click', this.fastbind('onClick', 1))
     this.listenStore('levelId', this.onLvlChange)
     signals.moving.listen(this.mooving, this)
   }
 
   unbind () {
+    this.whiteCircle.removeEventListener('click', this.onClick)
     this.unlistenStore('levelId', this.onLvlChange)
     signals.moving.unlisten(this.mooving)
   }
@@ -163,9 +163,33 @@ export default class Timeline extends DomComponent {
     if (ratioCircle === 0 || ratioCircle === 1) this.circleWrapper.classList.add('transition')
     else this.circleWrapper.classList.remove('transition')
 
-    if (ratioCircle > 0 && ratioCircle < 1) this.currentPoint.base.classList.add('hidden')
-    else this.currentPoint.base.classList.remove('hidden')
+    if (ratioCircle > 0 && ratioCircle < 1) {
+      if (!this.currentPoint.inCircle) {
+        this.currentPoint.base.classList.add('hidden')
+        this.currentPoint.base.classList.remove('magnet')
+        this.whiteCircle.classList.add('magnet')
+        this.currentPoint.inCircle = true
+        this.circleClickable = true
+        signals.newDom.dispatch()
+      }
+    } else {
+      if (this.currentPoint.inCircle) {
+        this.currentPoint.base.classList.remove('hidden')
+        this.currentPoint.base.classList.add('magnet')
+        this.whiteCircle.classList.remove('magnet')
+        this.currentPoint.inCircle = false
+        this.circleClickable = false
+        signals.newDom.dispatch()
+      }
+    }
 
     this.circleWrapper.style.width = `${width}px`
+  }
+
+  onClick () {
+    if (this.circleClickable) {
+      store.chronologieId.set(this.currentPoint.id)
+      store.chronologieStatus.set('appearing')
+    }
   }
 }
