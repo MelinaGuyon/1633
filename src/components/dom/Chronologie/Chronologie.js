@@ -55,7 +55,7 @@ class Fact extends DomComponent {
     this.date = props.content.date
 
     return (
-      <div class='fact ' ref={addRef(this, 'fact')}>
+      <div class='fact locked' ref={addRef(this, 'fact')}>
         <div class='content-container'>
           <img class='character' ref={addRef(this, 'character')} src={props.content.img} />
           <div class='content' ref={addRef(this, 'content')} >
