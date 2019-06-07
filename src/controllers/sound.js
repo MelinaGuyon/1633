@@ -25,7 +25,7 @@ function setup () {
     const musicOpts = bank.musics[k]
     samples[k] = new Sample(Object.assign({
       type: 'music',
-      key: k
+      key: k,
     }, musicOpts))
   }
 

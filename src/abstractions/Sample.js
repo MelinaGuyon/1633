@@ -15,7 +15,6 @@ export default class Sample {
     this.loop = !!props.loop // Does the sfx loop - only used for Sfx
     this.sequence = !!props.sequence // Read sfx in order - default is randomized - only used for Sfx
     this.spreadPitch = props.spreadPitch || 0 // Randomize pitch = only used for Sfx
-
     this.volume = props.volume !== undefined ? props.volume : DEFAULT_VOLUME // Base volume of the sound
     if (this.type === 'music') this.sounds = { intro: null, loop: null }
     else if (this.type === 'sfx') this.sounds = []
