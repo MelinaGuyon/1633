@@ -25,7 +25,9 @@ class PreviousButton extends DomComponent {
 
   onClick (e) {
     let previousFactId = Number(e.target.getAttribute('data-id')) - 1
-    if (previousFactId >= 0) document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + previousFactId + '').offsetTop)
+    if (previousFactId >= 0) {
+      this.props.goToDateOnChronoButton(this.props.factDate, previousFactId)
+    }
   }
 }
 
@@ -46,7 +48,10 @@ class NextButton extends DomComponent {
 
   onClick (e) {
     let nextFactId = Number(e.target.getAttribute('data-id')) + 1
-    if (nextFactId < store.factsStatus.get().length) document.querySelector('#chronologie').scrollTo(0, document.querySelector('#fact' + nextFactId + '').offsetTop)
+    let factsArray = this.props.factsArray
+    if (nextFactId < factsArray.length) {
+      this.props.goToDateOnChronoButton(this.props.factDate, nextFactId)
+    }
   }
 }
 
@@ -55,14 +60,16 @@ class Fact extends DomComponent {
     this.date = props.content.date
 
     return (
-      <div class='fact locked' ref={addRef(this, 'fact')}>
+      <div class='fact ' id={'fact' + props.id} ref={addRef(this, 'fact')}>
         <div class='content-container'>
           <img class='character' ref={addRef(this, 'character')} src={props.content.img} />
           <div class='content' ref={addRef(this, 'content')} >
+            <PreviousButton id={props.id} factDate={props.content.date} goToDateOnChronoButton={props.goToDateOnChronoButton} />
             <p class='date'>{props.content.date}</p>
             <p class='title'>{props.content.title}</p>
             <p class='name'>{props.content.historyName}</p>
             <p class='text'>{props.content.text}</p>
+            <NextButton id={props.id} factsArray={props.factsArray} factDate={props.content.date} goToDateOnChronoButton={props.goToDateOnChronoButton} />
           </div>
         </div>
 
@@ -132,7 +139,7 @@ export default class Chronologie extends DomComponent {
     }
 
     for (let i = 0; i < this.chronologieNumber; i++) {
-      facts.push(<Fact ref={refFacts(i)} id={i} content={this.chronologieDatas[i]} />)
+      facts.push(<Fact ref={refFacts(i)} id={i} content={this.chronologieDatas[i]} factsArray={this.factsOrdered} goToDateOnChronoButton={this.goToDateOnChronoButton.bind(this)} />)
     }
 
     return (
@@ -175,6 +182,7 @@ export default class Chronologie extends DomComponent {
 
   onFactUnlocked (id) {
     this.facts[store.currentHistory.get()][id].base.classList.remove('locked')
+
     // ancien message
     // document.querySelector('.message').className = 'message active'
     // setTimeout(() => {
@@ -251,6 +259,13 @@ export default class Chronologie extends DomComponent {
     }
 
     let top = this.factsOrdered[index].base.offsetTop
+    this.unbindedCheckCurrent(top)
+    this.chronologie.classList.add('smooth')
+    this.chronologie.scrollTop = top
+  }
+
+  goToDateOnChronoButton (date, factId) {
+    let top = this.factsOrdered[factId].base.offsetTop
     this.unbindedCheckCurrent(top)
     this.chronologie.classList.add('smooth')
     this.chronologie.scrollTop = top
