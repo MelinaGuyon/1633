@@ -3,6 +3,7 @@ import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
 import signals from 'state/signals'
 import scene from 'controllers/scene'
+import anime from 'animejs'
 
 import './Timeline.styl'
 
@@ -63,7 +64,9 @@ export default class Timeline extends DomComponent {
 
     return (
       <section class='timeline' ref={addRef(this, 'timeline')}>
-        <div class='whiteCircle' ref={addRef(this, 'whiteCircle')}/>
+        <div class='whiteCircle' ref={addRef(this, 'whiteCircle')}>
+          <div class='halo' ref={addRef(this, 'halo')}/>
+        </div>
         <div class='redCircleWrapper' ref={addRef(this, 'circleWrapper')}>
           <div class='redCircle' />
         </div>
@@ -84,12 +87,14 @@ export default class Timeline extends DomComponent {
   }
 
   bind () {
+    signals.factUnlock.listen(this.fastbind('onFactUnlocked', 1))
     this.whiteCircle.addEventListener('click', this.fastbind('onClick', 1))
     this.listenStore('levelId', this.onLvlChange)
     signals.moving.listen(this.mooving, this)
   }
 
   unbind () {
+    signals.factUnlock.unlisten(this.onFactUnlocked)
     this.whiteCircle.removeEventListener('click', this.onClick)
     this.unlistenStore('levelId', this.onLvlChange)
     signals.moving.unlisten(this.mooving)
@@ -179,6 +184,7 @@ export default class Timeline extends DomComponent {
         this.whiteCircle.classList.remove('magnet')
         this.currentPoint.inCircle = false
         this.circleClickable = false
+        this.resetHalo()
         signals.newDom.dispatch()
       }
     }
@@ -191,5 +197,59 @@ export default class Timeline extends DomComponent {
       store.chronologieId.set(this.currentPoint.id)
       store.chronologieStatus.set('appearing')
     }
+  }
+
+  onFactUnlocked () {
+    const tl = anime.timeline({
+      easing: 'easeOutQuad',
+      duration: 600
+    })
+
+    tl
+      .add({
+        targets: this.halo,
+        opacity: 1,
+        width: ['110%', '125%'],
+        height: ['110%', '125%'],
+        duration: 300
+      })
+      .add({
+        targets: this.halo,
+        opacity: 0,
+        width: '155%',
+        height: '155%'
+      })
+      .add({
+        targets: this.halo,
+        opacity: 1,
+        width: ['110%', '125%'],
+        height: ['110%', '125%'],
+        duration: 300
+      })
+      .add({
+        targets: this.halo,
+        opacity: 0,
+        width: '155%',
+        height: '155%'
+      })
+      .add({
+        targets: this.halo,
+        opacity: 1,
+        width: ['110%', '125%'],
+        height: ['110%', '125%'],
+        duration: 300,
+        complete: () => {
+          if (!this.currentPoint.inCircle) this.resetHalo()
+        }
+      })
+  }
+
+  resetHalo () {
+    anime({
+      targets: this.halo,
+      opacity: 0,
+      duration: 600,
+      easing: 'easeOutQuad'
+    })
   }
 }
