@@ -7,6 +7,18 @@ import anime from 'animejs'
 
 import './Timeline.styl'
 
+class SceneTitle extends DomComponent {
+  template (props) {
+    return (
+      <div class='scene-title'>
+        <p class='number'>Scène <span>04</span></p>
+        <p class='title'>Oeuvre mortuaire</p>
+        <p class='date'>1866</p>
+      </div>
+    )
+  }
+}
+
 class Point extends DomComponent {
   template (props) {
     this.initialX = 36 * props.initialX
@@ -64,6 +76,7 @@ export default class Timeline extends DomComponent {
 
     return (
       <section class='timeline' ref={addRef(this, 'timeline')}>
+        <SceneTitle />
         <div class='whiteCircle' ref={addRef(this, 'whiteCircle')}>
           <div class='halo' ref={addRef(this, 'halo')}/>
         </div>

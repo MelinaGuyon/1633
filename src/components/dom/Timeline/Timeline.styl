@@ -3,8 +3,7 @@
   height 2px
   position: absolute
   z-index: $indexTimeline
-  bottom: 10%
-  line-height: 50px
+  bottom: 90px
   left: 50%
   transform: translateX(-50%)
 
@@ -148,3 +147,38 @@
 
       &.hidden
         width: 0
+
+  .scene-title
+    position absolute
+    color: $white
+    bottom: calc(100% + 24px)
+
+    .title
+      font-family: RobotoCondensedBold
+      text-transform: uppercase
+      font-size: 24px
+      line-height: 28px
+      max-width 100px
+
+    .date
+      color: $salmon
+      font-size: 14px;
+      margin-top: 6px
+
+    .number
+      -webkit-text-stroke: 1px #ffffff;
+      font-family: EczarBold;
+      opacity: 0.08;
+      color: transparent
+      font-size: 80px
+      position relative
+      top 27px
+
+      span
+        position absolute
+        color: $white
+        -webkit-text-stroke: 0;
+        font-size: 20px
+        right -34px
+        top: 15px
+
