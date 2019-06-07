@@ -89,15 +89,17 @@ export default createStore({
   atlases: {
     sheet: 'assets/pixi/assets-0.json'
   },
-  images: [],
+  images: {
+
+  },
   imagesToPreload: [
-    'assets/img/glass/glass-0',
-    'assets/img/glass/glass-1',
-    'assets/img/glass/glass-2',
-    'assets/img/glass/glass-3',
-    'assets/img/glass/glass-4',
-    'assets/img/glass/glass-5',
-    'assets/img/glass/glass-6'
+    'assets/img/glass/glass-0.png',
+    'assets/img/glass/glass-1.png',
+    'assets/img/glass/glass-2.png',
+    'assets/img/glass/glass-3.png',
+    'assets/img/glass/glass-4.png',
+    'assets/img/glass/glass-5.png',
+    'assets/img/glass/glass-6.png'
   ],
 
   // ---- stored animations ----
