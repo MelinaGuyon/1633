@@ -6,6 +6,7 @@ import { DomComponent } from 'abstractions/DomComponent'
 import pixi from 'controllers/pixi'
 import store from '../../../state/store'
 import cookie from '../../../controllers/cookie'
+import sound from "../../../controllers/sound";
 
 class Button extends DomComponent {
   template (props) {
@@ -68,14 +69,40 @@ class ButtonResetCookie extends DomComponent {
   }
 }
 
+class BtnChangeSound extends DomComponent {
+  template (props) {
+    return (
+      <button id={props.id}>{props.text}</button>
+    )
+  }
+
+  componentDidMount () {
+    this.bind()
+  }
+
+  bind () {
+    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+  }
+
+  onClick (e) {
+	  sound.stop('1_music_studio')
+	  sound.stop('2_music_studio')
+	  sound.stop('3_music_studio')
+	  sound.stop('4_music_studio')
+	  console.log(e.target.id)
+	  sound.play(e.target.id + '_music_studio')
+  }
+}
+
 export default class Debug extends DomComponent {
   template ({ base }) {
     return (
       <section class='debug'>
         <div class='button'>
-          <Button id={'keyboard'} />
-          <Button id={'space'} />
-          <ButtonResetCookie id={'tuto'} />
+          <BtnChangeSound id={'1'} text='son1' />
+          <BtnChangeSound id={'2'} text='son2' />
+          <BtnChangeSound id={'3'} text='son3' />
+          <BtnChangeSound id={'4'} text='son4' />
         </div>
       </section>
     )
