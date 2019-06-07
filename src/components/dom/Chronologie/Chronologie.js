@@ -58,9 +58,10 @@ class NextButton extends DomComponent {
 class Fact extends DomComponent {
   template (props) {
     this.date = props.content.date
+    this.locked = true
 
     return (
-      <div class='fact ' id={'fact' + props.id} ref={addRef(this, 'fact')}>
+      <div class='fact locked' id={'fact' + props.id} ref={addRef(this, 'fact')}>
         <div class='content-container'>
           <img class='character' ref={addRef(this, 'character')} src={props.content.img} />
           <div class='content' ref={addRef(this, 'content')} >
@@ -164,7 +165,7 @@ export default class Chronologie extends DomComponent {
     window.addEventListener('mousewheel', this.fastbind('checkCurrent', 1))
     this.facts.forEach((tab) => {
       tab.forEach((el) => {
-        el.glass.bind()
+        if (el.locked) el.glass.bind()
       })
     })
   }
@@ -175,13 +176,14 @@ export default class Chronologie extends DomComponent {
     window.removeEventListener('mousewheel', this.checkCurrent)
     this.facts.forEach((tab) => {
       tab.forEach((el) => {
-        el.glass.unbind()
+        if (el.locked) el.glass.unbind()
       })
     })
   }
 
   onFactUnlocked (id) {
     this.facts[store.currentHistory.get()][id].base.classList.remove('locked')
+    this.facts[store.currentHistory.get()][id].locked = false
 
     // ancien message
     // document.querySelector('.message').className = 'message active'
@@ -216,6 +218,11 @@ export default class Chronologie extends DomComponent {
   getChronologieOffset () {
     // TODO :: to get on resize too
     store.chronologieOffset.set({ x: this.chronologie.offsetWidth, y: this.chronologie.scrollTop })
+  }
+
+  unbindedGetChronologieOffset (top) {
+    // TODO :: to get on resize too
+    store.chronologieOffset.set({ x: this.chronologie.offsetWidth, y: top })
   }
 
   checkCurrent () {
@@ -259,6 +266,7 @@ export default class Chronologie extends DomComponent {
     }
 
     let top = this.factsOrdered[index].base.offsetTop
+    this.unbindedGetChronologieOffset(top)
     this.unbindedCheckCurrent(top)
     this.chronologie.classList.add('smooth')
     this.chronologie.scrollTop = top
@@ -266,6 +274,7 @@ export default class Chronologie extends DomComponent {
 
   goToDateOnChronoButton (date, factId) {
     let top = this.factsOrdered[factId].base.offsetTop
+    this.unbindedGetChronologieOffset(top)
     this.unbindedCheckCurrent(top)
     this.chronologie.classList.add('smooth')
     this.chronologie.scrollTop = top
