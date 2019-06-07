@@ -23,6 +23,7 @@ export default class Intro extends DomComponent {
   }
 
   componentDidMount () {
+    if (store.skipCarousel.get()) return
     logger('Intro did mount', '#47b342').log()
     this.bind()
     delay(this.fastbind('launchIntro', 1), 1000)

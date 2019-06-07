@@ -3,6 +3,7 @@
 import PixiComponent from 'abstractions/PixiComponent'
 import sound from 'controllers/sound'
 import signals from 'state/signals'
+import delay from 'lodash/delay'
 
 export default class SoundChecksAbs extends PixiComponent {
   setup () {
@@ -17,8 +18,10 @@ export default class SoundChecksAbs extends PixiComponent {
         // if we want to launch a different sound OR the actual sound is finished
         if (soundPlay.sound !== path || !soundPlay.playing) {
           sound.stop(soundPlay.sound) // stop previous sound
-          sound.play(path)
-          signals.writeSubtitles.dispatch(soundId)
+          delay(() => {
+            sound.play(path)
+            signals.writeSubtitles.dispatch(soundId)
+          }, 400)
         }
       } else {
         // nothing was playing, so play

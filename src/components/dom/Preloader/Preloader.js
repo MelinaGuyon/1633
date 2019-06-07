@@ -1,3 +1,5 @@
+/* global Image */
+
 import './Preloader.styl'
 
 import { h, addRef } from '@internet/dom'
@@ -68,7 +70,7 @@ export default class Preloader extends DomComponent {
   initInertia () {
     const inrtiaOptions = {
       value: 0,
-      friction: 40,
+      friction: 20,
       precision: 5,
       perfectStop: true,
       interpolation: 'linear'
@@ -105,7 +107,7 @@ export default class Preloader extends DomComponent {
       const atlasesKeys = Object.keys(atlases)
       for (let k in atlases) loader.add(k, cachebust(atlases[k])) // add version to cachebust
 
-      loader.onProgress.add(() => { this.animeLoader(loader.progress) })
+      loader.onProgress.add(() => { this.updateCompteur() })
       loader.load((loader, resources) => {
         for (let k in resources) {
           if (~atlasesKeys.indexOf(k)) this.createTexFromAtlas(resources[k], k)
@@ -115,40 +117,53 @@ export default class Preloader extends DomComponent {
     })
   }
 
-  loadImage (k) {
+  updateCompteur (tets) {
+    this.loadCompteur++
+    this.animeLoader()
+  }
+
+  loadImage (k, i) {
     return new Promise(resolve => {
-      const el = document.createElement('img')
+      const el = new Image()
       el.onload = () => {
+        this.updateCompteur(true)
         el.onload = undefined
         store.images.get()[k] = el
         resolve()
       }
-      el.src = cachebust(store.images.get()[k])
+      el.src = k
     })
   }
 
   imagesLoad () {
     const imagesToPreload = store.imagesToPreload.get()
     const images = store.images.get()
+    // TODO:: see if we can see why 2 and not 1
+    // To change quand il y aura plusieur atlas/assets pixi
+    this.imagesLength = imagesToPreload.length + 2
+    this.loadCompteur = 0
     const p = []
     for (let i = 0; i < imagesToPreload.length; i++) {
       const k = imagesToPreload[i]
-      if (!images[k]) continue
-      p.push(this.loadImage(k))
+      if (images[k]) return
+      p.push(this.loadImage(k, i))
     }
     store.imagesToPreload.set([])
     return Promise.all(p)
   }
 
-  animeLoader (progress) {
-    this.inrtia.percent.to(progress)
+  animeLoader () {
+    // 80 DUE TO ECZAR
+    let p = (this.loadCompteur / this.imagesLength) * 80
+    this.inrtia.percent.to(p)
   }
 
   updateInertia () {
     if (!this.inrtia.percent.stopped) {
       this.inrtia.percent.update()
       this.wrapper.style.height = `${this.inrtia.percent.value}%`
-      if (this.inrtia.percent.value > 95 && !this.animationCompleted) {
+      // 78 DUE TO ECZAR
+      if (this.inrtia.percent.value > 78 && !this.animationCompleted) {
         this.animationCompleted = true
         store.loaded.set(true)
         if (!store.skipLoading.get()) {
@@ -164,6 +179,7 @@ export default class Preloader extends DomComponent {
 
     Promise.all([this.imagesLoad(), this.pixiLoad()])
       .then(() => {
+        console.log('all resolved')
         if (store.skipLoading.get()) return this.directCompleteLoading()
         this.glass.start()
         this.intervalId = setInterval(() => {
@@ -218,7 +234,7 @@ export default class Preloader extends DomComponent {
         opacity: 1,
         delay: 500,
         complete: () => {
-          delay(() => { this.bg.classList.add('visible')}, 300)
+          delay(() => { this.bg.classList.add('visible') }, 300)
         }
       })
       .add({
@@ -227,7 +243,7 @@ export default class Preloader extends DomComponent {
         delay: 3000 - 500,
         complete: () => {
           this.props.onComplete() // launch game
-          delay(() => { this.prld.classList.add('loaded')}, 600)
+          delay(() => { this.prld.classList.add('loaded') }, 600)
         }
       })
   }

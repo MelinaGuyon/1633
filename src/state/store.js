@@ -72,8 +72,8 @@ export default createStore({
   mute: isDev ? 0 : 0,
   useGui: isDev ? 1 : 0, // use datGui
   displayStats: isDev ? 1 : 0, // use stats (fps, drawcalls, ...)
-  skipCarousel: isDev ? 0 : 0,
-  skipLoading: isDev ? 0 : 0,
+  skipCarousel: isDev ? 1 : 0,
+  skipLoading: isDev ? 1 : 0,
   skipTuto: isDev ? 1 : 1,
 
   // ---- game ----
@@ -89,15 +89,17 @@ export default createStore({
   atlases: {
     sheet: 'assets/pixi/assets-0.json'
   },
-  images: [],
+  images: {
+
+  },
   imagesToPreload: [
-    'assets/img/glass/glass-0',
-    'assets/img/glass/glass-1',
-    'assets/img/glass/glass-2',
-    'assets/img/glass/glass-3',
-    'assets/img/glass/glass-4',
-    'assets/img/glass/glass-5',
-    'assets/img/glass/glass-6'
+    'assets/img/glass/glass-0.png',
+    'assets/img/glass/glass-1.png',
+    'assets/img/glass/glass-2.png',
+    'assets/img/glass/glass-3.png',
+    'assets/img/glass/glass-4.png',
+    'assets/img/glass/glass-5.png',
+    'assets/img/glass/glass-6.png'
   ],
 
   // ---- stored animations ----
