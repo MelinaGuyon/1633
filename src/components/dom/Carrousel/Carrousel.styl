@@ -77,6 +77,11 @@
     position relative
     transition .3s ease
 
+    .carrousel__textScrolling
+      width: 100vw;
+      left: -34vw;
+      position: absolute;
+
     .carrousel__choice
       color #fff
 
@@ -112,6 +117,7 @@
         .carrousel__choice
           -webkit-text-stroke: 1px $salmon;
 
+
   &__textScrolling
     display: block;
     padding: 0;
@@ -124,37 +130,30 @@
     z-index 2
     left: -34vw;
     transition 0s
+    contain: strict;
 
     div
-      //position: absolute;
-      //min-width: 100%;
       display inline-block
       position relative
+      opacity 0
 
-      span, &:last-child:after
+      &.active
+        opacity 1
+
+      span
         position: relative;
         display: inline-block;
         white-space: nowrap;
         top:0;
         -webkit-background-clip: text;
-        //background-image: url(https://dummyimage.com/600x400/ffffff/fff);
-        //background-repeat: no-repeat;
-        //background-position: 141px;
-        //background-size 521px
 
       span
-        animation: defilement 15s infinite linear;
-        margin-right: 10px
+        //animation: defilement 15s infinite linear;
+        //margin-right: 10px
+      margin: 0 10px
 
       strong
-        margin 0 30px
-
-      &:after
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        content:attr(data-text);
-        animation: defilement2 15s infinite linear;
+        //margin 0 30px
 
   &__choice
     padding: 0
@@ -172,9 +171,10 @@
     letter-spacing: 6px;
     color: rgba(255, 255, 255, 0);
     display block
-    animation-duration: 6s;
-    animation-name: textDefilement;
+    animation-duration: 13s;
+    animation-timing-function: linear;
     animation-iteration-count: infinite;
+    animation-name: translationLeft;
 
   &.hidden
     display: none
@@ -182,24 +182,12 @@
   &.opacity
     opacity: 0
 
-@keyframes defilement {
-  0% {
-   transform: translateX(0);
-    // background-position: 141px
-  }
-  100% {
-   transform: translateX(-100%);
-   // background-position: 1700px
-  }
+@keyframes translationLeft {
+  0% { transform: translate(0) }
+  100% { transform: translate(-50%) }
 }
 
-@keyframes defilement2 {
-  0% {
-   transform: translateX(100%);
-    //background-position: -1277px
-  }
-  100% {
-   transform: translateX(0);
-   // background-position: 141px
-  }
+@keyframes translationRight {
+  0% { transform: translate(-50%) }
+  100% { transform: translate(0%) }
 }
