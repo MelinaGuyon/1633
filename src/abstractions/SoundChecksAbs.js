@@ -12,37 +12,38 @@ export default class SoundChecksAbs extends PixiComponent {
 
   cb (path, soundId, state) {
     if (state.collide) {
-      let soundPlay = sound.soundIsPlaying()
-      // if there is sound playing
-      if (soundPlay.sound) {
-        // if we want to launch a different sound OR the actual sound is finished
-        if (soundPlay.sound !== path || !soundPlay.playing) {
-          sound.stop(soundPlay.sound) // stop previous sound
-	        delay(() => {
-            sound.play(path)
-            signals.writeSubtitles.dispatch(soundId)
-          }, 400)
-        }
-      } else {
-        // nothing was playing, so play
-        sound.play(path)
-        signals.writeSubtitles.dispatch(soundId)
-      }
-      sound.setSoundPlay(path)
+	    let indexOfFirst = path.indexOf('effect')
+	    console.log(indexOfFirst, path)
+	    if (indexOfFirst >= 0) {
+		    this.stopAllEffet()
+		    sound.play(path)
+	    } else {
+		    let soundPlay = sound.soundIsPlaying()
+		    // if there is sound playing
+		    if (soundPlay.sound) {
+			    // if we want to launch a different sound OR the actual sound is finished
+			    if (soundPlay.sound !== path || !soundPlay.playing) {
+				    sound.stop(soundPlay.sound) // stop previous sound
+				    delay(() => {
+					    sound.play(path)
+					    signals.writeSubtitles.dispatch(soundId)
+				    }, 400)
+			    }
+		    } else {
+			    // nothing was playing, so play
+			    sound.play(path)
+			    signals.writeSubtitles.dispatch(soundId)
+		    }
+		    sound.setSoundPlay(path)
+	    }
     }
   }
 
-  stopAllSound () {
-	  sound.stop('1_music_studio')
-	  sound.stop('2_music_studio')
-	  sound.stop('3_music_studio')
-	  sound.stop('4_music_studio')
-	  sound.stop('5_music_studio')
-	  sound.stop('6_music_studio')
-	  sound.stop('7_music_studio')
-	  sound.stop('8_music_studio')
-	  sound.stop('9_music_studio')
-	  sound.stop('10_music_studio')
+  stopAllEffet () {
+	  sound.stop('effect/crowd')
+	  sound.stop('effect/kids')
+	  sound.stop('effect/cat')
+	  sound.stop('effect/fire')
   }
 
   componentWillUnmount () {
