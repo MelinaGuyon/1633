@@ -1,8 +1,8 @@
 const musics = {
-  '1_music_studio': { loop: true, fadeOut: 900, volume: 0.2 },
-  '2_music_studio': { loop: true, fadeOut: 900, volume: 0.2 },
-  '3_music_studio': { loop: true, fadeOut: 900, volume: 0.2 },
-  '4_music_studio': { loop: true, fadeOut: 900, volume: 0.2 }
+  '2_music_studio': { loop: true, fadeOut: 900, volume: 0.1 },
+  '3_music_studio': { loop: true, fadeOut: 900, volume: 0.05 },
+  '4_music_studio': { loop: true, fadeOut: 900, volume: 0.05 },
+  '7_music_studio': { loop: true, fadeOut: 900, volume: 0.1 },
 }
 
 const sfxs = {

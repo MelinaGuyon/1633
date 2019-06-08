@@ -12,11 +12,11 @@ export default class LevelUniversity extends Level {
     super.setup()
     this.createLand()
     this.addColliders()
-    sound.play('1_music_studio')
   }
 
   createLand () {
     this.addComponent(Buildings)
+	  sound.play('8_music_studio')
   }
 
   addColliders () {

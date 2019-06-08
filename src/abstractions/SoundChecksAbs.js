@@ -18,7 +18,7 @@ export default class SoundChecksAbs extends PixiComponent {
         // if we want to launch a different sound OR the actual sound is finished
         if (soundPlay.sound !== path || !soundPlay.playing) {
           sound.stop(soundPlay.sound) // stop previous sound
-          delay(() => {
+	        delay(() => {
             sound.play(path)
             signals.writeSubtitles.dispatch(soundId)
           }, 400)
@@ -30,6 +30,19 @@ export default class SoundChecksAbs extends PixiComponent {
       }
       sound.setSoundPlay(path)
     }
+  }
+
+  stopAllSound () {
+	  sound.stop('1_music_studio')
+	  sound.stop('2_music_studio')
+	  sound.stop('3_music_studio')
+	  sound.stop('4_music_studio')
+	  sound.stop('5_music_studio')
+	  sound.stop('6_music_studio')
+	  sound.stop('7_music_studio')
+	  sound.stop('8_music_studio')
+	  sound.stop('9_music_studio')
+	  sound.stop('10_music_studio')
   }
 
   componentWillUnmount () {

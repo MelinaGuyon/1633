@@ -5,6 +5,7 @@ import Interests from './Interests'
 import Buildings from './CityBuildings'
 import SoundCheck from './SoundChecks'
 import LevelLight from './LevelLight'
+import sound from "../../../controllers/sound";
 
 export default class LevelChurch extends Level {
   setup () {
