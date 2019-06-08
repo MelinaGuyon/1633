@@ -10,6 +10,7 @@ export default class SoundChecks extends SoundChecksAbs {
     this.mains = []
     // ic dans cb :
     this.mains.push(this.addComponent(Colliders, { layer: '2bg100', x: -500, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'voixoff/chap_2', 4), name: 'voixoff/chap_2' }))
+    this.mains.push(this.addComponent(Colliders, { layer: '2bg100', x: -400, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'effect/kids', 4), name: 'effect/kids' }))
   }
 
   componentWillUnmount () {
