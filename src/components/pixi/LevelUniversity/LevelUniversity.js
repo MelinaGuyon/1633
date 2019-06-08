@@ -16,7 +16,7 @@ export default class LevelUniversity extends Level {
 
   createLand () {
     this.addComponent(Buildings)
-	  sound.play('8_music_studio')
+	  sound.play('2_music_studio')
   }
 
   addColliders () {
