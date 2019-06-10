@@ -33,6 +33,22 @@ const rotation = [
   0
 ]
 
+const bigGlassPosition = [-160, -222]
+
+class BigGlass extends PixiComponent {
+  setup (props) {
+    this.type = props.type || 'b'
+
+    this.base = new Sprite(store.animations.get()['glass-zz.png'][0])
+    this.base.isHidden = true
+    this.base.x = bigGlassPosition[0]
+    this.base.y = bigGlassPosition[1]
+    this.base.scale.x = props.scale || 1
+    this.base.scale.y = props.scale || 1
+    this.base.alpha = 0
+  }
+}
+
 class SingleGlass extends PixiComponent {
   setup (props) {
     this.type = props.type || 'b'
@@ -50,7 +66,7 @@ class SingleGlass extends PixiComponent {
 
 export default class Glass extends PixiComponent {
   setup (props) {
-    this.sprites = []
+    this.sigleGlasses = []
     this.number = 7
 
     this.base = new Container()
@@ -60,8 +76,10 @@ export default class Glass extends PixiComponent {
     this.height = this.base.height
 
     for (let i = 0; i < this.number; i++) {
-      this.sprites.push(this.addComponent(SingleGlass, { id: i, scale: props.scale }))
+      this.sigleGlasses.push(this.addComponent(SingleGlass, { id: i, scale: props.scale }))
     }
+
+    this.bigGlass = this.addComponent(BigGlass, { scale: 0.56 })
   }
 
   componentDidMount () {
@@ -70,7 +88,7 @@ export default class Glass extends PixiComponent {
   }
 
   show () {
-    this.sprites.forEach((el, i) => {
+    this.sigleGlasses.forEach((el, i) => {
       if (!el.isHidden) return
       el.isHidden = false
       anime({
@@ -83,7 +101,7 @@ export default class Glass extends PixiComponent {
   }
 
   hide () {
-    this.sprites.forEach((el, i) => {
+    this.sigleGlasses.forEach((el, i) => {
       if (el.isHidden || this.constructed) return
       el.isHidden = true
       anime({
@@ -98,14 +116,29 @@ export default class Glass extends PixiComponent {
   construct () {
     if (this.constructed) return
     this.constructed = true
-    this.sprites.forEach((el, i) => {
+    this.sigleGlasses.forEach((el, i) => {
       anime({
         targets: el.base,
         x: positionsBuilded[i][0],
         y: positionsBuilded[i][1],
         rotation: 0,
-        easing: 'easeOutQuad'
+        easing: 'easeOutQuad',
+        duration: 600
       })
+      anime({
+        targets: el.base,
+        alpha: 0,
+        easing: 'easeOutQuad',
+        duration: 600,
+        delay: 900
+      })
+    })
+    anime({
+      targets: this.bigGlass.base,
+      alpha: 1,
+      easing: 'easeOutQuad',
+      duration: 600,
+      delay: 1200
     })
   }
 
@@ -115,6 +148,6 @@ export default class Glass extends PixiComponent {
   }
 
   componentWillUnmount () {
-    this.sprites = undefined
+    this.sigleGlasses = undefined
   }
 }
