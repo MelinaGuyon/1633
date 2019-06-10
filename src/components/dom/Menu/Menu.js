@@ -34,6 +34,28 @@ class ChronologieButton extends DomComponent {
   }
 }
 
+class BackButton extends DomComponent {
+  template (props) {
+    const loc = store.loc.get()
+
+    return (
+      <button class='nav'>Back</button>
+    )
+  }
+
+  componentDidMount () {
+    this.bind()
+  }
+
+  bind () {
+    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+  }
+
+  onClick (e) {
+    store.chronologieStatus.set('disappearing')
+  }
+}
+
 class SoundButton extends DomComponent {
   template (props) {
     return (
@@ -184,6 +206,9 @@ export default class Menu extends DomComponent {
           <SocialButton ref={refSocials(1)} type={'tw'} />
           <SocialButton ref={refSocials(2)} type={'in'} />
         </div>
+        <div class='menu__bottom-left'>
+          <BackButton ref={addRef(this, 'backButton')} type={'back'} />
+        </div>
       </section>
     )
   }
@@ -199,8 +224,13 @@ export default class Menu extends DomComponent {
   }
 
   updateMenu (light) {
-    if (light) this.menu.classList.add('light')
-    else this.menu.classList.remove('light')
+    if (light) {
+      this.menu.classList.add('light')
+      this.backButton.base.classList.add('magnet')
+    } else {
+      this.menu.classList.remove('light')
+      this.backButton.base.classList.remove('magnet')
+    }
   }
 
   updateSocials (socials) {
