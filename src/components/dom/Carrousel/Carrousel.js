@@ -86,46 +86,6 @@ class Story extends DomComponent {
   }
 }
 
-class ButtonGoNext extends DomComponent {
-  template (props) {
-    return (
-      <button>Go suivant</button>
-    )
-  }
-
-  componentDidMount () {
-    this.bind()
-  }
-
-  bind () {
-    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
-  }
-
-  onClick (e) {
-    this.props.goNext()
-  }
-}
-
-class ButtonGoPrev extends DomComponent {
-  template (props) {
-    return (
-      <button>Go avant</button>
-    )
-  }
-
-  componentDidMount () {
-    this.bind()
-  }
-
-  bind () {
-    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
-  }
-
-  onClick (e) {
-    this.props.goPrev()
-  }
-}
-
 export default class Carrousel extends DomComponent {
   template ({ base }) {
     return (
@@ -138,8 +98,6 @@ export default class Carrousel extends DomComponent {
           <Form active={''} type={'jacqueslemercier'} id={3} launchGame={this.launchGame} />
           <Form active={''} type={'napoleonbonaparte'} id={4} launchGame={this.launchGame} />
         </div>
-        <ButtonGoPrev goPrev={this.goPrev} />
-        <ButtonGoNext goNext={this.goNext} />
       </section>
     )
   }
@@ -248,7 +206,7 @@ export default class Carrousel extends DomComponent {
 					  scrollingText[i].classList.remove('hidden')
 				  }
 			  }, 1000)
-		  }, 1000)  
+		  }, 1000)
 	  }
 
 	  function scrolling (posScroll) {
