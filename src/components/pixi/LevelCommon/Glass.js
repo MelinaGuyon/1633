@@ -113,4 +113,8 @@ export default class Glass extends PixiComponent {
     if (collide) this.show()
     else this.hide()
   }
+
+  componentWillUnmount () {
+    this.sprites = undefined
+  }
 }
