@@ -256,6 +256,6 @@ export default class Carrousel extends DomComponent {
     }
     store.currentHistory.set(id)
     store.launched.set(true)
-	  document.removeEventListener('mousewheel')
+	  // document.removeEventListener('mousewheel')
   }
 }

@@ -12,6 +12,7 @@ export default class LevelUniversity extends Level {
   setup () {
     super.setup()
     this.createLand()
+    this.createGlass()
     this.addColliders()
 
     this.launchSounds()
@@ -19,6 +20,9 @@ export default class LevelUniversity extends Level {
 
   createLand () {
     this.addComponent(Buildings)
+  }
+
+  createGlass () {
     this.glass = this.addComponent(Glass, { layer: '1bg200', x: 30, y: -50, scale: 0.55 })
   }
 
