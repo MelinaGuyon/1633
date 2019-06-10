@@ -33,6 +33,21 @@ const rotation = [
   0
 ]
 
+class SingleGlass extends PixiComponent {
+  setup (props) {
+    this.type = props.type || 'b'
+
+    this.base = new Sprite(store.animations.get()['glass-' + names[props.id] + '.png'][0])
+    this.base.isHidden = true
+    this.base.x = positionsUnbuilded[props.id][0]
+    this.base.y = positionsUnbuilded[props.id][1]
+    this.base.scale.x = props.scale || 1
+    this.base.scale.y = props.scale || 1
+    this.base.rotation = rotation[props.id]
+    this.base.alpha = 0
+  }
+}
+
 export default class Glass extends PixiComponent {
   setup (props) {
     this.sprites = []
@@ -45,16 +60,7 @@ export default class Glass extends PixiComponent {
     this.height = this.base.height
 
     for (let i = 0; i < this.number; i++) {
-      let sp = new Sprite(store.animations.get()['glass-' + names[i] + '.png'][0])
-      sp.isHidden = true
-      sp.x = positionsUnbuilded[i][0]
-      sp.y = positionsUnbuilded[i][1]
-      sp.scale.x = props.scale || 1
-      sp.scale.y = props.scale || 1
-      sp.rotation = rotation[i]
-      sp.alpha = 0
-      this.sprites.push(sp)
-      this.base.addChild(sp)
+      this.sprites.push(this.addComponent(SingleGlass, { id: i, scale: props.scale }))
     }
   }
 
@@ -68,7 +74,7 @@ export default class Glass extends PixiComponent {
       if (!el.isHidden) return
       el.isHidden = false
       anime({
-        targets: el,
+        targets: el.base,
         alpha: 1,
         duration: 300,
         easing: 'easeOutQuad'
@@ -81,7 +87,7 @@ export default class Glass extends PixiComponent {
       if (el.isHidden || this.constructed) return
       el.isHidden = true
       anime({
-        targets: el,
+        targets: el.base,
         alpha: 0,
         duration: 300,
         easing: 'easeOutQuad'
@@ -94,7 +100,7 @@ export default class Glass extends PixiComponent {
     this.constructed = true
     this.sprites.forEach((el, i) => {
       anime({
-        targets: el,
+        targets: el.base,
         x: positionsBuilded[i][0],
         y: positionsBuilded[i][1],
         rotation: 0,

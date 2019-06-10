@@ -7,7 +7,7 @@ export default class CityBuilding extends PixiComponent {
   setup (props) {
     this.type = props.type || 'b'
 
-    this.base = new Sprite(store.animations.get()['baschamp-' + this.type + '.png'][0])
+    this.base = new Sprite(store.animations.get()['profanation-' + this.type + '.png'][0])
     if (props.tint) this.base.tint = props.tint
     this.base.x = props.x || 0
     this.base.y = props.y || 0

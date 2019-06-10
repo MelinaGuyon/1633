@@ -35,4 +35,9 @@ export default class LevelUniversity extends Level {
   launchSounds () {
     sound.play('3_music_studio')
   }
+
+  componentWillUnmount () {
+    console.log('unmount level university')
+    console.log(this.glass, this.components, 'herere')
+  }
 }
