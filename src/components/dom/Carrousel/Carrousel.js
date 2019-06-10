@@ -15,24 +15,24 @@ import './Carrousel.styl'
 class Form extends DomComponent {
   template (props) {
     let clasName = 'carrousel__form__content ' + props.active
+	  const loc = store.loc.get()
     return (
       <div class={clasName} launchGame={props.launchGame} type={props.type} data-id={props.id}>
         <div class='carrousel__form'>
-          <Story id={0} type={props.type} />
-          <div className='carrousel__textScrolling'>
-	          <Button type={props.type} active={'active'} />
-            <Button type={props.type} active={'hide'} />
-	          <Button type={props.type} active={'hide'} />
-          </div>
+          <Story id={props.id} type={props.type} />
+          <div className='carrousel__textScrolling' data-text={loc['carrousel.' + props.type]} />
         </div>
-        <div className='carrousel__textScrolling'>
-          <Button type={props.type} id={0} active={'active'} />
-          <Button type={props.type} id={0} active={'hide'} />
-          <Button type={props.type} id={0} active={'hide'} />
-        </div>
+        <div className='carrousel__textScrolling' data-text={loc['carrousel.' + props.type]} />
       </div>
     )
   }
+
+  /**
+    <Button type={props.type} active={'active'} />
+    <Button type={props.type} active={'active'} />
+    <Button type={props.type} id={0} active={'active'} />
+    <Button type={props.type} id={0} active={'active'} />
+ */
 
   componentDidMount () {
     this.bind()
@@ -79,56 +79,17 @@ class Text extends DomComponent {
 class Story extends DomComponent {
   template (props) {
     const loc = store.loc.get()
+    let idIncrement = props.id + 1
     return (
-      <div class='carrousel__story' data-id={props.id}><span>{loc['carrousel.story']} <span class='carrousel__story__number'>{props.id}</span></span></div>
+      <div class='carrousel__story' data-id={props.id}><span>{loc['carrousel.story']} <span class='carrousel__story__number'>{idIncrement}</span></span></div>
     )
-  }
-}
-
-class ButtonGoNext extends DomComponent {
-  template (props) {
-    return (
-      <button>Go suivant</button>
-    )
-  }
-
-  componentDidMount () {
-    this.bind()
-  }
-
-  bind () {
-    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
-  }
-
-  onClick (e) {
-    this.props.goNext()
-  }
-}
-
-class ButtonGoPrev extends DomComponent {
-  template (props) {
-    return (
-      <button>Go avant</button>
-    )
-  }
-
-  componentDidMount () {
-    this.bind()
-  }
-
-  bind () {
-    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
-  }
-
-  onClick (e) {
-    this.props.goPrev()
   }
 }
 
 export default class Carrousel extends DomComponent {
   template ({ base }) {
     return (
-      <section data-type='carrousel' class='carrousel mouse__close'>
+      <section data-type='carrousel' id='carrousel' class='carrousel mouse__close'>
         <Intro onComplete={this.fastbind('activeCarousel')} ref={addRef(this, 'intro')} />
         <div class='carrousel-wrapper' ref={addRef(this, 'carouselWrapper')}>
           <Form active={'active'} type={'richelieu'} id={0} launchGame={this.launchGame} />
@@ -136,8 +97,6 @@ export default class Carrousel extends DomComponent {
           <Form active={''} type={'robertdesorbon'} id={2} launchGame={this.launchGame} />
           <Form active={''} type={'jacqueslemercier'} id={3} launchGame={this.launchGame} />
           <Form active={''} type={'napoleonbonaparte'} id={4} launchGame={this.launchGame} />
-          <ButtonGoPrev goPrev={this.goPrev} />
-          <ButtonGoNext goNext={this.goNext} />
         </div>
       </section>
     )
@@ -164,36 +123,112 @@ export default class Carrousel extends DomComponent {
       complete: () => { this.carouselWrapper.classList.add('visible') }
     })
 
-    // this.scrollListen()
-  }
-
-  goNext () {
-    console.log(' au suivant ')
-  }
-
-  goPrev () {
-	  console.log(' on retourne avant ')
+    this.scrollListen()
   }
 
   scrollListen () {
     let lastPostitionScroll = 0
     let ticking = false
 
-    function scrolling (posScroll) {
-      console.log('scroool')
+	  function goNext () {
+		  console.log(' au suivant ')
+		  let current = document.querySelector('.carrousel__form__content.active')
+		  let all = document.querySelectorAll('.carrousel__form__content')
+		  let currentPos = current.getAttribute('data-id')
+		  let maxPos = all.length
+		  let nextpos
+		  let newCurrent
+		  if (parseInt(currentPos) + 1 > (maxPos - 1)) {
+			  nextpos = 0
+		  } else {
+			  nextpos = parseInt(currentPos) + 1
+		  }
+
+		  let scrollingText = document.querySelectorAll('.carrousel__textScrolling')
+
+		  for (let i = 0; i < scrollingText.length; i++) {
+			  scrollingText[i].classList.add('hidden')
+			  scrollingText[i].classList.remove('opacity')
+		  }
+
+		  for (let i = 0; i < maxPos; i++) {
+			  if (parseInt(all[i].getAttribute('data-id')) === nextpos) {
+				  newCurrent = all[i]
+			  }
+		  }
+
+		  setTimeout(function () {
+			  current.classList.remove('active')
+			  newCurrent.classList.add('active')
+			  setTimeout(function () {
+				  for (let i = 0; i < scrollingText.length; i++) {
+					  scrollingText[i].classList.add('opacity')
+					  scrollingText[i].classList.remove('hidden')
+				  }
+			  }, 1000)
+		  }, 1000)
+	  }
+
+	  function goPrev () {
+		  console.log(' retour avant ')
+		  let current = document.querySelector('.carrousel__form__content.active')
+		  let all = document.querySelectorAll('.carrousel__form__content')
+		  let currentPos = current.getAttribute('data-id')
+		  let maxPos = all.length
+		  let nextpos
+		  let newCurrent
+
+		  let scrollingText = document.querySelectorAll('.carrousel__textScrolling')
+
+		  for (let i = 0; i < scrollingText.length; i++) {
+			  scrollingText[i].classList.add('hidden')
+			  scrollingText[i].classList.remove('opacity')
+		  }
+
+		  if (parseInt(currentPos) - 1 < 0) {
+			  nextpos = (maxPos - 1)
+		  } else {
+			  nextpos = parseInt(currentPos) - 1
+		  }
+
+		  for (let i = 0; i < maxPos; i++) {
+			  if (parseInt(all[i].getAttribute('data-id')) === nextpos) {
+				  newCurrent = all[i]
+			  }
+		  }
+
+		  setTimeout(function () {
+			  current.classList.remove('active')
+			  newCurrent.classList.add('active')
+			  setTimeout(function () {
+				  for (let i = 0; i < scrollingText.length; i++) {
+					  scrollingText[i].classList.add('opacity')
+					  scrollingText[i].classList.remove('hidden')
+				  }
+			  }, 1000)
+		  }, 1000)
+	  }
+
+	  function scrolling (posScroll) {
+      if (posScroll > 0) {
+        console.log('scroool down')
+        goPrev()
+      } else {
+	      goNext()
+        console.log('scroool up')
+      }
     }
 
-    window.addEventListener('scroll', function (e) {
-      lastPostitionScroll = window.scrollY
-      console.log('???')
+	  document.addEventListener('mousewheel', function (e) {
+      lastPostitionScroll = e.deltaY
       if (!ticking) {
-        window.requestAnimationFrame(function () {
-          scrolling(lastPostitionScroll)
-          ticking = false
-        })
+	      scrolling(lastPostitionScroll)
+	      ticking = true
+	      setTimeout(function () {
+		      console.log('ticking')
+		      ticking = false
+	      }, 2000)
       }
-
-      ticking = true
     })
   }
 
@@ -221,5 +256,6 @@ export default class Carrousel extends DomComponent {
     }
     store.currentHistory.set(id)
     store.launched.set(true)
+	  document.removeEventListener('mousewheel')
   }
 }
