@@ -5,7 +5,7 @@
     .menu__top-right button
       color: $light-black
 
-    .menu__bottom-left
+    .menu__bottom-left button.back
       opacity 1
       pointer-events: auto
       transition: opacity 0.3s $quad-ease-out;
@@ -36,15 +36,38 @@
         margin: -10px
 
   &__bottom-left
-    opacity 0
-    pointer-events: none
     position absolute
     z-index: $indexMenu
     left: 50px
     bottom: 30px
-    transition: opacity 0.2s $quad-ease-out;
 
-    button
+    button.back
+      position absolute
+      transition: opacity 0.2s $quad-ease-out;
+
+    button.collect
+      transition: opacity 0.3s $quad-ease-out;
+
+      &:hover
+        &::before
+          transform: translateX(12px) translateY(-45%) rotate(45deg) !important
+
+        &::after
+          transform: translateX(12px) translateY(-45%) rotate(-45deg) !important
+
+      &::before
+        transform: translateX(8px) translateY(-45%) rotate(45deg) !important
+
+      &::after
+        transform: translateX(8px) translateY(-45%) rotate(-45deg) !important
+
+      &.visible
+        opacity 1
+        pointer-events: auto
+
+    button.back, button.collect
+      opacity 0
+      pointer-events: none
       color: $salmon !important
       padding: 10px 10px 10px 30px
 

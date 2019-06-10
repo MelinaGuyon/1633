@@ -39,7 +39,7 @@ class BackButton extends DomComponent {
     const loc = store.loc.get()
 
     return (
-      <button class='nav'>Back</button>
+      <button class='nav back'>{loc['nav.back']}</button>
     )
   }
 
@@ -53,6 +53,30 @@ class BackButton extends DomComponent {
 
   onClick (e) {
     store.chronologieStatus.set('disappearing')
+  }
+}
+
+class CollectButton extends DomComponent {
+  template (props) {
+    this.collectId = 0
+    const loc = store.loc.get()
+
+    return (
+      <button class='nav collect'>{loc['nav.article']}</button>
+    )
+  }
+
+  componentDidMount () {
+    this.bind()
+  }
+
+  bind () {
+    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+  }
+
+  onClick (e) {
+    store.chronologieId.set(this.collectId)
+    store.chronologieStatus.set('appearing')
   }
 }
 
@@ -208,6 +232,7 @@ export default class Menu extends DomComponent {
         </div>
         <div class='menu__bottom-left'>
           <BackButton ref={addRef(this, 'backButton')} type={'back'} />
+          <CollectButton ref={addRef(this, 'collectButton')} type={'collect'} />
         </div>
       </section>
     )
@@ -218,18 +243,30 @@ export default class Menu extends DomComponent {
   }
 
   bind () {
+    signals.factUnlock.listen(this.fastbind('onFactUnlocked', 1))
     this.listenStore('menuLight', this.fastbind('updateMenu', 1))
     this.listenStore('menuSocials', this.fastbind('updateSocials', 1))
     this.listenStore('launched', this.fastbind('updateSocials'))
+  }
+
+  onFactUnlocked (id) {
+    this.collectButton.collectId = id
+    this.collectButton.base.classList.add('magnet')
+    this.collectButton.base.classList.add('visible')
+    signals.newDom.dispatch()
   }
 
   updateMenu (light) {
     if (light) {
       this.menu.classList.add('light')
       this.backButton.base.classList.add('magnet')
+      this.collectButton.base.classList.remove('magnet')
+      this.collectButton.base.classList.remove('visible')
+      signals.newDom.dispatch()
     } else {
       this.menu.classList.remove('light')
       this.backButton.base.classList.remove('magnet')
+      signals.newDom.dispatch()
     }
   }
 

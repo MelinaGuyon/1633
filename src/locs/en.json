@@ -17,6 +17,8 @@
     "carrousel.story": "Story",
     "nav.about": "About",
     "nav.chronologie": "Timeline",
+    "nav.article": "See the article collected",
+    "nav.back": "Back",
     "chronologie.fact": "Historical Fact n°",
     "variable.exemple": "Mission accomplied with {{{score}}} pts.",
     "cta.hold": "Click and hold",
