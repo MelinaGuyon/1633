@@ -21,10 +21,11 @@ function init () {
     height: window.innerHeight,
     antialias: false,
     resolution: store.pixelRatio.get(),
-    backgroundColor: 0x0b1528,
     autoResize: false,
-    roundPixels: true
+    roundPixels: true,
+    transparent: true
   })
+  // 0x0b1528 old background
 
   settings.PRECISION_FRAGMENT = PRECISION.HIGH
 
