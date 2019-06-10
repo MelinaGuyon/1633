@@ -15,24 +15,28 @@ import './Carrousel.styl'
 class Form extends DomComponent {
   template (props) {
     let clasName = 'carrousel__form__content ' + props.active
+	  const loc = store.loc.get()
     return (
       <div class={clasName} launchGame={props.launchGame} type={props.type} data-id={props.id}>
         <div class='carrousel__form'>
           <Story id={0} type={props.type} />
-          <div className='carrousel__textScrolling'>
-	          <Button type={props.type} active={'active'} />
-            <Button type={props.type} active={'hide'} />
-	          <Button type={props.type} active={'hide'} />
+          <div className='carrousel__textScrolling' data-text={loc['carrousel.' + props.type]}>
+
           </div>
         </div>
-        <div className='carrousel__textScrolling'>
-          <Button type={props.type} id={0} active={'active'} />
-          <Button type={props.type} id={0} active={'hide'} />
-          <Button type={props.type} id={0} active={'hide'} />
+        <div className='carrousel__textScrolling' data-text={loc['carrousel.' + props.type]}>
+
         </div>
       </div>
     )
   }
+
+  /**
+    <Button type={props.type} active={'active'} />
+    <Button type={props.type} active={'active'} />
+    <Button type={props.type} id={0} active={'active'} />
+    <Button type={props.type} id={0} active={'active'} />
+ */
 
   componentDidMount () {
     this.bind()
@@ -144,7 +148,7 @@ export default class Carrousel extends DomComponent {
   }
 
   componentDidMount () {
-    if (store.skipCarousel.get()) this.launchGame(0)
+     if (store.skipCarousel.get()) this.launchGame(0)
   }
 
   activeCarousel () {
