@@ -40,9 +40,9 @@ function checkCollide (bB, bA, cb, prevState, gA, gB) {
   // distance
   const sceneScale = store.sceneScale.get()
   const layerDisplacement = store.size.get().w / 2 - bB.container.base.x
-  const offsetObject = bB.x * sceneScale + bB.width / 2
+  const offsetObject = bB.x * sceneScale + bB.width
   const dx = offsetObject - layerDisplacement
-  const hCollide = Math.abs(dx) < bB.width
+  const hCollide = Math.abs(dx) < 50
 
   if (!hCollide) {
     cb(newState)

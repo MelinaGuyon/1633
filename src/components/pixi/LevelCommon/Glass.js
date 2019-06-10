@@ -6,25 +6,23 @@ import store from 'state/store'
 
 const names = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 const positionsBuilded = [
-  [-100, -200],
-  [-14, -230],
-  [69, -174],
-  [-100, -106],
-  [69, -72],
-  [-100, 58],
-  [-94, 124]
+  [-160, -200],
+  [-74, -230],
+  [9, -174],
+  [-160, -106],
+  [9, -72],
+  [-160, 58],
+  [-154, 124]
 ]
-
 const positionsUnbuilded = [
-  [-350, -200],
-  [-14, 120],
-  [-108, -174],
-  [-150, -86],
-  [139, -40],
-  [-320, 58],
-  [0, 120]
+  [-250, -200],
+  [86, 120],
+  [-8, -174],
+  [-50, -86],
+  [239, -40],
+  [-220, 58],
+  [100, 120]
 ]
-
 const rotation = [
   0.3,
   0.7,
@@ -48,24 +46,52 @@ export default class Glass extends PixiComponent {
 
     for (let i = 0; i < this.number; i++) {
       let sp = new Sprite(store.animations.get()['glass-' + names[i] + '.png'][0])
+      sp.isHidden = true
       sp.x = positionsUnbuilded[i][0]
       sp.y = positionsUnbuilded[i][1]
       sp.scale.x = props.scale || 1
       sp.scale.y = props.scale || 1
       sp.rotation = rotation[i]
+      sp.alpha = 0
       this.sprites.push(sp)
       this.base.addChild(sp)
     }
   }
 
   componentDidMount () {
-    setTimeout(() => {
-      this.animate()
-    }, 3000)
+    this.update = this.fastbind('update', 1)
+    this.construct = this.fastbind('construct', 1)
   }
 
-  animate () {
-    console.log('animate')
+  show () {
+    this.sprites.forEach((el, i) => {
+      if (!el.isHidden) return
+      el.isHidden = false
+      anime({
+        targets: el,
+        alpha: 1,
+        duration: 300,
+        easing: 'easeOutQuad'
+      })
+    })
+  }
+
+  hide () {
+    this.sprites.forEach((el, i) => {
+      if (el.isHidden || this.constructed) return
+      el.isHidden = true
+      anime({
+        targets: el,
+        alpha: 0,
+        duration: 300,
+        easing: 'easeOutQuad'
+      })
+    })
+  }
+
+  construct () {
+    if (this.constructed) return
+    this.constructed = true
     this.sprites.forEach((el, i) => {
       anime({
         targets: el,
@@ -75,5 +101,10 @@ export default class Glass extends PixiComponent {
         easing: 'easeOutQuad'
       })
     })
+  }
+
+  update (collide) {
+    if (collide) this.show()
+    else this.hide()
   }
 }

@@ -13,7 +13,6 @@ export default class SoundChecksAbs extends PixiComponent {
   cb (path, soundId, state) {
     if (state.collide) {
 	    let indexOfFirst = path.indexOf('effect')
-	    console.log(indexOfFirst, path)
 	    if (indexOfFirst >= 0) {
 		    this.stopAllEffet()
 		    sound.play(path)
