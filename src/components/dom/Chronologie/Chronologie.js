@@ -74,7 +74,10 @@ class Fact extends DomComponent {
           </div>
         </div>
 
-        <h2 class='locked-title'>{props.content.title}</h2>
+        <div class='locked-title'>
+          <h2>{props.content.title}</h2>
+          <h3>{props.content.historyName}</h3>
+        </div>
         <Glass ref={addRef(this, 'glass')} autostart parrent />
       </div>
     )

@@ -57,7 +57,7 @@ export default createStore({
   chronologieTimelineVisible: false,
 
   // ---- Debug utilities: 0 means false, 1 means true ----
-  debug: isDev ? 1 : 1,
+  debug: isDev ? 0 : 0,
   mute: isDev ? 0 : 0,
   useGui: isDev ? 1 : 0, // use datGui
   displayStats: isDev ? 1 : 0, // use stats (fps, drawcalls, ...)
