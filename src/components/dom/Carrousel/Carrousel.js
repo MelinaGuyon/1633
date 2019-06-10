@@ -79,8 +79,9 @@ class Text extends DomComponent {
 class Story extends DomComponent {
   template (props) {
     const loc = store.loc.get()
+    let idIncrement = props.id + 1
     return (
-      <div class='carrousel__story' data-id={props.id}><span>{loc['carrousel.story']} <span class='carrousel__story__number'>{props.id}</span></span></div>
+      <div class='carrousel__story' data-id={props.id}><span>{loc['carrousel.story']} <span class='carrousel__story__number'>{idIncrement}</span></span></div>
     )
   }
 }
@@ -171,7 +172,6 @@ export default class Carrousel extends DomComponent {
     let lastPostitionScroll = 0
     let ticking = false
 
-
 	  function goNext () {
 		  console.log(' au suivant ')
 		  let current = document.querySelector('.carrousel__form__content.active')
@@ -186,14 +186,29 @@ export default class Carrousel extends DomComponent {
 			  nextpos = parseInt(currentPos) + 1
 		  }
 
+		  let scrollingText = document.querySelectorAll('.carrousel__textScrolling')
+
+		  for (let i = 0; i < scrollingText.length; i++) {
+			  scrollingText[i].classList.add('hidden')
+			  scrollingText[i].classList.remove('opacity')
+		  }
+
 		  for (let i = 0; i < maxPos; i++) {
 			  if (parseInt(all[i].getAttribute('data-id')) === nextpos) {
 				  newCurrent = all[i]
 			  }
 		  }
 
-		  current.classList.remove('active')
-		  newCurrent.classList.add('active')
+		  setTimeout(function () {
+			  current.classList.remove('active')
+			  newCurrent.classList.add('active')
+			  setTimeout(function () {
+				  for (let i = 0; i < scrollingText.length; i++) {
+					  scrollingText[i].classList.add('opacity')
+					  scrollingText[i].classList.remove('hidden')
+				  }
+			  }, 1000)
+		  }, 1000)
 	  }
 
 	  function goPrev () {
@@ -204,6 +219,14 @@ export default class Carrousel extends DomComponent {
 		  let maxPos = all.length
 		  let nextpos
 		  let newCurrent
+
+		  let scrollingText = document.querySelectorAll('.carrousel__textScrolling')
+
+		  for (let i = 0; i < scrollingText.length; i++) {
+			  scrollingText[i].classList.add('hidden')
+			  scrollingText[i].classList.remove('opacity')
+		  }
+
 		  if (parseInt(currentPos) - 1 < 0) {
 			  nextpos = (maxPos - 1)
 		  } else {
@@ -216,8 +239,16 @@ export default class Carrousel extends DomComponent {
 			  }
 		  }
 
-		  current.classList.remove('active')
-		  newCurrent.classList.add('active')
+		  setTimeout(function () {
+			  current.classList.remove('active')
+			  newCurrent.classList.add('active')
+			  setTimeout(function () {
+				  for (let i = 0; i < scrollingText.length; i++) {
+					  scrollingText[i].classList.add('opacity')
+					  scrollingText[i].classList.remove('hidden')
+				  }
+			  }, 1000)
+		  }, 1000)  
 	  }
 
 	  function scrolling (posScroll) {
