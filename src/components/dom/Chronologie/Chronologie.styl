@@ -36,13 +36,27 @@
       opacity: 0
       transform: translate(-50%, -50%)
       z-index 2
-      -webkit-text-stroke: 1px $salmon;
-      font-family: EczarBold;
-      font-size: 80px;
-      text-align: center;
-      color: transparent;
-      letter-spacing: 4px
-      line-height: 90px
+      width: 55%;
+      max-width: 550px;
+
+      h2
+        -webkit-text-stroke: 1.5px $salmon;
+        font-family: EczarBold;
+        font-size: 75px;
+        text-align: center;
+        color: transparent;
+        letter-spacing: 4px
+        line-height: 82px
+
+      h3
+        font-family: RobotoCondensedLight
+        font-size: 24px
+        margin-top: 30px
+        text-align: center;
+        color: $salmon;
+        letter-spacing: 1px
+        text-transform: lowercase
+
 
     &.locked
       .glass
