@@ -43,9 +43,15 @@
     &:hover
       transform scale(1.25)
 
+      [data-text]:before, [data-text]:after
+        -webkit-text-stroke: 1px $salmon;
+
       .carrousel__form
         //width: 57vw;
         //height: 105vh;
+
+        [data-text]:before, [data-text]:after
+          color $salmon
 
         .carrousel__choice
           color $salmon
