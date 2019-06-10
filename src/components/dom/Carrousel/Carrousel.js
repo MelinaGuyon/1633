@@ -21,11 +21,9 @@ class Form extends DomComponent {
         <div class='carrousel__form'>
           <Story id={0} type={props.type} />
           <div className='carrousel__textScrolling' data-text={loc['carrousel.' + props.type]}>
-
           </div>
         </div>
         <div className='carrousel__textScrolling' data-text={loc['carrousel.' + props.type]}>
-
         </div>
       </div>
     )
@@ -140,9 +138,9 @@ export default class Carrousel extends DomComponent {
           <Form active={''} type={'robertdesorbon'} id={2} launchGame={this.launchGame} />
           <Form active={''} type={'jacqueslemercier'} id={3} launchGame={this.launchGame} />
           <Form active={''} type={'napoleonbonaparte'} id={4} launchGame={this.launchGame} />
-          <ButtonGoPrev goPrev={this.goPrev} />
-          <ButtonGoNext goNext={this.goNext} />
         </div>
+	      <ButtonGoPrev goPrev={this.goPrev} />
+	      <ButtonGoNext goNext={this.goNext} />
       </section>
     )
   }
@@ -173,10 +171,50 @@ export default class Carrousel extends DomComponent {
 
   goNext () {
     console.log(' au suivant ')
+    let current = document.querySelector('.carrousel__form__content.active')
+    let all = document.querySelectorAll('.carrousel__form__content')
+    let currentPos = current.getAttribute('data-id')
+    let maxPos = all.length
+    let nextpos
+	  let newCurrent
+    if (parseInt(currentPos) + 1 > ( maxPos - 1)) {
+      nextpos = 0
+    } else {
+      nextpos = parseInt(currentPos) + 1
+    }
+
+    for (let i = 0; i < maxPos; i++) {
+      if (parseInt(all[i].getAttribute('data-id')) === nextpos) {
+        newCurrent = all[i]
+      }
+    }
+
+    current.classList.remove('active')
+	  newCurrent.classList.add('active')
   }
 
   goPrev () {
-	  console.log(' on retourne avant ')
+	  console.log(' retour avant ')
+	  let current = document.querySelector('.carrousel__form__content.active')
+	  let all = document.querySelectorAll('.carrousel__form__content')
+	  let currentPos = current.getAttribute('data-id')
+	  let maxPos = all.length
+	  let nextpos
+	  let newCurrent
+	  if (parseInt(currentPos) - 1 < 0) {
+		  nextpos = (maxPos - 1)
+	  } else {
+		  nextpos = parseInt(currentPos) - 1
+	  }
+
+	  for (let i = 0; i < maxPos; i++) {
+		  if (parseInt(all[i].getAttribute('data-id')) === nextpos) {
+			  newCurrent = all[i]
+		  }
+	  }
+
+	  current.classList.remove('active')
+	  newCurrent.classList.add('active')
   }
 
   scrollListen () {
