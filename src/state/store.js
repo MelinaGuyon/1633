@@ -61,7 +61,7 @@ export default createStore({
   mute: isDev ? 0 : 0,
   useGui: isDev ? 1 : 0, // use datGui
   displayStats: isDev ? 1 : 0, // use stats (fps, drawcalls, ...)
-  skipCarousel: isDev ? 1 : 0,
+  skipCarousel: isDev ? 0 : 0,
   skipLoading: isDev ? 1 : 0,
   skipTuto: isDev ? 1 : 0,
 
