@@ -123,6 +123,7 @@ export default class Sample {
     this.state.fadeInMax = 0
     this.state.fadeInTimer = 0
     const fadeOut = opts.fadeOut || this.fadeOut
+
     if (opts.instant || fadeOut <= 0) {
       this.state.volume = 0
       this.state.fadeOutMax = 0

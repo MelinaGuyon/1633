@@ -11,7 +11,7 @@ const sfxs = {
   'voixoff/intro_bis': { loop: false, fadeOut: 400, volume: 5 },
   'voixoff/intro_ter': { loop: false, fadeOut: 400, volume: 5 },
   'voixoff/chap_1': { loop: false, fadeOut: 400, volume: 5 },
-  'voixoff/chap_2': { loop: false, fadeOut: 400,volume: 5 },
+  'voixoff/chap_2': { loop: false, fadeOut: 400, volume: 5 },
   'voixoff/chap_2_bis': { loop: false, fadeOut: 400, volume: 5 },
   'voixoff/chap_3': { loop: false, fadeOut: 400, volume: 5 },
   'voixoff/chap_4': { loop: false, fadeOut: 400, volume: 5 },

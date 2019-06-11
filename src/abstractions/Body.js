@@ -128,7 +128,7 @@ export default class Body {
     }
 
     if (this.maxX === this.x) {
-      console.log('here finish')
+      // TODO: voir si on ne check pas que la voix off ai finie avant de lancer la fin
       store.pause.set(true)
       store.ended.set(true)
     }
@@ -144,8 +144,7 @@ export default class Body {
       max += size
     })
     if (max < store.size.get().w * 2) max = store.size.get().w * 2
-    return 200
-    // return max
+    return max
   }
 
   collideWith (group, cb = null) {

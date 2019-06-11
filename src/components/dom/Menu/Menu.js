@@ -247,6 +247,7 @@ export default class Menu extends DomComponent {
     this.listenStore('menuLight', this.fastbind('updateMenu', 1))
     this.listenStore('menuSocials', this.fastbind('updateSocials', 1))
     this.listenStore('launched', this.fastbind('updateSocials'))
+    this.listenStore('ended', this.fastbind('updateSocials'))
   }
 
   onFactUnlocked (id) {
@@ -271,7 +272,18 @@ export default class Menu extends DomComponent {
   }
 
   updateSocials (socials) {
+    let gameEnded = store.ended.get()
     let gameLaunched = store.launched.get()
+
+    if (gameEnded) {
+      this.socials.forEach((el) => {
+        el.base.classList.add('magnet')
+      })
+      this.socialContainer.classList.remove('hidden')
+      signals.newDom.dispatch()
+      return
+    }
+
     if (!socials) {
       this.socials.forEach((el) => {
         el.base.classList.remove('magnet')
