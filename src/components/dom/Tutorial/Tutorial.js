@@ -86,20 +86,22 @@ export default class Tutorial extends DomComponent {
     }
 	  signals.newDom.dispatch()
 	  logger('Tutorial did mount', '#47b342').log()
-	  //document.addEventListener('keyup', this.keyup)
+	  //signals.goLeft.listen(this.keyup) TODO
+	  //signals.goRight.listen(this.keyup) TODO
   }
 
-	keyup (e) {
-    console.log(e)
-    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-		  console.log('close')
-      let tutoOpen = document.querySelector('.tutorial__item.active')
+	keyup () {
+    console.log('close')
+    let tutoOpen = document.querySelector('.tutorial__item.active')
+    console.log(tutoOpen)
+    if (tutoOpen !== null) {
       tutoOpen.remove()
       this.removeListener()
     }
   }
 
   removeListener () {
-	  document.removeEventListener('keyup', this.keyup)
+	  signals.goLeft.unlisten(this.keyup)
+	  signals.goRight.unlisten(this.keyup)
   }
 }
