@@ -6,13 +6,16 @@ export default class CityBuildings extends PixiComponent {
   setup () {
 
     this.mains = []
+    this.mains.push(this.addComponent(Building, { layer: '11bg700', type: 'c', x: 0, y: 0, scale: 0.66 })) // fond incrusté
     this.mains.push(this.addComponent(Building, { layer: '11bg700', type: 'b', x: 10, y: -56, scale: 0.66 })) // fond
-    // this.mains.push(this.addComponent(Building, { layer: '11bg500', x: 0, type: 'b', y: -150 }))
-    // this.mains.push(this.addComponent(Building, { layer: '11bg400', x: 300, type: 'c', y: 20 }))
-    // this.mains.push(this.addComponent(Building, { layer: '11bg300', x: -70, type: 'd', y: 50 }))
-    // this.mains.push(this.addComponent(Building, { layer: '11bg200', x: -350, type: 'e', y: -30 }))
-    // this.mains.push(this.addComponent(Building, { layer: '11bg100', x: -550, type: 'f', y: -30 }))
-    // this.mains.push(this.addComponent(Building, { layer: '11bg100', x: 250, type: 'g', y: 80 }))
+    this.mains.push(this.addComponent(Building, { layer: '11bg700', type: 'a', x: -13, y: -45, scale: 0.66 })) // big
+
+    this.mains.push(this.addComponent(Building, { layer: '11bg700', type: 'd', x: -13, y: -45, scale: 0.66 })) // fenêtres
+    this.mains.push(this.addComponent(Building, { layer: '11bg700', type: 'e', x: 330, y: -10, scale: 0.62 })) // mausolé
+    this.mains.push(this.addComponent(Building, { layer: '11bg700', type: 'f', x: -120, y: -70, scale: 0.62 })) // table
+    this.mains.push(this.addComponent(Building, { layer: '11bg700', type: 'g', x: -355, y: -170, scale: 0.62 })) // photographe
+    this.mains.push(this.addComponent(Building, { layer: '11bg700', type: 'h', x: -670, y: -225, scale: 0.65 })) // mec
+    this.mains.push(this.addComponent(Building, { layer: '11bg700', type: 'i', x: 120, y: -175, scale: 0.65 })) // meuf
   }
 
   componentWillUnmount () {
