@@ -6,7 +6,6 @@ import cookie from 'controllers/cookie'
 import logger from 'utils/logger'
 import signals from 'state/signals'
 
-
 import './Tutorial.styl'
 import sound from '../../../controllers/sound'
 
@@ -49,21 +48,17 @@ class Button extends DomComponent {
     $parent.remove()
     store.pause.set(false)
   }
-
-  onKeyboard (e) {
-
-  }
 }
 
 class TutoSpace extends DomComponent {
   template (props) {
     return (
       <div class='tutorial__item' data-tuto='space'>
-        <div class="tutorial__bkgform">
-	        <div class='mouse__close-zone tutorial__center'>
-		        <Button class='tutorial__close'>x</Button>
-		        <p>Clique sur la barre espace quand tu vois ces formes dans les scènes</p>
-	        </div>
+        <div class='tutorial__bkgform'>
+          <div class='mouse__close-zone tutorial__center'>
+            <Button class='tutorial__close'>x</Button>
+            <p>Clique sur la barre espace quand tu vois ces formes dans les scènes</p>
+          </div>
         </div>
       </div>
     )
@@ -83,6 +78,7 @@ export default class Tutorial extends DomComponent {
   }
 
   componentDidMount () {
+	  this.keyup = this.fastbind('keyup', 1)
     let isAlreadyShow
 	  isAlreadyShow = cookie.readCookie('tuto')
     if (isAlreadyShow) {
@@ -90,5 +86,20 @@ export default class Tutorial extends DomComponent {
     }
 	  signals.newDom.dispatch()
 	  logger('Tutorial did mount', '#47b342').log()
+	  //document.addEventListener('keyup', this.keyup)
+  }
+
+	keyup (e) {
+    console.log(e)
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+		  console.log('close')
+      let tutoOpen = document.querySelector('.tutorial__item.active')
+      tutoOpen.remove()
+      this.removeListener()
+    }
+  }
+
+  removeListener () {
+	  document.removeEventListener('keyup', this.keyup)
   }
 }

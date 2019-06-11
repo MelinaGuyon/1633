@@ -33,8 +33,8 @@ export default class GameInterface extends DomComponent {
   componentDidMount () {
     logger('Game interface did mount', '#47b342').log()
     this.bind()
-    signals.newDom.dispatch()
     if (!store.skipTuto.get()) this.openTuto('keyboard') // toto remove only for test
+    signals.newDom.dispatch()
   }
 
   componentWillUnmount () {
@@ -51,8 +51,8 @@ export default class GameInterface extends DomComponent {
     document.removeEventListener('click', this.clearClick)
   }
 
-  openTuto (id) { // TODO remove après les test
-    // cookie.createCookie('tuto', true, 30)
+  openTuto (id) {
+    //cookie.createCookie('tuto', true, 30) TODO décommenter cette ligne en prod
     let tutos = document.querySelectorAll('[data-tuto]')
 
     for (let i = 0; i < tutos.length; i++) {
@@ -67,13 +67,6 @@ export default class GameInterface extends DomComponent {
     type += ' mouse__close'
     tuto.closest('.mouse__close').className = type
     store.pause.set(true)
-    /**
-		for (let i = 0; i < this.mains.length; i++) {
-			if (this.mains[i].name === id) {
-				this.mains[i].destroy()
-			}
-		}
-    **/
   }
 
   clearClick (e) {
