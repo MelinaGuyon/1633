@@ -4,17 +4,18 @@ import Building from './CityBuilding'
 export default class CityBuildings extends PixiComponent {
   setup () {
     this.mains = []
-    // this.mains.push(this.addComponent(Building, { layer: '3bg700', type: 'a', x: 0, y: -50 })) // big
-    // this.mains.push(this.addComponent(Building, { layer: '3bg600', type: 'b', x: 0, y: -50 }))
-    // this.mains.push(this.addComponent(Building, { layer: '3bg600', type: 'c', x: 0, y: -50 }))
-    // this.mains.push(this.addComponent(Building, { layer: '3bg500', type: 'd', x: 0, y: -50 }))
-    // this.mains.push(this.addComponent(Building, { layer: '3bg400', type: 'e', x: 0, y: -50 }))
-    // this.mains.push(this.addComponent(Building, { layer: '3bg400', type: 'f', x: 0, y: -50 }))
-    // this.mains.push(this.addComponent(Building, { layer: '3bg300', type: 'i', x: 350, y: 100, scale: 0.7 }))
-    // this.mains.push(this.addComponent(Building, { layer: '3bg200', type: 'k', x: -450, y: 150, scale: 0.7 }))
-    // this.mains.push(this.addComponent(Building, { layer: '3bg100', type: 'l', x: -350, y: 80, scale: 0.7 }))
-    // this.mains.push(this.addComponent(Building, { layer: '3bg300', type: 'n', x: 0, y: -150, scale: 0.7 }))
-    // this.mains.push(this.addComponent(Building, { layer: '3bg300', type: 'o', x: -600, y: -250, scale: 0.7 }))
+    this.mains.push(this.addComponent(Building, { layer: '3bg700', type: 'c', x: 0, y: -50, scale: 0.66 })) // fond incrusté
+    this.mains.push(this.addComponent(Building, { layer: '3bg700', type: 'b', x: -15, y: -70, scale: 0.66 })) // fond
+    this.mains.push(this.addComponent(Building, { layer: '3bg700', type: 'a', x: 0, y: -50, scale: 0.66 })) // big
+    this.mains.push(this.addComponent(Building, { layer: '3bg600', type: 'd', x: 0, y: -20, scale: 0.66 })) // immeuble fond
+    this.mains.push(this.addComponent(Building, { layer: '3bg600', type: 'e', x: 20, y: -50, scale: 0.66 })) // immeuble droite
+    this.mains.push(this.addComponent(Building, { layer: '3bg600', type: 'f', x: -20, y: -50, scale: 0.66 })) // immeuble gauche
+    this.mains.push(this.addComponent(Building, { layer: '3bg600', type: 'g', x: -180, y: 0, scale: 0.66 })) // puit
+    this.mains.push(this.addComponent(Building, { layer: '3bg600', type: 'h', x: 65, y: -50, scale: 0.66 })) // bacshamp
+    this.mains.push(this.addComponent(Building, { layer: '3bg600', type: 'i', x: -100, y: 150, scale: 0.66 })) // tete
+    this.mains.push(this.addComponent(Building, { layer: '3bg600', type: 'j', x: -300, y: 90, scale: 0.66 })) // chien
+    this.mains.push(this.addComponent(Building, { layer: '3bg600', type: 'k', x: -20, y: -90, scale: 0.66 })) // lampe
+    this.mains.push(this.addComponent(Building, { layer: '3bg600', type: 'l', x: -350, y: -220, scale: 0.66 })) // vetement
   }
 
   componentWillUnmount () {

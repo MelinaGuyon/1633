@@ -13,7 +13,7 @@ export default class LevelUniversity extends Level {
     super.setup()
     this.createLand()
     this.createGlass()
-    // this.addColliders()
+    this.addColliders()
 
     this.launchSounds()
   }
