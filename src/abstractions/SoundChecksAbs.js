@@ -41,8 +41,9 @@ export default class SoundChecksAbs extends PixiComponent {
   stopAllEffet () {
 	  sound.stop('effect/crowd')
 	  sound.stop('effect/kids')
-	  sound.stop('effect/cat')
+	  sound.stop('effect/bird')
 	  sound.stop('effect/fire')
+	  sound.stop('effect/rain')
   }
 
   componentWillUnmount () {
