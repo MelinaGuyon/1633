@@ -278,6 +278,41 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">01-profanation/profanation-h.png</key>
+            <key type="filename">02-baschamp/baschamp-y.png</key>
+            <key type="filename">02-baschamp/baschamp-z.png</key>
+            <key type="filename">03-cheval/cheval-i.png</key>
+            <key type="filename">04-bretagne/bretagne-g.png</key>
+            <key type="filename">04-bretagne/bretagne-h.png</key>
+            <key type="filename">04-bretagne/bretagne-i.png</key>
+            <key type="filename">05-armez/armez-c.png</key>
+            <key type="filename">05-armez/armez-f.png</key>
+            <key type="filename">05-armez/armez-g.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>480,270,960,540</rect>
+                <key>scale9Paddings</key>
+                <rect>480,270,960,540</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">01-profanation/profanation-i.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>144,186,287,372</rect>
+                <key>scale9Paddings</key>
+                <rect>144,186,287,372</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">02-baschamp/baschamp-a.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -458,27 +493,6 @@
                 <rect>76,107,151,215</rect>
                 <key>scale9Paddings</key>
                 <rect>76,107,151,215</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">02-baschamp/baschamp-y.png</key>
-            <key type="filename">02-baschamp/baschamp-z.png</key>
-            <key type="filename">03-cheval/cheval-i.png</key>
-            <key type="filename">04-bretagne/bretagne-g.png</key>
-            <key type="filename">04-bretagne/bretagne-h.png</key>
-            <key type="filename">04-bretagne/bretagne-i.png</key>
-            <key type="filename">05-armez/armez-c.png</key>
-            <key type="filename">05-armez/armez-f.png</key>
-            <key type="filename">05-armez/armez-g.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>480,270,960,540</rect>
-                <key>scale9Paddings</key>
-                <rect>480,270,960,540</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -743,81 +757,108 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">06-pharmacien/pharmacien-a.png</key>
+            <key type="filename">06-pharmacien/pharmacie-a.png</key>
+            <key type="filename">06-pharmacien/pharmacie-b.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>325,158,649,315</rect>
+                <rect>428,212,855,424</rect>
                 <key>scale9Paddings</key>
-                <rect>325,158,649,315</rect>
+                <rect>428,212,855,424</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">06-pharmacien/pharmacien-b.png</key>
+            <key type="filename">06-pharmacien/pharmacie-c.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>36,55,71,109</rect>
+                <rect>454,256,909,511</rect>
                 <key>scale9Paddings</key>
-                <rect>36,55,71,109</rect>
+                <rect>454,256,909,511</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">06-pharmacien/pharmacien-c.png</key>
+            <key type="filename">06-pharmacien/pharmacie-d.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>71,104,141,208</rect>
+                <rect>190,190,379,379</rect>
                 <key>scale9Paddings</key>
-                <rect>71,104,141,208</rect>
+                <rect>190,190,379,379</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">06-pharmacien/pharmacien-d.png</key>
+            <key type="filename">06-pharmacien/pharmacie-e.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>157,84,313,167</rect>
+                <rect>55,100,111,199</rect>
                 <key>scale9Paddings</key>
-                <rect>157,84,313,167</rect>
+                <rect>55,100,111,199</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">06-pharmacien/pharmacien-e.png</key>
+            <key type="filename">06-pharmacien/pharmacie-f.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>42,67,84,133</rect>
+                <rect>149,149,298,298</rect>
                 <key>scale9Paddings</key>
-                <rect>42,67,84,133</rect>
+                <rect>149,149,298,298</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">06-pharmacien/pharmacien-f.png</key>
+            <key type="filename">06-pharmacien/pharmacie-g.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>95,84,189,169</rect>
+                <rect>95,132,191,265</rect>
                 <key>scale9Paddings</key>
-                <rect>95,84,189,169</rect>
+                <rect>95,132,191,265</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">06-pharmacien/pharmacie-h.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>58,93,115,186</rect>
+                <key>scale9Paddings</key>
+                <rect>58,93,115,186</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">06-pharmacien/pharmacie-i.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>43,74,87,149</rect>
+                <key>scale9Paddings</key>
+                <rect>43,74,87,149</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -1091,6 +1132,58 @@
                 <rect>63,104,127,207</rect>
                 <key>scale9Paddings</key>
                 <rect>63,104,127,207</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">09-photo/photo-f.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>101,102,201,203</rect>
+                <key>scale9Paddings</key>
+                <rect>101,102,201,203</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">09-photo/photo-g.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>91,149,183,297</rect>
+                <key>scale9Paddings</key>
+                <rect>91,149,183,297</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">09-photo/photo-h.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>178,166,355,331</rect>
+                <key>scale9Paddings</key>
+                <rect>178,166,355,331</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">09-photo/photo-i.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>87,166,174,331</rect>
+                <key>scale9Paddings</key>
+                <rect>87,166,174,331</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
