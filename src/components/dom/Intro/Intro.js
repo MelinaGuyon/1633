@@ -38,8 +38,8 @@ export default class Intro extends DomComponent {
   }
 
   launchIntro () {
-    sound.play('voixoff-acteur/intro')
-    sound.setSoundPlay('voixoff-acteur/intro')
+    sound.play('voixoff/intro')
+    sound.setSoundPlay('voixoff/intro')
     this.intervalId = setInterval(() => {
       if (!sound.soundIsPlaying().playing) this.finished()
     }, 500)
@@ -48,7 +48,7 @@ export default class Intro extends DomComponent {
   finished () {
     clearInterval(this.intervalId)
     this.unbind()
-    sound.stop('voixoff-acteur/intro')
+    sound.stop('voixoff/intro')
 
     this.props.onComplete()
   }

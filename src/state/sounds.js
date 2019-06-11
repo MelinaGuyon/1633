@@ -2,7 +2,7 @@ const musics = {
   '2_music_studio': { loop: true, fadeOut: 900, volume: 0.1 },
   '3_music_studio': { loop: true, fadeOut: 900, volume: 0.05 },
   '4_music_studio': { loop: true, fadeOut: 900, volume: 0.05 },
-  '7_music_studio': { loop: true, fadeOut: 900, volume: 0.1 },
+  '7_music_studio': { loop: true, fadeOut: 900, volume: 0.1 }
 }
 
 const sfxs = {
@@ -22,7 +22,6 @@ const sfxs = {
   'voixoff/chap_7': { loop: false, fadeOut: 400, volume: 5 },
   'voixoff/chap_8': { loop: false, fadeOut: 400, volume: 5 },
   'voixoff/epilogue': { loop: false, fadeOut: 400, volume: 5 },
-  'voixoff-acteur/intro': { loop: false, fadeOut: 400, volume: 5 },
   'effect/cat': { loop: false, fadeOut: 400, volume: 0.5 },
   'effect/crowd': { loop: false, fadeOut: 400, volume: 0.05 },
   'effect/kids': { loop: false, fadeOut: 400, volume: 0.6 },

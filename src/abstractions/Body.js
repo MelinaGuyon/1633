@@ -126,6 +126,12 @@ export default class Body {
     } else {
       this.hasMoved = false
     }
+
+    if (this.maxX === this.x) {
+      console.log('here finish')
+      store.pause.set(true)
+      store.ended.set(true)
+    }
   }
 
   getMin () {
@@ -138,7 +144,8 @@ export default class Body {
       max += size
     })
     if (max < store.size.get().w * 2) max = store.size.get().w * 2
-    return max
+    return 200
+    // return max
   }
 
   collideWith (group, cb = null) {
@@ -156,5 +163,3 @@ export default class Body {
     this.rect = undefined
   }
 }
-
-// idée anim perso : http://inspacewetrust.org/en/

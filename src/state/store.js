@@ -70,6 +70,7 @@ export default createStore({
   started: false, // Is app started
   launched: false, // Is a game launched
   pause: false, // Is the current game paused
+  ended: false, // Is the current game ended
   musicPlayed: false,
   menuLight: false,
   menuSocials: true,
