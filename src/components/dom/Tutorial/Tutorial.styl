@@ -1,4 +1,24 @@
 .tutorial
+
+  &__pictos
+    text-align center
+
+    img
+      margin 0 33px
+
+  &__bkgform
+    width: 100%
+    height: 100%
+    background-image: url('assets/img/backgound/glasses.png')
+    background-size: 60%;
+    background-position: center;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-name: bckg;
+    transition 0.3s ease
+
   .button
     position fixed
     bottom: 0
@@ -10,17 +30,22 @@
   &__close
     position absolute
     right: -80px
-    top: -80px
+    top: -100px
     color: $salmon
     background-color transparent
     font-size 30px
     border 0px
+
+    img
+      width: 30px
 
   &__center
     position absolute
     left: 50%
     top: 50%
     transform translate(-50%, -50%)
+    width: 670px
+    text-align: center
 
   &__item
     display none
@@ -34,8 +59,26 @@
     
     p, span
       color: $salmon
-      text-align center
-      line-height 24px
+      font-family: Eczar;
+      font-size: 20px;
+      font-weight: 500;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 0.92;
+      letter-spacing: normal;
+      margin-top: 50px
+      margin-bottom:0
+      padding-bottom: 0
 
     &.active
       display block
+
+
+@keyframes bckg {
+  0% {
+    background-position 48% 51%
+  }
+  100% {
+    background-position 52% 48%
+  }
+}
