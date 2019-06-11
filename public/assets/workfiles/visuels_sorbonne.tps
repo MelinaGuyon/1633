@@ -539,121 +539,139 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">05-armez/armez-a.png</key>
+            <key type="filename">04-bretagne/bretagne-f.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>322,126,643,251</rect>
+                <rect>65,24,130,49</rect>
                 <key>scale9Paddings</key>
-                <rect>322,126,643,251</rect>
+                <rect>65,24,130,49</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">05-armez/armez-b.png</key>
-            <key type="filename">06-pharmacien/pharmacien-b.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>36,55,71,109</rect>
-                <key>scale9Paddings</key>
-                <rect>36,55,71,109</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
+            <key type="filename">04-bretagne/bretagne-g.png</key>
+            <key type="filename">04-bretagne/bretagne-h.png</key>
+            <key type="filename">04-bretagne/bretagne-i.png</key>
             <key type="filename">05-armez/armez-c.png</key>
+            <key type="filename">05-armez/armez-f.png</key>
+            <key type="filename">05-armez/armez-g.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>51,84,102,167</rect>
+                <rect>480,270,960,540</rect>
                 <key>scale9Paddings</key>
-                <rect>51,84,102,167</rect>
+                <rect>480,270,960,540</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">04-bretagne/bretagne-j.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>88,197,175,395</rect>
+                <key>scale9Paddings</key>
+                <rect>88,197,175,395</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">05-armez/armez-a.png</key>
+            <key type="filename">05-armez/armez-b.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>423,214,845,428</rect>
+                <key>scale9Paddings</key>
+                <rect>423,214,845,428</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
             <key type="filename">05-armez/armez-d.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>56,88,111,175</rect>
+                <rect>52,83,103,167</rect>
                 <key>scale9Paddings</key>
-                <rect>56,88,111,175</rect>
+                <rect>52,83,103,167</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
             <key type="filename">05-armez/armez-e.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>28,21,56,43</rect>
+                <rect>79,127,158,255</rect>
                 <key>scale9Paddings</key>
-                <rect>28,21,56,43</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">05-armez/armez-f.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>81,83,161,165</rect>
-                <key>scale9Paddings</key>
-                <rect>81,83,161,165</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">05-armez/armez-g.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>19,58,37,115</rect>
-                <key>scale9Paddings</key>
-                <rect>19,58,37,115</rect>
+                <rect>79,127,158,255</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
             <key type="filename">05-armez/armez-h.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>62,101,123,203</rect>
+                <rect>38,173,76,346</rect>
                 <key>scale9Paddings</key>
-                <rect>62,101,123,203</rect>
+                <rect>38,173,76,346</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
             <key type="filename">05-armez/armez-i.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>29,135,59,271</rect>
+                <rect>66,81,131,163</rect>
                 <key>scale9Paddings</key>
-                <rect>29,135,59,271</rect>
+                <rect>66,81,131,163</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">05-armez/armez-j.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>29,21,59,41</rect>
+                <key>scale9Paddings</key>
+                <rect>29,21,59,41</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">05-armez/armez-k.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>70,117,139,235</rect>
+                <key>scale9Paddings</key>
+                <rect>70,117,139,235</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -667,6 +685,19 @@
                 <rect>325,158,649,315</rect>
                 <key>scale9Paddings</key>
                 <rect>325,158,649,315</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">06-pharmacien/pharmacien-b.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>36,55,71,109</rect>
+                <key>scale9Paddings</key>
+                <rect>36,55,71,109</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
