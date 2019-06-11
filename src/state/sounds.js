@@ -26,6 +26,8 @@ const sfxs = {
   'effect/cat': { loop: false, fadeOut: 400, volume: 0.5 },
   'effect/crowd': { loop: false, fadeOut: 400, volume: 0.05 },
   'effect/kids': { loop: false, fadeOut: 400, volume: 0.6 },
+  'effect/rain': { loop: false, fadeOut: 400, volume: 1.5 },
+  'effect/bird': { loop: false, fadeOut: 400, volume: 0.1 },
   'effect/fire': { loop: false, fadeOut: 400, volume: 0.5 }
 }
 
