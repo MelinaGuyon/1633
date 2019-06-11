@@ -1060,6 +1060,123 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">glass/glass-a.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>54,99,107,198</rect>
+                <key>scale9Paddings</key>
+                <rect>54,99,107,198</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">glass/glass-b.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>62,59,124,118</rect>
+                <key>scale9Paddings</key>
+                <rect>62,59,124,118</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">glass/glass-c.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>49,50,97,99</rect>
+                <key>scale9Paddings</key>
+                <rect>49,50,97,99</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">glass/glass-d.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>104,74,208,147</rect>
+                <key>scale9Paddings</key>
+                <rect>104,74,208,147</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">glass/glass-e.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>51,100,102,199</rect>
+                <key>scale9Paddings</key>
+                <rect>51,100,102,199</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">glass/glass-f.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>107,69,215,137</rect>
+                <key>scale9Paddings</key>
+                <rect>107,69,215,137</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">glass/glass-g.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>125,41,251,81</rect>
+                <key>scale9Paddings</key>
+                <rect>125,41,251,81</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">glass/glass-z.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>250,393,500,786</rect>
+                <key>scale9Paddings</key>
+                <rect>250,393,500,786</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">glass/glass-zz.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>125,197,250,393</rect>
+                <key>scale9Paddings</key>
+                <rect>125,197,250,393</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">perso/perso0.png</key>
             <key type="filename">perso/perso1.png</key>
             <key type="filename">perso/perso10.png</key>
@@ -1125,6 +1242,7 @@
             <filename>09-photo</filename>
             <filename>01-profanation</filename>
             <filename>perso</filename>
+            <filename>glass</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
