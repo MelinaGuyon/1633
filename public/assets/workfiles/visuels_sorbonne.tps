@@ -422,45 +422,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">02-baschamp/baschamp-m.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>34,29,68,57</rect>
-                <key>scale9Paddings</key>
-                <rect>34,29,68,57</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">02-baschamp/baschamp-n.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>400,210,799,420</rect>
-                <key>scale9Paddings</key>
-                <rect>400,210,799,420</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">02-baschamp/baschamp-o.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>139,79,279,157</rect>
-                <key>scale9Paddings</key>
-                <rect>139,79,279,157</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">03-cheval/cheval-c.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
