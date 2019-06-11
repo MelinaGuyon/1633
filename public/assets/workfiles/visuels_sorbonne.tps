@@ -422,6 +422,66 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">02-baschamp/baschamp-v.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>58,160,116,319</rect>
+                <key>scale9Paddings</key>
+                <rect>58,160,116,319</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">02-baschamp/baschamp-w.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>146,205,292,411</rect>
+                <key>scale9Paddings</key>
+                <rect>146,205,292,411</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">02-baschamp/baschamp-x.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>76,107,151,215</rect>
+                <key>scale9Paddings</key>
+                <rect>76,107,151,215</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">02-baschamp/baschamp-y.png</key>
+            <key type="filename">02-baschamp/baschamp-z.png</key>
+            <key type="filename">03-cheval/cheval-i.png</key>
+            <key type="filename">04-bretagne/bretagne-g.png</key>
+            <key type="filename">04-bretagne/bretagne-h.png</key>
+            <key type="filename">04-bretagne/bretagne-i.png</key>
+            <key type="filename">05-armez/armez-c.png</key>
+            <key type="filename">05-armez/armez-f.png</key>
+            <key type="filename">05-armez/armez-g.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>480,270,960,540</rect>
+                <key>scale9Paddings</key>
+                <rect>480,270,960,540</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">03-cheval/cheval-c.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -471,6 +531,32 @@
                 <rect>24,21,49,41</rect>
                 <key>scale9Paddings</key>
                 <rect>24,21,49,41</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">03-cheval/cheval-h.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>203,241,405,481</rect>
+                <key>scale9Paddings</key>
+                <rect>203,241,405,481</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">03-cheval/cheval-j.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>39,33,78,65</rect>
+                <key>scale9Paddings</key>
+                <rect>39,33,78,65</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -549,24 +635,6 @@
                 <rect>65,24,130,49</rect>
                 <key>scale9Paddings</key>
                 <rect>65,24,130,49</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">04-bretagne/bretagne-g.png</key>
-            <key type="filename">04-bretagne/bretagne-h.png</key>
-            <key type="filename">04-bretagne/bretagne-i.png</key>
-            <key type="filename">05-armez/armez-c.png</key>
-            <key type="filename">05-armez/armez-f.png</key>
-            <key type="filename">05-armez/armez-g.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>480,270,960,540</rect>
-                <key>scale9Paddings</key>
-                <rect>480,270,960,540</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -1023,32 +1091,6 @@
                 <rect>63,104,127,207</rect>
                 <key>scale9Paddings</key>
                 <rect>63,104,127,207</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">09-photo/photo-f.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>33,109,65,217</rect>
-                <key>scale9Paddings</key>
-                <rect>33,109,65,217</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">09-photo/photo-g.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>42,101,84,203</rect>
-                <key>scale9Paddings</key>
-                <rect>42,101,84,203</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
