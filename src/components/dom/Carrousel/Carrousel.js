@@ -86,6 +86,8 @@ class Story extends DomComponent {
   }
 }
 
+let ticking = false
+
 export default class Carrousel extends DomComponent {
   template ({ base }) {
     return (
@@ -127,8 +129,29 @@ export default class Carrousel extends DomComponent {
   }
 
   scrollListen () {
-    let lastPostitionScroll = 0
-    let ticking = false
+	  document.addEventListener('mousewheel', this.mouseWhellTodo)
+  }
+
+  mouseWhellTodo (e) {
+	  let lastPostitionScroll = e.deltaY
+	  if (!ticking) {
+		  scrolling(lastPostitionScroll)
+		  ticking = true
+		  setTimeout(function () {
+			  console.log('ticking')
+			  ticking = false
+		  }, 2000)
+	  }
+
+	  function scrolling (posScroll) {
+		  if (posScroll > 0) {
+			  console.log('scroool down')
+			  goPrev()
+		  } else {
+			  goNext()
+			  console.log('scroool up')
+		  }
+	  }
 
 	  function goNext () {
 		  console.log(' au suivant ')
@@ -208,28 +231,6 @@ export default class Carrousel extends DomComponent {
 			  }, 1000)
 		  }, 1000)
 	  }
-
-	  function scrolling (posScroll) {
-      if (posScroll > 0) {
-        console.log('scroool down')
-        goPrev()
-      } else {
-	      goNext()
-        console.log('scroool up')
-      }
-    }
-
-	  document.addEventListener('mousewheel', function (e) {
-      lastPostitionScroll = e.deltaY
-      if (!ticking) {
-	      scrolling(lastPostitionScroll)
-	      ticking = true
-	      setTimeout(function () {
-		      console.log('ticking')
-		      ticking = false
-	      }, 2000)
-      }
-    })
   }
 
   launchGame (id) {
@@ -256,6 +257,6 @@ export default class Carrousel extends DomComponent {
     }
     store.currentHistory.set(id)
     store.launched.set(true)
-	  // document.removeEventListener('mousewheel')
+	  document.removeEventListener('mousewheel', this.mouseWhellTodo)
   }
 }
