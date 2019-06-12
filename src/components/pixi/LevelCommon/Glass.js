@@ -39,7 +39,7 @@ class BigGlass extends PixiComponent {
   setup (props) {
     this.type = props.type || 'b'
 
-    this.base = new Sprite(store.animations.get()['glass-zz.png'][0])
+    this.base = new Sprite(store.animations.get()['glass-z.png'][0])
     this.base.isHidden = true
     this.base.x = bigGlassPosition[0]
     this.base.y = bigGlassPosition[1]
