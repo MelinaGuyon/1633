@@ -67,14 +67,16 @@ class Fact extends DomComponent {
           <img class='character' ref={addRef(this, 'character')} src={props.content.img} />
           <div class='content' ref={addRef(this, 'content')} >
             <PreviousButton id={props.id} factDate={props.content.date} goToDateOnChronoButton={props.goToDateOnChronoButton} />
-            <p class='date'>{props.content.date}</p>
-            <p class='title'>{props.content.title}</p>
-            <p class='name'>{props.content.historyName}</p>
-            <p class='text'>{props.content.text}</p>
-            <p class='links'>
-              <a href={props.content.textUrl} target='_blank' class='textLink magnet'>texte / {props.content.textUrlTitle}</a>
-              <a href={props.content.imageUrl} target='_blank' class='imageLink magnet'>image / {props.content.imageUrlTitle}</a>
-            </p>
+            <div class='subContent' >
+              <p class='date'>{props.content.date}</p>
+              <p class='title'>{props.content.title}</p>
+              <p class='name'>{props.content.historyName}</p>
+              <p class='text'>{props.content.text}</p>
+              <p class='links'>
+                <a href={props.content.textUrl} target='_blank' class='textLink magnet'>texte / {props.content.textUrlTitle}</a>
+                <a href={props.content.imageUrl} target='_blank' class='imageLink magnet'>image / {props.content.imageUrlTitle}</a>
+              </p>
+            </div>
             <NextButton id={props.id} factsArray={props.factsArray} factDate={props.content.date} goToDateOnChronoButton={props.goToDateOnChronoButton} />
           </div>
         </div>
