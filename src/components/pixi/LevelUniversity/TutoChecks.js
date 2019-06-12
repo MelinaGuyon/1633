@@ -6,8 +6,8 @@ import cookie from '../../../controllers/cookie'
 export default class TutoCheck extends PixiComponent {
   setup () {
     this.mains = []
-    //this.mains.push(this.addComponent(Colliders, { layer: '1bg200', x: -1800, y: -100, group: 'tuto', collide: true, tint: 0x3366ff, cb: this.cb.bind(this, 'keyboard'), name: 'keyboard' }))
-    this.mains.push(this.addComponent(Colliders, { layer: '1bg200', x: -200, y: -100, group: 'tuto', collide: true, tint: 0x3366ff, cb: this.cb.bind(this, 'space'), name: 'space' }))
+    //this.mains.push(this.addComponent(Colliders, { layer: '1bg0', x: -1800, y: -100, group: 'tuto', collide: true, tint: 0x3366ff, cb: this.cb.bind(this, 'keyboard'), name: 'keyboard' }))
+    this.mains.push(this.addComponent(Colliders, { layer: '1bg0', x: -200, y: -100, group: 'tuto', collide: true, tint: 0x3366ff, cb: this.cb.bind(this, 'space'), name: 'space' }))
   }
 
   openTuto (id) {
