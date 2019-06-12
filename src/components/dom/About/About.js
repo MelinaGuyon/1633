@@ -11,7 +11,7 @@ export default class About extends DomComponent {
     return (
       <section id='about' ref={addRef(this, 'about')}>
         <div class='content'>
-          <p class='title'>Gobelins x Sorbonne</p>
+          <p class='title'>Gobelins <span class='love'>x</span> Sorbonne</p>
           <p class='description'>{loc['about.description']}</p>
           <p class='helpers'>{loc['about.helpers']}</p>
           <ul class='team'>

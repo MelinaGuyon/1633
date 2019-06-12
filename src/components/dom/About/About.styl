@@ -12,32 +12,43 @@
   &.visible
     transform: translateX(0)
 
+
   .content
-    position: absolute
-    margin: auto
-    width: 61%
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
+      font-family: RobotoRegular
+      font-size: 13.8px
+      position: absolute
+      width: 60%
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
 
     .title
       text-align: center
-      font-size: 76px
+      font-size: 77px
+      letter-spacing: 3px
       font-family: EczarBold
       color: transparent
-      -webkit-text-stroke: 0.8px #f79586
+      -webkit-text-stroke: 0.9px #f79586
+
+      .love
+        font-size: 26px
+        font-family: Eczar
+        color: #f79586
+        -webkit-text-stroke: inherit
+        vertical-align: middle
 
     .description
-      margin-top: 50px
-      font-family: RobotoCondensedLight
+      margin-top: 40px
+      line-height: 19px
 
     .helpers
-      margin-top: 20px
-      font-family: RobotoCondensedLight
+      margin-top: 15px
+      line-height: 19px
 
     .team
       margin-top: 60px
       color: #f79586
+      line-height: 19px
 
     .team li
       display: inline-block
@@ -45,10 +56,9 @@
 
     .name
       font-size: 17px
-      font-family: EczarBold
+      font-family: EczarMedium
 
     .job
       font-size: 11px
-      margin-top: 5px
       text-transform: uppercase
       font-family: RobotoCondensedLight
