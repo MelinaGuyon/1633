@@ -1,6 +1,6 @@
 export default {
   order: [
-    [0, 1, 1, 2, 3, 3, 3, 4, 4, 5, 6]
+    [0, 1, 1, 1, 2, 2, 2, 3, 3, 4, 5]
   ],
   chrono: [
     {
@@ -28,15 +28,6 @@ export default {
       textUrl: 'https://www.persee.fr/doc/abpo_0003-391x_1962_num_69_3_2162',
       imageUrlTitle: 'Wikipedia',
       imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b3/Alexandre_Lenoir.jpg'
-    },
-    {
-      historyId: 0,
-      historyName: 'A SUPPRIMER',
-      date: 1793,
-      title: 'A SUPPRIMER',
-      sceneTitle: '...',
-      text: 'A SUPPRIMER',
-      img: 'https://s3-eu-west-1.amazonaws.com/clientfileuploads/prod_image/26/productimages/2016JK2304.jpg'
     },
     {
       historyId: 0,
