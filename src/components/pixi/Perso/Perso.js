@@ -14,12 +14,12 @@ export default class Perso extends PixiComponent {
 
     this.refs.perso = this.addChild('perso')
     this.anim = new Animator(this.refs.perso)
-    this.base.scale.y = 0.3
-    this.base.scale.x = 0.3
+    this.base.scale.y = 0.2
+    this.base.scale.x = 0.2
     this.base.fakeX = 0
     this.base.fakeY = -1 // to let scenes in cneter
-    this.base.x = -70
-    this.base.y = -100
+    this.base.x = -60
+    this.base.y = -60
     this.body = physics.addBody({
       group: 'hero',
       gravity: true,
@@ -41,12 +41,12 @@ export default class Perso extends PixiComponent {
   updateAnimation (direction) {
     if (this.oldDirection !== direction) {
       if (direction === 0) {
-        this.base.scale.x = -0.3
+        this.base.scale.x = -0.2
         this.base.x = 40
         this.anim.play('perso', { loop: true, frameDuration: 30, firstFrame: this.anim.currentFrame })
       } else if (direction === 1) {
-        this.base.scale.x = 0.3
-        this.base.x = -70
+        this.base.scale.x = 0.2
+        this.base.x = -60
         this.anim.play('perso', { loop: true, frameDuration: 30, firstFrame: this.anim.currentFrame })
       } else {
         this.anim.stop()
