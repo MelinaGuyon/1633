@@ -8,7 +8,7 @@ export default class CityBuildings extends PixiComponent {
     this.mains = []
     // real
     this.mains.push(this.addComponent(Building, { layer: '1bg700', type: 'a', x: 0, y: -54, scale: 0.66 })) // big
-    this.mains.push(this.addComponent(Building, { layer: '1bg700', type: 'c', x: 0, y: -50, scale: 0.66 })) // big
+    this.mains.push(this.addComponent(Building, { layer: '1bg700', type: 'c', x: 0, y: -50, scale: 0.66 })) // incrustation
     this.mains.push(this.addComponent(Building, { layer: '1bg700', type: 'b', x: 0, y: -60, scale: 0.66 })) // big
 
     this.mains.push(this.addComponent(Building, { layer: '1bg700', type: 'd', x: 0, y: -50, scale: 0.66 })) // fenetre
