@@ -42,7 +42,7 @@ export default class Perso extends PixiComponent {
     if (this.oldDirection !== direction) {
       if (direction === 0) {
         this.base.scale.x = -0.66
-        this.base.x = 64
+        this.base.x = 60
         this.anim.play('perso', { loop: true, frameDuration: 30, firstFrame: this.anim.currentFrame })
       } else if (direction === 1) {
         this.base.scale.x = 0.66

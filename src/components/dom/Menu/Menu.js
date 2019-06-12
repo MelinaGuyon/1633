@@ -244,6 +244,7 @@ export default class Menu extends DomComponent {
 
   bind () {
     signals.factUnlock.listen(this.fastbind('onFactUnlocked', 1))
+    signals.factUnlockEnd.listen(this.fastbind('onFactUnlockedEnd', 1))
     this.listenStore('menuLight', this.fastbind('updateMenu', 1))
     this.listenStore('menuSocials', this.fastbind('updateSocials', 1))
     this.listenStore('launched', this.fastbind('updateSocials'))
@@ -254,6 +255,13 @@ export default class Menu extends DomComponent {
     this.collectButton.collectId = id
     this.collectButton.base.classList.add('magnet')
     this.collectButton.base.classList.add('visible')
+    signals.newDom.dispatch()
+  }
+
+  onFactUnlockedEnd (id) {
+    this.collectButton.collectId = null
+    this.collectButton.base.classList.remove('magnet')
+    this.collectButton.base.classList.remove('visible')
     signals.newDom.dispatch()
   }
 
