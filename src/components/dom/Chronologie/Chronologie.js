@@ -5,6 +5,7 @@ import store from 'state/store'
 import anime from 'animejs'
 import signals from 'state/signals'
 import sortBy from 'lodash/sortBy'
+import delay from 'lodash/delay'
 
 import './Chronologie.styl'
 
@@ -68,7 +69,7 @@ class Fact extends DomComponent {
           <div class='content' ref={addRef(this, 'content')} >
             <PreviousButton id={props.id} factDate={props.content.date} goToDateOnChronoButton={props.goToDateOnChronoButton} />
             <div class='subContent' >
-              <p class='date'>{props.content.date}</p>
+              {/* <p class='date'>{props.content.date}</p> */}
               <p class='title'>{props.content.title}</p>
               <p class='name'>{props.content.historyName}</p>
               <p class='text'>{props.content.text}</p>
@@ -222,11 +223,13 @@ export default class Chronologie extends DomComponent {
   getChronologieOffset () {
     // TODO :: to get on resize too
     store.chronologieOffset.set({ x: this.chronologie.offsetWidth, y: this.chronologie.scrollTop })
+    delay(() => { signals.newDom.dispatch() }, 500)
   }
 
   unbindedGetChronologieOffset (top) {
     // TODO :: to get on resize too
     store.chronologieOffset.set({ x: this.chronologie.offsetWidth, y: top })
+    delay(() => { signals.newDom.dispatch() }, 500)
   }
 
   checkCurrent () {
