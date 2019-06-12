@@ -23,12 +23,14 @@ const sfxs = {
   'voixoff/chap_8': { loop: false, fadeOut: 400, volume: 5 },
   'voixoff/epilogue': { loop: false, fadeOut: 400, volume: 5 },
   'effect/cat': { loop: false, fadeOut: 400, volume: 0.5 },
-  'effect/crowd': { loop: false, fadeOut: 400, volume: 0.05 },
-  'effect/kids': { loop: false, fadeOut: 400, volume: 0.6 },
-  'effect/rain': { loop: false, fadeOut: 400, volume: 1.5 },
-  'effect/bird': { loop: false, fadeOut: 400, volume: 0.1 },
-  'effect/vaisselle': { loop: false, fadeOut: 400, volume: 0.05 },
-  'effect/fire': { loop: false, fadeOut: 400, volume: 0.5 }
+  'effect/crowd': { loop: true, fadeOut: 400, volume: 0.05 },
+  'effect/kids': { loop: true, fadeOut: 400, volume: 0.6 },
+  'effect/rain': { loop: true, fadeOut: 400, volume: 1.5 },
+  'effect/bird': { loop: true, fadeOut: 400, volume: 0.1 },
+  'effect/vaisselle': { loop: true, fadeOut: 400, volume: 0.05 },
+  'effect/ceremony': { loop: true, fadeOut: 400, volume: 0.2 },
+  'effect/photo': { loop: false, fadeOut: 400, volume: 0.2 },
+  'effect/fire': { loop: true, fadeOut: 400, volume: 0.5 }
 }
 
 export default { sfxs, musics }
