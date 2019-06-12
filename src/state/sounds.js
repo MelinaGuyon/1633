@@ -3,7 +3,6 @@ const musics = {
 }
 
 const sfxs = {
-  'amb_qte_loop': { loop: true, fadeOut: 400, fadeIn: 700 },
   'voixoff/intro': { loop: false, fadeOut: 900, volume: 5 },
   'voixoff/intro_bis': { loop: false, fadeOut: 400, volume: 5 },
   'voixoff/intro_ter': { loop: false, fadeOut: 400, volume: 5 },
