@@ -1,0 +1,54 @@
+#about
+  width: 100vw
+  height: 100vh
+  background: $light-salmon
+  position: absolute
+  z-index: $indexChronologie
+  top: 0
+  overflow: auto
+  transform: translateX(100vw)
+  transition: transform 0.6s $quad-ease-out
+
+  &.visible
+    transform: translateX(0)
+
+  .content
+    position: absolute
+    margin: auto
+    width: 61%
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+    .title
+      text-align: center
+      font-size: 76px
+      font-family: EczarBold
+      color: transparent
+      -webkit-text-stroke: 0.8px #f79586
+
+    .description
+      margin-top: 50px
+      font-family: RobotoCondensedLight
+
+    .helpers
+      margin-top: 20px
+      font-family: RobotoCondensedLight
+
+    .team
+      margin-top: 60px
+      color: #f79586
+
+    .team li
+      display: inline-block
+      width: 20%
+
+    .name
+      font-size: 17px
+      font-family: EczarBold
+
+    .job
+      font-size: 11px
+      margin-top: 5px
+      text-transform: uppercase
+      font-family: RobotoCondensedLight
