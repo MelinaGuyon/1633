@@ -210,6 +210,7 @@ export default class Chronologie extends DomComponent {
       store.pause.set(true)
       store.menuLight.set(true)
       store.menuSocials.set(false)
+      delay(() => { signals.newDom.dispatch() }, 1000) // car animation css qui décale les points
     } else if (chronologieStatus === 'disappearing') {
       this.chronologie.classList.remove('visible')
       this.internalUnbind()
@@ -229,7 +230,7 @@ export default class Chronologie extends DomComponent {
   unbindedGetChronologieOffset (top) {
     // TODO :: to get on resize too
     store.chronologieOffset.set({ x: this.chronologie.offsetWidth, y: top })
-    delay(() => { signals.newDom.dispatch() }, 500)
+    delay(() => { signals.newDom.dispatch() }, 2500)
   }
 
   checkCurrent () {
