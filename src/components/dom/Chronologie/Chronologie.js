@@ -11,7 +11,7 @@ import './Chronologie.styl'
 class PreviousButton extends DomComponent {
   template (props) {
     return (
-      <button class='buttonFact' data-id={props.id}>Fait précédent</button>
+      <img src='assets/img/pictos/arrow-top.svg' class='buttonFact buttonFactTop magnet' data-id={props.id} />
     )
   }
 
@@ -34,7 +34,7 @@ class PreviousButton extends DomComponent {
 class NextButton extends DomComponent {
   template (props) {
     return (
-      <button class='buttonFact' data-id={props.id}>Fait suivant</button>
+      <img src='assets/img/pictos/arrow-bottom.svg' class='buttonFact buttonFactBottom magnet' data-id={props.id} />
     )
   }
 
@@ -61,7 +61,8 @@ class Fact extends DomComponent {
     this.locked = true
 
     return (
-      <div class='fact locked' id={'fact' + props.id} ref={addRef(this, 'fact')}>
+      // <div class='fact locked' id={'fact' + props.id} ref={addRef(this, 'fact')}>
+      <div class='fact' id={'fact' + props.id} ref={addRef(this, 'fact')}>
         <div class='content-container'>
           <img class='character' ref={addRef(this, 'character')} src={props.content.img} />
           <div class='content' ref={addRef(this, 'content')} >
@@ -70,6 +71,10 @@ class Fact extends DomComponent {
             <p class='title'>{props.content.title}</p>
             <p class='name'>{props.content.historyName}</p>
             <p class='text'>{props.content.text}</p>
+            <p class='links'>
+              <a href='{props.content.textUrl}' class='textLink'>texte / {props.content.textUrlTitle}</a>
+              <a href='{props.content.imageUrl}' class='imageLink'>image / {props.content.imageUrlTitle}</a>
+            </p>
             <NextButton id={props.id} factsArray={props.factsArray} factDate={props.content.date} goToDateOnChronoButton={props.goToDateOnChronoButton} />
           </div>
         </div>
