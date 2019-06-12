@@ -48,7 +48,7 @@ export default {
       date: 1866,
       title: 'Retour du crâne',
       sceneTitle: '...',
-      text: '"Ce n\'est qu\'en 1866 que le fils de Charles Armez, l\'empereur l\'ayant personnellement prié de lui céder la fameuse tête, consentit à s\'en dessaisir. Le préfet des Côtes-du-Nord l\'apporta en personne à Paris, non point comme on l\'a dit dans une caisse portant encore l\'étiquette Pâté de Strasbourg, mais dans un coffret doublé de satin blanc que les Armez avaient fait spécialement confectionner pour elle. Elle fut remise au ministre de l\'Instruction publique Victor Duruy et, le 15 décembre, dans une cérémonie au sujet de laquelle la presse fut singulièrement discrète, la tête [...] retrouva sa place dans le tombeau de la Sorbonne."',
+      text: 'Si la cérémonie annuelle d\'exhibition du crâne est aujourd’hui considérée comme une légende, sa réclamation par l’Empereur est véridique : "Ce n\'est qu\'en 1866 que le fils de Charles Armez, l\'empereur l\'ayant personnellement prié de lui céder la fameuse tête, consentit à s\'en dessaisir. Le préfet des Côtes-du-Nord l\'apporta en personne à Paris, non point comme on l\'a dit dans une caisse portant encore l\'étiquette Pâté de Strasbourg, mais dans un coffret doublé de satin blanc que les Armez avaient fait spécialement confectionner pour elle. Elle fut remise au ministre de l\'Instruction publique Victor Duruy et, le 15 décembre, dans une cérémonie au sujet de laquelle la presse fut singulièrement discrète, la tête [...] retrouva sa place dans le tombeau de la Sorbonne."',
       img: 'assets/img/chrono/retourCrane.png',
       textUrlTitle: 'A. Rebillon',
       textUrl: 'https://www.persee.fr/doc/abpo_0003-391x_1962_num_69_3_2162',
