@@ -7,7 +7,7 @@ export default class Interests extends InterestsAbs {
     this.facts = []
 
     this.mains = []
-    this.mains.push(this.addComponent(Colliders, { layer: '6bg200', levelId: 6, x: 100, y: -100, group: 'interests', collide: true, tint: 0xFF0000, cb: this.cb.bind(this, (store.chronologieIdsTable.get()[5])) }))
+    this.mains.push(this.addComponent(Colliders, { layer: '6bg200', levelId: 6, x: 0, y: -100, group: 'interests', collide: true, alpha: 0, tint: 0xFF0000, cb: this.cb.bind(this, (store.chronologieIdsTable.get()[5])) }))
 
     this.bind()
   }
