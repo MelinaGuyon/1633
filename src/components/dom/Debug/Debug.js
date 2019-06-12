@@ -85,10 +85,6 @@ class BtnChangeSound extends DomComponent {
   }
 
   onClick (e) {
-	  sound.stop('2_music_studio')
-	  sound.stop('3_music_studio')
-	  sound.stop('4_music_studio')
-	  sound.stop('7_music_studio')
 	  console.log(e.target.id)
 	  sound.play(e.target.id + '_music_studio')
   }
@@ -110,10 +106,7 @@ class BtnremoveSound extends DomComponent {
   }
 
   onClick (e) {
-	  sound.stop('2_music_studio')
-	  sound.stop('3_music_studio')
-	  sound.stop('4_music_studio')
-	  sound.stop('7_music_studio')
+
   }
 }
 
@@ -121,13 +114,7 @@ export default class Debug extends DomComponent {
   template ({ base }) {
     return (
       <section class='debug'>
-        <div class='button'>
-          <BtnChangeSound id={'2'} text='son2' />
-          <BtnChangeSound id={'3'} text='son3' />
-          <BtnChangeSound id={'4'} text='son4' />
-          <BtnChangeSound id={'7'} text='son7' />
-          <BtnremoveSound text='arrêter son' />
-        </div>
+        <div class='button' />
       </section>
     )
   }
