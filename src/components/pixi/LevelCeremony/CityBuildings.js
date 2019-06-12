@@ -5,13 +5,17 @@ import Light from 'components/pixi/LevelCommon/Light'
 export default class CityBuildings extends PixiComponent {
   setup () {
     this.mains = []
-    this.mains.push(this.addComponent(Building, { layer: '4bg600', type: 'a', x: 0, y: -50 }))
-    this.mains.push(this.addComponent(Building, { layer: '4bg500', type: 'b', x: 0, y: -150 }))
-    this.mains.push(this.addComponent(Building, { layer: '4bg400', type: 'c', x: 450, y: -200 }))
-    this.mains.push(this.addComponent(Building, { layer: '4bg300', type: 'd', x: 300, y: 0 }))
-    this.mains.push(this.addComponent(Building, { layer: '4bg200', type: 'e', x: -400, y: 0 }))
-    this.mains.push(this.addComponent(Building, { layer: '4bg100', type: 'f', x: 0, y: 80 }))
-    this.mains.push(this.addComponent(Building, { layer: '4bg100', type: 'g', x: -200, y: 220 }))
+    this.mains.push(this.addComponent(Building, { layer: '4bg700', type: 'b', x: 10, y: -60, scale: 0.66 })) // fond
+    this.mains.push(this.addComponent(Building, { layer: '4bg700', type: 'c', x: 0, y: -50, scale: 0.66 })) // fond incrusté
+    this.mains.push(this.addComponent(Building, { layer: '4bg700', type: 'a', x: 2, y: -52, scale: 0.66 })) // big
+
+    this.mains.push(this.addComponent(Building, { layer: '4bg600', type: 'd', x: 2, y: -52, scale: 0.66 })) // fenêtre
+    this.mains.push(this.addComponent(Building, { layer: '4bg600', type: 'e', x: 150, y: -20, scale: 0.64 })) // mausolé
+    this.mains.push(this.addComponent(Building, { layer: '4bg600', type: 'f', x: -550, y: -50, scale: 0.62 })) // pierres
+    this.mains.push(this.addComponent(Building, { layer: '4bg600', type: 'g', x: 390, y: -100, scale: 0.64 })) // feu droite
+    this.mains.push(this.addComponent(Building, { layer: '4bg600', type: 'h', x: -220, y: -470, scale: 0.64 })) // feu gauche
+    this.mains.push(this.addComponent(Building, { layer: '4bg600', type: 'i', x: -650, y: -300, scale: 0.62 })) // cheval
+    this.mains.push(this.addComponent(Building, { layer: '4bg600', type: 'j', x: -240, y: 130, scale: 0.64 })) // tête
     // this.mains.push(this.addComponent(Light, { layer: '4bg200', form: 'light/main', target: this.base, x: 7, y: -63, tint: 0x886600, alpha: 1, scale: [0.3, 0.27] }))
   }
 

@@ -126,6 +126,12 @@ export default class Body {
     } else {
       this.hasMoved = false
     }
+
+    if (this.maxX === this.x) {
+      // TODO: voir si on ne check pas que la voix off ai finie avant de lancer la fin
+      store.pause.set(true)
+      store.ended.set(true)
+    }
   }
 
   getMin () {
@@ -156,5 +162,3 @@ export default class Body {
     this.rect = undefined
   }
 }
-
-// idée anim perso : http://inspacewetrust.org/en/

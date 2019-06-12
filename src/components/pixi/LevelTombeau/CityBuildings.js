@@ -1,13 +1,15 @@
 import PixiComponent from 'abstractions/PixiComponent'
 import Building from './CityBuilding'
-import Light from 'components/pixi/LevelCommon/Light'
 
 export default class CityBuildings extends PixiComponent {
   setup () {
     this.mains = []
-    this.mains.push(this.addComponent(Building, { layer: '10bg600', x: 0, type: 'a', y: -50 })) // big
-    this.mains.push(this.addComponent(Building, { layer: '10bg500', x: 0, type: 'b', y: -150 }))
-    this.mains.push(this.addComponent(Building, { layer: '10bg400', x: 0, type: 'e', y: 50 }))
+    this.mains.push(this.addComponent(Building, { layer: '10bg700', type: 'c', x: 0, y: 0, scale: 0.66 })) // fond incrusté
+    this.mains.push(this.addComponent(Building, { layer: '10bg700', type: 'b', x: 10, y: -56, scale: 0.66 })) // fond
+    this.mains.push(this.addComponent(Building, { layer: '10bg700', type: 'a', x: -13, y: -45, scale: 0.66 })) // big
+
+    this.mains.push(this.addComponent(Building, { layer: '10bg700', type: 'd', x: -13, y: -45, scale: 0.66 })) // fenêtres
+    this.mains.push(this.addComponent(Building, { layer: '10bg700', type: 'e', x: 10, y: 0, scale: 0.62 })) // mausolé
   }
 
   componentWillUnmount () {
