@@ -4,47 +4,36 @@ import store from 'state/store'
 
 import './About.styl'
 
-
-// class Fact extends DomComponent {
-//   template (props) {
-//     return (
-//       <div class=''>
-//       </div>
-//     )
-//   }
-
-//   componentDidMount () {
-//   }
-// }
-
 export default class About extends DomComponent {
   template ({ base }) {
+    const loc = store.loc.get()
+
     return (
       <section id='about' ref={addRef(this, 'about')}>
         <div class='content'>
           <p class='title'>Gobelins x Sorbonne</p>
-          <p class='description'>1253 : Il était une fois la Sorbonne est un projet imaginé et créé en partenariat avec la Chancellerie de Paris par des étudiantes en Master Design et Management de l’Innovation Interactive à Gobelins, l’Ecole de l’Image.</p>
-          <p class='helpers'>Avec l’aimable participation de : Mélody Laurent, Frédérick Bigrat, Alex Thao, Sarah Ziade, Rachel Donnat, Pauline Gomy, Arnaud Lacaze, Jean-Christophe Lebert, Mathieu Mauclerc, François Puissant</p>
+          <p class='description'>{loc['about.description']}</p>
+          <p class='helpers'>{loc['about.helpers']}</p>
           <ul class='team'>
             <li>
               <p class='name'>Alicia Baudry</p>
-              <p class='job'>Développeuse</p>
+              <p class='job'>{loc['about.developer']}</p>
             </li>
             <li>
               <p class='name'>Hélène Starck</p>
-              <p class='job'>Illustratrice</p>
+              <p class='job'>{loc['about.illustrator']}</p>
             </li>
             <li>
               <p class='name'>Mélina Guyon</p>
-              <p class='job'>Développeuse</p>
+              <p class='job'>{loc['about.developer']}</p>
             </li>
             <li>
               <p class='name'>Tatiana Jacques</p>
-              <p class='job'>Développeuse</p>
+              <p class='job'>{loc['about.developer']}</p>
             </li>
             <li>
               <p class='name'>Solenne Relisieux</p>
-              <p class='job'>Designer</p>
+              <p class='job'>{loc['about.designer']}</p>
             </li>
           </ul>
         </div>
