@@ -5,6 +5,7 @@ import Carrousel from 'components/dom/Carrousel/Carrousel'
 import Timeline from 'components/dom/Timeline/Timeline'
 import Chronologie from 'components/dom/Chronologie/Chronologie'
 import ChronologieTimeline from 'components/dom/ChronologieTimeline/ChronologieTimeline'
+import About from 'components/dom/About/About'
 import Subtitles from 'components/dom/Subtitles/Subtitles'
 import Tutorial from 'components/dom/Tutorial/Tutorial'
 import Debug from 'components/dom/Debug/Debug'
@@ -23,6 +24,7 @@ export default class GameInterface extends DomComponent {
         <Carrousel />
         <Chronologie />
         <ChronologieTimeline />
+        <About />
         <Timeline />
         <Subtitles />
         <Tutorial />

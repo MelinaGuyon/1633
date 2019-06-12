@@ -9,10 +9,10 @@ export default {
       date: 1793,
       title: 'Profanation du tombeau',
       sceneTitle: '...',
-      text: 'Durant la Révolution Française, beaucoup de personnages prestigieux de l’Histoire de France ont vu leurs tombeaux profanés par les sans-culottes. Les corps exhumés finissaient souvent jetés dans des fosses communes après avoir subi différents mauvais traitements (cheveux arrachés, têtes coupées etc.). Alexandre Lenoir, connu pour son implication dans la protection des tombeaux profanés au cours de la Révolution, aurait été blessé par un coup de baïonnette pour avoir essayé de protéger cette mystérieuse sépulture.',
+      text: 'Durant la Révolution Française, beaucoup de personnages prestigieux de l’Histoire de France ont vu leurs tombeaux profanés par les sans-culottes. Les corps exhumés finissaient souvent jetés dans des fosses communes après avoir subi différents mauvais traitements (cheveux arrachés, têtes coupées etc.). Alexandre Lenoir, connu pour son implication dans la protection des tombeaux profanés au cours de la Révolution, aurait été blessé par un coup de baïonnette pour avoir essayé de protéger la mystérieuse sépulture dont l\'histoire vous est contée...',
       img: 'assets/img/chrono/profanationTombeau.png',
       textUrlTitle: 'A. Baudry',
-      textUrl: '',
+      textUrl: 'https://www.persee.fr/doc/abpo_0003-391x_1962_num_69_3_2162',
       imageUrlTitle: 'Jacques Louis David',
       imageUrl: 'https://fr.muzeo.com/sites/default/files/styles/image_moyenne_def/public/oeuvres/peinture/classique/alexandre_lenoir_17611839_42073_3.jpg?itok=X_eFuaK7'
     },
@@ -38,7 +38,7 @@ export default {
       text: 'La famille Armez conserva le crâne durant plus de 60 ans. Le prêtre Nicolas, qui ne le récupéra pas plus tard qu’en 1805, le confia au pharmacien Hamon de Saint-Brieuc, qui lui appliquera un traitement anti-insecte et un verni. "La famille Armez appartient à la haute bourgeoisie de Bretagne : elle est fixée depuis le XVIIIème siècle dans la commune de Plourivo, près de Saint-Brieuc. Nicolas Armez, président du Conseil général des Côtes-du-Nord en 1808, fut député [...] à la chambre des Cent Jours, en 1815 : son fils a été plusieurs fois député des Côtes-du-Nord sous Louis-Philippe et son petit-fils, Louis Armez, né en 1848, maire de Plourivo en 1871, a été nommé plusieurs fois depuis 1876 député républicain de Saint-Brieuc."',
       img: 'assets/img/chrono/armez.png',
       textUrlTitle: 'A. Baudry',
-      textUrl: '',
+      textUrl: 'http://www.infobretagne.com/plourivo.htm',
       imageUrlTitle: 'infobretagne.com',
       imageUrl: 'http://www.infobretagne.com/images/plourivo_5.jpg'
     },

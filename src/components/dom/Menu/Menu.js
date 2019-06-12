@@ -26,6 +26,7 @@ class ChronologieButton extends DomComponent {
 
   onClick (e) {
     if (store.chronologieStatus.get() !== 'appearing') {
+      store.aboutStatus.set('disappearing')
       store.chronologieId.set('top')
       store.chronologieStatus.set('appearing')
     } else {
@@ -53,6 +54,7 @@ class BackButton extends DomComponent {
 
   onClick (e) {
     store.chronologieStatus.set('disappearing')
+    store.aboutStatus.set('disappearing')
   }
 }
 
@@ -183,7 +185,12 @@ class AboutButton extends DomComponent {
   }
 
   onClick (e) {
-
+    if (store.aboutStatus.get() !== 'appearing') {
+      store.chronologieStatus.set('disappearing')
+      store.aboutStatus.set('appearing')
+    } else {
+      store.aboutStatus.set('disappearing')
+    }
   }
 }
 
