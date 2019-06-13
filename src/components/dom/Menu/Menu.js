@@ -148,9 +148,13 @@ class PlayPauseButton extends DomComponent {
 
 class LangButton extends DomComponent {
   template (props) {
-    const loc = store.loc.get()
+    let lang = store.lang.get()
+    let newLang
+    if (lang === 'fr') newLang = 'en'
+    else if (lang === 'en') newLang = 'fr'
+
     return (
-      <button class='nav-lang magnet' data-id={props.id}>{loc['nav.language']}</button>
+      <button class='nav-lang magnet' data-id={props.id}>{newLang}</button>
     )
   }
 
@@ -164,9 +168,9 @@ class LangButton extends DomComponent {
 
   onClick (e) {
     let lang = store.lang.get()
-    if (lang === 'fr') store.lang.set('en')
-    else if (lang === 'en') store.lang.set('fr')
-    let newLang = store.lang.get()
+    let newLang
+    if (lang === 'fr') newLang = 'en'
+    else if (lang === 'en') newLang = 'fr'
     window.location.href = '/' + newLang + '/'
   }
 }
