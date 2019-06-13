@@ -15,7 +15,9 @@ import './Carrousel.styl'
 class Form extends DomComponent {
   template (props) {
     let clasName = 'carrousel__form__content ' + props.active
-	  const loc = store.loc.get()
+    const loc = store.loc.get()
+    this.id = props.id
+
     return (
       <div class={clasName} launchGame={props.launchGame} type={props.type} data-id={props.id}>
         <div class='carrousel__form'>
@@ -26,13 +28,6 @@ class Form extends DomComponent {
       </div>
     )
   }
-
-  /**
-    <Button type={props.type} active={'active'} />
-    <Button type={props.type} active={'active'} />
-    <Button type={props.type} id={0} active={'active'} />
-    <Button type={props.type} id={0} active={'active'} />
- */
 
   componentDidMount () {
     this.bind()
@@ -51,28 +46,7 @@ class Form extends DomComponent {
 
   onClick (e) {
 	  this.fadeOut(e.target.parentNode.parentNode)
-    const id = Number(e.target.getAttribute('data-id'))
-    this.props.launchGame && this.props.launchGame(id)
-  }
-}
-
-class Button extends DomComponent {
-  template (props) {
-	  let className = 'carrousel__choice ' + props.active
-	  const loc = store.loc.get()
-    return (
-      <div class={className} data-text={loc['carrousel.' + props.type]}><span>{loc['carrousel.' + props.type]}</span></div>
-    )
-  }
-}
-
-class Text extends DomComponent {
-  template (props) {
-	  let className = 'carrousel__form__content ' + props.active
-    const loc = store.loc.get()
-    return (
-      <div class={className} data-text={loc['carrousel.' + props.type]}><span>{loc['carrousel.' + props.type]}</span></div>
-    )
+    this.props.launchGame && this.props.launchGame(this.id)
   }
 }
 
@@ -90,8 +64,10 @@ let ticking = false
 
 export default class Carrousel extends DomComponent {
   template ({ base }) {
+    this.launchGame = this.fastbind('launchGame', 1)
+
     return (
-      <section data-type='carrousel' id='carrousel' class='carrousel mouse__close'>
+      <section data-type='carrousel' id='carrousel' class='carrousel mouse__close' ref={addRef(this, 'carrousel')}>
         <Intro onComplete={this.fastbind('activeCarousel')} ref={addRef(this, 'intro')} />
         <div class='carrousel-wrapper' ref={addRef(this, 'carouselWrapper')}>
           <Form active={'active'} type={'richelieu'} id={0} launchGame={this.launchGame} />
@@ -105,6 +81,7 @@ export default class Carrousel extends DomComponent {
   }
 
   componentDidMount () {
+    this.mouseWhellTodo = this.fastbind('mouseWhellTodo', 1)
     if (store.skipCarousel.get()) this.launchGame(0)
   }
 
@@ -125,117 +102,120 @@ export default class Carrousel extends DomComponent {
       complete: () => { this.carouselWrapper.classList.add('visible') }
     })
 
-    this.scrollListen()
+    this.bind()
   }
 
-  scrollListen () {
+  bind () {
 	  document.addEventListener('mousewheel', this.mouseWhellTodo)
   }
 
+  unbind () {
+    document.removeEventListener('mousewheel', this.mouseWhellTodo)
+  }
+
   mouseWhellTodo (e) {
+    console.log('weel')
 	  let lastPostitionScroll = e.deltaY
 	  if (!ticking) {
-		  scrolling(lastPostitionScroll)
+		  this.scrolling(lastPostitionScroll)
 		  ticking = true
 		  setTimeout(function () {
 			  console.log('ticking')
 			  ticking = false
 		  }, 2000)
 	  }
+  }
 
-	  function scrolling (posScroll) {
-		  if (posScroll > 0) {
-			  console.log('scroool down')
-			  goPrev()
-		  } else {
-			  goNext()
-			  console.log('scroool up')
-		  }
-	  }
+  goNext () {
+    let current = document.querySelector('.carrousel__form__content.active')
+    let all = document.querySelectorAll('.carrousel__form__content')
+    let currentPos = current.getAttribute('data-id')
+    let maxPos = all.length
+    let nextpos
+    let newCurrent
+    if (parseInt(currentPos) + 1 > (maxPos - 1)) {
+      nextpos = 0
+    } else {
+      nextpos = parseInt(currentPos) + 1
+    }
 
-	  function goNext () {
-		  console.log(' au suivant ')
-		  let current = document.querySelector('.carrousel__form__content.active')
-		  let all = document.querySelectorAll('.carrousel__form__content')
-		  let currentPos = current.getAttribute('data-id')
-		  let maxPos = all.length
-		  let nextpos
-		  let newCurrent
-		  if (parseInt(currentPos) + 1 > (maxPos - 1)) {
-			  nextpos = 0
-		  } else {
-			  nextpos = parseInt(currentPos) + 1
-		  }
+    let scrollingText = document.querySelectorAll('.carrousel__textScrolling')
 
-		  let scrollingText = document.querySelectorAll('.carrousel__textScrolling')
+    for (let i = 0; i < scrollingText.length; i++) {
+      scrollingText[i].classList.add('hidden')
+      scrollingText[i].classList.remove('opacity')
+    }
 
-		  for (let i = 0; i < scrollingText.length; i++) {
-			  scrollingText[i].classList.add('hidden')
-			  scrollingText[i].classList.remove('opacity')
-		  }
+    for (let i = 0; i < maxPos; i++) {
+      if (parseInt(all[i].getAttribute('data-id')) === nextpos) {
+        newCurrent = all[i]
+      }
+    }
 
-		  for (let i = 0; i < maxPos; i++) {
-			  if (parseInt(all[i].getAttribute('data-id')) === nextpos) {
-				  newCurrent = all[i]
-			  }
-		  }
+    setTimeout(function () {
+      current.classList.remove('active')
+      newCurrent.classList.add('active')
+      setTimeout(function () {
+        for (let i = 0; i < scrollingText.length; i++) {
+          scrollingText[i].classList.add('opacity')
+          scrollingText[i].classList.remove('hidden')
+        }
+      }, 1000)
+    }, 1000)
+  }
 
-		  setTimeout(function () {
-			  current.classList.remove('active')
-			  newCurrent.classList.add('active')
-			  setTimeout(function () {
-				  for (let i = 0; i < scrollingText.length; i++) {
-					  scrollingText[i].classList.add('opacity')
-					  scrollingText[i].classList.remove('hidden')
-				  }
-			  }, 1000)
-		  }, 1000)
-	  }
+  goPrev () {
+    let current = document.querySelector('.carrousel__form__content.active')
+    let all = document.querySelectorAll('.carrousel__form__content')
+    let currentPos = current.getAttribute('data-id')
+    let maxPos = all.length
+    let nextpos
+    let newCurrent
 
-	  function goPrev () {
-		  console.log(' retour avant ')
-		  let current = document.querySelector('.carrousel__form__content.active')
-		  let all = document.querySelectorAll('.carrousel__form__content')
-		  let currentPos = current.getAttribute('data-id')
-		  let maxPos = all.length
-		  let nextpos
-		  let newCurrent
+    let scrollingText = document.querySelectorAll('.carrousel__textScrolling')
 
-		  let scrollingText = document.querySelectorAll('.carrousel__textScrolling')
+    for (let i = 0; i < scrollingText.length; i++) {
+      scrollingText[i].classList.add('hidden')
+      scrollingText[i].classList.remove('opacity')
+    }
 
-		  for (let i = 0; i < scrollingText.length; i++) {
-			  scrollingText[i].classList.add('hidden')
-			  scrollingText[i].classList.remove('opacity')
-		  }
+    if (parseInt(currentPos) - 1 < 0) {
+      nextpos = (maxPos - 1)
+    } else {
+      nextpos = parseInt(currentPos) - 1
+    }
 
-		  if (parseInt(currentPos) - 1 < 0) {
-			  nextpos = (maxPos - 1)
-		  } else {
-			  nextpos = parseInt(currentPos) - 1
-		  }
+    for (let i = 0; i < maxPos; i++) {
+      if (parseInt(all[i].getAttribute('data-id')) === nextpos) {
+        newCurrent = all[i]
+      }
+    }
 
-		  for (let i = 0; i < maxPos; i++) {
-			  if (parseInt(all[i].getAttribute('data-id')) === nextpos) {
-				  newCurrent = all[i]
-			  }
-		  }
+    setTimeout(function () {
+      current.classList.remove('active')
+      newCurrent.classList.add('active')
+      setTimeout(function () {
+        for (let i = 0; i < scrollingText.length; i++) {
+          scrollingText[i].classList.add('opacity')
+          scrollingText[i].classList.remove('hidden')
+        }
+      }, 1000)
+    }, 1000)
+  }
 
-		  setTimeout(function () {
-			  current.classList.remove('active')
-			  newCurrent.classList.add('active')
-			  setTimeout(function () {
-				  for (let i = 0; i < scrollingText.length; i++) {
-					  scrollingText[i].classList.add('opacity')
-					  scrollingText[i].classList.remove('hidden')
-				  }
-			  }, 1000)
-		  }, 1000)
-	  }
+  scrolling (posScroll) {
+    if (posScroll > 0) {
+      this.goPrev()
+    } else {
+      this.goNext()
+    }
   }
 
   launchGame (id) {
-    // Mount the Pixi Game component
-    document.querySelector('.carrousel').classList.add('hidden') // TODO REMOVE Temporary
+    this.unbind()
+    this.carrousel.classList.add('hidden')
+    id = 0 // to force Ricelieu story
+
     switch (id) {
       case 0:
         this.game = new RichelieuGame({ autosetup: true })
@@ -257,6 +237,5 @@ export default class Carrousel extends DomComponent {
     }
     store.currentHistory.set(id)
     store.launched.set(true)
-	  document.removeEventListener('mousewheel', this.mouseWhellTodo)
   }
 }
