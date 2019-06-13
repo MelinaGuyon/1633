@@ -103,6 +103,7 @@ export default class Glass extends DomComponent {
   }
 
   unbind () {
+    console.log('unbinded')
     this.unlistenStore('mouse', this.handleMoove)
     raf.remove(this.updateInertia)
   }
@@ -130,17 +131,14 @@ export default class Glass extends DomComponent {
     })
   }
 
-  getPosition () {
-    this.singleGlass.forEach((el, index) => {
-      const coord = el.base.getBoundingClientRect()
-      this.coords[index] = { el: el.base, left: coord.left, top: coord.top, centerX: coord.left + el.base.offsetWidth / 2, centerY: coord.top + el.base.offsetHeight / 2 }
-    })
-  }
-
   construct () {
-    this.unbind()
-    signals.newIndication.dispatch(0)
-    this.singleGlass.forEach((el) => {
+    if (this.isConstructed) return
+    this.isConstructed = true
+    if (!this.parrent) {
+      this.unbind()
+      signals.newIndication.dispatch(0)
+    }
+    this.singleGlass.forEach((el, index) => {
       anime({
         targets: el.base,
         translateX: el.initialX,
@@ -149,14 +147,19 @@ export default class Glass extends DomComponent {
         duration: 900,
         easing: 'easeInOutQuart',
         complete: () => {
-          // this.getPosition()
-          delay(() => store.started.set(true), 600)
+          if (!this.parrent) {
+            delay(() => store.started.set(true), 600)
+          } else {
+            const coord = el.base.getBoundingClientRect()
+            this.coords[index] = { el: el.base, left: coord.left, top: coord.top, centerX: coord.left + el.base.offsetWidth / 2, centerY: coord.top + el.base.offsetHeight / 2 }
+          }
         }
       })
     })
   }
 
   handleMoove (mouse) {
+    let values = this.isConstructed ? realValues : transformValues
     this.singleGlass.forEach((el, index) => {
       if (!this.coords[index]) return
       let offsetX = 0
@@ -169,25 +172,26 @@ export default class Glass extends DomComponent {
       let dy = this.coords[index].centerY - mouse.y - offsetY
 
       if (dx < 180 && dx > -180 && dy < 180 && dy > -180) {
-        let x = transformValues[index][0] + dx / 4
-        let y = transformValues[index][1] + dy / 4
+        let x = values[index][0] + dx / 4
+        let y = values[index][1] + dy / 4
 
         el.inrtia.x.to(x)
         el.inrtia.y.to(y)
       } else {
-        el.inrtia.x.to(transformValues[index][0])
-        el.inrtia.y.to(transformValues[index][1])
+        el.inrtia.x.to(values[index][0])
+        el.inrtia.y.to(values[index][1])
       }
     })
   }
 
   updateInertia () {
+    let values = this.isConstructed ? realValues : transformValues
     this.singleGlass.forEach((el, index) => {
       if (!el.inrtia.x.stopped || !el.inrtia.y.stopped) {
         el.inrtia.y.update()
         el.inrtia.x.update()
 
-        el.base.style.transform = `translateX(${el.inrtia.x.value}px) translateY(${el.inrtia.y.value}px) rotate(${transformValues[index][2]}deg)`
+        el.base.style.transform = `translateX(${el.inrtia.x.value}px) translateY(${el.inrtia.y.value}px) rotate(${values[index][2]}deg)`
       }
     })
   }

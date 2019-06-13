@@ -175,7 +175,7 @@ export default class Chronologie extends DomComponent {
     window.addEventListener('mousewheel', this.fastbind('checkCurrent', 1))
     this.facts.forEach((tab) => {
       tab.forEach((el) => {
-        if (el.locked) el.glass.bind()
+        el.glass.bind()
       })
     })
   }
@@ -186,7 +186,7 @@ export default class Chronologie extends DomComponent {
     window.removeEventListener('mousewheel', this.checkCurrent)
     this.facts.forEach((tab) => {
       tab.forEach((el) => {
-        if (el.locked) el.glass.unbind()
+        el.glass.unbind()
       })
     })
   }
@@ -194,6 +194,9 @@ export default class Chronologie extends DomComponent {
   onFactUnlocked (id) {
     this.facts[store.currentHistory.get()][id].base.classList.remove('locked')
     this.facts[store.currentHistory.get()][id].locked = false
+    this.chronologie.classList.remove('smooth')
+    this.chronologie.scrollTop = 0
+    this.facts[store.currentHistory.get()][id].glass.construct()
   }
 
   onChronologieClick (chronologieStatus, top) {

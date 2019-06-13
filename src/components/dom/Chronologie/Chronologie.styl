@@ -25,7 +25,9 @@
     height: 100vh
 
     .glass
-      opacity: 0
+      // opacity: 0
+      transform: translate(-50%, -50%) scale(0.6);
+      left: 30%
       pointer-events: none
 
     .locked-title
@@ -60,6 +62,8 @@
 
     &.locked
       .glass
+        transform: translate(-50%, -50%) scale(0.75);
+        left: 50%
         opacity 1
         pointer-events: auto
 
