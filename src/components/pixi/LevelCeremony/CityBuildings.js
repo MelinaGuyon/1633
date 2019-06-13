@@ -14,8 +14,8 @@ export default class CityBuildings extends PixiComponent {
     this.mains.push(this.addComponent(Building, { layer: '4bg600', type: 'f', x: -550, y: -50, scale: 0.62 })) // pierres
     this.mains.push(this.addComponent(Building, { layer: '4bg600', type: 'g', x: 390, y: -100, scale: 0.64 })) // feu droite
     this.mains.push(this.addComponent(Building, { layer: '4bg600', type: 'h', x: -220, y: -470, scale: 0.64 })) // feu gauche
-    this.mains.push(this.addComponent(Building, { layer: '4bg600', type: 'i', x: -650, y: -300, scale: 0.62 })) // cheval
-    this.mains.push(this.addComponent(Building, { layer: '4bg600', type: 'j', x: -240, y: 130, scale: 0.64 })) // tête
+    this.mains.push(this.addComponent(Building, { layer: '4bg600', type: 'i', x: -650, y: -320, scale: 0.62 })) // cheval
+    this.mains.push(this.addComponent(Building, { layer: '4f100', type: 'j', x: -240, y: 135, scale: 0.64 })) // tête
     // this.mains.push(this.addComponent(Light, { layer: '4bg200', form: 'light/main', target: this.base, x: 7, y: -63, tint: 0x886600, alpha: 1, scale: [0.3, 0.27] }))
   }
 

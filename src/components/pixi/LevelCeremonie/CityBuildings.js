@@ -19,10 +19,10 @@ export default class CityBuildings extends PixiComponent {
     this.mains.push(this.addComponent(Building, { layer: '8bg700', type: 'k', x: -140, y: -270, scale: 0.66 })) // mec porte tete
 
     this.mains.push(this.addComponent(Building, { layer: '8bg700', type: 'l', x: 330, y: -240, scale: 0.66 })) // roi
-    this.mains.push(this.addComponent(Building, { layer: '8bg700', type: 'm', x: 170, y: -90, scale: 0.66 })) // femme droite
-    this.mains.push(this.addComponent(Building, { layer: '8bg700', type: 'n', x: 310, y: -60, scale: 0.66 })) // mec droite
+    this.mains.push(this.addComponent(Building, { layer: '8f100', type: 'm', x: 170, y: -60, scale: 0.66 })) // femme droite
+    this.mains.push(this.addComponent(Building, { layer: '8bg700', type: 'n', x: 310, y: -40, scale: 0.66 })) // mec droite
 
-    this.mains.push(this.addComponent(Building, { layer: '8bg700', type: 'o', x: -510, y: -60, scale: 0.66 })) // femme gauche
+    this.mains.push(this.addComponent(Building, { layer: '8f200', type: 'o', x: -510, y: -60, scale: 0.66 })) // femme gauche
     this.mains.push(this.addComponent(Building, { layer: '8bg700', type: 'p', x: -640, y: -80, scale: 0.66 })) // mec gauche
   }
 
