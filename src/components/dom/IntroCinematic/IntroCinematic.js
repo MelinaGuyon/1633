@@ -31,17 +31,17 @@ export default class IntroCinematic extends DomComponent {
       sound.play('3_music_studio')
       delay(() => {
         this.base.classList.add('visible')
-        this.play('voixoff/intro', 0)
+        this.play('voixoff/intro', 0, 0)
         this.resolve = resolve
       }, 4000)
     })
   }
 
-  play (path, number) {
+  play (path, number, time) {
     let zoom
     if (number === 0) zoom = [1, 1]
     else if (number === 1) zoom = [1.2, 1]
-    else zoom = [1, 1.2]
+    else zoom = [1, 1.45]
 
     anime({
       targets: [this.item0, this.item1, this.item2],
@@ -52,7 +52,7 @@ export default class IntroCinematic extends DomComponent {
         this.container.style.transform = `scale(${zoom[0]})`
         anime({
           targets: this.container,
-          duration: 8000,
+          duration: time,
           scale: zoom,
           delay: 1000,
           easing: 'easeInOutQuad'
@@ -77,8 +77,8 @@ export default class IntroCinematic extends DomComponent {
 
   finished (number) {
     clearInterval(this.intervalId)
-    if (number === 0) delay(() => { this.play('voixoff/intro_bis', 1) }, 1000)
-    else if (number === 1) this.play('voixoff/intro_ter', 2)
+    if (number === 0) delay(() => { this.play('voixoff/intro_bis', 1, 8000) }, 1000)
+    else if (number === 1) this.play('voixoff/intro_ter', 2, 16000)
     else {
       anime({
         targets: this.base,

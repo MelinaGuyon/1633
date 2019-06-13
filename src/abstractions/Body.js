@@ -13,7 +13,7 @@ export default class Body {
     this.height = props.height * this.scale || 1
     this.ax = this.ay = 0
     this.vx = this.vy = 0
-    this.vxMax = this.vyMax = 0.26
+    this.vxMax = this.vyMax = 0.22
     this.y = props.y || 0
     this.x = props.x || 0
     this.px = this.x
@@ -78,7 +78,7 @@ export default class Body {
     this.px = this.x
     this.py = this.y
 
-    let vitesse = 0.00016
+    let vitesse = 0.00014
     let deceleration = 0.0008
 
     dt = Math.min(dt, 35)
