@@ -63,13 +63,12 @@ class Fact extends DomComponent {
 
     return (
       // <div class='fact locked' id={'fact' + props.id} ref={addRef(this, 'fact')}>
-      <div class='fact' id={'fact' + props.id} ref={addRef(this, 'fact')}>
+      <div class='fact locked' id={'fact' + props.id} ref={addRef(this, 'fact')}>
         <div class='content-container'>
           <img class='character' ref={addRef(this, 'character')} src={props.content.img} />
           <div class='content' ref={addRef(this, 'content')} >
             <PreviousButton id={props.id} factDate={props.content.date} goToDateOnChronoButton={props.goToDateOnChronoButton} />
             <div class='subContent' >
-              {/* <p class='date'>{props.content.date}</p> */}
               <p class='title'>{props.content.title}</p>
               <p class='name'>{props.content.historyName}</p>
               <p class='text'>{props.content.text}</p>

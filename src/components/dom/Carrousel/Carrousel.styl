@@ -30,9 +30,6 @@
     letter-spacing: 6px;
     color: rgba(255, 255, 255, 0);
 
-  [data-text]:before
-    animation: marque-defil 15s infinite linear;
-
   .carrousel-wrapper
     opacity 0
     pointer-events: none
@@ -40,29 +37,29 @@
     height 100%
     transition .3s ease
 
-    &:hover
-      transform scale(1.25)
+    // &:hover
+    //   transform scale(1.25)
 
-      [data-text]:before, [data-text]:after
-        -webkit-text-stroke: 1px $salmon;
+    //   [data-text]:before, [data-text]:after
+    //     -webkit-text-stroke: 1px $salmon;
 
-      .carrousel__form
-        //width: 57vw;
-        //height: 105vh;
+    //   .carrousel__form
+    //     //width: 57vw;
+    //     //height: 105vh;
 
-        [data-text]:before, [data-text]:after
-          color $salmon
+    //     [data-text]:before, [data-text]:after
+    //       color $salmon
 
-        .carrousel__choice
-          color $salmon
+    //     .carrousel__choice
+    //       color $salmon
 
-      .carrousel__textScrolling
-      //bottom 90px
+    //   .carrousel__textScrolling
+    //   //bottom 90px
 
-      .carrousel__textScrolling
-        //bottom 90px
-        //bottom 90px
-        color $salmon
+    //   .carrousel__textScrolling
+    //     //bottom 90px
+    //     //bottom 90px
+    //     color $salmon
 
     .carrousel__choice
       -webkit-text-stroke: 1px $salmon;
@@ -150,97 +147,7 @@
       width: 37vw;
       height: 85vh;
       transition .3s ease
-      display none
-
-      &.active
-        display block
-
-
-  &__textScrolling
-    display: block;
-    padding: 0;
-    overflow: hidden;
-    bottom: 10px
-    position fixed
-    width: 300vw;
-    max-width: 300vw;
-    height: 200px;
-    z-index 2
-    left: -34vw;
-    transition 1s ease
-    contain: strict;
-
-    &.hidden
-      opacity: 0
-
-    &.opacity
-      opacity: 1
-
-    div
-      display inline-block
-      position relative
       opacity 0
 
       &.active
         opacity 1
-
-      span
-        position: relative;
-        display: inline-block;
-        white-space: nowrap;
-        top:0;
-        -webkit-background-clip: text;
-
-      span
-        //animation: defilement 15s infinite linear;
-        //margin-right: 10px
-      margin: 0 10px
-
-      strong
-        //margin 0 30px
-
-  &__choice
-    padding: 0
-    background: transparent
-    border: none
-    margin: 0px
-    outline: none
-    -webkit-text-stroke: 1px #ffffff;
-    font-family: EczarRegular;
-    font-size: 100px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    //line-height: 0.89;
-    letter-spacing: 6px;
-    color: rgba(255, 255, 255, 0);
-    display block
-    animation-duration: 13s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-name: translationLeft;
-
-  &.hidden
-    display: none
-
-  &.opacity
-    opacity: 0
-
-@keyframes translationLeft {
-  0% { transform: translate(150%) }
-  100% { transform: translate(-150%) }
-}
-
-@keyframes translationRight {
-  0% { transform: translate(-150%) }
-  100% { transform: translate(150%) }
-}
-
-@keyframes marque-defil {
-  0% {
-      margin-left: 0
-  }
-  100% {
-      margin-left: -50%
-  }
-}

@@ -1,0 +1,23 @@
+.text-scrolling
+  position absolute
+  bottom: 200px
+  left 50%
+  color: $white
+  font-size: 60px
+  pointer-events: none;
+  width: 100vw
+  transform: translateX(-50%)
+
+  .wrapper
+    display: inline-block;
+    animation: translationLeft 15s infinite linear;
+    position: relative;
+		white-space: nowrap;
+
+  .wrapper span
+    margin: 0 10px
+
+@keyframes translationLeft {
+  0% { transform: translate(0) }
+  100% { transform: translate(-50%) }
+}

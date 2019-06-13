@@ -8,9 +8,12 @@ import NapoleonbonaparteGame from 'components/pixi/PixiGame/NapoleonbonaparteGam
 import RobertdesorbonGame from 'components/pixi/PixiGame/RobertdesorbonGame'
 import JacqueslemercierGame from 'components/pixi/PixiGame/JacqueslemercierGame'
 import Intro from 'components/dom/Intro/Intro'
+import TextScrolling from './TextScrolling'
 import anime from 'animejs'
 
 import './Carrousel.styl'
+
+console.log(store.baseUrl.get())
 
 class Form extends DomComponent {
   template (props) {
@@ -22,9 +25,11 @@ class Form extends DomComponent {
       <div class={clasName} launchGame={props.launchGame} type={props.type} data-id={props.id}>
         <div class='carrousel__form'>
           <Story id={props.id} type={props.type} />
-          <div className='carrousel__textScrolling' data-text={loc['carrousel.' + props.type]} />
+          <TextScrolling text={loc['carrousel.' + props.type]} />
+          {/* <div className='carrousel__textScrolling' data-text={loc['carrousel.' + props.type]} /> */}
         </div>
-        <div className='carrousel__textScrolling' data-text={loc['carrousel.' + props.type]} />
+        <TextScrolling text={loc['carrousel.' + props.type]} />
+        {/* <div className='carrousel__textScrolling' data-text={loc['carrousel.' + props.type]} /> */}
       </div>
     )
   }
@@ -68,7 +73,7 @@ export default class Carrousel extends DomComponent {
 
     return (
       <section data-type='carrousel' id='carrousel' class='carrousel mouse__close' ref={addRef(this, 'carrousel')}>
-        <Intro onComplete={this.fastbind('activeCarousel')} ref={addRef(this, 'intro')} />
+        {/* <Intro onComplete={this.fastbind('activeCarousel')} ref={addRef(this, 'intro')} /> */}
         <div class='carrousel-wrapper' ref={addRef(this, 'carouselWrapper')}>
           <Form active={'active'} type={'richelieu'} id={0} launchGame={this.launchGame} />
           <Form active={''} type={'mariecurie'} id={1} launchGame={this.launchGame} />
@@ -83,16 +88,18 @@ export default class Carrousel extends DomComponent {
   componentDidMount () {
     this.mouseWhellTodo = this.fastbind('mouseWhellTodo', 1)
     if (store.skipCarousel.get()) this.launchGame(0)
+
+    this.activeCarousel() // TO REMOVE
   }
 
   activeCarousel () {
-    anime({
-      targets: this.intro.base,
-      opacity: 0,
-      duration: 600,
-      easing: 'easeOutQuad',
-      complete: () => { this.intro.base.classList.add('hidden') }
-    })
+    // anime({
+    //   targets: this.intro.base,
+    //   opacity: 0,
+    //   duration: 600,
+    //   easing: 'easeOutQuad',
+    //   complete: () => { this.intro.base.classList.add('hidden') }
+    // })
     anime({
       targets: this.carouselWrapper,
       opacity: 1,
