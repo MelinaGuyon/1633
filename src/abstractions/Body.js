@@ -79,7 +79,7 @@ export default class Body {
     this.py = this.y
 
     // 0.0008
-    let vitesse = 0.00018
+    let vitesse = 0.00016
     let deceleration = 0.0008
 
     dt = Math.min(dt, 35)

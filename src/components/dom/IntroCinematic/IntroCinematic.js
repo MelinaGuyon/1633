@@ -13,9 +13,11 @@ export default class IntroCinematic extends DomComponent {
     const loc = store.loc.get()
     return (
       <section class='intro-cinematic' ref={addRef(this, 'cinematic')}>
-        <p ref={addRef(this, 'item0')}>{loc['cinematic.text']}</p>
-        <img class='second' src='assets/img/cinematic/pharmacie.png' ref={addRef(this, 'item1')} alt='' />
-        <img class='third' src='assets/img/cinematic/photographie.png' ref={addRef(this, 'item2')} alt='' />
+        <div class='cinematique-container' ref={addRef(this, 'container')}>
+          <p ref={addRef(this, 'item0')}>{loc['cinematic.text']}</p>
+          <img class='second' src='assets/img/cinematic/pharmacie.png' ref={addRef(this, 'item1')} alt='' />
+          <img class='third' src='assets/img/cinematic/photographie.png' ref={addRef(this, 'item2')} alt='' />
+        </div>
       </section>
     )
   }
@@ -36,13 +38,26 @@ export default class IntroCinematic extends DomComponent {
   }
 
   play (path, number) {
+    let zoom
+    if (number === 0) zoom = [1, 1]
+    else if (number === 1) zoom = [1.2, 1]
+    else zoom = [1, 1.2]
+
     anime({
       targets: [this.item0, this.item1, this.item2],
       opacity: 0,
       duration: 300,
-      delay: 0,
       easing: 'easeInOutQuad',
       complete: () => {
+        this.container.style.transform = `scale(${zoom[0]})`
+        anime({
+          targets: this.container,
+          duration: 8000,
+          scale: zoom,
+          delay: 1000,
+          easing: 'easeInOutQuad'
+        })
+
         sound.play(path)
         sound.setSoundPlay(path)
         this.intervalId = setInterval(() => {
