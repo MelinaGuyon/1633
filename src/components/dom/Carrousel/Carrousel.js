@@ -2,6 +2,7 @@
 import { DomComponent } from 'abstractions/DomComponent'
 import { h, addRef } from '@internet/dom'
 import store from 'state/store'
+import signals from 'state/signals'
 import RichelieuGame from 'components/pixi/PixiGame/RichelieuGame'
 import MariecurieGame from 'components/pixi/PixiGame/MariecurieGame'
 import NapoleonbonaparteGame from 'components/pixi/PixiGame/NapoleonbonaparteGame'
@@ -276,6 +277,10 @@ export default class Carrousel extends DomComponent {
       easing: 'easeOutQuad',
       complete: () => {
         this.carrousel.classList.add('hidden')
+        if (!store.skipTuto.get()) {
+          store.pause.set(true)
+          signals.activeTuto.dispatch('keyboard')
+        }
       }
     })
   }

@@ -37,7 +37,6 @@ export default class GameInterface extends DomComponent {
   componentDidMount () {
     logger('Game interface did mount', '#47b342').log()
     this.bind()
-    if (!store.skipTuto.get()) this.openTuto('keyboard') // toto remove only for test
     signals.newDom.dispatch()
   }
 
@@ -53,12 +52,6 @@ export default class GameInterface extends DomComponent {
   unbind () {
     this.unlistenStore('size', this.resize)
     document.removeEventListener('click', this.clearClick)
-  }
-
-  openTuto (id) {
-    // cookie.createCookie('tuto', true, 30) TODO décommenter cette ligne en prod
-    store.pause.set(true)
-    signals.activeTuto.dispatch(id)
   }
 
   clearClick (e) {

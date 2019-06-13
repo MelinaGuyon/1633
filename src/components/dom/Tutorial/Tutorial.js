@@ -145,11 +145,11 @@ export default class Tutorial extends DomComponent {
 	  isAlreadyShow = cookie.readCookie('tuto')
     if (isAlreadyShow) {
 	    document.querySelector('.tutorial').remove()
+    } else {
+      signals.newDom.dispatch()
+      logger('Tutorial did mount', '#47b342').log()
+      this.bind()
     }
-	  signals.newDom.dispatch()
-    logger('Tutorial did mount', '#47b342').log()
-
-    this.bind()
   }
 
   bind () {
