@@ -48,8 +48,16 @@ export default [
 	[
 		['Une autre version de l’histoire existe.', 0],
 		['Un habitant du quartier aurait assisté au lugubre spectacle de la profanation.', 2700],
-		['Horrifié, il aurait alors récupéré, puis protégé le crâne d’un morceau de linceul…', 5800],
+		['Horrifié, il aurait alors récupéré, puis protégé le crâne d’un morceau de linceul…', 6000],
 		['En vérité, il s’agissait d’un bonnetier appelé Cheval, habitant à quelques rues de la Sorbonne.', 13000],
 		[' Il est ainsi parvenu à mettre le crâne à l’abri, et lui évita un destin funeste...', 19000]
+	],
+	[
+		['Il semblerait que nous ayons quitté Paris !', 0],
+		['Allons-nous suivre les péripéties du crâne de ville en ville ?', 2800],
+		['Une fois en possession du bonnetier Cheval, la relique sembla disparaître totalement. ', 6500],
+		['Beaucoup la pensaient perdue, d’autres la disaient détruite.', 12000],
+		['Mais en réalité, le crâne voyagea bien loin de Paris et de la Sorbonne.', 16000],
+		[' Il alla même jusqu’en Bretagne !', 20700]
 	]
 ]
