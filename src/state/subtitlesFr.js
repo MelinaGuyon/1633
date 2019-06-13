@@ -45,19 +45,31 @@ export default [
     ['le récit du crâne devenu balle de jeu tient davantage de la légende !', 9700],
     ['Pourtant, cette légende fut racontée tant de fois que beaucoup y crurent pendant des années !', 14000]
   ],
-	[
-		['Une autre version de l’histoire existe.', 0],
-		['Un habitant du quartier aurait assisté au lugubre spectacle de la profanation.', 2700],
-		['Horrifié, il aurait alors récupéré, puis protégé le crâne d’un morceau de linceul…', 6000],
-		['En vérité, il s’agissait d’un bonnetier appelé Cheval, habitant à quelques rues de la Sorbonne.', 13000],
-		[' Il est ainsi parvenu à mettre le crâne à l’abri, et lui évita un destin funeste...', 19000]
-	],
-	[
-		['Il semblerait que nous ayons quitté Paris !', 0],
-		['Allons-nous suivre les péripéties du crâne de ville en ville ?', 2800],
-		['Une fois en possession du bonnetier Cheval, la relique sembla disparaître totalement. ', 6500],
-		['Beaucoup la pensaient perdue, d’autres la disaient détruite.', 12000],
-		['Mais en réalité, le crâne voyagea bien loin de Paris et de la Sorbonne.', 16000],
-		[' Il alla même jusqu’en Bretagne !', 20700]
-	]
+  [
+    ['Une autre version de l’histoire existe.', 0],
+    ['Un habitant du quartier aurait assisté au lugubre spectacle de la profanation.', 2700],
+    ['Horrifié, il aurait alors récupéré, puis protégé le crâne d’un morceau de linceul…', 6000],
+    ['En vérité, il s’agissait d’un bonnetier appelé Cheval, habitant à quelques rues de la Sorbonne.', 13000],
+    [' Il est ainsi parvenu à mettre le crâne à l’abri, et lui évita un destin funeste...', 19000]
+  ],
+  [
+    ['Il semblerait que nous ayons quitté Paris !', 0],
+    ['Allons-nous suivre les péripéties du crâne de ville en ville ?', 2800],
+    ['Une fois en possession du bonnetier Cheval, la relique sembla disparaître totalement. ', 6500],
+    ['Beaucoup la pensaient perdue, d’autres la disaient détruite.', 12000],
+    ['Mais en réalité, le crâne voyagea bien loin de Paris et de la Sorbonne.', 16000],
+    [' Il alla même jusqu’en Bretagne !', 20700]
+  ],
+  [
+    ['Mis en lieu sûr par le bonnetier Cheval,', 0],
+    ['il fut par la suite confié aux mains du prêtre Nicolas Armez et de sa famille, dès 1805.', 2800],
+    ['Transmis de génération en génération,', 8000],
+    ['la famille du prêtre préserva ainsi la relique durant près de 60 ans !.', 12000]
+  ],
+  [
+    ['Un grand soin lui fut apporté. ', 0],
+    ['Un pharmacien veilla à sa bonne conservation,', 2800],
+    ['en appliquant au crâne un traitement anti-insecte et même un verni !', 6500],
+    ['Mais pourquoi tant d’attentions ?', 10000]
+  ]
 ]
