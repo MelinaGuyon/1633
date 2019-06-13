@@ -31,6 +31,12 @@ class TutoKeyboard extends DomComponent {
 
   activate () {
     this.base.classList.add('active')
+    anime({
+      targets: this.base,
+      opacity: 1,
+      duration: 600,
+      easing: 'easeOutQuad'
+    })
     this.bind()
   }
 
@@ -49,39 +55,24 @@ class TutoKeyboard extends DomComponent {
         this.base.classList.remove('active')
       }
     })
+    signals.stop.listen(this.fastbind('playAgain', 1))
     this.removeListener()
+  }
+
+  playAgain () {
     store.pause.set(false)
+    this.removeListenerStop()
   }
 
   removeListener () {
 	  signals.goLeft.unlisten(this.keydown)
 	  signals.goRight.unlisten(this.keydown)
   }
+
+  removeListenerStop () {
+	  signals.stop.unlisten(this.playAgain)
+  }
 }
-
-// class Button extends DomComponent {
-//   template (props) {
-//     return (
-//       <button class='tutorial__close magnet'>
-//         <img src={'assets/img/pictos/close.svg'} alt='' />
-//       </button>
-//     )
-//   }
-
-//   componentDidMount () {
-//     this.bind()
-//   }
-
-//   bind () {
-//     this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
-//   }
-
-//   onClick (e) {
-// 	  let $parent = e.target.closest('.tutorial__item')
-//     $parent.remove()
-//     store.pause.set(false)
-//   }
-// }
 
 class TutoSpace extends DomComponent {
   template (props) {
@@ -103,6 +94,12 @@ class TutoSpace extends DomComponent {
 
   activate () {
     this.base.classList.add('active')
+    anime({
+      targets: this.base,
+      opacity: 1,
+      duration: 600,
+      easing: 'easeOutQuad'
+    })
     this.bind()
   }
 

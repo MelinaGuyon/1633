@@ -13,12 +13,12 @@
     background-image: url('assets/img/backgound/glasses.png')
     background-size: 60%;
     background-position: center;
-    animation-duration: 1.5s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-direction: alternate-reverse;
-    animation-name: bckg;
-    transition 0.3s ease
+    // animation-duration: 1.5s;
+    // animation-timing-function: ease-in-out;
+    // animation-iteration-count: infinite;
+    // animation-direction: alternate-reverse;
+    // animation-name: bckg;
+    // transition 0.3s ease
 
   .button
     position fixed
@@ -52,8 +52,9 @@
     cursor none
 
   &__item
-    pointer-events: none
     opacity 0
+    display: none
+    pointer-events: none
     background-image: linear-gradient(to bottom, rgba(0, 2, 4, 0.99), rgba(16, 29, 55, 0.99));
     width: 100vw
     height: 100vh
@@ -77,14 +78,14 @@
 
     &.active
       pointer-events: auto
-      opacity: 1
+      display: block
 
 
-@keyframes bckg {
-  0% {
-    background-position 48% 51%
-  }
-  100% {
-    background-position 52% 48%
-  }
-}
+// @keyframes bckg {
+//   0% {
+//     background-position 48% 51%
+//   }
+//   100% {
+//     background-position 52% 48%
+//   }
+// }
