@@ -5,6 +5,7 @@ import camera from 'controllers/camera'
 import physics from 'controllers/physics'
 import signals from 'state/signals'
 import store from 'state/store'
+import Light from 'components/pixi/LevelCommon/Light'
 
 export default class Perso extends PixiComponent {
   setup () {
@@ -13,6 +14,7 @@ export default class Perso extends PixiComponent {
     this.oldDirection = null
     this.state = {}
 
+    this.addComponent(Light, { form: 'transparent', target: this.base, x: -20, y: -43, tint: 0xffa8a8, alpha: 0.28, scale: [0.8, 0.9] })
     this.refs.perso = this.addChild('perso')
     this.anim = new Animator(this.refs.perso)
     this.base.scale.y = 0.7
