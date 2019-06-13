@@ -6,7 +6,9 @@
   left: 0
   top: 0
   z-index $indexCarousel
-  transition 1s ease
+
+  &.hidden
+    display none
 
   button
     position relative
@@ -20,31 +22,20 @@
     transition .3s ease
 
     // &:hover
-    //   transform scale(1.25)
-
-    //   [data-text]:before, [data-text]:after
-    //     -webkit-text-stroke: 1px $salmon;
+    //   transform scale(1.05)
 
     //   .carrousel__form
     //     //width: 57vw;
     //     //height: 105vh;
 
-    //     [data-text]:before, [data-text]:after
-    //       color $salmon
-
-    //     .carrousel__choice
-    //       color $salmon
-
-    //   .carrousel__textScrolling
-    //   //bottom 90px
-
-    //   .carrousel__textScrolling
-    //     //bottom 90px
-    //     //bottom 90px
+    //   .text-scrolling
     //     color $salmon
 
-    .carrousel__choice
-      -webkit-text-stroke: 1px $salmon;
+    //   .text-scrolling.stroke
+    //     color transparent
+    //     -webkit-text-stroke: 1px $salmon;
+    //     //bottom 90px
+    //     //bottom 90px
 
     &.visible
       pointer-events: auto
@@ -100,6 +91,8 @@
 
   &__form
     width: 37vw;
+    max-width 430px
+    min-width: 370px
     height: 85vh;
     background-color: #242146;
     display block;
@@ -109,17 +102,6 @@
     position relative
     transition .3s ease
 
-    .carrousel__textScrolling
-      width: 300vw;
-      left: -34vw;
-      position: absolute;
-
-    .carrousel__choice
-      color #fff
-
-    [data-text]:before, [data-text]:after
-      color #fff
-
     &__content
       position: absolute;
       top: 50%;
@@ -127,9 +109,13 @@
       transform: translate(-50%, -50%);
       position absolute
       width: 37vw;
+      max-width 430px
+      min-width: 370px
       height: 85vh;
       transition .3s ease
       opacity 0
+      pointer-events: none
 
       &.active
+        pointer-events: auto
         opacity 1

@@ -25,16 +25,15 @@ class Form extends DomComponent {
       <div class={clasName} launchGame={props.launchGame} type={props.type} data-id={props.id}>
         <div class='carrousel__form'>
           <Story id={props.id} type={props.type} />
-          <TextScrolling text={loc['carrousel.' + props.type]} />
-          {/* <div className='carrousel__textScrolling' data-text={loc['carrousel.' + props.type]} /> */}
+          <TextScrolling text={loc['carrousel.' + props.type]} ref={addRef(this, 'text')} />
         </div>
-        <TextScrolling text={loc['carrousel.' + props.type]} stroke />
-        {/* <div className='carrousel__textScrolling' data-text={loc['carrousel.' + props.type]} /> */}
+        <TextScrolling text={loc['carrousel.' + props.type]} stroke ref={addRef(this, 'text2')} />
       </div>
     )
   }
 
   componentDidMount () {
+    console.log(this.text)
     this.bind()
   }
 
@@ -50,8 +49,8 @@ class Form extends DomComponent {
   }
 
   onClick (e) {
-	  this.fadeOut(e.target.parentNode.parentNode)
-    this.props.launchGame && this.props.launchGame(this.id)
+    this.fadeOut(e.target.parentNode.parentNode)
+    this.props.launchGame && this.props.launchGame({ id: this.id, text: this.text, text2: this.text2 })
   }
 }
 
@@ -73,7 +72,7 @@ export default class Carrousel extends DomComponent {
 
     return (
       <section data-type='carrousel' id='carrousel' class='carrousel mouse__close' ref={addRef(this, 'carrousel')}>
-        {/* <Intro onComplete={this.fastbind('activeCarousel')} ref={addRef(this, 'intro')} /> */}
+        <Intro onComplete={this.fastbind('activeCarousel')} ref={addRef(this, 'intro')} />
         <div class='carrousel-wrapper' ref={addRef(this, 'carouselWrapper')}>
           <Form active={'active'} type={'richelieu'} id={0} launchGame={this.launchGame} />
           <Form active={''} type={'mariecurie'} id={1} launchGame={this.launchGame} />
@@ -88,18 +87,16 @@ export default class Carrousel extends DomComponent {
   componentDidMount () {
     this.mouseWhellTodo = this.fastbind('mouseWhellTodo', 1)
     if (store.skipCarousel.get()) this.launchGame(0)
-
-    this.activeCarousel() // TO REMOVE
   }
 
   activeCarousel () {
-    // anime({
-    //   targets: this.intro.base,
-    //   opacity: 0,
-    //   duration: 600,
-    //   easing: 'easeOutQuad',
-    //   complete: () => { this.intro.base.classList.add('hidden') }
-    // })
+    anime({
+      targets: this.intro.base,
+      opacity: 0,
+      duration: 600,
+      easing: 'easeOutQuad',
+      complete: () => { this.intro.base.classList.add('hidden') }
+    })
     anime({
       targets: this.carouselWrapper,
       opacity: 1,
@@ -212,37 +209,52 @@ export default class Carrousel extends DomComponent {
 
   scrolling (posScroll) {
     if (posScroll > 0) {
-      this.goPrev()
-    } else {
       this.goNext()
+    } else {
+      this.goPrev()
     }
   }
 
-  launchGame (id) {
+  launchGame (obj) {
     this.unbind()
-    this.carrousel.classList.add('hidden')
-    id = 0 // to force Ricelieu story
+    obj.id = 0 // to force Ricelieu story
 
-    switch (id) {
-      case 0:
-        this.game = new RichelieuGame({ autosetup: true })
-        break
-      case 1:
-        this.game = new MariecurieGame({ autosetup: true })
-        break
-      case 2:
-        this.game = new RobertdesorbonGame({ autosetup: true })
-        break
-      case 3:
-        this.game = new JacqueslemercierGame({ autosetup: true })
-        break
-      case 4:
-        this.game = new NapoleonbonaparteGame({ autosetup: true })
-        break
-      default:
-        console.log('error')
-    }
-    store.currentHistory.set(id)
-    store.launched.set(true)
+    anime({
+      targets: [obj.text.base, obj.text2.base],
+      opacity: 0,
+      duration: 300,
+      easing: 'easeOutQuad',
+      complete: () => {
+        switch (obj.id) {
+          case 0:
+            this.game = new RichelieuGame({ autosetup: true })
+            break
+          case 1:
+            this.game = new MariecurieGame({ autosetup: true })
+            break
+          case 2:
+            this.game = new RobertdesorbonGame({ autosetup: true })
+            break
+          case 3:
+            this.game = new JacqueslemercierGame({ autosetup: true })
+            break
+          case 4:
+            this.game = new NapoleonbonaparteGame({ autosetup: true })
+            break
+          default:
+            console.log('error')
+        }
+        store.currentHistory.set(obj.id)
+        store.launched.set(true)
+        anime({
+          targets: this.carrousel,
+          opacity: 0,
+          duration: 600,
+          delay: 1000,
+          easing: 'easeOutQuad',
+          complete: () => { this.carrousel.classList.add('hidden') }
+        })
+      }
+    })
   }
 }

@@ -1,13 +1,14 @@
 .text-scrolling
   position absolute
-  bottom: 100px
+  bottom: 80px
   left 50%
   color: $white
-  font-size: 80px
+  font-size: 110px
   pointer-events: none;
   width: 100vw
   transform: translateX(-50%)
   font-family: EczarBold
+  transition: color 0.3s $quad-ease-out;
 
   &.stroke
     color: transparent
