@@ -100,15 +100,21 @@ export default [
     ['mais le tombeau désiré ne sera achevé qu’en 1694 par le sculpteur Girardon,', 24000],
     ['sur commande de la nièce de Richelieu, Marie-Madeleine d’Aiguillon.', 31000]
   ],
-	[
-		['Et, à y regarder de plus près, le tombeau ressemble terriblement à...', 0],
-		['celui qu’il se destine…', 4100],
-		['Il s’agit ainsi de l’histoire de la sépulture du cardinal…', 6800],
-		['Richelieu, devenu proviseur de la Sorbonne,', 11000],
-		['financera lui-même la construction de la nouvelle église du collège', 15000],
-		['où il projette d’être inhumé. ', 18000],
-		['Le cardinal mourra en 1642, ', 21000],
-		['mais le tombeau désiré ne sera achevé qu’en 1694 par le sculpteur Girardon,', 24000],
-		['sur commande de la nièce de Richelieu, Marie-Madeleine d’Aiguillon.', 31000]
-	]
+  [
+    ['Le jeune Richelieu n’est pas au bout de ses surprises,', 0],
+    ['car l’histoire du crâne, son... crâne,', 3700],
+    ['ne semble pas s’arrêter là. ', 6000],
+    ['Un deuxième acte de profanation a visiblement eu lieu...', 8500],
+    ['Celui-ci paraît moins violent :', 14000],
+    ['un petit groupe d’individus s’active autour de la relique, avec curiosité.', 16000],
+    ['Il y a même un homme semblant observer la tête,', 21000],
+    ['à travers une drôle de longue vue... ', 24000],
+    ['en forme de cube… ?', 26000],
+    ['Cette seconde profanation eut lieu le 25 juin 1895,', 29000],
+    ['sous l’impulsion de Gabriel Hanotaux, ministre des affaires étrangères.', 33000],
+    ['Le groupe de curieux avait pour objectif de photographier la relique,', 38000],
+    ['et d’en faire des moulages…', 41400],
+    ['Une fois leur entreprise terminée,', 44000],
+    ['le tombeau fut enfin refermé, pour ne plus jamais être dérangé.', 46000]
+  ]
 ]
