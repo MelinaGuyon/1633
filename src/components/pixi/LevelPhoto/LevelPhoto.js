@@ -11,7 +11,6 @@ export default class LevelPhoto extends Level {
     this.createLand()
     this.createGlass()
     this.addColliders()
-    sound.play('music_studio')
   }
 
   createLand () {

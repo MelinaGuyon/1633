@@ -8,12 +8,12 @@ import NapoleonbonaparteGame from 'components/pixi/PixiGame/NapoleonbonaparteGam
 import RobertdesorbonGame from 'components/pixi/PixiGame/RobertdesorbonGame'
 import JacqueslemercierGame from 'components/pixi/PixiGame/JacqueslemercierGame'
 import Intro from 'components/dom/Intro/Intro'
+import IntroCinematic from 'components/dom/IntroCinematic/IntroCinematic'
 import TextScrolling from './TextScrolling'
 import anime from 'animejs'
+import delay from 'lodash/delay'
 
 import './Carrousel.styl'
-
-console.log(store.baseUrl.get())
 
 class Form extends DomComponent {
   template (props) {
@@ -33,12 +33,15 @@ class Form extends DomComponent {
   }
 
   componentDidMount () {
-    console.log(this.text)
     this.bind()
   }
 
   bind () {
     this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+  }
+
+  unbind () {
+    this.base.removeEventListener('click', this.onClick) // 1 to pass the event
   }
 
   fadeOut (el) {
@@ -49,6 +52,7 @@ class Form extends DomComponent {
   }
 
   onClick (e) {
+    this.unbind()
     this.fadeOut(e.target.parentNode.parentNode)
     this.props.launchGame && this.props.launchGame({ id: this.id, text: this.text, text2: this.text2 })
   }
@@ -73,6 +77,7 @@ export default class Carrousel extends DomComponent {
     return (
       <section data-type='carrousel' id='carrousel' class='carrousel mouse__close' ref={addRef(this, 'carrousel')}>
         <Intro onComplete={this.fastbind('activeCarousel')} ref={addRef(this, 'intro')} />
+        <IntroCinematic ref={addRef(this, 'cinematic')} />
         <div class='carrousel-wrapper' ref={addRef(this, 'carouselWrapper')}>
           <Form active={'active'} type={'richelieu'} id={0} launchGame={this.launchGame} />
           <Form active={''} type={'mariecurie'} id={1} launchGame={this.launchGame} />
@@ -118,7 +123,6 @@ export default class Carrousel extends DomComponent {
   }
 
   mouseWhellTodo (e) {
-    console.log('weel')
 	  let lastPostitionScroll = e.deltaY
 	  if (!ticking) {
 		  this.scrolling(lastPostitionScroll)
@@ -219,41 +223,59 @@ export default class Carrousel extends DomComponent {
     this.unbind()
     obj.id = 0 // to force Ricelieu story
 
+    this.carrousel.classList.add('no-touch')
+
     anime({
       targets: [obj.text.base, obj.text2.base],
       opacity: 0,
-      duration: 300,
+      duration: 400,
       easing: 'easeOutQuad',
       complete: () => {
-        switch (obj.id) {
-          case 0:
-            this.game = new RichelieuGame({ autosetup: true })
-            break
-          case 1:
-            this.game = new MariecurieGame({ autosetup: true })
-            break
-          case 2:
-            this.game = new RobertdesorbonGame({ autosetup: true })
-            break
-          case 3:
-            this.game = new JacqueslemercierGame({ autosetup: true })
-            break
-          case 4:
-            this.game = new NapoleonbonaparteGame({ autosetup: true })
-            break
-          default:
-            console.log('error')
-        }
-        store.currentHistory.set(obj.id)
-        store.launched.set(true)
         anime({
-          targets: this.carrousel,
+          targets: this.carouselWrapper,
           opacity: 0,
-          duration: 600,
-          delay: 1000,
+          duration: 400,
           easing: 'easeOutQuad',
-          complete: () => { this.carrousel.classList.add('hidden') }
+          complete: () => {
+            this.cinematic.start().then(() => {
+              this.launchPixi(obj)
+            })
+          }
         })
+      }
+    })
+  }
+
+  launchPixi (obj) {
+    switch (obj.id) {
+      case 0:
+        this.game = new RichelieuGame({ autosetup: true })
+        break
+      case 1:
+        this.game = new MariecurieGame({ autosetup: true })
+        break
+      case 2:
+        this.game = new RobertdesorbonGame({ autosetup: true })
+        break
+      case 3:
+        this.game = new JacqueslemercierGame({ autosetup: true })
+        break
+      case 4:
+        this.game = new NapoleonbonaparteGame({ autosetup: true })
+        break
+      default:
+        console.log('error')
+    }
+    store.currentHistory.set(obj.id)
+    store.launched.set(true)
+    anime({
+      targets: this.carrousel,
+      opacity: 0,
+      duration: 600,
+      delay: 1500,
+      easing: 'easeOutQuad',
+      complete: () => {
+        this.carrousel.classList.add('hidden')
       }
     })
   }

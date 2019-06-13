@@ -15,7 +15,7 @@ export default class LevelUniversity extends Level {
     this.createGlass()
     this.addColliders()
 
-    this.launchSounds()
+    if (store.skipCarousel.get()) sound.play('3_music_studio')
   }
 
   createLand () {
@@ -34,9 +34,5 @@ export default class LevelUniversity extends Level {
     if (!isAlreadyShow && !store.skipTuto.get()) {
       this.addComponent(TutoCheck)
     }
-  }
-
-  launchSounds () {
-    sound.play('3_music_studio')
   }
 }
