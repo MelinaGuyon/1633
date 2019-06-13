@@ -56,6 +56,9 @@ export default createStore({
   chronologieDate: null,
   chronologieTimelineVisible: false,
 
+  // ---- about ----
+  aboutStatus: null,
+
   // ---- Debug utilities: 0 means false, 1 means true ----
   debug: isDev ? 0 : 0,
   mute: isDev ? 0 : 0,

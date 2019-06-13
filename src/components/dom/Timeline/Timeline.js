@@ -236,6 +236,7 @@ export default class Timeline extends DomComponent {
         this.currentPoint.inCircle = false
         this.circleClickable = false
         this.resetHalo()
+        signals.factUnlockEnd.dispatch()
         signals.newDom.dispatch()
       }
     }

@@ -4,7 +4,6 @@ import Level from 'abstractions/Level'
 import Interests from './Interests'
 import Buildings from './CityBuildings'
 import SoundCheck from './SoundChecks'
-import LevelLight from './LevelLight'
 import Glass from 'components/pixi/LevelCommon/Glass'
 
 export default class LevelChurch extends Level {
@@ -26,6 +25,5 @@ export default class LevelChurch extends Level {
   addColliders () {
     this.addComponent(Interests, { onCollide: this.glass.update, unlock: this.glass.construct })
 	  this.addComponent(SoundCheck)
-	  this.addComponent(LevelLight)
   }
 }

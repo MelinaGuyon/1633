@@ -26,6 +26,7 @@ class ChronologieButton extends DomComponent {
 
   onClick (e) {
     if (store.chronologieStatus.get() !== 'appearing') {
+      store.aboutStatus.set('disappearing')
       store.chronologieId.set('top')
       store.chronologieStatus.set('appearing')
     } else {
@@ -53,6 +54,7 @@ class BackButton extends DomComponent {
 
   onClick (e) {
     store.chronologieStatus.set('disappearing')
+    store.aboutStatus.set('disappearing')
   }
 }
 
@@ -183,7 +185,12 @@ class AboutButton extends DomComponent {
   }
 
   onClick (e) {
-
+    if (store.aboutStatus.get() !== 'appearing') {
+      store.chronologieStatus.set('disappearing')
+      store.aboutStatus.set('appearing')
+    } else {
+      store.aboutStatus.set('disappearing')
+    }
   }
 }
 
@@ -244,6 +251,7 @@ export default class Menu extends DomComponent {
 
   bind () {
     signals.factUnlock.listen(this.fastbind('onFactUnlocked', 1))
+    signals.factUnlockEnd.listen(this.fastbind('onFactUnlockedEnd', 1))
     this.listenStore('menuLight', this.fastbind('updateMenu', 1))
     this.listenStore('menuSocials', this.fastbind('updateSocials', 1))
     this.listenStore('launched', this.fastbind('updateSocials'))
@@ -254,6 +262,13 @@ export default class Menu extends DomComponent {
     this.collectButton.collectId = id
     this.collectButton.base.classList.add('magnet')
     this.collectButton.base.classList.add('visible')
+    signals.newDom.dispatch()
+  }
+
+  onFactUnlockedEnd (id) {
+    this.collectButton.collectId = null
+    this.collectButton.base.classList.remove('magnet')
+    this.collectButton.base.classList.remove('visible')
     signals.newDom.dispatch()
   }
 

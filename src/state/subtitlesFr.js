@@ -25,9 +25,13 @@ export default [
     ['', 20000]
   ],
   [
-    ['On glorifie notre puissante armée, grande défenseuse des peuples,', 0],
-    ['mais qui n’hésite pas à punir tout faux pas ', 3000],
-    ['d’une froide exécution.', 5300],
-    ['', 10000]
+    ['Mais… pourquoi tant d’agitation ?', 0],
+    ['Ces gens ne ressemblent ni à des religieux, ', 2700],
+    ['ni à des étudiants venus se recueillir auprès du tombeau !', 4300],
+    ['Alors qui sont-ils ?', 6500],
+	  ['Le jeune Richelieu ne peut l’imaginer, mais vous les aurez sûrement reconnus…', 8200],
+    ['ce sont les manifestants populaires de 1789 : les sans-culottes !', 14000],
+    ['Ils sont venus pour profaner le tombeau.', 19000],
+    [' Mais à qui appartient-il ? Qui pourrait mériter un tel sort... ?', 22000]
   ]
 ]

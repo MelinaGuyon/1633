@@ -10,7 +10,8 @@ const signals = {
   newDom: new Signal(),
   newIndication: new Signal(),
   writeSubtitles: new Signal(),
-  factUnlock: new Signal()
+  factUnlock: new Signal(),
+  factUnlockEnd: new Signal()
 }
 
 export default signals

@@ -5,6 +5,7 @@ import store from 'state/store'
 import anime from 'animejs'
 import signals from 'state/signals'
 import sortBy from 'lodash/sortBy'
+import delay from 'lodash/delay'
 
 import './Chronologie.styl'
 
@@ -67,14 +68,16 @@ class Fact extends DomComponent {
           <img class='character' ref={addRef(this, 'character')} src={props.content.img} />
           <div class='content' ref={addRef(this, 'content')} >
             <PreviousButton id={props.id} factDate={props.content.date} goToDateOnChronoButton={props.goToDateOnChronoButton} />
-            <p class='date'>{props.content.date}</p>
-            <p class='title'>{props.content.title}</p>
-            <p class='name'>{props.content.historyName}</p>
-            <p class='text'>{props.content.text}</p>
-            <p class='links'>
-              <a href='{props.content.textUrl}' class='textLink'>texte / {props.content.textUrlTitle}</a>
-              <a href='{props.content.imageUrl}' class='imageLink'>image / {props.content.imageUrlTitle}</a>
-            </p>
+            <div class='subContent' >
+              {/* <p class='date'>{props.content.date}</p> */}
+              <p class='title'>{props.content.title}</p>
+              <p class='name'>{props.content.historyName}</p>
+              <p class='text'>{props.content.text}</p>
+              <p class='links'>
+                <a href={props.content.textUrl} target='_blank' class='textLink magnet'>texte / {props.content.textUrlTitle}</a>
+                <a href={props.content.imageUrl} target='_blank' class='imageLink magnet'>image / {props.content.imageUrlTitle}</a>
+              </p>
+            </div>
             <NextButton id={props.id} factsArray={props.factsArray} factDate={props.content.date} goToDateOnChronoButton={props.goToDateOnChronoButton} />
           </div>
         </div>
@@ -207,6 +210,7 @@ export default class Chronologie extends DomComponent {
       store.pause.set(true)
       store.menuLight.set(true)
       store.menuSocials.set(false)
+      delay(() => { signals.newDom.dispatch() }, 1000) // car animation css qui décale les points
     } else if (chronologieStatus === 'disappearing') {
       this.chronologie.classList.remove('visible')
       this.internalUnbind()
@@ -220,11 +224,13 @@ export default class Chronologie extends DomComponent {
   getChronologieOffset () {
     // TODO :: to get on resize too
     store.chronologieOffset.set({ x: this.chronologie.offsetWidth, y: this.chronologie.scrollTop })
+    delay(() => { signals.newDom.dispatch() }, 500)
   }
 
   unbindedGetChronologieOffset (top) {
     // TODO :: to get on resize too
     store.chronologieOffset.set({ x: this.chronologie.offsetWidth, y: top })
+    delay(() => { signals.newDom.dispatch() }, 2500)
   }
 
   checkCurrent () {
