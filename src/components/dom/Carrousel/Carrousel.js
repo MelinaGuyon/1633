@@ -86,7 +86,7 @@ export default class Carrousel extends DomComponent {
 
   componentDidMount () {
     this.mouseWhellTodo = this.fastbind('mouseWhellTodo', 1)
-    if (store.skipCarousel.get()) this.launchGame(0)
+    if (store.skipCarousel.get()) this.directLaunch()
   }
 
   activeCarousel () {
@@ -256,5 +256,13 @@ export default class Carrousel extends DomComponent {
         })
       }
     })
+  }
+
+  directLaunch () {
+    this.unbind()
+    this.game = new RichelieuGame({ autosetup: true })
+    this.carrousel.classList.add('hidden')
+    store.currentHistory.set(0)
+    store.launched.set(true)
   }
 }
