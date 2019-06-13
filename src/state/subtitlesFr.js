@@ -32,25 +32,29 @@ export default [
 	  ['Le jeune Richelieu ne peut l’imaginer, mais vous les aurez sûrement reconnus…', 8200],
     ['ce sont les manifestants populaires de 1789 : les sans-culottes !', 14000],
     ['Ils sont venus pour profaner le tombeau.', 19000],
-    [' Mais à qui appartient-il ? Qui pourrait mériter un tel sort... ?', 22000]
+    [' Mais à qui appartient-il ? Qui pourrait mériter un tel sort... ?', 22000],
+	  ['', 28000]
   ],
   [
     ['Certains racontent que ce pauvre crâne trouva rapidement de nouveaux propriétaires :', 0],
     ['de jeunes enfants, qui s’en seraient servi comme balle de jeu !', 4400],
-    ['Un abbé, passant par là, se serait mêlé à leur récréation.', 8000]
+    ['Un abbé, passant par là, se serait mêlé à leur récréation.', 8000],
+    ['', 14000]
   ],
   [
 	  ['Il en aurait même profité pour s’emparer de la tête, une fois ses jeunes amis lassés de la relique.', 0],
     ['Le vol commis par l’abbé Baschamp est envisageable, mais, rassurez-vous,', 4800],
     ['le récit du crâne devenu balle de jeu tient davantage de la légende !', 9700],
-    ['Pourtant, cette légende fut racontée tant de fois que beaucoup y crurent pendant des années !', 14000]
+    ['Pourtant, cette légende fut racontée tant de fois que beaucoup y crurent pendant des années !', 14000],
+	  ['', 21000]
   ],
   [
     ['Une autre version de l’histoire existe.', 0],
     ['Un habitant du quartier aurait assisté au lugubre spectacle de la profanation.', 2700],
     ['Horrifié, il aurait alors récupéré, puis protégé le crâne d’un morceau de linceul…', 6000],
     ['En vérité, il s’agissait d’un bonnetier appelé Cheval, habitant à quelques rues de la Sorbonne.', 13000],
-    [' Il est ainsi parvenu à mettre le crâne à l’abri, et lui évita un destin funeste...', 19000]
+    [' Il est ainsi parvenu à mettre le crâne à l’abri, et lui évita un destin funeste...', 19000],
+	  ['', 25000]
   ],
   [
     ['Il semblerait que nous ayons quitté Paris !', 0],
@@ -58,19 +62,22 @@ export default [
     ['Une fois en possession du bonnetier Cheval, la relique sembla disparaître totalement. ', 6500],
     ['Beaucoup la pensaient perdue, d’autres la disaient détruite.', 12000],
     ['Mais en réalité, le crâne voyagea bien loin de Paris et de la Sorbonne.', 16000],
-    [' Il alla même jusqu’en Bretagne !', 20700]
+    [' Il alla même jusqu’en Bretagne !', 20700],
+	  ['', 25000]
   ],
   [
     ['Mis en lieu sûr par le bonnetier Cheval,', 0],
     ['il fut par la suite confié aux mains du prêtre Nicolas Armez et de sa famille, dès 1805.', 2800],
     ['Transmis de génération en génération,', 8000],
-    ['la famille du prêtre préserva ainsi la relique durant près de 60 ans !.', 12000]
+    ['la famille du prêtre préserva ainsi la relique durant près de 60 ans !.', 12000],
+	  ['', 18000]
   ],
   [
     ['Un grand soin lui fut apporté. ', 0],
     ['Un pharmacien veilla à sa bonne conservation,', 2800],
     ['en appliquant au crâne un traitement anti-insecte et même un verni !', 6500],
-    ['Mais pourquoi tant d’attentions ?', 10000]
+    ['Mais pourquoi tant d’attentions ?', 10000],
+	  ['', 13500]
   ],
   [
     ['Malgré la qualité de son traitement,', 0],
@@ -79,7 +86,8 @@ export default [
     ['Cet affront finit par atteindre les oreilles de l’Empereur Napoléon III.', 9800],
     ['Il ordonna le retour du crâne en son lieu de repos originel, en 1866.', 13000],
     ['Voilà que l’Empereur s’en mêle…', 18000],
-    ['le défunt semble être d’une importance bien particulière...', 20000]
+    ['le défunt semble être d’une importance bien particulière...', 20000],
+	  ['', 24000]
   ],
   [
     ['Après un long voyage de plus de 70 ans,', 0],
@@ -87,7 +95,8 @@ export default [
     ['prêt à reposer en paix, pour de bon.', 5800],
     ['Et quelle surprise, pour le jeune Richelieu,', 9000],
     ['de découvrir l’emplacement du tombeau. Il s’agit de son collège… ', 12000],
-    ['l’endroit même où il se situe à présent. ', 16000]
+    ['l’endroit même où il se situe à présent. ', 16000],
+	  ['', 20000]
   ],
   [
     ['Et, à y regarder de plus près, le tombeau ressemble terriblement à...', 0],
@@ -98,7 +107,8 @@ export default [
     ['où il projette d’être inhumé. ', 18000],
     ['Le cardinal mourra en 1642, ', 21000],
     ['mais le tombeau désiré ne sera achevé qu’en 1694 par le sculpteur Girardon,', 24000],
-    ['sur commande de la nièce de Richelieu, Marie-Madeleine d’Aiguillon.', 31000]
+    ['sur commande de la nièce de Richelieu, Marie-Madeleine d’Aiguillon.', 31000],
+    ['', 35000]
   ],
   [
     ['Le jeune Richelieu n’est pas au bout de ses surprises,', 0],
@@ -115,6 +125,7 @@ export default [
     ['Le groupe de curieux avait pour objectif de photographier la relique,', 38000],
     ['et d’en faire des moulages…', 41400],
     ['Une fois leur entreprise terminée,', 44000],
-    ['le tombeau fut enfin refermé, pour ne plus jamais être dérangé.', 46000]
+    ['le tombeau fut enfin refermé, pour ne plus jamais être dérangé.', 46000],
+	  ['', 52000]
   ]
 ]
