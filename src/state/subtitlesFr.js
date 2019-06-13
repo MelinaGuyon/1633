@@ -71,5 +71,14 @@ export default [
     ['Un pharmacien veilla à sa bonne conservation,', 2800],
     ['en appliquant au crâne un traitement anti-insecte et même un verni !', 6500],
     ['Mais pourquoi tant d’attentions ?', 10000]
+  ],
+  [
+    ['Malgré la qualité de son traitement,', 0],
+    ['la tête paraissait subir une surprenante cérémonie :', 2500],
+    ['la relique était exhibée à la vue du public une fois chaque année… ', 6000],
+    ['Cet affront finit par atteindre les oreilles de l’Empereur Napoléon III.', 9800],
+    ['Il ordonna le retour du crâne en son lieu de repos originel, en 1866.', 13000],
+    ['Voilà que l’Empereur s’en mêle…', 18000],
+    ['le défunt semble être d’une importance bien particulière...', 20000]
   ]
 ]
