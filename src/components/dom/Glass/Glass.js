@@ -20,6 +20,16 @@ const transformValues = [
   [380, 240, 0]
 ]
 
+const realValues = [
+  [-159, -150, 0],
+  [-32, -282, 0],
+  [138, -248, 0],
+  [-55, -39, 0],
+  [140, 82, 0],
+  [-46, 252, 0],
+  [0, 312, 0]
+]
+
 class SingleGlass extends DomComponent {
   template (props) {
     this.id = props.id
@@ -120,6 +130,13 @@ export default class Glass extends DomComponent {
     })
   }
 
+  getPosition () {
+    this.singleGlass.forEach((el, index) => {
+      const coord = el.base.getBoundingClientRect()
+      this.coords[index] = { el: el.base, left: coord.left, top: coord.top, centerX: coord.left + el.base.offsetWidth / 2, centerY: coord.top + el.base.offsetHeight / 2 }
+    })
+  }
+
   construct () {
     this.unbind()
     signals.newIndication.dispatch(0)
@@ -132,6 +149,7 @@ export default class Glass extends DomComponent {
         duration: 900,
         easing: 'easeInOutQuart',
         complete: () => {
+          // this.getPosition()
           delay(() => store.started.set(true), 600)
         }
       })
