@@ -7,21 +7,21 @@ import logger from 'utils/logger'
 import signals from 'state/signals'
 
 import './Tutorial.styl'
-import sound from '../../../controllers/sound'
 
 class TutoKeyboard extends DomComponent {
   template (props) {
-    return (
+	  const loc = store.loc.get()
+	  return (
       <div class='tutorial__item' data-tuto='keyboard'>
-        <div class='mouse__close-zone tutorial__center'>
+    <div class='mouse__close-zone tutorial__center'>
           <Button class='tutorial__close ' />
           <div className='tutorial__pictos'>
-            <img src={'assets/img/pictos/arrow-left.svg'} alt='' />
-            <img src={'assets/img/pictos/arrow-right.svg'} alt='' />
-          </div>
-          <p>Utilise les flèches de ton clavier pour te déplacer</p>
-        </div>
+        <img src={'assets/img/pictos/arrow-left.svg'} alt='' />
+        <img src={'assets/img/pictos/arrow-right.svg'} alt='' />
       </div>
+          <p>{loc['tuto.keyboard']}</p>
+        </div>
+  </div>
     )
   }
 }
@@ -52,15 +52,16 @@ class Button extends DomComponent {
 
 class TutoSpace extends DomComponent {
   template (props) {
-    return (
+	  const loc = store.loc.get()
+	  return (
       <div class='tutorial__item' data-tuto='space'>
-        <div class='tutorial__bkgform'>
+    <div class='tutorial__bkgform'>
           <div class='mouse__close-zone tutorial__center'>
-            <Button class='tutorial__close'>x</Button>
-            <p>Clique sur la barre espace quand tu vois ces formes dans les scènes</p>
-          </div>
-        </div>
+        <Button class='tutorial__close'>x</Button>
+        <p>{loc['tuto.spacebar']}</p>
       </div>
+        </div>
+  </div>
     )
   }
 }
@@ -86,11 +87,11 @@ export default class Tutorial extends DomComponent {
     }
 	  signals.newDom.dispatch()
 	  logger('Tutorial did mount', '#47b342').log()
-	  //signals.goLeft.listen(this.keyup) TODO
-	  //signals.goRight.listen(this.keyup) TODO
+	  // signals.goLeft.listen(this.keyup) TODO
+	  // signals.goRight.listen(this.keyup) TODO
   }
 
-	keyup () {
+  keyup () {
     console.log('close')
     let tutoOpen = document.querySelector('.tutorial__item.active')
     console.log(tutoOpen)

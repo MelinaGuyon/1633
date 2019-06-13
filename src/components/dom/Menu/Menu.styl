@@ -175,33 +175,32 @@
           position: absolute;
           background: #fff;
           display: block;
-          transition: all 0.5s;
-          transition: background 0.6s $quad-ease-out;
+          transition: 0.6s $quad-ease-out;
 
         .l1
-          -webkit-transform: translate(-0px,-3px) rotate(30deg);
-          transform: translate(-0px,-3px) rotate(30deg);
+          -webkit-transform: translate(2px,0px) rotate(90deg);
+          transform: translate(2px,0px) rotate(90deg);
 
         .l2
           -webkit-transform: translate(-4px,0px) rotate(90deg);
           transform: translate(-4px,0px) rotate(90deg);
 
         .l3
-          -webkit-transform: translate(-0px,2px) rotate(-30deg);
-          transform: translate(-0px,2px) rotate(-30deg);
+          -webkit-transform: translate(-4px,0px) rotate(90deg);
+          transform: translate(-4px,0px) rotate(90deg);
 
         &.pause
           .l1
-            -webkit-transform: translate(2px,0px) rotate(90deg);
-            transform: translate(2px,0px) rotate(90deg);
+            -webkit-transform: translate(-0px,-3px) rotate(30deg);
+            transform: translate(-0px,-3px) rotate(30deg);
 
           .l2
             -webkit-transform: translate(-4px,0px) rotate(90deg);
             transform: translate(-4px,0px) rotate(90deg);
 
           .l3
-            -webkit-transform: translate(-4px,0px) rotate(90deg);
-            transform: translate(-4px,0px) rotate(90deg);
+            -webkit-transform: translate(-0px,2px) rotate(-30deg);
+            transform: translate(-0px,2px) rotate(-30deg);
 
     &-sound
       &__btn
