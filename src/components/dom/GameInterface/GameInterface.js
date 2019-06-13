@@ -56,21 +56,9 @@ export default class GameInterface extends DomComponent {
   }
 
   openTuto (id) {
-    //cookie.createCookie('tuto', true, 30) TODO décommenter cette ligne en prod
-    let tutos = document.querySelectorAll('[data-tuto]')
-
-    for (let i = 0; i < tutos.length; i++) {
-      tutos[i].className = 'tutorial__item'
-    }
-
-    let tuto = document.querySelector('[data-tuto=' + id)
-    tuto.className = 'tutorial__item active'
-
-    let element = tuto.closest('.mouse__close')
-    let type = element.getAttribute('data-type')
-    type += ' mouse__close'
-    tuto.closest('.mouse__close').className = type
+    // cookie.createCookie('tuto', true, 30) TODO décommenter cette ligne en prod
     store.pause.set(true)
+    signals.activeTuto.dispatch(id)
   }
 
   clearClick (e) {

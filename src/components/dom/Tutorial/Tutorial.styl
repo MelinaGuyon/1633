@@ -1,4 +1,5 @@
 .tutorial
+  pointer-events: none
 
   &__pictos
     text-align center
@@ -26,6 +27,7 @@
 
     button
       margin 10px
+      cursor none
 
   &__close
     position absolute
@@ -35,6 +37,7 @@
     background-color transparent
     font-size 30px
     border 0px
+    cursor none
 
     img
       width: 30px
@@ -46,9 +49,11 @@
     transform translate(-50%, -50%)
     width: 670px
     text-align: center
+    cursor none
 
   &__item
-    display none
+    pointer-events: none
+    opacity 0
     background-image: linear-gradient(to bottom, rgba(0, 2, 4, 0.99), rgba(16, 29, 55, 0.99));
     width: 100vw
     height: 100vh
@@ -56,7 +61,7 @@
     top: 0
     left: 0
     z-index 80
-    
+
     p, span
       color: $salmon
       font-family: Eczar;
@@ -71,7 +76,8 @@
       padding-bottom: 0
 
     &.active
-      display block
+      pointer-events: auto
+      opacity: 1
 
 
 @keyframes bckg {
