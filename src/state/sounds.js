@@ -19,7 +19,7 @@ const sfxs = {
   'voixoff/chap_8': { loop: false, fadeOut: 400, volume: 5 },
   'voixoff/epilogue': { loop: false, fadeOut: 400, volume: 5 },
   'effect/cat': { loop: false, fadeOut: 400, volume: 0.5 },
-  'effect/crowd': { loop: true, fadeOut: 400, volume: 0.05 },
+  'effect/crowd': { loop: false, fadeOut: 400, volume: 0.05 },
   'effect/kids': { loop: true, fadeOut: 400, volume: 0.6 },
   'effect/rain': { loop: true, fadeOut: 400, volume: 1.5 },
   'effect/bird': { loop: true, fadeOut: 400, volume: 0.1 },

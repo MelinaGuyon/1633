@@ -80,5 +80,35 @@ export default [
     ['Il ordonna le retour du crâne en son lieu de repos originel, en 1866.', 13000],
     ['Voilà que l’Empereur s’en mêle…', 18000],
     ['le défunt semble être d’une importance bien particulière...', 20000]
-  ]
+  ],
+  [
+    ['Après un long voyage de plus de 70 ans,', 0],
+    ['le crâne revint finalement dans son mausolée, ', 2500],
+    ['prêt à reposer en paix, pour de bon.', 5800],
+    ['Et quelle surprise, pour le jeune Richelieu,', 9000],
+    ['de découvrir l’emplacement du tombeau. Il s’agit de son collège… ', 12000],
+    ['l’endroit même où il se situe à présent. ', 16000]
+  ],
+  [
+    ['Et, à y regarder de plus près, le tombeau ressemble terriblement à...', 0],
+    ['celui qu’il se destine…', 4100],
+    ['Il s’agit ainsi de l’histoire de la sépulture du cardinal…', 6800],
+    ['Richelieu, devenu proviseur de la Sorbonne,', 11000],
+    ['financera lui-même la construction de la nouvelle église du collège', 15000],
+    ['où il projette d’être inhumé. ', 18000],
+    ['Le cardinal mourra en 1642, ', 21000],
+    ['mais le tombeau désiré ne sera achevé qu’en 1694 par le sculpteur Girardon,', 24000],
+    ['sur commande de la nièce de Richelieu, Marie-Madeleine d’Aiguillon.', 31000]
+  ],
+	[
+		['Et, à y regarder de plus près, le tombeau ressemble terriblement à...', 0],
+		['celui qu’il se destine…', 4100],
+		['Il s’agit ainsi de l’histoire de la sépulture du cardinal…', 6800],
+		['Richelieu, devenu proviseur de la Sorbonne,', 11000],
+		['financera lui-même la construction de la nouvelle église du collège', 15000],
+		['où il projette d’être inhumé. ', 18000],
+		['Le cardinal mourra en 1642, ', 21000],
+		['mais le tombeau désiré ne sera achevé qu’en 1694 par le sculpteur Girardon,', 24000],
+		['sur commande de la nièce de Richelieu, Marie-Madeleine d’Aiguillon.', 31000]
+	]
 ]
