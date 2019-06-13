@@ -112,10 +112,25 @@
       max-width 430px
       min-width: 370px
       height: 85vh;
-      transition .3s ease
+      transition .5s ease
       opacity 0
       pointer-events: none
 
+      &:hover
+        transform: translate(-50%, -50%) scale(1.1);
+
+        .carrousel__form
+          //width: 57vw;
+          //height: 105vh;
+
+        .text-scrolling
+          color $salmon
+
+        .text-scrolling.stroke
+          color transparent
+          -webkit-text-stroke: 1px $salmon;
+         // bottom 90px
+
       &.active
-        pointer-events: auto
-        opacity 1
+              pointer-events: auto
+              opacity 1
