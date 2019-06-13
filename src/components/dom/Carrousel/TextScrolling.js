@@ -10,8 +10,10 @@ export default class TextScrolling extends DomComponent {
     this.span = document.createElement('span')
     this.span.innerText = this.text
 
+    let classname = props.stroke ? 'text-scrolling stroke' : 'text-scrolling'
+
     return (
-      <div class='text-scrolling'>
+      <div class={classname}>
         <div class='wrapper' ref={addRef(this, 'wrapper')}>
           {this.span}
         </div>

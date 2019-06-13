@@ -28,7 +28,7 @@ class Form extends DomComponent {
           <TextScrolling text={loc['carrousel.' + props.type]} />
           {/* <div className='carrousel__textScrolling' data-text={loc['carrousel.' + props.type]} /> */}
         </div>
-        <TextScrolling text={loc['carrousel.' + props.type]} />
+        <TextScrolling text={loc['carrousel.' + props.type]} stroke />
         {/* <div className='carrousel__textScrolling' data-text={loc['carrousel.' + props.type]} /> */}
       </div>
     )

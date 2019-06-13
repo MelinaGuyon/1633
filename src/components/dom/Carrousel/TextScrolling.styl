@@ -1,12 +1,17 @@
 .text-scrolling
   position absolute
-  bottom: 200px
+  bottom: 100px
   left 50%
   color: $white
-  font-size: 60px
+  font-size: 80px
   pointer-events: none;
   width: 100vw
   transform: translateX(-50%)
+  font-family: EczarBold
+
+  &.stroke
+    color: transparent
+    -webkit-text-stroke: 1px #ffffff;
 
   .wrapper
     display: inline-block;
