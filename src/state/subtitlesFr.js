@@ -44,5 +44,12 @@ export default [
     ['Le vol commis par l’abbé Baschamp est envisageable, mais, rassurez-vous,', 4800],
     ['le récit du crâne devenu balle de jeu tient davantage de la légende !', 9700],
     ['Pourtant, cette légende fut racontée tant de fois que beaucoup y crurent pendant des années !', 14000]
-  ]
+  ],
+	[
+		['Une autre version de l’histoire existe.', 0],
+		['Un habitant du quartier aurait assisté au lugubre spectacle de la profanation.', 2700],
+		['Horrifié, il aurait alors récupéré, puis protégé le crâne d’un morceau de linceul…', 5800],
+		['En vérité, il s’agissait d’un bonnetier appelé Cheval, habitant à quelques rues de la Sorbonne.', 13000],
+		[' Il est ainsi parvenu à mettre le crâne à l’abri, et lui évita un destin funeste...', 19000]
+	]
 ]

@@ -9,7 +9,7 @@
     "preloader.text": "Loading",
     "intro.text": "Bienvenue en Sorbonne, dans cette chapelle, lieu saint qui a connu toute l’histoire de l’Université...\nElle a revêtu bien des formes, dont cette dernière, numérique, dans laquelle vous naviguez aujourd’hui.\nChoisissez donc l’histoire que ces vitraux vont vous conter.",
     "intro.skip": "Skip intro",
-    "carrousel.richelieu": "The Profane Skull",
+    "carrousel.richelieu": "The profane skull",
     "carrousel.mariecurie": "La Femme des Sciences",
     "carrousel.robertdesorbon": "Le Confesseur",
     "carrousel.jacqueslemercier": "L'Architecte du Savoir",
@@ -30,6 +30,8 @@
     "cta.scroll": "Scroll",
     "epilogue.text1": "Aujourd’hui, le crâne de Richelieu repose dans son tombeau, au coeur de l’église construite durant les travaux de rénovation de la Sorbonne, débutés en 1635. La volonté du cardinal de restaurer les lieux, puis d’y être inhumé, montrent l’attachement du proviseur pour son université. Mis face au spectacle de la profanation de son tombeau, nous pouvons facilement imaginer le tourment du cardinal...",
     "epilogue.text2": "Et nous pouvons aujourd’hui nous demander si, averti de l’agitation engendrée par la Révolution française, Richelieu se serait tant appliqué à l’affirmation de l'absolutisme en son temps...",
-    "epilogue.skip": "Skip epilogue"
+    "epilogue.skip": "Skip epilogue",
+    "tuto.keyboard": "Utilise les flèches de ton clavier pour te déplacer",
+    "tuto.spacebar": "Clique sur la barre espace quand tu vois ces formes dans les scènes"
   }
 }
