@@ -4,9 +4,9 @@ import Building from './CityBuilding'
 export default class CityBuildings extends PixiComponent {
   setup () {
     this.mains = []
-    this.mains.push(this.addComponent(Building, { layer: '6bg700', type: 'a', x: -620, y: -325, scale: 0.66 })) // fond
+    this.mains.push(this.addComponent(Building, { layer: '6bg800', type: 'a', x: -620, y: -325, scale: 0.66 })) // fond
     this.mains.push(this.addComponent(Building, { layer: '6bg700', type: 'c', x: -810, y: -450, scale: 0.78 })) // fond incrusté
-    this.mains.push(this.addComponent(Building, { layer: '6bg700', type: 'b', x: -620, y: -330, scale: 0.66 })) // fond
+    this.mains.push(this.addComponent(Building, { layer: '6bg690', type: 'b', x: -620, y: -330, scale: 0.66 })) // fond
 
     this.mains.push(this.addComponent(Building, { layer: '6bg600', type: 'd', x: -540, y: -200, scale: 0.66 })) // fenetre gauche
     this.mains.push(this.addComponent(Building, { layer: '6bg600', type: 'e', x: 245, y: -230, scale: 0.66 })) // fenetre droite
