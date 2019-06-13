@@ -82,7 +82,7 @@
         <key>atfFormats</key>
         <string></string>
         <key>textureFormat</key>
-        <enum type="SettingsBase::TextureFormat">png8</enum>
+        <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
         <uint>0</uint>
         <key>maxTextureSize</key>
@@ -1345,6 +1345,19 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">light/transparent.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>64,64,128,128</rect>
+                <key>scale9Paddings</key>
+                <rect>64,64,128,128</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">perso/perso0.png</key>
             <key type="filename">perso/perso1.png</key>
             <key type="filename">perso/perso10.png</key>
@@ -1411,6 +1424,7 @@
             <filename>01-profanation</filename>
             <filename>perso</filename>
             <filename>glass</filename>
+            <filename>light</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

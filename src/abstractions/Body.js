@@ -78,7 +78,6 @@ export default class Body {
     this.px = this.x
     this.py = this.y
 
-    // 0.0008
     let vitesse = 0.00016
     let deceleration = 0.0008
 
