@@ -9,7 +9,7 @@ export default class CityBuildings extends PixiComponent {
     this.mains.push(this.addComponent(Building, { layer: '10bg700', type: 'a', x: -13, y: -45, scale: 0.66 })) // big
 
     this.mains.push(this.addComponent(Building, { layer: '10bg700', type: 'd', x: -13, y: -45, scale: 0.66 })) // fenêtres
-    this.mains.push(this.addComponent(Building, { layer: '10bg700', type: 'e', x: 10, y: 0, scale: 0.62 })) // mausolé
+    this.mains.push(this.addComponent(Building, { layer: '10bg600', type: 'e', x: 10, y: 0, scale: 0.62 })) // mausolé
   }
 
   componentWillUnmount () {
