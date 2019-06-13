@@ -4,9 +4,9 @@ import Building from './CityBuilding'
 export default class CityBuildings extends PixiComponent {
   setup () {
     this.mains = []
-    this.mains.push(this.addComponent(Building, { layer: '2bg700', type: 'c', x: 0, y: -50, scale: 0.66 })) // fond incrusté
+    this.mains.push(this.addComponent(Building, { layer: '2bg800', type: 'c', x: 0, y: -50, scale: 0.66 })) // fond incrusté
     this.mains.push(this.addComponent(Building, { layer: '2bg700', type: 'b', x: -15, y: -70, scale: 0.66 })) // fond
-    this.mains.push(this.addComponent(Building, { layer: '2bg700', type: 'a', x: 0, y: -50, scale: 0.66 })) // big
+    this.mains.push(this.addComponent(Building, { layer: '2bg690', type: 'a', x: 0, y: -50, scale: 0.66 })) // big
 
     this.mains.push(this.addComponent(Building, { layer: '2bg600', type: 'd', x: 0, y: -20, scale: 0.66 })) // immeuble fond
     this.mains.push(this.addComponent(Building, { layer: '2bg600', type: 'e', x: 20, y: -50, scale: 0.66 })) // immeuble droite
