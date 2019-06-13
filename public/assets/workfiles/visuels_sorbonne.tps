@@ -862,133 +862,187 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">07-ceremonie/ceremonie-a.png</key>
+            <key type="filename">07-ceremonie/procession-a.png</key>
+            <key type="filename">07-ceremonie/procession-b.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>312,164,625,327</rect>
+                <rect>435,188,870,377</rect>
                 <key>scale9Paddings</key>
-                <rect>312,164,625,327</rect>
+                <rect>435,188,870,377</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">07-ceremonie/ceremonie-b.png</key>
+            <key type="filename">07-ceremonie/procession-c.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>316,59,633,117</rect>
+                <rect>456,256,911,511</rect>
                 <key>scale9Paddings</key>
-                <rect>316,59,633,117</rect>
+                <rect>456,256,911,511</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">07-ceremonie/ceremonie-c.png</key>
+            <key type="filename">07-ceremonie/procession-d.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>91,99,181,199</rect>
+                <rect>111,80,221,159</rect>
                 <key>scale9Paddings</key>
-                <rect>91,99,181,199</rect>
+                <rect>111,80,221,159</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">07-ceremonie/ceremonie-d.png</key>
+            <key type="filename">07-ceremonie/procession-e.png</key>
+            <key type="filename">07-ceremonie/procession-f.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>33,94,65,189</rect>
+                <rect>47,17,93,33</rect>
                 <key>scale9Paddings</key>
-                <rect>33,94,65,189</rect>
+                <rect>47,17,93,33</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">07-ceremonie/ceremonie-e.png</key>
+            <key type="filename">07-ceremonie/procession-g.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>30,108,60,216</rect>
+                <rect>62,30,123,60</rect>
                 <key>scale9Paddings</key>
-                <rect>30,108,60,216</rect>
+                <rect>62,30,123,60</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">07-ceremonie/ceremonie-f.png</key>
+            <key type="filename">07-ceremonie/procession-h.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>29,55,57,110</rect>
+                <rect>53,20,107,39</rect>
                 <key>scale9Paddings</key>
-                <rect>29,55,57,110</rect>
+                <rect>53,20,107,39</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">07-ceremonie/ceremonie-g.png</key>
+            <key type="filename">07-ceremonie/procession-i.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>69,117,138,235</rect>
+                <rect>37,134,73,267</rect>
                 <key>scale9Paddings</key>
-                <rect>69,117,138,235</rect>
+                <rect>37,134,73,267</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">07-ceremonie/ceremonie-h.png</key>
+            <key type="filename">07-ceremonie/procession-j.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>46,72,91,143</rect>
+                <rect>43,112,86,225</rect>
                 <key>scale9Paddings</key>
-                <rect>46,72,91,143</rect>
+                <rect>43,112,86,225</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">07-ceremonie/ceremonie-i.png</key>
+            <key type="filename">07-ceremonie/procession-k.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>60,58,120,115</rect>
+                <rect>118,129,236,259</rect>
                 <key>scale9Paddings</key>
-                <rect>60,58,120,115</rect>
+                <rect>118,129,236,259</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">07-ceremonie/ceremonie-j.png</key>
+            <key type="filename">07-ceremonie/procession-l.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>31,73,63,147</rect>
+                <rect>80,134,160,267</rect>
                 <key>scale9Paddings</key>
-                <rect>31,73,63,147</rect>
+                <rect>80,134,160,267</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">07-ceremonie/procession-m.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>47,111,94,221</rect>
+                <key>scale9Paddings</key>
+                <rect>47,111,94,221</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">07-ceremonie/procession-n.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>39,76,79,151</rect>
+                <key>scale9Paddings</key>
+                <rect>39,76,79,151</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">07-ceremonie/procession-o.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>80,117,160,233</rect>
+                <key>scale9Paddings</key>
+                <rect>80,117,160,233</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">07-ceremonie/procession-p.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>67,63,133,127</rect>
+                <key>scale9Paddings</key>
+                <rect>67,63,133,127</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -1288,19 +1342,6 @@
                 <rect>250,393,500,786</rect>
                 <key>scale9Paddings</key>
                 <rect>250,393,500,786</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">glass/glass-zz.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>125,197,250,393</rect>
-                <key>scale9Paddings</key>
-                <rect>125,197,250,393</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
