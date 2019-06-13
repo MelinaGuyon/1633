@@ -15,8 +15,8 @@ export default class Perso extends PixiComponent {
 
     this.refs.perso = this.addChild('perso')
     this.anim = new Animator(this.refs.perso)
-    this.base.scale.y = 0.66
-    this.base.scale.x = 0.66
+    this.base.scale.y = 0.7
+    this.base.scale.x = 0.7
     this.base.fakeX = 0
     this.base.fakeY = -1 // to let scenes in cneter
     this.base.x = -54
@@ -42,11 +42,11 @@ export default class Perso extends PixiComponent {
   updateAnimation (direction) {
     if (this.oldDirection !== direction) {
       if (direction === 0 && !store.pause.get()) {
-        this.base.scale.x = -0.66
+        this.base.scale.x = -0.7
         this.base.x = 60
         this.anim.play('perso', { loop: true, frameDuration: 30, firstFrame: this.anim.currentFrame })
       } else if (direction === 1 && !store.pause.get()) {
-        this.base.scale.x = 0.66
+        this.base.scale.x = 0.7
         this.base.x = -54
         this.anim.play('perso', { loop: true, frameDuration: 30, firstFrame: this.anim.currentFrame })
       } else {
