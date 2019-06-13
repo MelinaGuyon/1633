@@ -33,5 +33,16 @@ export default [
     ['ce sont les manifestants populaires de 1789 : les sans-culottes !', 14000],
     ['Ils sont venus pour profaner le tombeau.', 19000],
     [' Mais à qui appartient-il ? Qui pourrait mériter un tel sort... ?', 22000]
+  ],
+  [
+    ['Certains racontent que ce pauvre crâne trouva rapidement de nouveaux propriétaires :', 0],
+    ['de jeunes enfants, qui s’en seraient servi comme balle de jeu !', 4400],
+    ['Un abbé, passant par là, se serait mêlé à leur récréation.', 8000]
+  ],
+  [
+	  ['Il en aurait même profité pour s’emparer de la tête, une fois ses jeunes amis lassés de la relique.', 0],
+    ['Le vol commis par l’abbé Baschamp est envisageable, mais, rassurez-vous,', 4800],
+    ['le récit du crâne devenu balle de jeu tient davantage de la légende !', 9700],
+    ['Pourtant, cette légende fut racontée tant de fois que beaucoup y crurent pendant des années !', 14000]
   ]
 ]
