@@ -27,67 +27,64 @@
     &.visible
       pointer-events: auto
 
-  &__story
-    font-family: RobotoCondensedLight;
-    font-size: 30px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: condensed;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: center;
-    color: #ffffff;
-    position fixed
+  .carrousel__background
+    position: absolute;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    z-index 2
-    top: 20vh
+    transform: translate(-50%, -50%);
+    width: 360px
+    height: 580px;
 
-    &:after
-      content: ''
-      width: 1px
-      background-color #fff
-      height: 60px
-      display block
+    .img
+      width: 100%
+      height 100%
+
+    .story
       position absolute
-      left: 50%
-      transform translateX(-50%)
-      top: -70px
+      top 150px
+      left 50%
+      transform: translateX(-50%)
+      text-transform: lowercase
+      color: $white
+      font-family: RobotoCondensedLight
+      font-size: 24px
 
-    &:before
-      content: ''
-      width: 1px
-      background-color #fff
-      height: 120px
-      display block
-      position absolute
-      left: 50%
-      transform translateX(-50%)
-      bottom: -130px
+      &:after
+        content: ''
+        width: 1px
+        background-color #fff
+        height: 40px
+        opacity 0.8
+        display block
+        position absolute
+        left: 50%
+        transform translateX(-50%)
+        top: -60px
 
-    &__number
-      font-family: RobotoCondensedLight;
-      font-size: 16px;
-      font-weight: normal;
-      font-style: normal;
-      font-stretch: condensed;
-      line-height: 0.88;
-      letter-spacing: 1px;
-      color: #ffffff;
-      vertical-align: super;
+      &:before
+        content: ''
+        width: 1px
+        background-color #fff
+        height: 80px
+        opacity 0.8
+        display block
+        position absolute
+        left: 50%
+        transform translateX(-50%)
+        bottom: -104px
+
+      .number
+        font-size: 12px
+        position: absolute
+        right -22px
 
   &__form
-    width: 37vw;
-    max-width 430px
-    min-width: 370px
-    height: 85vh;
-    background-color: #242146;
+    width: 360px
+    height: 580px;
     display block;
-    border-radius 400px 400px 0px 0px
     z-index 1
     overflow: hidden
     position relative
-    transition .3s $quad-ease-out;
 
     &__content
       position: absolute;
@@ -95,24 +92,27 @@
       left: 50%;
       transform: translate(-50%, -50%);
       position absolute
-      width: 37vw;
-      max-width 430px
-      min-width: 370px
-      height: 85vh;
-      transition .5s $quad-ease-out;
-      opacity 0
+      width: 360px
+      height: 580px;
       pointer-events: none
 
-      &:hover
-        transform: translate(-50%, -50%) scale(1.06);
+      .text-scrolling
+        transition opacity .3s $quad-ease-out;
+        opacity 0
 
-        .text-scrolling
-          // color $salmon
+      // &:hover
+      //   transform: translate(-50%, -50%) scale(1.06);
 
-        .text-scrolling.stroke
-          color transparent
-          // -webkit-text-stroke: 1px $salmon;
+      //   .text-scrolling
+      //     // color $salmon
+
+      //   .text-scrolling.stroke
+      //     color transparent
+      //     // -webkit-text-stroke: 1px $salmon;
 
       &.active
         pointer-events: auto
         opacity 1
+
+        .text-scrolling
+          opacity 1

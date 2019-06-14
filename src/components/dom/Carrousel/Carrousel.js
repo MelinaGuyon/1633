@@ -25,7 +25,6 @@ class Form extends DomComponent {
     return (
       <div class={clasName} launchGame={props.launchGame} type={props.type} data-id={props.id}>
         <div class='carrousel__form'>
-          <Story id={props.id} type={props.type} />
           <TextScrolling text={loc['carrousel.' + props.type]} ref={addRef(this, 'text')} />
         </div>
         <TextScrolling text={loc['carrousel.' + props.type]} stroke ref={addRef(this, 'text2')} />
@@ -59,13 +58,40 @@ class Form extends DomComponent {
   }
 }
 
-class Story extends DomComponent {
+class Background extends DomComponent {
   template (props) {
     const loc = store.loc.get()
-    let idIncrement = props.id + 1
     return (
-      <div class='carrousel__story' data-id={props.id}><span>{loc['carrousel.story']} <span class='carrousel__story__number'>{idIncrement}</span></span></div>
+      <div class='carrousel__background'>
+        <img class='img' src='assets/img/backgound/form.png' />
+        <div class='story'>
+          <span>{loc['carrousel.story']}</span>
+          <span class='number' ref={addRef(this, 'number')}>01</span>
+        </div>
+      </div>
     )
+  }
+
+  animeNumber (number) {
+    let num = number + 1
+    console.log(this.number)
+    anime({
+      targets: this.number,
+      opacity: 0,
+      translateY: [0, 20],
+      duration: 300,
+      easing: 'easeOutQuad',
+      complete: () => {
+        this.number.innerText = '0' + num
+        anime({
+          targets: this.number,
+          opacity: 1,
+          duration: 300,
+          translateY: [-20, 0],
+          easing: 'easeOutQuad'
+        })
+      }
+    })
   }
 }
 
@@ -80,6 +106,7 @@ export default class Carrousel extends DomComponent {
         <Intro onComplete={this.fastbind('activeCarousel')} ref={addRef(this, 'intro')} />
         <IntroCinematic ref={addRef(this, 'cinematic')} />
         <div class='carrousel-wrapper' ref={addRef(this, 'carouselWrapper')}>
+          <Background ref={addRef(this, 'background')}/>
           <Form active={'active'} type={'richelieu'} id={0} launchGame={this.launchGame} />
           <Form active={''} type={'mariecurie'} id={1} launchGame={this.launchGame} />
           <Form active={''} type={'robertdesorbon'} id={2} launchGame={this.launchGame} />
@@ -154,6 +181,7 @@ export default class Carrousel extends DomComponent {
       }
     }
 
+    this.background.animeNumber(nextpos)
     current.classList.remove('active')
     delay(() => { newCurrent.classList.add('active') }, 600)
   }
@@ -185,6 +213,7 @@ export default class Carrousel extends DomComponent {
       }
     }
 
+    this.background.animeNumber(nextpos)
     current.classList.remove('active')
     delay(() => { newCurrent.classList.add('active') }, 600)
   }
