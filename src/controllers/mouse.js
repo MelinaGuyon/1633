@@ -47,7 +47,8 @@ function bindEls () {
   domElsConcerned = document.querySelectorAll('.magnet')
   domElsConcerned.forEach((el, index) => {
     const coord = el.getBoundingClientRect()
-    coords[index] = { el: el, left: coord.left, top: coord.top, centerX: coord.left + coord.width / 2, centerY: coord.top + coord.height / 2 }
+    const noMagnetism = el.classList.contains('no-magnetism')
+    coords[index] = { el: el, left: coord.left, top: coord.top, centerX: coord.left + coord.width / 2, centerY: coord.top + coord.height / 2, noMagnetism: noMagnetism }
   })
 }
 
@@ -84,7 +85,7 @@ function handleMove (mouse) {
 
   let val = 26
   if (cursorContainer.classList.contains('reveal')) val = 33
-  if (cursorContainer.classList.contains('hold')) val = 18
+  if (cursorContainer.classList.contains('reveal-big')) val = 48
 
   const x = mouse.x - val
   const y = mouse.y - val
@@ -93,11 +94,18 @@ function handleMove (mouse) {
     let dx = Math.abs(coords[i].centerX - mouse.x)
     let dy = Math.abs(coords[i].centerY - mouse.y)
 
-    if (dx < 20 && dy < 20) {
+    if (dx < 20 && dy < 20 && !coords[i].noMagnetism) {
       magnet = true
       inrtia.x.to(coords[i].centerX - val)
       inrtia.y.to(coords[i].centerY - val)
       cursorContainer.classList.add('reveal')
+    }
+
+    if (dx < 150 && dy < 270 && coords[i].noMagnetism) {
+      magnet = true
+      inrtia.x.to(x)
+      inrtia.y.to(y)
+      cursorContainer.classList.add('reveal-big')
     }
   }
 
@@ -105,6 +113,7 @@ function handleMove (mouse) {
     inrtia.x.to(x)
     inrtia.y.to(y)
     cursorContainer.classList.remove('reveal')
+    cursorContainer.classList.remove('reveal-big')
   }
 }
 

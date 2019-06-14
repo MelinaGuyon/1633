@@ -73,6 +73,16 @@ class Background extends DomComponent {
     )
   }
 
+  addMagnet () {
+    this.base.classList.add('magnet', 'no-magnetism')
+    signals.newDom.dispatch()
+  }
+
+  removeMagnet () {
+    this.base.classList.remove('magnet', 'no-magnetism')
+    signals.newDom.dispatch()
+  }
+
   animeNumber (number) {
     let num = number + 1
     console.log(this.number)
@@ -140,6 +150,7 @@ export default class Carrousel extends DomComponent {
       complete: () => { this.carouselWrapper.classList.add('visible') }
     })
 
+    this.background.addMagnet()
     this.bind()
   }
 
@@ -238,6 +249,7 @@ export default class Carrousel extends DomComponent {
     obj.id = 0 // to force Ricelieu story
 
     this.carrousel.classList.add('no-touch')
+    this.background.removeMagnet()
 
     anime({
       targets: this.carouselWrapper,
