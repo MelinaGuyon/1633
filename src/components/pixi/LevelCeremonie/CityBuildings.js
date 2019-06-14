@@ -5,9 +5,9 @@ import Light from 'components/pixi/LevelCommon/Light'
 export default class CityBuildings extends PixiComponent {
   setup () {
     this.mains = []
-    this.mains.push(this.addComponent(Building, { layer: '8bg800', type: 'a', x: -610, y: -325, scale: 0.66 })) // fond
-    this.mains.push(this.addComponent(Building, { layer: '8bg700', type: 'b', x: -620, y: -325, scale: 0.66 })) // fond
-    this.mains.push(this.addComponent(Building, { layer: '8bg690', type: 'c', x: -620, y: -330, scale: 0.68 })) // fond incrusté
+    this.mains.push(this.addComponent(Building, { layer: '8bg800', type: 'a', x: -610, y: 0, scale: 0.66 })) // fond
+    this.mains.push(this.addComponent(Building, { layer: '8bg700', type: 'b', x: -620, y: 0, scale: 0.66 })) // fond
+    this.mains.push(this.addComponent(Building, { layer: '8bg690', type: 'c', x: -620, y: 0, scale: 0.68 })) // fond incrusté
 
     this.mains.push(this.addComponent(Building, { layer: '8bg600', type: 'd', x: 60, y: -280, scale: 0.66 })) // village
     this.mains.push(this.addComponent(Building, { layer: '8bg600', type: 'e', x: 330, y: -260, scale: 0.66 })) // nuage droite
