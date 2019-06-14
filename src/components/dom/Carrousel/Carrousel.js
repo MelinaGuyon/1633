@@ -83,13 +83,12 @@ class Background extends DomComponent {
     signals.newDom.dispatch()
   }
 
-  animeNumber (number) {
+  animeNumber (number, direction) {
     let num = number + 1
-    console.log(this.number)
     anime({
       targets: this.number,
       opacity: 0,
-      translateY: [0, 20],
+      translateY: direction === 'next' ? [0, 20] : [0, -20],
       duration: 300,
       easing: 'easeOutQuad',
       complete: () => {
@@ -98,7 +97,7 @@ class Background extends DomComponent {
           targets: this.number,
           opacity: 1,
           duration: 300,
-          translateY: [-20, 0],
+          translateY: direction === 'next' ? [-20, 0] : [20, 0],
           easing: 'easeOutQuad'
         })
       }
@@ -168,7 +167,6 @@ export default class Carrousel extends DomComponent {
 		  this.scrolling(lastPostitionScroll)
 		  ticking = true
 		  setTimeout(function () {
-			  console.log('ticking')
 			  ticking = false
 		  }, 1500)
 	  }
@@ -193,7 +191,7 @@ export default class Carrousel extends DomComponent {
       }
     }
 
-    this.background.animeNumber(nextpos)
+    this.background.animeNumber(nextpos, 'next')
     current.classList.remove('active')
     delay(() => {
       current.classList.remove('animated')
@@ -228,7 +226,7 @@ export default class Carrousel extends DomComponent {
       }
     }
 
-    this.background.animeNumber(nextpos)
+    this.background.animeNumber(nextpos, 'prev')
     current.classList.remove('active')
     delay(() => {
       current.classList.remove('animated')
