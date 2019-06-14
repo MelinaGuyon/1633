@@ -18,7 +18,7 @@ import './Carrousel.styl'
 
 class Form extends DomComponent {
   template (props) {
-    let clasName = 'carrousel__form__content ' + props.active + props.animated
+    let clasName = 'carrousel__form__content ' + props.active + (props.animated ? props.animated : '')
     const loc = store.loc.get()
     this.id = props.id
 
