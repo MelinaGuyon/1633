@@ -131,7 +131,7 @@ export default class Carrousel extends DomComponent {
 		  setTimeout(function () {
 			  console.log('ticking')
 			  ticking = false
-		  }, 2000)
+		  }, 1500)
 	  }
   }
 
@@ -148,29 +148,14 @@ export default class Carrousel extends DomComponent {
       nextpos = parseInt(currentPos) + 1
     }
 
-    let scrollingText = document.querySelectorAll('.carrousel__textScrolling')
-
-    for (let i = 0; i < scrollingText.length; i++) {
-      scrollingText[i].classList.add('hidden')
-      scrollingText[i].classList.remove('opacity')
-    }
-
     for (let i = 0; i < maxPos; i++) {
       if (parseInt(all[i].getAttribute('data-id')) === nextpos) {
         newCurrent = all[i]
       }
     }
 
-    setTimeout(function () {
-      current.classList.remove('active')
-      newCurrent.classList.add('active')
-      setTimeout(function () {
-        for (let i = 0; i < scrollingText.length; i++) {
-          scrollingText[i].classList.add('opacity')
-          scrollingText[i].classList.remove('hidden')
-        }
-      }, 1000)
-    }, 1000)
+    current.classList.remove('active')
+    delay(() => { newCurrent.classList.add('active') }, 600)
   }
 
   goPrev () {
@@ -200,16 +185,8 @@ export default class Carrousel extends DomComponent {
       }
     }
 
-    setTimeout(function () {
-      current.classList.remove('active')
-      newCurrent.classList.add('active')
-      setTimeout(function () {
-        for (let i = 0; i < scrollingText.length; i++) {
-          scrollingText[i].classList.add('opacity')
-          scrollingText[i].classList.remove('hidden')
-        }
-      }, 1000)
-    }, 1000)
+    current.classList.remove('active')
+    delay(() => { newCurrent.classList.add('active') }, 600)
   }
 
   scrolling (posScroll) {
