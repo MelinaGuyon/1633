@@ -11,19 +11,23 @@
   transition: color 0.3s $quad-ease-out;
 
   &.stroke
-    color: transparent
+    color: rgba(255, 255, 255, 0)
     -webkit-text-stroke: 1px #ffffff;
 
   .wrapper
     display: inline-block;
-    animation: translationLeft 15s infinite linear;
     position: relative;
 		white-space: nowrap;
 
   .wrapper span
     margin: 0 10px
 
+
+.animated .text-scrolling .wrapper
+  animation: translationLeft 15s infinite linear;
+
 @keyframes translationLeft {
   0% { transform: translate(0) }
   100% { transform: translate(-50%) }
 }
+

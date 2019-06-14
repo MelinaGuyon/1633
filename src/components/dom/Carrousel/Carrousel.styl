@@ -85,6 +85,9 @@
     z-index 1
     overflow: hidden
     position relative
+    left: 50%;
+    transform: translateX(-50%);
+    transition width .6s $cubic-ease-in-out
 
     &__content
       position: absolute;
@@ -96,8 +99,16 @@
       height: 580px;
       pointer-events: none
 
+      &.full
+        .carrousel__form
+          width: 100vw
+
+        .text-scrolling
+          transition opacity .9s $cubic-ease-in-out
+          opacity 0 !important
+
       .text-scrolling
-        transition opacity .3s $quad-ease-out;
+        transition opacity .3s $cubic-ease-in-out, transform .3s $cubic-ease-in-out;
         opacity 0
 
       // &:hover

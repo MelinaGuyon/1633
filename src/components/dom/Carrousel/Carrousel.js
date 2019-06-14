@@ -18,13 +18,13 @@ import './Carrousel.styl'
 
 class Form extends DomComponent {
   template (props) {
-    let clasName = 'carrousel__form__content ' + props.active
+    let clasName = 'carrousel__form__content ' + props.active + props.animated
     const loc = store.loc.get()
     this.id = props.id
 
     return (
       <div class={clasName} launchGame={props.launchGame} type={props.type} data-id={props.id}>
-        <div class='carrousel__form'>
+        <div class='carrousel__form' ref={addRef(this, 'form')}>
           <TextScrolling text={loc['carrousel.' + props.type]} ref={addRef(this, 'text')} />
         </div>
         <TextScrolling text={loc['carrousel.' + props.type]} stroke ref={addRef(this, 'text2')} />
@@ -45,8 +45,9 @@ class Form extends DomComponent {
   }
 
   fadeOut (el) {
-	  el.classList.add('opacity')
+    this.base.classList.add('full')
 	  setTimeout(function () {
+      el.classList.remove('animated')
       el.classList.add('hidden')
     }, 2000)
   }
@@ -54,7 +55,7 @@ class Form extends DomComponent {
   onClick (e) {
     this.unbind()
     this.fadeOut(e.target.parentNode.parentNode)
-    this.props.launchGame && this.props.launchGame({ id: this.id, text: this.text, text2: this.text2 })
+    this.props.launchGame && this.props.launchGame({ id: this.id })
   }
 }
 
@@ -107,7 +108,7 @@ export default class Carrousel extends DomComponent {
         <IntroCinematic ref={addRef(this, 'cinematic')} />
         <div class='carrousel-wrapper' ref={addRef(this, 'carouselWrapper')}>
           <Background ref={addRef(this, 'background')}/>
-          <Form active={'active'} type={'richelieu'} id={0} launchGame={this.launchGame} />
+          <Form active={'active '} animated={'animated'} type={'richelieu'} id={0} launchGame={this.launchGame} />
           <Form active={''} type={'mariecurie'} id={1} launchGame={this.launchGame} />
           <Form active={''} type={'robertdesorbon'} id={2} launchGame={this.launchGame} />
           <Form active={''} type={'jacqueslemercier'} id={3} launchGame={this.launchGame} />
@@ -183,7 +184,10 @@ export default class Carrousel extends DomComponent {
 
     this.background.animeNumber(nextpos)
     current.classList.remove('active')
-    delay(() => { newCurrent.classList.add('active') }, 600)
+    delay(() => {
+      current.classList.remove('animated')
+      newCurrent.classList.add('active', 'animated')
+    }, 600)
   }
 
   goPrev () {
@@ -215,7 +219,10 @@ export default class Carrousel extends DomComponent {
 
     this.background.animeNumber(nextpos)
     current.classList.remove('active')
-    delay(() => { newCurrent.classList.add('active') }, 600)
+    delay(() => {
+      current.classList.remove('animated')
+      newCurrent.classList.add('active', 'animated')
+    }, 600)
   }
 
   scrolling (posScroll) {
@@ -233,21 +240,14 @@ export default class Carrousel extends DomComponent {
     this.carrousel.classList.add('no-touch')
 
     anime({
-      targets: [obj.text.base, obj.text2.base],
+      targets: this.carouselWrapper,
       opacity: 0,
-      duration: 400,
-      easing: 'easeOutQuad',
+      duration: 300,
+      delay: 400,
+      easing: 'easeInOutQuad',
       complete: () => {
-        anime({
-          targets: this.carouselWrapper,
-          opacity: 0,
-          duration: 400,
-          easing: 'easeOutQuad',
-          complete: () => {
-            this.cinematic.start().then(() => {
-              this.launchPixi(obj)
-            })
-          }
+        this.cinematic.start().then(() => {
+          this.launchPixi(obj)
         })
       }
     })
