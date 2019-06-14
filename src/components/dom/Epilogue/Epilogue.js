@@ -5,6 +5,7 @@ import store from 'state/store'
 import logger from 'utils/logger'
 import delay from 'lodash/delay'
 import anime from 'animejs'
+import signals from 'state/signals'
 
 import './Epilogue.styl'
 
@@ -17,7 +18,7 @@ export default class Epilogue extends DomComponent {
           <p class='centerText'>
             <span class='text' ref={addRef(this, 'text')}>{loc['epilogue.text1']}</span>
             <br />
-            <span class='button magnet' ref={addRef(this, 'skip')}>{loc['epilogue.skip']}</span>
+            <span class='button' ref={addRef(this, 'skip')}>{loc['epilogue.skip']}</span>
           </p>
         </div>
       </section>
@@ -41,6 +42,8 @@ export default class Epilogue extends DomComponent {
 
   launchEpilogue () {
     this.base.classList.add('visible')
+    this.skip.classList.add('magnet')
+    signals.newDom.dispatch()
     this.launchsound()
     delay(this.updateText.bind(this), 29000)
   }
