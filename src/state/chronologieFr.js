@@ -11,6 +11,7 @@ export default {
       sceneTitle: '...',
       text: 'Au cours des événements de la Révolution Française, beaucoup de personnages prestigieux de l’Histoire de France ont vu leurs tombeaux profanés par les sans-culottes. Les corps exhumés finissaient souvent jetés dans des fosses communes après avoir subi différents mauvais traitements (cheveux arrachés, têtes coupées etc.). Alexandre Lenoir, connu pour son implication dans la protection des tombeaux profanés au cours de la Révolution, aurait été blessé par un coup de baïonnette pour avoir essayé de protéger la mystérieuse sépulture dont l\'histoire vous est contée...',
       img: 'profanation',
+      src: 'assets/img/chrono/profanationTombeau.png',
       textUrlTitle: 'A. Baudry',
       textUrl: 'https://www.persee.fr/doc/abpo_0003-391x_1962_num_69_3_2162',
       imageUrlTitle: 'Jacques Louis David',

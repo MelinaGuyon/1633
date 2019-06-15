@@ -25,10 +25,10 @@
     height: 100vh
 
     .glass
-      // opacity: 0
       transform: translate(-50%, -50%) scale(0.6);
       left: 30%
       pointer-events: none
+      // opacity 0.95
 
     .locked-title
       pointer-events: none
@@ -81,10 +81,17 @@
     align-items: center;
 
     .character
+      position absolute
       height: 60%
       margin-right: 10px
-      opacity 0
-      display none
+      width: 313px
+      height 495px
+      left: 30%
+      transform: translate(calc(-50% - 7px), 3px);
+      transition: opacity .6s $quad-ease-out;
+
+      &.hidden
+        opacity 0
 
     .content
       font-family: RobotoCondensedRegular

@@ -78,6 +78,7 @@ export default class Glass extends DomComponent {
   template (props) {
     this.autostart = props.autostart
     this.parrent = props.parrent
+    this.moovingCb = props.moovingCb
 
     this.number = 7
     this.singleGlass = Array(this.number)
@@ -173,6 +174,8 @@ export default class Glass extends DomComponent {
     let distToCheck = this.isConstructed ? 80 : 180
     let disvision = this.isConstructed ? 5 : 4
 
+    let mooving = false
+
     this.singleGlass.forEach((el, index) => {
       if (!this.coords[index]) return
       let offsetX = 0
@@ -188,6 +191,8 @@ export default class Glass extends DomComponent {
       if (dx < distToCheck && dx > -distToCheck && dy < distToCheck && dy > -distToCheck) {
         let x = values[index][0] + dx / disvision
         let y = values[index][1] + dy / disvision
+
+        mooving = true
 
         if (!force) {
           el.inrtia.x.to(x)
@@ -208,6 +213,8 @@ export default class Glass extends DomComponent {
         }
       }
     })
+
+    this.moovingCb && this.moovingCb(mooving)
   }
 
   updateInertia () {

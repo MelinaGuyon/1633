@@ -60,11 +60,13 @@ class Fact extends DomComponent {
   template (props) {
     this.date = props.content.date
     this.locked = true
+    this.imageHidden = false
 
     return (
       // <div class='fact locked' id={'fact' + props.id} ref={addRef(this, 'fact')}>
       <div class='fact locked' id={'fact' + props.id} ref={addRef(this, 'fact')}>
         <div class='content-container'>
+          <img class='character' ref={addRef(this, 'character')} src={props.content.src} />
           <div class='content' ref={addRef(this, 'content')} >
             <PreviousButton id={props.id} factDate={props.content.date} goToDateOnChronoButton={props.goToDateOnChronoButton} />
             <div class='subContent' >
@@ -84,42 +86,31 @@ class Fact extends DomComponent {
           <h2>{props.content.title}</h2>
           <h3>{props.content.historyName}</h3>
         </div>
-        <Glass ref={addRef(this, 'glass')} autostart parrent path={`glass/${props.content.historyId}/${props.content.img}`} />
+        <Glass ref={addRef(this, 'glass')} autostart parrent path={`glass/${props.content.historyId}/${props.content.img}`} moovingCb={this.moovingCb.bind(this)}/>
       </div>
     )
   }
 
   componentDidMount () {
     this.initParams()
-    this.bind()
   }
 
   initParams () {
     this.top = this.fact.offsetTop
   }
 
-  bind () {
-    // TODO : écouter le mouse store car sinon il y en aura des dizaines + mettre les glass
-    // this.base.addEventListener('mousemove', this.fastbind('onMouseMove', 1))
-  }
-
-  onMouseMove (e) {
-    let container = this.fact
-    let character = this.character
-    this.parallaxIt(e, container, character, -70)
-  }
-
-  parallaxIt (e, container, target, movement) {
-    let relX = e.pageX - container.offsetLeft
-    let relY = e.pageY
-
-    // TODO : pas animejs mais inrtia
-    anime({
-      targets: target,
-      translateX: (relX - container.offsetWidth / 2) / container.offsetWidth * movement,
-      translateY: (relY - container.offsetHeight / 2) / container.offsetHeight * movement,
-      easing: 'easeOutQuad'
-    })
+  moovingCb (mooving) {
+    if (!this.locked) {
+      if (mooving) {
+        if (this.imageHidden) return
+        this.imageHidden = true
+        this.character.classList.add('hidden')
+      } else {
+        if (!this.imageHidden) return
+        this.imageHidden = false
+        this.character.classList.remove('hidden')
+      }
+    }
   }
 }
 
