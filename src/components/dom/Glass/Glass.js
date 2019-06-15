@@ -171,8 +171,8 @@ export default class Glass extends DomComponent {
 
   handleMoove (mouse, force) {
     let values = this.isConstructed ? realValues : transformValues
-    let distToCheck = this.isConstructed ? 80 : 180
-    let disvision = this.isConstructed ? 5 : 4
+    let distToCheck = this.isConstructed ? 120 : 180
+    let disvision = this.isConstructed ? 6 : 4
 
     let mooving = false
 
