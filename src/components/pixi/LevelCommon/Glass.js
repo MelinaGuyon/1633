@@ -15,13 +15,13 @@ const positionsBuilded = [
   [13, 134]
 ]
 const positionsUnbuilded = [
-  [-250, -200],
-  [86, 120],
-  [-8, -174],
-  [-50, -86],
-  [239, -40],
-  [-220, 58],
-  [100, 120]
+  [-220, -100],
+  [110, 180],
+  [40, -124],
+  [90, -40],
+  [279, 10],
+  [-180, 138],
+  [230, 100]
 ]
 const rotation = [
   0.3,
@@ -85,13 +85,11 @@ export default class Glass extends PixiComponent {
   componentDidMount () {
     this.update = this.fastbind('update', 1)
     this.construct = this.fastbind('construct', 1)
-
-    this.construct()
   }
 
   show () {
     this.sigleGlasses.forEach((el, i) => {
-      // if (!el.isHidden) return
+      if (!el.isHidden) return
       el.isHidden = false
       anime({
         targets: el.base,
@@ -104,7 +102,7 @@ export default class Glass extends PixiComponent {
 
   hide () {
     this.sigleGlasses.forEach((el, i) => {
-      // if (el.isHidden || this.constructed) return
+      if (el.isHidden || this.constructed) return
       el.isHidden = true
       anime({
         targets: el.base,
@@ -127,13 +125,13 @@ export default class Glass extends PixiComponent {
         easing: 'easeOutQuad',
         duration: 600
       })
-      // anime({
-      //   targets: el.base,
-      //   alpha: 0,
-      //   easing: 'easeOutQuad',
-      //   duration: 600,
-      //   delay: 900
-      // })
+      anime({
+        targets: el.base,
+        alpha: 0,
+        easing: 'easeOutQuad',
+        duration: 600,
+        delay: 900
+      })
     })
     anime({
       targets: this.bigGlass.base,

@@ -23,7 +23,7 @@ export default class LevelUniversity extends Level {
   }
 
   createGlass () {
-    this.glass = this.addComponent(Glass, { layer: '0bg10', x: 30, y: -50, scale: 0.55 })
+    this.glass = this.addComponent(Glass, { layer: '1bg10', x: 30, y: -50, scale: 0.55 })
   }
 
   addColliders () {
