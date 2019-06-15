@@ -64,7 +64,7 @@
       .glass
         transform: translate(-50%, -50%) scale(0.75);
         left: 50%
-        opacity 1
+        opacity 0.1
         pointer-events: auto
 
       .locked-title
@@ -83,6 +83,8 @@
     .character
       height: 60%
       margin-right: 10px
+      opacity 0
+      display none
 
     .content
       font-family: RobotoCondensedRegular
@@ -94,12 +96,12 @@
       opacity: 0.8
       padding: 40px
       margin-left: 10px
+      transform: translateX(42%);
 
     .subContent
-      position: absolute
+      position: relative
       top: 50%
       transform: translateY(-50%)
-      width: 38%
 
     .factButtons
       margin-left: 45%
@@ -114,10 +116,10 @@
       position: absolute
 
     .buttonFactTop
-      top: 24%
+      top: 10%
 
     .buttonFactBottom
-      top: 79%
+      bottom 0
 
     .date
       margin-top: 15px

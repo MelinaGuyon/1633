@@ -85,6 +85,7 @@ function handleMove (mouse) {
 
   let val = 26
   if (cursorContainer.classList.contains('reveal')) val = 33
+  if (cursorContainer.classList.contains('hold')) val = 18
   if (cursorContainer.classList.contains('reveal-big')) val = 48
 
   const x = mouse.x - val

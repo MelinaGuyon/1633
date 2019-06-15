@@ -61,11 +61,12 @@ class Fact extends DomComponent {
     this.date = props.content.date
     this.locked = true
 
+    console.log(props.content.historyId, props.content.img)
+
     return (
       // <div class='fact locked' id={'fact' + props.id} ref={addRef(this, 'fact')}>
       <div class='fact locked' id={'fact' + props.id} ref={addRef(this, 'fact')}>
         <div class='content-container'>
-          <img class='character' ref={addRef(this, 'character')} src={props.content.img} />
           <div class='content' ref={addRef(this, 'content')} >
             <PreviousButton id={props.id} factDate={props.content.date} goToDateOnChronoButton={props.goToDateOnChronoButton} />
             <div class='subContent' >
@@ -85,7 +86,7 @@ class Fact extends DomComponent {
           <h2>{props.content.title}</h2>
           <h3>{props.content.historyName}</h3>
         </div>
-        <Glass ref={addRef(this, 'glass')} autostart parrent />
+        <Glass ref={addRef(this, 'glass')} autostart parrent path={`glass/${props.content.historyId}/${props.content.img}`} />
       </div>
     )
   }

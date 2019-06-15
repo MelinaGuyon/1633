@@ -20,14 +20,24 @@ const transformValues = [
   [380, 240, 0]
 ]
 
+// const realValues = [
+//   [-159, -150, 0],
+//   [-32, -282, 0],
+//   [138, -248, 0],
+//   [-55, -39, 0],
+//   [140, 82, 0],
+//   [-46, 252, 0],
+//   [0, 312, 0]
+// ]
+
 const realValues = [
-  [-159, -150, 0],
-  [-32, -282, 0],
-  [138, -248, 0],
-  [-55, -39, 0],
-  [140, 82, 0],
-  [-46, 252, 0],
-  [0, 312, 0]
+  [-163, -148, 0],
+  [15, -285, 0],
+  [140, -201, 0],
+  [-61, -27, 0],
+  [141, 90, 0],
+  [-53, 268, 0],
+  [-10, 331, 0]
 ]
 
 class SingleGlass extends DomComponent {
@@ -35,7 +45,7 @@ class SingleGlass extends DomComponent {
     this.id = props.id
 
     return (
-      <img src={'assets/img/glass/glass-' + props.id + '.png'} alt='' />
+      <img src={`assets/img/${props.path}/glass-` + props.id + '.png'} alt='' />
     )
   }
 
@@ -78,7 +88,7 @@ export default class Glass extends DomComponent {
       this.singleGlass[i] = el
     }
     for (let i = 0; i < this.number; i++) {
-      singleGlass.push(<SingleGlass ref={refSingleGlass(i)} id={i} />)
+      singleGlass.push(<SingleGlass ref={refSingleGlass(i)} id={i} path={props.path}/>)
     }
 
     return (

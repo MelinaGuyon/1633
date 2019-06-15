@@ -32,7 +32,7 @@ export default class Preloader extends DomComponent {
     return (
       <section class='prld fxd' ref={addRef(this, 'prld')}>
         <div class='fakeBg' ref={addRef(this, 'bg')} />
-        <Glass ref={addRef(this, 'glass')} autostart={false} />
+        <Glass ref={addRef(this, 'glass')} autostart={false} path={'glass-loading'} />
         <div class='title-container-l1'>
           <div class='title-container-l2' ref={addRef(this, 'title')}>
             <h2 class='title-bordered'>{loc['site.title']}</h2>

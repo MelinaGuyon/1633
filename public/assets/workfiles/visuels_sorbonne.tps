@@ -1359,26 +1359,30 @@
             <key type="filename">perso-arret/arret29.png</key>
             <key type="filename">perso-arret/arret3.png</key>
             <key type="filename">perso-arret/arret30.png</key>
-            <key type="filename">perso-arret/arret31.png</key>
-            <key type="filename">perso-arret/arret32.png</key>
-            <key type="filename">perso-arret/arret33.png</key>
-            <key type="filename">perso-arret/arret34.png</key>
-            <key type="filename">perso-arret/arret35.png</key>
-            <key type="filename">perso-arret/arret36.png</key>
-            <key type="filename">perso-arret/arret37.png</key>
-            <key type="filename">perso-arret/arret38.png</key>
-            <key type="filename">perso-arret/arret39.png</key>
             <key type="filename">perso-arret/arret4.png</key>
             <key type="filename">perso-arret/arret5.png</key>
             <key type="filename">perso-arret/arret6.png</key>
             <key type="filename">perso-arret/arret7.png</key>
             <key type="filename">perso-arret/arret8.png</key>
             <key type="filename">perso-arret/arret9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>44,63,88,125</rect>
+                <key>scale9Paddings</key>
+                <rect>44,63,88,125</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">perso-start/start0.png</key>
             <key type="filename">perso-start/start1.png</key>
             <key type="filename">perso-start/start10.png</key>
             <key type="filename">perso-start/start11.png</key>
             <key type="filename">perso-start/start12.png</key>
+            <key type="filename">perso-start/start13.png</key>
             <key type="filename">perso-start/start2.png</key>
             <key type="filename">perso-start/start3.png</key>
             <key type="filename">perso-start/start4.png</key>
@@ -1389,7 +1393,7 @@
             <key type="filename">perso-start/start9.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
+                <point_f>0,0</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
