@@ -58,7 +58,6 @@ export default class Animator {
     this.loop = loop
 
     if (this._anim.length < 2 || stop) {
-      console.log(this.finished)
       this.finished = true
       this.timer.stop()
     } else {
@@ -77,7 +76,15 @@ export default class Animator {
     this.switchAnim(anim, opts.firstFrame, false, opts.loop)
   }
 
-  stop () {
+  playWthCb (anim, opts = {}) {
+    return new Promise((resolve, reject) => {
+      this.frameDuration = opts.frameDuration || store.frameDuration.get()
+      this.switchAnim(anim, opts.firstFrame, false, opts.loop)
+      this.resolve = resolve
+    })
+  }
+
+  stopWthCb () {
     return new Promise((resolve, reject) => {
       this.loop = false
       this.resolve = resolve

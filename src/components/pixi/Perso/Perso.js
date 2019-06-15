@@ -15,8 +15,10 @@ export default class Perso extends PixiComponent {
     this.state = {}
 
     this.addComponent(Light, { form: 'transparent', target: this.base, x: -10, y: -68, tint: 0xffa8a8, alpha: 0.28, scale: [0.8, 0.9] })
-    this.refs.perso = this.addChild('perso')
+    this.refs.perso = this.addChild('start')
     this.anim = new Animator(this.refs.perso)
+    this.animStarted = false
+    this.animFinished = true
     this.base.scale.y = 0.6
     this.base.scale.x = 0.6
     this.base.fakeX = 0
@@ -44,18 +46,35 @@ export default class Perso extends PixiComponent {
   updateAnimation (direction) {
     if (this.oldDirection !== direction) {
       if (direction === 0 && !store.pause.get()) {
+        this.animStarted = true
         this.base.scale.x = -0.6
-        this.base.x = 0
-        this.anim.play('perso', { loop: true, frameDuration: 30, firstFrame: this.anim.currentFrame })
+        if (this.animFinished) {
+          this.anim.playWthCb('start', { loop: false, frameDuration: 30 }).then(() => {
+            this.anim.play('perso', { loop: true, frameDuration: 30 })
+          })
+        } else {
+          this.anim.play('perso', { loop: true, frameDuration: 30, firstFrame: this.anim.currentFrame })
+        }
       } else if (direction === 1 && !store.pause.get()) {
+        this.animStarted = true
         this.base.scale.x = 0.6
-        this.base.x = 0
-        this.anim.play('perso', { loop: true, frameDuration: 30, firstFrame: this.anim.currentFrame })
+        if (this.animFinished) {
+          this.anim.playWthCb('start', { loop: false, frameDuration: 30 }).then(() => {
+            this.anim.play('perso', { loop: true, frameDuration: 30 })
+          })
+        } else {
+          this.anim.play('perso', { loop: true, frameDuration: 30, firstFrame: this.anim.currentFrame })
+        }
       } else {
-        this.anim.stop().then(() => {
-          this.anim.play('arret', { loop: false, frameDuration: 30 })
+        this.animStarted = false
+        this.anim.stopWthCb().then(() => {
+          if (this.animStarted) return
+          this.anim.playWthCb('arret', { loop: false, frameDuration: 30 }).then(() => {
+            this.animFinished = true
+          })
         })
       }
+      this.animFinished = false
       this.oldDirection = direction
     }
   }

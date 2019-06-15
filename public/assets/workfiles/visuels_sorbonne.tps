@@ -1334,6 +1334,71 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">perso-arret/arret0.png</key>
+            <key type="filename">perso-arret/arret1.png</key>
+            <key type="filename">perso-arret/arret10.png</key>
+            <key type="filename">perso-arret/arret11.png</key>
+            <key type="filename">perso-arret/arret12.png</key>
+            <key type="filename">perso-arret/arret13.png</key>
+            <key type="filename">perso-arret/arret14.png</key>
+            <key type="filename">perso-arret/arret15.png</key>
+            <key type="filename">perso-arret/arret16.png</key>
+            <key type="filename">perso-arret/arret17.png</key>
+            <key type="filename">perso-arret/arret18.png</key>
+            <key type="filename">perso-arret/arret19.png</key>
+            <key type="filename">perso-arret/arret2.png</key>
+            <key type="filename">perso-arret/arret20.png</key>
+            <key type="filename">perso-arret/arret21.png</key>
+            <key type="filename">perso-arret/arret22.png</key>
+            <key type="filename">perso-arret/arret23.png</key>
+            <key type="filename">perso-arret/arret24.png</key>
+            <key type="filename">perso-arret/arret25.png</key>
+            <key type="filename">perso-arret/arret26.png</key>
+            <key type="filename">perso-arret/arret27.png</key>
+            <key type="filename">perso-arret/arret28.png</key>
+            <key type="filename">perso-arret/arret29.png</key>
+            <key type="filename">perso-arret/arret3.png</key>
+            <key type="filename">perso-arret/arret30.png</key>
+            <key type="filename">perso-arret/arret31.png</key>
+            <key type="filename">perso-arret/arret32.png</key>
+            <key type="filename">perso-arret/arret33.png</key>
+            <key type="filename">perso-arret/arret34.png</key>
+            <key type="filename">perso-arret/arret35.png</key>
+            <key type="filename">perso-arret/arret36.png</key>
+            <key type="filename">perso-arret/arret37.png</key>
+            <key type="filename">perso-arret/arret38.png</key>
+            <key type="filename">perso-arret/arret39.png</key>
+            <key type="filename">perso-arret/arret4.png</key>
+            <key type="filename">perso-arret/arret5.png</key>
+            <key type="filename">perso-arret/arret6.png</key>
+            <key type="filename">perso-arret/arret7.png</key>
+            <key type="filename">perso-arret/arret8.png</key>
+            <key type="filename">perso-arret/arret9.png</key>
+            <key type="filename">perso-start/start0.png</key>
+            <key type="filename">perso-start/start1.png</key>
+            <key type="filename">perso-start/start10.png</key>
+            <key type="filename">perso-start/start11.png</key>
+            <key type="filename">perso-start/start12.png</key>
+            <key type="filename">perso-start/start2.png</key>
+            <key type="filename">perso-start/start3.png</key>
+            <key type="filename">perso-start/start4.png</key>
+            <key type="filename">perso-start/start5.png</key>
+            <key type="filename">perso-start/start6.png</key>
+            <key type="filename">perso-start/start7.png</key>
+            <key type="filename">perso-start/start8.png</key>
+            <key type="filename">perso-start/start9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>44,63,88,125</rect>
+                <key>scale9Paddings</key>
+                <rect>44,63,88,125</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">perso/perso0.png</key>
             <key type="filename">perso/perso1.png</key>
             <key type="filename">perso/perso10.png</key>
@@ -1401,6 +1466,8 @@
             <filename>glass</filename>
             <filename>light</filename>
             <filename>02-baschamp</filename>
+            <filename>perso-arret</filename>
+            <filename>perso-start</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
