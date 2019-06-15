@@ -1,5 +1,6 @@
 import Level from 'abstractions/Level'
 import Buildings from './CityBuildings'
+import Animations from './Animations'
 import Interests from './Interests'
 import sound from 'controllers/sound'
 import SoundCheck from './SoundChecks'
@@ -20,6 +21,8 @@ export default class LevelUniversity extends Level {
 
   createLand () {
     this.addComponent(Buildings)
+    // this.addComponent(Animations)
+    this.animations = this.addComponent(Animations, { layer: '1f100' })
   }
 
   createGlass () {
@@ -34,5 +37,9 @@ export default class LevelUniversity extends Level {
     if (!isAlreadyShow && !store.skipTuto.get()) {
       this.addComponent(TutoCheck)
     }
+  }
+
+  update (dt, time) {
+    this.animations.update(dt)
   }
 }

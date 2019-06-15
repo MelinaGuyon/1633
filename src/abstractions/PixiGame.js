@@ -104,4 +104,13 @@ export default class Pixigame extends PixiComponent {
       }
     })
   }
+
+  update (dt, time) {
+    super.update(dt, time)
+
+    for (let k in this.levels) {
+      if (!this.levels[k] || this.levels[k].destroyed) continue
+      this.levels[k].update(dt, time)
+    }
+  }
 }

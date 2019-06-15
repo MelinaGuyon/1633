@@ -8,6 +8,8 @@ import sound from 'controllers/sound'
 
 import store from 'state/store'
 
+import { updateTimers } from 'utils/timer'
+
 let renderer
 let view
 let stage
@@ -50,7 +52,7 @@ function render (dt) {
     sound.unpause()
   } else {
     dt = 0
-	  sound.pause()
+    sound.pause()
   }
 
   if (playing) physics.update(dt, time)

@@ -14,7 +14,7 @@ export default class Perso extends PixiComponent {
     this.oldDirection = null
     this.state = {}
 
-    this.addComponent(Light, { form: 'transparent', target: this.base, x: -10, y: -68, tint: 0xffa8a8, alpha: 0.28, scale: [0.8, 0.9] })
+    this.addComponent(Light, { form: 'transparent', target: this.base, x: 80, y: 18, tint: 0xffa8a8, alpha: 0.28, scale: [0.8, 0.9] })
     this.refs.perso = this.addChild('start')
     this.anim = new Animator(this.refs.perso)
     this.animStarted = false
@@ -23,8 +23,8 @@ export default class Perso extends PixiComponent {
     this.base.scale.x = 0.6
     this.base.fakeX = 0
     this.base.fakeY = -1 // to let scenes in cneter
-    this.base.x = 0
-    this.base.y = 120
+    this.base.x = -50
+    this.base.y = 70
     this.body = physics.addBody({
       group: 'hero',
       gravity: true,
@@ -48,6 +48,7 @@ export default class Perso extends PixiComponent {
       if (direction === 0 && !store.pause.get()) {
         this.animStarted = true
         this.base.scale.x = -0.6
+        this.base.x = 50
         if (this.animFinished) {
           this.anim.playWthCb('start', { loop: false, frameDuration: 30 }).then(() => {
             this.anim.play('perso', { loop: true, frameDuration: 30 })
@@ -58,6 +59,7 @@ export default class Perso extends PixiComponent {
       } else if (direction === 1 && !store.pause.get()) {
         this.animStarted = true
         this.base.scale.x = 0.6
+        this.base.x = -50
         if (this.animFinished) {
           this.anim.playWthCb('start', { loop: false, frameDuration: 30 }).then(() => {
             this.anim.play('perso', { loop: true, frameDuration: 30 })

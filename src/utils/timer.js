@@ -3,7 +3,6 @@ import { RafTimer } from '@internet/raf'
 const timers = []
 
 export function updateTimers (dt) {
-  console.log('e??')
   let n = timers.length
   while (n--) {
     timers[n].update(dt)

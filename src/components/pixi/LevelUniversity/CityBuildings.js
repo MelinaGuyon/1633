@@ -2,6 +2,7 @@ import PixiComponent from 'abstractions/PixiComponent'
 import Building from './CityBuilding'
 import Light from 'components/pixi/LevelCommon/Light'
 import Glass from 'components/pixi/LevelCommon/Glass'
+import Animator from 'controllers/animator'
 
 export default class CityBuildings extends PixiComponent {
   setup () {
@@ -18,6 +19,11 @@ export default class CityBuildings extends PixiComponent {
     this.mains.push(this.addComponent(Building, { layer: '1f200', type: 'i', x: -400, y: 0, scale: 0.66 })) //  mec gauche
 
     this.mains.push(this.addComponent(Light, { layer: '1bg400', form: 'transparent', target: this.base, x: 0, y: -63, tint: 0x886600, alpha: 1, scale: [0.3, 0.27] }))
+
+    // anims
+    // this.refs.perso = this.addChild('perso')
+    // this.anim = new Animator(this.refs.perso)
+    // this.anim.play('perso', { loop: true, frameDuration: 30 })
   }
 
   componentWillUnmount () {
