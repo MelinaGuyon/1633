@@ -14,11 +14,22 @@ export default class Animator {
 
     const self = this
     this.nextFrame = function (restart) {
-      if (!self._anim[self.currentFrame + 1] && !self.loop) { self.finished = true; return }
+      if (!self._anim[self.currentFrame + 1] && !self.loop) {
+        self.finished = true
+        return
+      }
       self.currentFrame = (self.currentFrame + 1) % self._frameCount
       self.sprite.texture = self._anim[self.currentFrame]
-      if (!self._anim[self.currentFrame + 1] && !self.loop) self.finished = true
-      else restart(self.frameDuration)
+
+      if (!self._anim[self.currentFrame + 1] && !self.loop) {
+        if (self.resolve) {
+          self.resolve()
+          self.resolve = undefined
+        }
+        self.finished = true
+      } else {
+        restart(self.frameDuration)
+      }
     }
 
     this.timer = new RafTimer(this.frameDuration, this.nextFrame, false)
@@ -34,6 +45,7 @@ export default class Animator {
     this.sprite = undefined
     this.current = undefined
     this.currentSplit = undefined
+    console.log(this.finished)
   }
 
   switchAnim (anim, frame = 0, stop = false, loop = false) {
@@ -46,6 +58,7 @@ export default class Animator {
     this.loop = loop
 
     if (this._anim.length < 2 || stop) {
+      console.log(this.finished)
       this.finished = true
       this.timer.stop()
     } else {
@@ -65,7 +78,10 @@ export default class Animator {
   }
 
   stop () {
-    this.loop = false
+    return new Promise((resolve, reject) => {
+      this.loop = false
+      this.resolve = resolve
+    })
   }
 
   update (dt) {

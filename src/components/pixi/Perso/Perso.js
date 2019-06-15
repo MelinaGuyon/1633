@@ -52,7 +52,9 @@ export default class Perso extends PixiComponent {
         this.base.x = 0
         this.anim.play('perso', { loop: true, frameDuration: 30, firstFrame: this.anim.currentFrame })
       } else {
-        this.anim.stop()
+        this.anim.stop().then(() => {
+          this.anim.play('arret', { loop: false, frameDuration: 30 })
+        })
       }
       this.oldDirection = direction
     }
