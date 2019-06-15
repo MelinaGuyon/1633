@@ -11,7 +11,7 @@ export default class Animations extends PixiComponent {
     this.refs.drapeau.scale.x = 0.5
     this.refs.drapeau.scale.y = 0.5
     this.animDrapeau = new Animator(this.refs.drapeau)
-    this.animDrapeau.play('drapeau', { loop: true, frameDuration: 80 })
+    this.animDrapeau.play('drapeau', { loop: true, frameDuration: 160 })
   }
 
   componentWillUnmount () {
