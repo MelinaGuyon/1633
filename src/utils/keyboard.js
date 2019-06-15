@@ -33,19 +33,14 @@ function Keyboard () {
       left.isDown = true
       if (right.isDown) {
         signals.stop.dispatch(null)
-        // console.log('fin gauche')
       }
     }
     if (event.key === 'ArrowRight') {
       right.isDown = true
       if (left.isDown) {
         signals.stop.dispatch(null)
-        // console.log('fin droite')
       }
     }
-    // if (event.key === ' ') {
-    //   signals.stop.dispatch(null)
-    // }
   }
 
   function init () {

@@ -84,7 +84,7 @@ export default class Animator {
     })
   }
 
-  stopWthCb () {
+  stopWthCb (frameDuration) {
     return new Promise((resolve, reject) => {
       this.loop = false
       this.resolve = resolve

@@ -2,6 +2,7 @@ import signals from 'state/signals'
 import { clamp } from '@internet/maths'
 import scene from 'controllers/scene'
 import store from 'state/store'
+import delay from 'lodash/delay'
 
 export default class Body {
   constructor (props) {
@@ -14,6 +15,9 @@ export default class Body {
     this.ax = this.ay = 0
     this.vx = this.vy = 0
     this.vxMax = this.vyMax = 0.22
+    this.vitesse = 0.00014
+    this.deceleration = 0.00008
+
     this.y = props.y || 0
     this.x = props.x || 0
     this.px = this.x
@@ -45,13 +49,24 @@ export default class Body {
 
   bind () {
     // TODO : unbind
-    signals.goLeft.listen(this.updateState, this)
-    signals.goRight.listen(this.updateState, this)
-    signals.stop.listen(this.updateState, this)
+    signals.goLeft.listen(this.updateDir, this)
+    signals.goRight.listen(this.updateDir, this)
+    signals.stop.listen(this.prepareToStop, this)
+    signals.animePersoFinished.listen(this.stop, this)
   }
 
-  updateState (dir) {
+  updateDir (dir) {
     this.dir = dir
+  }
+
+  prepareToStop () {
+    this.deceleration = 0.00008
+    this.dir = null
+  }
+
+  stop () {
+    this.deceleration = 0.008
+    this.dir = null
   }
 
   attach (obj) {
@@ -78,22 +93,19 @@ export default class Body {
     this.px = this.x
     this.py = this.y
 
-    let vitesse = 0.00014
-    let deceleration = 0.0008
-
     dt = Math.min(dt, 35)
 
     if (this.dir === 1 && this.x < this.maxX) {
-      this.vx += (this.ax + this.gravity) * vitesse * dt
-      this.vy += this.ay * vitesse * dt
+      this.vx += (this.ax + this.gravity) * this.vitesse * dt
+      this.vy += this.ay * this.vitesse * dt
       this.vx = clamp(this.vx, -this.vxMax, this.vxMax)
       this.vy = clamp(this.vy, -this.vyMax, this.vyMax)
 
       this.x += this.vx * dt
       this.y += this.vy * dt
     } else if (this.dir === 0 && this.x > this.minX) {
-      this.vx -= (this.ax + this.gravity) * vitesse * dt
-      this.vy -= this.ay * vitesse * dt
+      this.vx -= (this.ax + this.gravity) * this.vitesse * dt
+      this.vy -= this.ay * this.vitesse * dt
       this.vx = clamp(this.vx, -this.vxMax, this.vxMax)
       this.vy = clamp(this.vy, -this.vyMax, this.vyMax)
 
@@ -101,13 +113,13 @@ export default class Body {
       this.y += this.vy * dt
     } else {
       if (this.vx > 0) {
-        this.vx -= (this.ax + this.gravity) * deceleration * dt
-        this.vy -= this.ay * deceleration * dt
+        this.vx -= (this.ax + this.gravity) * this.deceleration * dt
+        this.vy -= this.ay * this.deceleration * dt
         this.vx = clamp(this.vx, -0, 1)
         this.vy = clamp(this.vy, -0, 1)
       } else {
-        this.vx += (this.ax + this.gravity) * deceleration * dt
-        this.vy += this.ay * deceleration * dt
+        this.vx += (this.ax + this.gravity) * this.deceleration * dt
+        this.vy += this.ay * this.deceleration * dt
         this.vx = clamp(this.vx, -1, 0)
         this.vy = clamp(this.vy, -1, 0)
       }

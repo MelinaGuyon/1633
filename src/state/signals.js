@@ -7,6 +7,7 @@ const signals = {
   space: new Signal(),
   moving: new Signal(),
   stop: new Signal(),
+  animePersoFinished: new Signal(),
   newDom: new Signal(),
   newIndication: new Signal(),
   writeSubtitles: new Signal(),
