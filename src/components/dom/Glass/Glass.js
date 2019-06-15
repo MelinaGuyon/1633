@@ -189,17 +189,23 @@ export default class Glass extends DomComponent {
         let x = values[index][0] + dx / disvision
         let y = values[index][1] + dy / disvision
 
-        if (!force) el.inrtia.x.to(x)
-        if (!force) el.inrtia.y.to(y)
-        if (force) el.inrtia.x.value = x
-        if (force) el.inrtia.y.value = y
-        if (force) el.base.style.transform = `translateX(${el.inrtia.x.value}px) translateY(${el.inrtia.y.value}px) rotate(${values[index][2]}deg)`
+        if (!force) {
+          el.inrtia.x.to(x)
+          el.inrtia.y.to(y)
+        } else {
+          el.inrtia.x.value = x
+          el.inrtia.y.value = y
+          el.base.style.transform = `translateX(${el.inrtia.x.value}px) translateY(${el.inrtia.y.value}px) rotate(${values[index][2]}deg)`
+        }
       } else {
-        if (!force) el.inrtia.x.to(values[index][0])
-        if (!force) el.inrtia.y.to(values[index][1])
-        if (force) el.inrtia.x.value = values[index][0]
-        if (force) el.inrtia.y.value = values[index][1]
-        if (force) el.base.style.transform = `translateX(${el.inrtia.x.value}px) translateY(${el.inrtia.y.value}px) rotate(${values[index][2]}deg)`
+        if (!force) {
+          el.inrtia.x.to(values[index][0])
+          el.inrtia.y.to(values[index][1])
+        } else {
+          el.inrtia.x.value = values[index][0]
+          el.inrtia.y.value = values[index][1]
+          el.base.style.transform = `translateX(${el.inrtia.x.value}px) translateY(${el.inrtia.y.value}px) rotate(${values[index][2]}deg)`
+        }
       }
     })
   }
