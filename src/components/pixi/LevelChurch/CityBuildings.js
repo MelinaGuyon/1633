@@ -8,7 +8,7 @@ export default class CityBuildings extends PixiComponent {
     this.mains.push(this.addComponent(Building, { layer: '2bg700', type: 'c', x: 0, y: -55, scale: 0.66 })) // incrustation
     this.mains.push(this.addComponent(Building, { layer: '2bg690', type: 'b', x: 0, y: -50, scale: 0.66 })) // big
 
-    // this.mains.push(this.addComponent(Building, { layer: '2bg600', type: 'd', x: -450, y: -370, scale: 0.66 })) // immeuble fond
+    // this.mains.push(this.addComponent(Building, { layer: '2bg600', type: 'd', x: 0, y: -370, scale: 0.66 })) // immeuble fond
     // this.mains.push(this.addComponent(Building, { layer: '2bg600', type: 'e', x: -500, y: -400, scale: 0.66 })) // immeuble droite
     // this.mains.push(this.addComponent(Building, { layer: '2bg600', type: 'f', x: -470, y: -300, scale: 0.66 })) // immeuble gauche
     // this.mains.push(this.addComponent(Building, { layer: '2bg600', type: 'g', x: -200, y: -250, scale: 0.6 })) // puit
