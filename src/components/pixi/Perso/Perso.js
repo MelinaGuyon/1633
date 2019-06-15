@@ -14,7 +14,7 @@ export default class Perso extends PixiComponent {
     this.oldDirection = null
     this.state = {}
 
-    this.addComponent(Light, { form: 'transparent', target: this.base, x: 80, y: 18, tint: 0xffa8a8, alpha: 0.28, scale: [0.8, 0.9] })
+    this.addComponent(Light, { form: 'transparent', target: this.base, x: 80, y: 34, tint: 0xffa8a8, alpha: 0.28, scale: [0.8, 0.9] })
     this.refs.perso = this.addChild('start')
     this.anim = new Animator(this.refs.perso)
     this.animStarted = false

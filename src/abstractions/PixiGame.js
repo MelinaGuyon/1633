@@ -110,7 +110,7 @@ export default class Pixigame extends PixiComponent {
 
     for (let k in this.levels) {
       if (!this.levels[k] || this.levels[k].destroyed) continue
-      this.levels[k].update(dt, time)
+      this.levels[k].update && this.levels[k].update(dt, time)
     }
   }
 }

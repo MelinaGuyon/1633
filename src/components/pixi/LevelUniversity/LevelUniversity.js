@@ -21,8 +21,7 @@ export default class LevelUniversity extends Level {
 
   createLand () {
     this.addComponent(Buildings)
-    // this.addComponent(Animations)
-    this.animations = this.addComponent(Animations, { layer: '1f100' })
+    this.animations = this.addComponent(Animations)
   }
 
   createGlass () {
@@ -30,7 +29,7 @@ export default class LevelUniversity extends Level {
   }
 
   addColliders () {
-    this.addComponent(Interests, { onCollide: this.glass.update, unlock: this.glass.construct })
+    this.addComponent(Interests, { onCollide: this.glass.updateVisibility, unlock: this.glass.construct })
     this.addComponent(SoundCheck)
     let isAlreadyShow
     isAlreadyShow = cookie.readCookie('tuto')

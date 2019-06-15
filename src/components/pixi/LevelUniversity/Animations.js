@@ -6,20 +6,19 @@ export default class Animations extends PixiComponent {
   setup () {
     this.base = new Container()
     this.refs = {}
-    this.oldDirection = null
-    this.state = {}
 
-    this.refs.perso = this.addChild('start')
-    this.anim = new Animator(this.refs.perso)
-    this.anim.play('perso', { loop: true, frameDuration: 30 })
+    this.refs.drapeau = this.addChild('drapeau', { layer: '1f200', x: -400, y: 0 })
+    this.refs.drapeau.scale.x = 0.5
+    this.refs.drapeau.scale.y = 0.5
+    this.animDrapeau = new Animator(this.refs.drapeau)
+    this.animDrapeau.play('drapeau', { loop: true, frameDuration: 80 })
   }
 
   componentWillUnmount () {
-    this.anim.dispose()
+    this.animDrapeau.dispose()
   }
 
   update (dt) {
-    console.log('je pass')
-    this.anim.update(dt)
+    this.animDrapeau.update(dt)
   }
 }

@@ -83,7 +83,7 @@ export default class Glass extends PixiComponent {
   }
 
   componentDidMount () {
-    this.update = this.fastbind('update', 1)
+    this.updateVisibility = this.fastbind('updateVisibility', 1)
     this.construct = this.fastbind('construct', 1)
   }
 
@@ -142,7 +142,7 @@ export default class Glass extends PixiComponent {
     })
   }
 
-  update (collide) {
+  updateVisibility (collide) {
     if (collide) this.show()
     else this.hide()
   }

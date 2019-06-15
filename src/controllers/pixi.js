@@ -8,8 +8,6 @@ import sound from 'controllers/sound'
 
 import store from 'state/store'
 
-import { updateTimers } from 'utils/timer'
-
 let renderer
 let view
 let stage

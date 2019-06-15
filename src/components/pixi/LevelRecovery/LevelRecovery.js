@@ -22,7 +22,7 @@ export default class LevelRecovery extends Level {
   }
 
   addColliders () {
-    this.addComponent(Interests, { onCollide: this.glass.update, unlock: this.glass.construct })
+    this.addComponent(Interests, { onCollide: this.glass.updateVisibility, unlock: this.glass.construct })
     this.addComponent(SoundChecks)
   }
 }

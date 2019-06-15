@@ -23,6 +23,6 @@ export default class LevelSorbonne extends Level {
 
   addColliders () {
 	  this.addComponent(SoundChecks)
-    this.addComponent(Interests, { onCollide: this.glass.update, unlock: this.glass.construct })
+    this.addComponent(Interests, { onCollide: this.glass.updateVisibility, unlock: this.glass.construct })
   }
 }
