@@ -61,8 +61,6 @@ class Fact extends DomComponent {
     this.date = props.content.date
     this.locked = true
 
-    console.log(props.content.historyId, props.content.img)
-
     return (
       // <div class='fact locked' id={'fact' + props.id} ref={addRef(this, 'fact')}>
       <div class='fact locked' id={'fact' + props.id} ref={addRef(this, 'fact')}>

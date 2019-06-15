@@ -71,7 +71,6 @@ export default class Perso extends PixiComponent {
           if (this.animStarted) return
           this.anim.playWthCb('arret', { loop: false, frameDuration: 34 }).then(() => {
             this.animFinished = true
-            console.log(signals.animePersoFinished)
             signals.animePersoFinished.dispatch()
           })
         })
