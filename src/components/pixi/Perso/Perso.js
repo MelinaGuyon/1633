@@ -14,15 +14,15 @@ export default class Perso extends PixiComponent {
     this.oldDirection = null
     this.state = {}
 
-    this.addComponent(Light, { form: 'transparent', target: this.base, x: -20, y: -43, tint: 0xffa8a8, alpha: 0.28, scale: [0.8, 0.9] })
+    this.addComponent(Light, { form: 'transparent', target: this.base, x: -10, y: -68, tint: 0xffa8a8, alpha: 0.28, scale: [0.8, 0.9] })
     this.refs.perso = this.addChild('perso')
     this.anim = new Animator(this.refs.perso)
-    this.base.scale.y = 0.7
-    this.base.scale.x = 0.7
+    this.base.scale.y = 0.6
+    this.base.scale.x = 0.6
     this.base.fakeX = 0
     this.base.fakeY = -1 // to let scenes in cneter
-    this.base.x = -54
-    this.base.y = 20
+    this.base.x = 0
+    this.base.y = 120
     this.body = physics.addBody({
       group: 'hero',
       gravity: true,
@@ -44,12 +44,12 @@ export default class Perso extends PixiComponent {
   updateAnimation (direction) {
     if (this.oldDirection !== direction) {
       if (direction === 0 && !store.pause.get()) {
-        this.base.scale.x = -0.7
-        this.base.x = 60
+        this.base.scale.x = -0.6
+        this.base.x = 0
         this.anim.play('perso', { loop: true, frameDuration: 30, firstFrame: this.anim.currentFrame })
       } else if (direction === 1 && !store.pause.get()) {
-        this.base.scale.x = 0.7
-        this.base.x = -54
+        this.base.scale.x = 0.6
+        this.base.x = 0
         this.anim.play('perso', { loop: true, frameDuration: 30, firstFrame: this.anim.currentFrame })
       } else {
         this.anim.stop()
