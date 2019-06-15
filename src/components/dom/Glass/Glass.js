@@ -161,14 +161,18 @@ export default class Glass extends DomComponent {
           } else {
             const coord = el.base.getBoundingClientRect()
             this.coords[index] = { el: el.base, left: coord.left, top: coord.top, centerX: coord.left + el.base.offsetWidth / 2, centerY: coord.top + el.base.offsetHeight / 2 }
+            this.handleMoove(store.mouse.get(), true)
           }
         }
       })
     })
   }
 
-  handleMoove (mouse) {
+  handleMoove (mouse, force) {
     let values = this.isConstructed ? realValues : transformValues
+    let distToCheck = this.isConstructed ? 80 : 180
+    let disvision = this.isConstructed ? 5 : 4
+
     this.singleGlass.forEach((el, index) => {
       if (!this.coords[index]) return
       let offsetX = 0
@@ -180,15 +184,22 @@ export default class Glass extends DomComponent {
       let dx = this.coords[index].centerX - mouse.x - offsetX
       let dy = this.coords[index].centerY - mouse.y - offsetY
 
-      if (dx < 180 && dx > -180 && dy < 180 && dy > -180) {
-        let x = values[index][0] + dx / 4
-        let y = values[index][1] + dy / 4
+      // if (dx < 180 && dx > -180 && dy < 180 && dy > -180) {
+      if (dx < distToCheck && dx > -distToCheck && dy < distToCheck && dy > -distToCheck) {
+        let x = values[index][0] + dx / disvision
+        let y = values[index][1] + dy / disvision
 
-        el.inrtia.x.to(x)
-        el.inrtia.y.to(y)
+        if (!force) el.inrtia.x.to(x)
+        if (!force) el.inrtia.y.to(y)
+        if (force) el.inrtia.x.value = x
+        if (force) el.inrtia.y.value = y
+        if (force) el.base.style.transform = `translateX(${el.inrtia.x.value}px) translateY(${el.inrtia.y.value}px) rotate(${values[index][2]}deg)`
       } else {
-        el.inrtia.x.to(values[index][0])
-        el.inrtia.y.to(values[index][1])
+        if (!force) el.inrtia.x.to(values[index][0])
+        if (!force) el.inrtia.y.to(values[index][1])
+        if (force) el.inrtia.x.value = values[index][0]
+        if (force) el.inrtia.y.value = values[index][1]
+        if (force) el.base.style.transform = `translateX(${el.inrtia.x.value}px) translateY(${el.inrtia.y.value}px) rotate(${values[index][2]}deg)`
       }
     })
   }
