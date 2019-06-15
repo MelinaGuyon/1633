@@ -1217,6 +1217,75 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">anims/drapeau0.png</key>
+            <key type="filename">anims/drapeau8.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>199,256,399,512</rect>
+                <key>scale9Paddings</key>
+                <rect>199,256,399,512</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">anims/drapeau1.png</key>
+            <key type="filename">anims/drapeau7.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>192,248,384,495</rect>
+                <key>scale9Paddings</key>
+                <rect>192,248,384,495</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">anims/drapeau2.png</key>
+            <key type="filename">anims/drapeau6.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>194,248,387,495</rect>
+                <key>scale9Paddings</key>
+                <rect>194,248,387,495</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">anims/drapeau3.png</key>
+            <key type="filename">anims/drapeau5.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>194,248,388,495</rect>
+                <key>scale9Paddings</key>
+                <rect>194,248,388,495</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">anims/drapeau4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>195,248,389,495</rect>
+                <key>scale9Paddings</key>
+                <rect>195,248,389,495</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">glass/glass-a.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -1472,6 +1541,7 @@
             <filename>02-baschamp</filename>
             <filename>perso-arret</filename>
             <filename>perso-start</filename>
+            <filename>anims</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
