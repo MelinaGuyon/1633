@@ -8,12 +8,12 @@ export default class CityBuildings extends PixiComponent {
     this.mains.push(this.addComponent(Building, { layer: '5bg700', type: 'd', x: 0, y: -55, scale: 0.66 })) // incrustation
     this.mains.push(this.addComponent(Building, { layer: '5bg690', type: 'b', x: 0, y: -50, scale: 0.66 })) // fond
 
-    // this.mains.push(this.addComponent(Building, { layer: '5bg600', type: 'e', x: -600, y: -200, scale: 0.64 })) // nuage petit
-    // this.mains.push(this.addComponent(Building, { layer: '5bg600', type: 'f', x: -510, y: -300, scale: 0.64 })) // nuage plus gros
-    // this.mains.push(this.addComponent(Building, { layer: '5bg500', type: 'g', x: -460, y: -330, scale: 0.7 })) // maison
-    // this.mains.push(this.addComponent(Building, { layer: '5bg400', type: 'h', x: -790, y: -410, scale: 0.64 })) // muraille
-    // this.mains.push(this.addComponent(Building, { layer: '5bg300', type: 'i', x: 50, y: -310, scale: 0.64 })) // arbre
-    // this.mains.push(this.addComponent(Building, { layer: '5f100', type: 'j', x: -650, y: -290, scale: 0.64 })) // chat
+    this.mains.push(this.addComponent(Building, { layer: '5bg600', type: 'e', x: -490, y: -225, scale: 0.64 })) // nuage petit
+    this.mains.push(this.addComponent(Building, { layer: '5bg600', type: 'f', x: -300, y: -270, scale: 0.64 })) // nuage plus gros
+    this.mains.push(this.addComponent(Building, { layer: '5bg500', type: 'g', x: 20, y: -130, scale: 0.7 })) // maison
+    this.mains.push(this.addComponent(Building, { layer: '5bg400', type: 'h', x: -80, y: -80, scale: 0.64 })) // muraille
+    this.mains.push(this.addComponent(Building, { layer: '5f100', type: 'j', x: -450, y: -15, scale: 0.64 })) // chat
+    this.mains.push(this.addComponent(Building, { layer: '5bg300', type: 'i', x: 315, y: -87, scale: 0.64 })) // arbre
   }
 
   componentWillUnmount () {
