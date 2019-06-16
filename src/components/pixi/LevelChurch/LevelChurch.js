@@ -1,6 +1,7 @@
 /* eslint-disable no-mixed-spaces-and-tabs,no-tabs,no-tabs */
 
 import Level from 'abstractions/Level'
+import Animations from './Animations'
 import Interests from './Interests'
 import Buildings from './CityBuildings'
 import SoundCheck from './SoundChecks'
@@ -16,6 +17,7 @@ export default class LevelChurch extends Level {
 
   createLand () {
     this.addComponent(Buildings)
+    this.animations = this.addComponent(Animations)
   }
 
   createGlass () {
