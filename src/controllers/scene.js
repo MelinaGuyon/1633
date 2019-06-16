@@ -109,7 +109,7 @@ class Scene extends PixiComponent {
 
   updateSizes (layer) {
     if (!this.needsUpdate) return
-    if (this.sizes[layer.id] < layer.base.width) this.sizes[layer.id] = layer.base.width + 1000 // 1000
+    if (this.sizes[layer.id] < layer.base.width) this.sizes[layer.id] = layer.base.width + 500 // 1000
   }
 
   setLevelId () {
