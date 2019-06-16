@@ -111,17 +111,23 @@ export default class Carrousel extends DomComponent {
   template ({ base }) {
     this.launchGame = this.fastbind('launchGame', 1)
 
+    const allHistories = store.allHistories.get()
+    const histories = []
+    for (let i = 0; i < allHistories.length; i++) {
+      console.log('je passe')
+      if (i === 0) histories.push(<Form id={i} active={'active '} animated={'animated'} type={allHistories[i]} launchGame={this.launchGame} />)
+      else histories.push(<Form id={i} active={''} type={allHistories[i]} launchGame={this.launchGame} />)
+    }
+
+    console.log(histories)
+
     return (
       <section data-type='carrousel' id='carrousel' class='carrousel mouse__close' ref={addRef(this, 'carrousel')}>
         <Intro onComplete={this.fastbind('activeCarousel')} ref={addRef(this, 'intro')} />
         <IntroCinematic ref={addRef(this, 'cinematic')} />
         <div class='carrousel-wrapper' ref={addRef(this, 'carouselWrapper')}>
           <Background ref={addRef(this, 'background')}/>
-          <Form active={'active '} animated={'animated'} type={'richelieu'} id={0} launchGame={this.launchGame} />
-          <Form active={''} type={'mariecurie'} id={1} launchGame={this.launchGame} />
-          <Form active={''} type={'robertdesorbon'} id={2} launchGame={this.launchGame} />
-          <Form active={''} type={'jacqueslemercier'} id={3} launchGame={this.launchGame} />
-          <Form active={''} type={'napoleonbonaparte'} id={4} launchGame={this.launchGame} />
+          {histories}
         </div>
       </section>
     )
