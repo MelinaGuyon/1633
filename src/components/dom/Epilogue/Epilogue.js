@@ -57,6 +57,7 @@ export default class Epilogue extends DomComponent {
       // if we want to launch a different sound OR the actual sound is finished
       if (soundPlay.sound !== path || !soundPlay.playing) {
         // intant temp fix
+        console.log('epilogue, je stop sound et je play')
         sound.stop(soundPlay.sound, { instant: true }) // stop previous sound
         delay(() => {
           sound.play(path)
@@ -68,6 +69,7 @@ export default class Epilogue extends DomComponent {
       }
     } else {
       // nothing was playing, so play
+      console.log('epilogue, nothing was playing')
       sound.play(path)
       sound.setSoundPlay(path)
       this.intervalId = setInterval(() => {

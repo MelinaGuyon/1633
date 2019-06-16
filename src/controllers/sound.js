@@ -7,7 +7,9 @@ const samples = {}
 let hidden = [] // Used to store the good visibility change method
 let muted = false
 let setupped = false
-let soundPlay = false
+
+let voicePlay = false
+let effectPlay = false
 
 function setup () {
   if (setupped) return
@@ -37,8 +39,12 @@ function setup () {
   toggleMute(store.mute.get())
 }
 
-function setSoundPlay (sound) {
-  soundPlay = sound
+function setVoicePlay (sound) {
+  voicePlay = sound
+}
+
+function setEffectPlay (sound) {
+  effectPlay = sound
 }
 
 function toggleMute (bool) {
@@ -68,9 +74,8 @@ function onVisibilityChange () {
 }
 
 function play (key, opts = {}) {
-  // log('Play ' + key)
   if (samples[key]) {
-    // console.log(samples[key], samples[key].state.playing, key)
+    console.log(samples[key], samples[key].state.playing, key)
     samples[key].play(opts)
   }
 }
@@ -91,9 +96,14 @@ function update (dt) {
   for (let k in samples) samples[k].update(dt)
 }
 
-function soundIsPlaying (dt) {
-  if (!samples[soundPlay]) return { sound: soundPlay, playing: false }
-  else return { sound: soundPlay, playing: samples[soundPlay].state.playing }
+function voiceIsPlaying (dt) {
+  if (!samples[voicePlay]) return { sound: voicePlay, playing: false }
+  else return { sound: voicePlay, playing: samples[voicePlay].state.playing }
+}
+
+function effectIsPlaying (dt) {
+  if (!samples[effectPlay]) return { sound: effectPlay, playing: false }
+  else return { sound: effectPlay, playing: samples[effectPlay].state.playing }
 }
 
 export default {
@@ -105,6 +115,8 @@ export default {
   play,
   stop,
   update,
-  setSoundPlay,
-  soundIsPlaying
+  setVoicePlay,
+  voiceIsPlaying,
+  setEffectPlay,
+  effectIsPlaying
 }

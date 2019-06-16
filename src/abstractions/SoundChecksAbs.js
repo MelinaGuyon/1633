@@ -14,38 +14,36 @@ export default class SoundChecksAbs extends PixiComponent {
     if (state.collide) {
 	    let indexOfFirst = path.indexOf('effect')
 	    if (indexOfFirst >= 0) {
-		    this.stopAllEffet()
-		    sound.play(path)
-	    } else {
-		    let soundPlay = sound.soundIsPlaying()
-		    // if there is sound playing
-		    if (soundPlay.sound) {
+        let effectPlay = sound.effectIsPlaying()
+        if (effectPlay.sound) {
 			    // if we want to launch a different sound OR the actual sound is finished
-			    if (soundPlay.sound !== path || !soundPlay.playing) {
-				    sound.stop(soundPlay.sound) // stop previous sound
-				    delay(() => {
-					    sound.play(path)
-					    signals.writeSubtitles.dispatch(soundId)
-				    }, 400)
+			    if (effectPlay.sound !== path || !effectPlay.playing) {
+				    sound.stop(effectPlay.sound) // stop previous sound
+            sound.play(path)
+			    }
+		    } else {
+			    // nothing was playing, so play
+			    sound.play(path)
+        }
+        sound.setEffectPlay(path)
+	    } else {
+		    let voicePlay = sound.voiceIsPlaying()
+		    // if there is sound playing
+		    if (voicePlay.sound) {
+			    // if we want to launch a different sound OR the actual sound is finished
+			    if (voicePlay.sound !== path || !voicePlay.playing) {
+				    sound.stop(voicePlay.sound) // stop previous sound
+            sound.play(path)
+            signals.writeSubtitles.dispatch(soundId)
 			    }
 		    } else {
 			    // nothing was playing, so play
 			    sound.play(path)
 			    signals.writeSubtitles.dispatch(soundId)
 		    }
-		    sound.setSoundPlay(path)
+		    sound.setVoicePlay(path)
 	    }
     }
-  }
-
-  stopAllEffet () {
-	  sound.stop('effect/crowd')
-	  sound.stop('effect/kids')
-	  sound.stop('effect/bird')
-	  sound.stop('effect/fire')
-	  sound.stop('effect/rain')
-	  sound.stop('effect/vaisselle')
-	  sound.stop('effect/ceremony')
   }
 
   componentWillUnmount () {

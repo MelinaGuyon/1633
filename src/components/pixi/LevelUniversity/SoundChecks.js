@@ -10,9 +10,6 @@ export default class SoundChecks extends SoundChecksAbs {
     this.mains = []
     // ic dans cb :
     // 0 = soundId car on veut lancer le son 0 et on a besoin de l'ID du sound pour savoir quels sous tittre lancer
-    //this.mains.push(this.addComponent(Colliders, { layer: '1bg10', x: -1300, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'voixoff/intro', 1), name: 'voixoff/chap_1' }))
-    //this.mains.push(this.addComponent(Colliders, { layer: '1bg10', x: -1000, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'voixoff/intro_bis', 2), name: 'voixoff/chap_1' }))
-    //this.mains.push(this.addComponent(Colliders, { layer: '1bg10', x: -800, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'voixoff/intro_ter', 3), name: 'voixoff/chap_1' }))
     this.mains.push(this.addComponent(Colliders, { layer: '1bg10', x: -700, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'voixoff/chap_1', 4), name: 'voixoff/chap_1' }))
     this.mains.push(this.addComponent(Colliders, { layer: '1bg10', x: -800, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'effect/crowd', 14), name: 'effect/crowd' }))
   }
