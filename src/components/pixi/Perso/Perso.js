@@ -45,7 +45,7 @@ export default class Perso extends PixiComponent {
 
   updateAnimation (direction) {
     if (this.oldDirection !== direction) {
-      if (direction === 0 && !store.pause.get()) {
+      if (direction === 0 && !store.pause.get().paused) {
         this.animStarted = true
         this.base.scale.x = -0.6
         this.base.x = 50
@@ -56,7 +56,7 @@ export default class Perso extends PixiComponent {
         } else {
           this.anim.play('perso', { loop: true, frameDuration: 30, firstFrame: this.anim.currentFrame })
         }
-      } else if (direction === 1 && !store.pause.get()) {
+      } else if (direction === 1 && !store.pause.get().paused) {
         this.animStarted = true
         this.base.scale.x = 0.6
         this.base.x = -50

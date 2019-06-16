@@ -59,9 +59,9 @@ export default class IntroCinematic extends DomComponent {
         })
 
         sound.play(path)
-        sound.setSoundPlay(path)
+        sound.setVoicePlay(path)
         this.intervalId = setInterval(() => {
-          if (!sound.soundIsPlaying().playing) this.finished(number)
+          if (!sound.voiceIsPlaying().playing) this.finished(number)
         }, 500)
       }
     })

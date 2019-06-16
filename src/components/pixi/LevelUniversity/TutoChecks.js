@@ -13,7 +13,7 @@ export default class TutoCheck extends PixiComponent {
   openTuto (id) {
     // cookie.createCookie('tuto', true, 30)
     signals.activeTuto.dispatch(id)
-    store.pause.set(true)
+    store.pause.set({ paused: true, allMuted: true })
 
     for (let i = 0; i < this.mains.length; i++) {
       if (this.mains[i].name === id) {

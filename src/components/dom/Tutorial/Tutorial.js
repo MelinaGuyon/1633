@@ -60,7 +60,7 @@ class TutoKeyboard extends DomComponent {
   }
 
   playAgain () {
-    store.pause.set(false)
+    store.pause.set({ paused: false, allMuted: false })
     this.removeListenerStop()
   }
 
@@ -118,7 +118,7 @@ class TutoSpace extends DomComponent {
       }
     })
     this.removeListener()
-    store.pause.set(false)
+    store.pause.set({ paused: false, allMuted: false })
   }
 
   removeListener () {

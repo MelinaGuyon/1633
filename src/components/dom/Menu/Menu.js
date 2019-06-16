@@ -140,21 +140,23 @@ class PlayPauseButton extends DomComponent {
   }
 
   onClick (e) {
-    if (!store.pause.get()) {
-	    store.pause.set(true)
+    if (!store.pause.get().paused) {
+	    store.pause.set({ paused: true, allMuted: true })
       e.target.closest('.nav-playpause__btn').classList.add('pause')
     } else {
-	    store.pause.set(false)
+	    store.pause.set({ paused: false, allMuted: false })
       e.target.closest('.nav-playpause__btn').classList.remove('pause')
     }
   }
 
   visible () {
     this.base.classList.remove('hidden')
+    signals.newDom.dispatch()
   }
 
   hidden () {
     this.base.classList.add('hidden')
+    signals.newDom.dispatch()
   }
 }
 

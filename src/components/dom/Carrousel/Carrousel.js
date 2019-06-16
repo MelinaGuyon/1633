@@ -299,7 +299,7 @@ export default class Carrousel extends DomComponent {
       complete: () => {
         this.carrousel.classList.add('hidden')
         if (!store.skipTuto.get()) {
-          store.pause.set(true)
+          store.pause.set({ paused: true, allMuted: false })
           signals.activeTuto.dispatch('keyboard')
         }
       }

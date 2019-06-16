@@ -60,7 +60,6 @@ export default createStore({
 
   // ---- Debug utilities: 0 means false, 1 means true ----
   debug: isDev ? 0 : 0,
-  mute: isDev ? 0 : 0,
   useGui: isDev ? 1 : 0, // use datGui
   displayStats: isDev ? 1 : 0, // use stats (fps, drawcalls, ...)
   skipCarousel: isDev ? 1 : 1,
@@ -71,7 +70,8 @@ export default createStore({
   loaded: false, // Is app loaded
   started: false, // Is app started
   launched: false, // Is a game launched
-  pause: false, // Is the current game paused
+  pause: { paused: false, allMuted: false }, // Is the current game paused
+  mute: false, // Is the current game muted
   ended: false, // Is the current game ended
   musicPlayed: false,
   menuLight: false,

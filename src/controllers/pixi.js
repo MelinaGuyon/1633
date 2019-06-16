@@ -43,7 +43,7 @@ function init () {
 
 function render (dt) {
   // dt adjustements (timescale, time computation)
-  const playing = !store.pause.get()
+  const playing = !store.pause.get().paused
   if (playing) {
     dt = dt * 1 // see part 'force pixalated rendering
     time += dt

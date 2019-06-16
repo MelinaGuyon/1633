@@ -39,9 +39,9 @@ export default class Intro extends DomComponent {
 
   launchIntro () {
     sound.play('voixoff/carrousel')
-    sound.setSoundPlay('voixoff/carrousel')
+    sound.setVoicePlay('voixoff/carrousel')
     this.intervalId = setInterval(() => {
-      if (!sound.soundIsPlaying().playing) this.finished()
+      if (!sound.voiceIsPlaying().playing) this.finished()
     }, 500)
   }
 

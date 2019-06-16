@@ -140,7 +140,7 @@ export default class Body {
 
     if (this.maxX === this.x) {
       // TODO: régler le bail de pause
-      // store.pause.set(true)
+      // store.pause.set({ paused: true, allMuted: false })
       store.ended.set(true)
     }
   }

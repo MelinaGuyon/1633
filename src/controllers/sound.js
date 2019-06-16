@@ -50,12 +50,10 @@ function setEffectPlay (sound) {
 }
 
 function toggleMute (bool) {
-  console.log('je passe', bool)
   bool ? mute() : unmute()
 }
 
 function mute (force) {
-  console.log('je passe icic')
   if (!force && (muted || !store.mute.get())) return
   Howler.mute(true)
   muted = true
@@ -67,9 +65,8 @@ function unmute () {
   muted = false
 }
 
-function togglePause (bool) {
-  console.log('pause', bool)
-  bool ? pause() : unpause()
+function togglePause (obj) {
+  obj.paused ? pause() : unpause()
 }
 
 function pause (opts = {}) {
@@ -87,7 +84,7 @@ function onVisibilityChange () {
     mute(true)
   } else if (muted) {
     unmute()
-    unpause({ keepQuiet: store.pause.get() })
+    unpause({ keepQuiet: store.pause.get().paused })
   }
 }
 
