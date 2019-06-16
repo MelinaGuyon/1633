@@ -102,7 +102,6 @@ function onVisibilityChange () {
 
 function play (key, opts = {}) {
   if (samples[key]) {
-    console.log(samples[key], samples[key].state.playing, key)
     samples[key].play(opts)
   }
 }
@@ -134,6 +133,7 @@ export default {
   play,
   stop,
   update,
+  getMusic: () => { return music },
   setVoicePlay,
   voiceIsPlaying,
   setEffectPlay,

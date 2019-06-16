@@ -44,10 +44,13 @@ function init () {
 function render (dt) {
   // dt adjustements (timescale, time computation)
   const playing = !store.pause.get().paused
+  let dtSound
   if (playing) {
     dt = dt * 1 // see part 'force pixalated rendering
     time += dt
+    dtSound = dt
   } else {
+    dtSound = dt
     dt = 0
   }
 
@@ -56,7 +59,7 @@ function render (dt) {
   scene.update(dt, time)
   gameComponent.update(dt, time)
   renderer.render(stage)
-  sound.update(dt)
+  sound.update(dtSound) // because even with paused game we need it
 }
 
 function resize (s) {

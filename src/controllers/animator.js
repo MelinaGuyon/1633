@@ -45,7 +45,6 @@ export default class Animator {
     this.sprite = undefined
     this.current = undefined
     this.currentSplit = undefined
-    console.log(this.finished)
   }
 
   switchAnim (anim, frame = 0, stop = false, loop = false) {

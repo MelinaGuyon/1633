@@ -135,6 +135,7 @@ export default class Carrousel extends DomComponent {
   componentDidMount () {
     this.mouseWhellTodo = this.fastbind('mouseWhellTodo', 1)
     if (store.skipCarousel.get()) this.directLaunch()
+    this.bind()
   }
 
   activeCarousel () {
@@ -155,14 +156,18 @@ export default class Carrousel extends DomComponent {
     })
 
     this.background.addMagnet()
-    this.bind()
+    this.internalBind()
   }
 
-  bind () {
+  internalBind () {
 	  document.addEventListener('mousewheel', this.mouseWhellTodo)
   }
 
-  unbind () {
+  bind () {
+    this.listenStore('launched', this.resetCarousel)
+  }
+
+  internalUnbind () {
     document.removeEventListener('mousewheel', this.mouseWhellTodo)
   }
 
@@ -248,7 +253,7 @@ export default class Carrousel extends DomComponent {
   }
 
   launchGame (obj) {
-    this.unbind()
+    this.internalUnbind()
     obj.id = 0 // to force Ricelieu story
 
     this.carrousel.classList.add('no-touch')
@@ -290,6 +295,7 @@ export default class Carrousel extends DomComponent {
     }
     store.currentHistory.set(obj.id)
     store.launched.set(true)
+    store.menuGame.set(true)
     anime({
       targets: this.carrousel,
       opacity: 0,
@@ -307,10 +313,20 @@ export default class Carrousel extends DomComponent {
   }
 
   directLaunch () {
-    this.unbind()
+    this.internalUnbind()
     this.game = new RichelieuGame({ autosetup: true })
     this.carrousel.classList.add('hidden')
     store.currentHistory.set(0)
     store.launched.set(true)
+    store.menuGame.set(true)
+  }
+
+  resetCarousel (launched) {
+    if (launched) return
+    store.menuGame.set(false)
+    this.carrousel.classList.remove('hidden')
+    this.carrousel.style.opacity = 1
+    this.activeCarousel()
+    this.game.destroy()
   }
 }

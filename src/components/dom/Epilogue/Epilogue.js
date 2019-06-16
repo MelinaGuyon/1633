@@ -41,6 +41,7 @@ export default class Epilogue extends DomComponent {
   }
 
   launchEpilogue () {
+    store.menuGame.set(false)
     this.base.classList.add('visible')
     this.skip.classList.add('magnet')
     signals.newDom.dispatch()
@@ -108,9 +109,9 @@ export default class Epilogue extends DomComponent {
   finished () {
     clearInterval(this.intervalId)
     this.unbind()
+    sound.stop(sound.getMusic())
     sound.stop('voixoff/epilogue')
-
-    // TODO GO BACK CAROUSEL
-    console.log('GAME EPILOGUE FINISH -- BACK TO CAROUSEL')
+    store.launched.set(false)
+    this.base.classList.remove('visible')
   }
 }

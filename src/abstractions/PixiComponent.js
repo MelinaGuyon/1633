@@ -226,7 +226,7 @@ export default class PixiComponent {
     return scene[this.layer].toLocal(x, y, ignoreProgress)
   }
 
-  destroy (test) {
+  destroy () {
     if (this.destroyed) return
     DEBUG && this.log('Destroy')
 
@@ -236,6 +236,11 @@ export default class PixiComponent {
     // Destroy linked childs and sub-components
     for (let i = this.components.length - 1; i >= 0; i--) this.components[i].destroy()
     for (let i = this.linkedChilds.length - 1; i >= 0; i--) this.linkedChilds[i].destroy()
+
+    if (this.levels) {
+      let keys = Object.keys(this.levels)
+      for (let i = keys.length - 1; i >= 0; i--) this.levels[keys[i]].destroy()
+    }
 
     // Destroy raf timers
     for (let i = this.timers.length - 1; i >= 0; i--) this.timers[i].dispose()

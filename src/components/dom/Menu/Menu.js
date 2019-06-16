@@ -121,7 +121,7 @@ class SoundButton extends DomComponent {
 class PlayPauseButton extends DomComponent {
   template (props) {
     return (
-      <button class='nav-playpause magnet' data-id={props.id}>
+      <button class='nav-playpause hidden magnet' data-id={props.id}>
         <div class='nav-playpause__btn'>
           <div class='l1' />
           <div class='l2' />
