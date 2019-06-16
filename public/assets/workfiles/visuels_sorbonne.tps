@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>4</int>
         <key>texturePackerVersion</key>
-        <string>4.11.0</string>
+        <string>4.12.1</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -1217,6 +1217,38 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">anims/arbre1.png</key>
+            <key type="filename">anims/arbre2.png</key>
+            <key type="filename">anims/arbre3.png</key>
+            <key type="filename">anims/arbre4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>150,225,300,450</rect>
+                <key>scale9Paddings</key>
+                <rect>150,225,300,450</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">anims/chatBretagne1.png</key>
+            <key type="filename">anims/chatBretagne2.png</key>
+            <key type="filename">anims/chatBretagne3.png</key>
+            <key type="filename">anims/chatBretagne4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>125,225,250,450</rect>
+                <key>scale9Paddings</key>
+                <rect>125,225,250,450</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">anims/drapeau0.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -1282,6 +1314,144 @@
                 <rect>195,248,389,495</rect>
                 <key>scale9Paddings</key>
                 <rect>195,248,389,495</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">anims/drapeauCheval1.png</key>
+            <key type="filename">anims/drapeauCheval2.png</key>
+            <key type="filename">anims/drapeauCheval3.png</key>
+            <key type="filename">anims/drapeauCheval4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>150,200,300,400</rect>
+                <key>scale9Paddings</key>
+                <rect>150,200,300,400</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">anims/draps1.png</key>
+            <key type="filename">anims/draps2.png</key>
+            <key type="filename">anims/draps3.png</key>
+            <key type="filename">anims/draps4.png</key>
+            <key type="filename">anims/draps5.png</key>
+            <key type="filename">anims/draps6.png</key>
+            <key type="filename">anims/draps7.png</key>
+            <key type="filename">anims/draps8.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>139,79,278,157</rect>
+                <key>scale9Paddings</key>
+                <rect>139,79,278,157</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">anims/feuDroite1.png</key>
+            <key type="filename">anims/feuDroite2.png</key>
+            <key type="filename">anims/feuDroite3.png</key>
+            <key type="filename">anims/feuDroite4.png</key>
+            <key type="filename">anims/feuGauche1.png</key>
+            <key type="filename">anims/feuGauche2.png</key>
+            <key type="filename">anims/feuGauche3.png</key>
+            <key type="filename">anims/feuGauche4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,125,150,250</rect>
+                <key>scale9Paddings</key>
+                <rect>75,125,150,250</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">anims/hache1.png</key>
+            <key type="filename">anims/hache2.png</key>
+            <key type="filename">anims/hache3.png</key>
+            <key type="filename">anims/hache4.png</key>
+            <key type="filename">anims/hache5.png</key>
+            <key type="filename">anims/hache6.png</key>
+            <key type="filename">anims/hache7.png</key>
+            <key type="filename">anims/hache8.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>250,250,500,500</rect>
+                <key>scale9Paddings</key>
+                <rect>250,250,500,500</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">anims/lampeBaschamp1.png</key>
+            <key type="filename">anims/lampeBaschamp5.png</key>
+            <key type="filename">anims/lampeBaschamp6.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>136,66,271,132</rect>
+                <key>scale9Paddings</key>
+                <rect>136,66,271,132</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">anims/lampeBaschamp2.png</key>
+            <key type="filename">anims/lampeBaschamp3.png</key>
+            <key type="filename">anims/lampeBaschamp4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>136,67,271,135</rect>
+                <key>scale9Paddings</key>
+                <rect>136,67,271,135</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">anims/nuageBretagneDroite1.png</key>
+            <key type="filename">anims/nuageBretagneDroite2.png</key>
+            <key type="filename">anims/nuageBretagneDroite3.png</key>
+            <key type="filename">anims/nuageBretagneDroite4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,30,150,60</rect>
+                <key>scale9Paddings</key>
+                <rect>75,30,150,60</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">anims/nuageBretagneGauche1.png</key>
+            <key type="filename">anims/nuageBretagneGauche2.png</key>
+            <key type="filename">anims/nuageBretagneGauche3.png</key>
+            <key type="filename">anims/nuageBretagneGauche4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>65,23,130,47</rect>
+                <key>scale9Paddings</key>
+                <rect>65,23,130,47</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -15,7 +15,7 @@ export default class CityBuildings extends PixiComponent {
     this.mains.push(this.addComponent(Building, { layer: '1bg500', type: 'e', x: -20, y: -50, scale: 0.66 })) // meuf millieu droite
     this.mains.push(this.addComponent(Building, { layer: '1bg500', type: 'f', x: -170, y: -10, scale: 0.66 })) //  meuf gauche gauche
     this.mains.push(this.addComponent(Building, { layer: '1bg400', type: 'h', x: 130, y: 10, scale: 0.62 })) //  mausolé
-    this.mains.push(this.addComponent(Building, { layer: '1f200', type: 'g', x: 440, y: 10, scale: 0.66 })) //  mec droite
+    // this.mains.push(this.addComponent(Building, { layer: '1f200', type: 'g', x: 440, y: 10, scale: 0.66 })) //  mec droite
     // this.mains.push(this.addComponent(Building, { layer: '1f200', type: 'i', x: -400, y: 0, scale: 0.66 })) //  mec gauche
 
     this.mains.push(this.addComponent(Light, { layer: '1bg400', form: 'transparent', target: this.base, x: 0, y: -63, tint: 0x886600, alpha: 1, scale: [0.3, 0.27] }))

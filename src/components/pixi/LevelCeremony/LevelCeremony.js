@@ -1,4 +1,5 @@
 import Level from 'abstractions/Level'
+import Animations from './Animations'
 import Buildings from './CityBuildings'
 import Interests from './Interests'
 import Glass from 'components/pixi/LevelCommon/Glass'
@@ -14,6 +15,7 @@ export default class LevelCeremony extends Level {
 
   createLand () {
     this.addComponent(Buildings)
+    this.animations = this.addComponent(Animations)
   }
 
   createGlass () {
@@ -22,6 +24,6 @@ export default class LevelCeremony extends Level {
 
   addColliders () {
     this.addComponent(Interests, { onCollide: this.glass.updateVisibility, unlock: this.glass.construct })
-	  this.addComponent(SoundCheck)
+    this.addComponent(SoundCheck)
   }
 }
