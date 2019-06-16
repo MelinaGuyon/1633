@@ -42,7 +42,6 @@ export default class Light extends PixiComponent {
   }
 
   setup (props = {}) {
-    console.log(store.animations.get(), this.form)
     this.base = new Sprite(store.animations.get()[this.form + '.png'][0])
 
     if (!props.scale) props.scale = [1, 1]

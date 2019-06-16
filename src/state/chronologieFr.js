@@ -94,7 +94,7 @@ export default {
       title: 'Aumône et piété',
       sceneTitle: '...',
       text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
-      img: 'oeuvre-mortuaire'
+      img: 'aumone'
     },
     {
       historyId: 1,
@@ -103,7 +103,7 @@ export default {
       title: 'Don de la reine Blanche',
       sceneTitle: '...',
       text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
-      img: 'oeuvre-mortuaire'
+      img: 'reine-blanche'
     },
     {
       historyId: 1,
@@ -112,7 +112,43 @@ export default {
       title: 'Leçons gratuites',
       sceneTitle: '...',
       text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
-      img: 'oeuvre-mortuaire'
+      img: 'lecons'
+    },
+    {
+      historyId: 1,
+      historyName: 'Le Confesseur',
+      date: 1254,
+      title: 'Fondation du collège',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'fondation'
+    },
+    {
+      historyId: 1,
+      historyName: 'Le Confesseur',
+      date: 1258,
+      title: 'Chanoine de Paris',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'chanoine'
+    },
+    {
+      historyId: 1,
+      historyName: 'Le Confesseur',
+      date: 1263,
+      title: 'Proviseur',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'proviseur'
+    },
+    {
+      historyId: 1,
+      historyName: 'Le Confesseur',
+      date: 1270,
+      title: 'Chapelain du roi',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'chapelain'
     },
     {
       historyId: 2,
