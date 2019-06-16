@@ -6,6 +6,7 @@ import './TextScrolling.styl'
 export default class TextScrolling extends DomComponent {
   template (props) {
     this.text = props.text
+    this.timing = props.timing
 
     this.span = document.createElement('span')
     this.span.innerText = this.text
@@ -14,7 +15,7 @@ export default class TextScrolling extends DomComponent {
 
     return (
       <div class={classname}>
-        <div class='wrapper' ref={addRef(this, 'wrapper')}>
+        <div class={'wrapper ' + `timing${this.timing}`} ref={addRef(this, 'wrapper')}>
           {this.span}
         </div>
       </div>

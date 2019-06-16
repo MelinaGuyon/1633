@@ -21,13 +21,15 @@ class Form extends DomComponent {
     let clasName = 'carrousel__form__content ' + props.active + (props.animated ? props.animated : '')
     const loc = store.loc.get()
     this.id = props.id
+    const title = loc['carrousel.' + props.type]
+    const timing = title.length / 5 >> 0
 
     return (
       <div class={clasName} launchGame={props.launchGame} type={props.type} data-id={props.id}>
         <div class='carrousel__form' ref={addRef(this, 'form')}>
-          <TextScrolling text={loc['carrousel.' + props.type]} ref={addRef(this, 'text')} />
+          <TextScrolling text={title} ref={addRef(this, 'text')} timing={timing} />
         </div>
-        <TextScrolling text={loc['carrousel.' + props.type]} stroke ref={addRef(this, 'text2')} />
+        <TextScrolling text={title} stroke ref={addRef(this, 'text2')} timing={timing} />
       </div>
     )
   }
@@ -114,12 +116,9 @@ export default class Carrousel extends DomComponent {
     const allHistories = store.allHistories.get()
     const histories = []
     for (let i = 0; i < allHistories.length; i++) {
-      console.log('je passe')
       if (i === 0) histories.push(<Form id={i} active={'active '} animated={'animated'} type={allHistories[i]} launchGame={this.launchGame} />)
       else histories.push(<Form id={i} active={''} type={allHistories[i]} launchGame={this.launchGame} />)
     }
-
-    console.log(histories)
 
     return (
       <section data-type='carrousel' id='carrousel' class='carrousel mouse__close' ref={addRef(this, 'carrousel')}>
