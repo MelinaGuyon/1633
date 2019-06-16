@@ -84,6 +84,8 @@ class CollectButton extends DomComponent {
 
 class SoundButton extends DomComponent {
   template (props) {
+    this.pause = false
+
     return (
       <button class='nav-sound__btn magnet ' data-id={props.id}>
         <div class='l1' />
@@ -104,12 +106,14 @@ class SoundButton extends DomComponent {
   }
 
   onClick (e) {
-    if (store.musicPlayed.current) {
-      sound.pause()
-      e.target.closest('.nav-sound__btn').className = 'nav-sound__btn pause'
+    if (!this.pause) {
+      this.pause = true
+      store.mute.set(true)
+      e.target.closest('.nav-sound__btn').classList.add('pause')
     } else {
-      sound.unpause()
-      e.target.closest('.nav-sound__btn').className = 'nav-sound__btn'
+      this.pause = false
+      store.mute.set(false)
+      e.target.closest('.nav-sound__btn').classList.remove('pause')
     }
   }
 }
@@ -138,10 +142,10 @@ class PlayPauseButton extends DomComponent {
   onClick (e) {
     if (!store.pause.get()) {
 	    store.pause.set(true)
-      e.target.closest('.nav-playpause__btn').className = 'nav-playpause__btn pause'
+      e.target.closest('.nav-playpause__btn').classList.add('pause')
     } else {
 	    store.pause.set(false)
-      e.target.closest('.nav-playpause__btn').className = 'nav-playpause__btn'
+      e.target.closest('.nav-playpause__btn').classList.remove('pause')
     }
   }
 }

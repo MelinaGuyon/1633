@@ -47,10 +47,8 @@ function render (dt) {
   if (playing) {
     dt = dt * 1 // see part 'force pixalated rendering
     time += dt
-    sound.unpause()
   } else {
     dt = 0
-    sound.pause()
   }
 
   if (playing) physics.update(dt, time)

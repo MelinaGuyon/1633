@@ -36,6 +36,8 @@ function setup () {
   else if (typeof document.webkitHidden !== 'undefined') { hidden[0] = 'webkitvisibilitychange'; hidden[1] = 'webkitHidden' }
   if (hidden[0]) document.addEventListener(hidden[0], onVisibilityChange, false)
   store.mute.listen(toggleMute)
+  store.pause.listen(toggleMute)
+
   toggleMute(store.mute.get())
 }
 
@@ -48,10 +50,12 @@ function setEffectPlay (sound) {
 }
 
 function toggleMute (bool) {
+  console.log('je passe', bool)
   bool ? mute() : unmute()
 }
 
 function mute (force) {
+  console.log('je passe icic')
   if (!force && (muted || !store.mute.get())) return
   Howler.mute(true)
   muted = true
@@ -85,6 +89,7 @@ function stop (key, opts = {}) {
 }
 
 function pause (opts = {}) {
+  console.log('je passe')
   for (let k in samples) samples[k].pause(opts)
 }
 
