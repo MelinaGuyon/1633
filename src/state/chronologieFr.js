@@ -220,7 +220,43 @@ export default {
       title: 'Enfance sous l\'occupation',
       sceneTitle: '...',
       text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
-      img: 'oeuvre-mortuaire'
+      img: 'occupation'
+    },
+    {
+      historyId: 3,
+      historyName: 'La Femme des Sciences',
+      date: 1893,
+      title: 'Passion des sciences',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'passion'
+    },
+    {
+      historyId: 3,
+      historyName: 'La Femme des Sciences',
+      date: 1898,
+      title: 'Etude de la radioactivité',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'etude'
+    },
+    {
+      historyId: 3,
+      historyName: 'La Femme des Sciences',
+      date: 1906,
+      title: 'Elève devenue maître',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'maitre'
+    },
+    {
+      historyId: 3,
+      historyName: 'La Femme des Sciences',
+      date: 1914,
+      title: 'Radioactivité et santé',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'sante'
     }
   ]
 }
