@@ -6,13 +6,13 @@ import store from 'state/store'
 
 const names = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 const positionsBuilded = [
-  [-68, -121],
-  [26, -194],
-  [94, -149],
-  [-14, -57],
-  [94, 6],
-  [-10, 100],
-  [13, 134]
+  [-68, -101],
+  [26, -174],
+  [94, -129],
+  [-14, -37],
+  [94, 26],
+  [-10, 120],
+  [13, 154]
 ]
 const positionsUnbuilded = [
   [-220, -100],
@@ -33,7 +33,7 @@ const rotation = [
   0
 ]
 
-const bigGlassPosition = [11, -40]
+const bigGlassPosition = [11, -20]
 
 class BigGlass extends PixiComponent {
   setup (props) {
