@@ -16,6 +16,7 @@ import mouse from 'controllers/mouse'
 import signals from 'state/signals'
 import anime from 'animejs'
 import delay from 'lodash/delay'
+import bank from 'state/sounds'
 
 function isFromAnim (tex, anims) {
   for (let k in anims) {
@@ -29,6 +30,16 @@ function isFromAnim (tex, anims) {
 export default class Preloader extends DomComponent {
   template ({ base }) {
     const loc = store.loc.get()
+
+    // TODO:: see if we can see why 2 and not 1
+    // To change quand il y aura plusieur atlas/assets pixi
+    this.loadCompteur = 0
+    this.loadingElementsLength =
+      store.imagesToPreload.get().length + 2
+      + Object.keys(bank.musics).length
+      + Object.keys(bank.sfxs).length
+
+
     return (
       <section class='prld fxd' ref={addRef(this, 'prld')}>
         <div class='fakeBg' ref={addRef(this, 'bg')} />
@@ -60,10 +71,12 @@ export default class Preloader extends DomComponent {
   }
 
   bind () {
+    signals.soundLoaded.listen(this.fastbind('updateCompteur', 1))
     raf.add(this.updateInertia.bind(this))
   }
 
   unbind () {
+    signals.soundLoaded.unlisten(this.updateCompteur)
     raf.remove(this.updateInertia)
   }
 
@@ -138,10 +151,7 @@ export default class Preloader extends DomComponent {
   imagesLoad () {
     const imagesToPreload = store.imagesToPreload.get()
     const images = store.images.get()
-    // TODO:: see if we can see why 2 and not 1
-    // To change quand il y aura plusieur atlas/assets pixi
-    this.imagesLength = imagesToPreload.length + 2
-    this.loadCompteur = 0
+
     const p = []
     for (let i = 0; i < imagesToPreload.length; i++) {
       const k = imagesToPreload[i]
@@ -154,7 +164,7 @@ export default class Preloader extends DomComponent {
 
   animeLoader () {
     // 80 DUE TO ECZAR
-    let p = (this.loadCompteur / this.imagesLength) * 80
+    let p = (this.loadCompteur / this.loadingElementsLength) * 80
     this.inrtia.percent.to(p)
   }
 

@@ -2,6 +2,7 @@
 import { Signal } from '@internet/state'
 
 const signals = {
+  soundLoaded: new Signal(),
   goLeft: new Signal(),
   goRight: new Signal(),
   space: new Signal(),

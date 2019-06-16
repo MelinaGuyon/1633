@@ -1,7 +1,8 @@
 import { Howl } from 'howler'
 import cachebust from 'utils/cachebust'
 import prng from 'utils/prng'
-import store from "../state/store";
+import store from "state/store";
+import signals from "state/signals";
 
 const DEFAULT_VOLUME = 1
 
@@ -151,7 +152,10 @@ export default class Sample {
       })
       this.sounds.loop = new Howl({
         src: cachebust('assets/sounds/' + this.key + '_loop.mp3'),
-        loop: true
+        loop: true,
+        onload: () => {
+          signals.soundLoaded.dispatch()
+        }
       })
     } else if (this.type === 'sfx') {
       const urls = []
@@ -164,6 +168,9 @@ export default class Sample {
           src: [urls[i]],
           loop: this.loop,
           volume: this.volume,
+          onload: () => {
+            signals.soundLoaded.dispatch()
+          },
           onend: () => {
             if (this.loop) return
             this.stop({ instant: true })

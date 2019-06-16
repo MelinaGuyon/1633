@@ -239,7 +239,7 @@ export default class PixiComponent {
 
     if (this.levels) {
       let keys = Object.keys(this.levels)
-      for (let i = keys.length - 1; i >= 0; i--) this.levels[keys[i]].destroy()
+      for (let i = keys.length - 1; i >= 0; i--) if (this.levels[keys[i]]) this.levels[keys[i]].destroy()
     }
 
     // Destroy raf timers

@@ -203,6 +203,7 @@ export default class Chronologie extends DomComponent {
       store.pause.set({ paused: true, allMuted: false })
       store.menuLight.set(true)
       store.menuSocials.set(false)
+      this.stateGameMenu = store.menuGame.get()
       store.menuGame.set(false)
       delay(() => { signals.newDom.dispatch() }, 1000) // car animation css qui décale les points
     } else if (chronologieStatus === 'disappearing') {
@@ -212,7 +213,7 @@ export default class Chronologie extends DomComponent {
       store.pause.set({ paused: this.stateGamePause, allMuted: false })
       store.menuLight.set(false)
       store.menuSocials.set(true)
-      store.menuGame.set(true)
+      store.menuGame.set(this.stateGameMenu)
     }
   }
 
