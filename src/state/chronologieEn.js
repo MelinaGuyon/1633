@@ -157,25 +157,61 @@ export default {
       title: 'Culte de la Révolution',
       sceneTitle: '...',
       text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
-      img: 'oeuvre-mortuaire'
+      img: 'revolution'
     },
     {
       historyId: 2,
       historyName: 'La Mécène Curieuse',
-      date: 1850,
+      date: 1848,
       title: 'Curieuse à la Sorbonne',
       sceneTitle: '...',
       text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
-      img: 'oeuvre-mortuaire'
+      img: 'sorbonne'
     },
     {
       historyId: 2,
       historyName: 'La Mécène Curieuse',
-      date: 1860,
+      date: 1853,
       title: 'Curieuse à l\'Assemblée nationale',
       sceneTitle: '...',
       text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
-      img: 'oeuvre-mortuaire'
+      img: 'assemblee'
+    },
+    {
+      historyId: 2,
+      historyName: 'La Mécène Curieuse',
+      date: 1873,
+      title: 'Amour et noblesse',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'amour-noblesse'
+    },
+    {
+      historyId: 2,
+      historyName: 'La Mécène Curieuse',
+      date: 1876,
+      title: 'Du deuil au mécénat',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'deuil'
+    },
+    {
+      historyId: 2,
+      historyName: 'La Mécène Curieuse',
+      date: 1880,
+      title: 'Jeudistes',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'jeudistes'
+    },
+    {
+      historyId: 2,
+      historyName: 'La Mécène Curieuse',
+      date: 1898,
+      title: 'Capitaine Dreyfus',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'dreyfus'
     },
     {
       historyId: 3,
@@ -184,7 +220,43 @@ export default {
       title: 'Enfance sous l\'occupation',
       sceneTitle: '...',
       text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
-      img: 'oeuvre-mortuaire'
+      img: 'occupation'
+    },
+    {
+      historyId: 3,
+      historyName: 'La Femme des Sciences',
+      date: 1893,
+      title: 'Passion des sciences',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'passion'
+    },
+    {
+      historyId: 3,
+      historyName: 'La Femme des Sciences',
+      date: 1898,
+      title: 'Etude de la radioactivité',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'etude'
+    },
+    {
+      historyId: 3,
+      historyName: 'La Femme des Sciences',
+      date: 1906,
+      title: 'Elève devenue maître',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'maitre'
+    },
+    {
+      historyId: 3,
+      historyName: 'La Femme des Sciences',
+      date: 1914,
+      title: 'Radioactivité et santé',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'sante'
     }
   ]
 }
