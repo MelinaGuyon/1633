@@ -199,17 +199,20 @@ export default class Chronologie extends DomComponent {
       this.checkCurrent()
       this.internalBind()
       this.updateTimelineVisibility(true)
+      this.stateGamePause = store.pause.get()
       store.pause.set(true)
       store.menuLight.set(true)
       store.menuSocials.set(false)
+      store.menuGame.set(false)
       delay(() => { signals.newDom.dispatch() }, 1000) // car animation css qui décale les points
     } else if (chronologieStatus === 'disappearing') {
       this.chronologie.classList.remove('visible')
       this.internalUnbind()
       this.updateTimelineVisibility(false)
-      store.pause.set(false)
+      store.pause.set(this.stateGamePause)
       store.menuLight.set(false)
       store.menuSocials.set(true)
+      store.menuGame.set(true)
     }
   }
 

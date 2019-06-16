@@ -148,6 +148,14 @@ class PlayPauseButton extends DomComponent {
       e.target.closest('.nav-playpause__btn').classList.remove('pause')
     }
   }
+
+  visible () {
+    this.base.classList.remove('hidden')
+  }
+
+  hidden () {
+    this.base.classList.add('hidden')
+  }
 }
 
 class LangButton extends DomComponent {
@@ -242,7 +250,7 @@ export default class Menu extends DomComponent {
         <div class='menu__left-center'>
           <LangButton type={'lang'} id={3} />
           <SoundButton type={'sound'} id={5} />
-          <PlayPauseButton type={'playpause'} id={4} />
+          <PlayPauseButton type={'playpause'} id={4} ref={addRef(this, 'playPause')} />
         </div>
         <div class='menu__right-center' ref={addRef(this, 'socialContainer')}>
           <SocialButton ref={refSocials(0)} type={'fb'} />
@@ -266,6 +274,7 @@ export default class Menu extends DomComponent {
     signals.factUnlockEnd.listen(this.fastbind('onFactUnlockedEnd', 1))
     this.listenStore('menuLight', this.fastbind('updateMenu', 1))
     this.listenStore('menuSocials', this.fastbind('updateSocials', 1))
+    this.listenStore('menuGame', this.fastbind('updateGame', 1))
     this.listenStore('launched', this.fastbind('updateSocials'))
     this.listenStore('ended', this.fastbind('updateSocials'))
   }
@@ -324,5 +333,10 @@ export default class Menu extends DomComponent {
       this.socialContainer.classList.remove('hidden')
       signals.newDom.dispatch()
     }
+  }
+
+  updateGame (visible) {
+    if (visible) this.playPause.visible()
+    else this.playPause.hidden()
   }
 }

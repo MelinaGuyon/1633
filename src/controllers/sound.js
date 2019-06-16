@@ -36,7 +36,7 @@ function setup () {
   else if (typeof document.webkitHidden !== 'undefined') { hidden[0] = 'webkitvisibilitychange'; hidden[1] = 'webkitHidden' }
   if (hidden[0]) document.addEventListener(hidden[0], onVisibilityChange, false)
   store.mute.listen(toggleMute)
-  store.pause.listen(toggleMute)
+  store.pause.listen(togglePause)
 
   toggleMute(store.mute.get())
 }
@@ -67,6 +67,20 @@ function unmute () {
   muted = false
 }
 
+function togglePause (bool) {
+  console.log('pause', bool)
+  bool ? pause() : unpause()
+}
+
+function pause (opts = {}) {
+  console.log('je passe dans pause')
+  for (let k in samples) samples[k].pause(opts)
+}
+
+function unpause (opts = {}) {
+  for (let k in samples) samples[k].unpause(opts)
+}
+
 function onVisibilityChange () {
   if (document[hidden[1]]) {
     pause({ all: true })
@@ -86,15 +100,6 @@ function play (key, opts = {}) {
 
 function stop (key, opts = {}) {
   if (samples[key]) samples[key].stop(opts)
-}
-
-function pause (opts = {}) {
-  console.log('je passe')
-  for (let k in samples) samples[k].pause(opts)
-}
-
-function unpause (opts = {}) {
-  for (let k in samples) samples[k].unpause(opts)
 }
 
 function update (dt) {

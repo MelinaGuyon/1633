@@ -52,14 +52,17 @@ export default class About extends DomComponent {
   onAboutClick (aboutStatus) {
     if (aboutStatus === 'appearing') {
       this.about.classList.add('visible')
+      this.stateGamePause = store.pause.get()
       store.pause.set(true)
       store.menuLight.set(true)
       store.menuSocials.set(false)
+      store.menuGame.set(false)
     } else if (aboutStatus === 'disappearing') {
       this.about.classList.remove('visible')
-      store.pause.set(false)
+      store.pause.set(this.stateGamePause)
       store.menuLight.set(false)
       store.menuSocials.set(true)
+      store.menuGame.set(true)
     }
   }
 }

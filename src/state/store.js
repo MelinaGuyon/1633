@@ -76,6 +76,7 @@ export default createStore({
   musicPlayed: false,
   menuLight: false,
   menuSocials: true,
+  menuGame: true,
 
   // ---- assets to preload ----
   atlases: {

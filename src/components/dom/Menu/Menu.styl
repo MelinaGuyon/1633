@@ -160,6 +160,12 @@
     text-transform: lowercase
 
     &-playpause
+      transition: opacity .6s $quad-ease-out;
+
+      &.hidden
+        opacity 0
+        pointer-events: none
+
       &__btn
         position: relative;
         height: 34px;
