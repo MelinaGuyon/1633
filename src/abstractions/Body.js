@@ -139,8 +139,8 @@ export default class Body {
     }
 
     if (this.maxX === this.x) {
-      // TODO: voir si on ne check pas que la voix off ai finie avant de lancer la fin
-      store.pause.set(true)
+      // TODO: régler le bail de pause
+      // store.pause.set(true)
       store.ended.set(true)
     }
   }

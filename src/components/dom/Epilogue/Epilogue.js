@@ -45,35 +45,41 @@ export default class Epilogue extends DomComponent {
     this.skip.classList.add('magnet')
     signals.newDom.dispatch()
     this.launchsound()
-    delay(this.updateText.bind(this), 29000)
+    delay(this.updateText.bind(this), 29500)
   }
 
   launchsound () {
     let path = 'voixoff/epilogue'
-    let soundPlay = sound.soundIsPlaying()
+    let voicePlay = sound.voiceIsPlaying()
+
+    let effectPlay = sound.effectIsPlaying()
+
+    if (effectPlay.sound) {
+      sound.stop(effectPlay.sound) // stop previous effect
+    }
 
     // if there is sound playing
-    if (soundPlay.sound) {
+    if (voicePlay.sound) {
       // if we want to launch a different sound OR the actual sound is finished
-      if (soundPlay.sound !== path || !soundPlay.playing) {
+      if (voicePlay.sound !== path || !voicePlay.playing) {
         // intant temp fix
         console.log('epilogue, je stop sound et je play')
-        sound.stop(soundPlay.sound, { instant: true }) // stop previous sound
+        sound.stop(voicePlay.sound) // stop previous sound
         delay(() => {
           sound.play(path)
-          sound.setSoundPlay(path)
+          sound.setVoicePlay(path)
           this.intervalId = setInterval(() => {
-            if (!sound.soundIsPlaying().playing) this.finished()
+            if (!sound.voiceIsPlaying().playing) this.finished()
           }, 500)
-        }, 1000)
+        }, 1500)
       }
     } else {
       // nothing was playing, so play
       console.log('epilogue, nothing was playing')
       sound.play(path)
-      sound.setSoundPlay(path)
+      sound.setVoicePlay(path)
       this.intervalId = setInterval(() => {
-        if (!sound.soundIsPlaying().playing) this.finished()
+        if (!sound.voiceIsPlaying().playing) this.finished()
       }, 500)
     }
   }
@@ -87,6 +93,7 @@ export default class Epilogue extends DomComponent {
       easing: 'easeOutQuad',
       complete: () => {
         this.text.innerText = loc['epilogue.text2']
+        signals.newDom.dispatch()
         anime({
           targets: [this.text, this.skip],
           duration: 600,
@@ -101,8 +108,7 @@ export default class Epilogue extends DomComponent {
   finished () {
     clearInterval(this.intervalId)
     this.unbind()
-    // TODO : sound need to be fixed
-    sound.stop('voixoff/epilogue', { instant: true })
+    sound.stop('voixoff/epilogue')
 
     // TODO GO BACK CAROUSEL
     console.log('GAME EPILOGUE FINISH -- BACK TO CAROUSEL')
