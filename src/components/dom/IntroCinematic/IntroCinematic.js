@@ -29,6 +29,7 @@ export default class IntroCinematic extends DomComponent {
   start () {
     return new Promise((resolve, reject) => {
       sound.play('3_music_studio')
+      sound.setMusic('3_music_studio')
       delay(() => {
         this.base.classList.add('visible')
         this.play('voixoff/intro', 0, 0)

@@ -151,11 +151,13 @@ class PlayPauseButton extends DomComponent {
 
   visible () {
     this.base.classList.remove('hidden')
+    this.base.classList.add('magnet')
     signals.newDom.dispatch()
   }
 
   hidden () {
     this.base.classList.add('hidden')
+    this.base.classList.remove('magnet')
     signals.newDom.dispatch()
   }
 }

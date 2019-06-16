@@ -8,6 +8,7 @@ let hidden = [] // Used to store the good visibility change method
 let muted = false
 let setupped = false
 
+let music = null
 let voicePlay = false
 let effectPlay = false
 
@@ -49,6 +50,10 @@ function setEffectPlay (sound) {
   effectPlay = sound
 }
 
+function setMusic (sound) {
+  music = sound
+}
+
 function toggleMute (bool) {
   bool ? mute() : unmute()
 }
@@ -66,12 +71,19 @@ function unmute () {
 }
 
 function togglePause (obj) {
-  obj.paused ? pause() : unpause()
+  obj.paused ? pause(obj) : unpause()
 }
 
 function pause (opts = {}) {
-  console.log('je passe dans pause')
-  for (let k in samples) samples[k].pause(opts)
+  if (opts.allMuted) {
+    console.log('je passe dans pause et je coupe tout')
+    for (let k in samples) samples[k].pause()
+  } else {
+    console.log('je passe dans pause')
+    for (let k in samples) {
+      if (k !== music) samples[k].pause(opts)
+    }
+  }
 }
 
 function unpause (opts = {}) {
@@ -125,5 +137,6 @@ export default {
   setVoicePlay,
   voiceIsPlaying,
   setEffectPlay,
-  effectIsPlaying
+  effectIsPlaying,
+  setMusic
 }
