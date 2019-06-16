@@ -1218,7 +1218,6 @@
                 <false/>
             </struct>
             <key type="filename">anims/drapeau0.png</key>
-            <key type="filename">anims/drapeau8.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
