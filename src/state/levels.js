@@ -2,62 +2,58 @@ export default [
   {
     0: {
       keyTitle: 'university',
-      title: 'Profanation du tombeau',
-      date: '1686'
+      title: 'Profanation <br>du tombeau',
+      date: '1793'
     },
     1: {
       keyTitle: 'church',
-      title: 'Implication de Baschamp',
-      date: '1686'
+      title: 'Implication <br>de Baschamp',
+      date: '1793'
     },
     2: {
       keyTitle: 'profanation',
-      title: 'Implication de Baschamp',
-      date: '1686'
+      title: 'Implication <br>de Baschamp',
+      date: '1793'
     },
     3: {
       keyTitle: 'ceremony',
-      title: 'Implication de Cheval',
-      date: '1686'
+      title: 'Implication <br>de Cheval',
+      date: '1793'
     },
     4: {
       keyTitle: 'pharmacist',
-      title: 'Implication des Armez',
-      date: '1686'
+      title: 'Implication <br>des Armez',
+      date: '1805'
     },
     5: {
       keyTitle: 'napoleon',
-      title: 'Oeuvre mortuaire',
-      date: '1686'
+      title: 'Implication <br>des Armez',
+      date: '1805'
     },
     6: {
       keyTitle: 'recovery',
-      title: 'Oeuvre mortuaire',
-      date: '1686'
+      title: 'Implication <br>des Armez',
+      date: '1805'
     },
     7: {
       keyTitle: 'ceremonie',
-      title: 'Oeuvre mortuaire',
-      date: '1686'
+      title: 'Retour du <br>crâne',
+      date: '1866'
     },
     8: {
       keyTitle: 'sorbonne',
-      title: 'Oeuvre mortuaire',
-      date: '1686'
+      title: 'Retour du <br>crâne',
+      date: '1866'
     },
     9: {
       keyTitle: 'tombeau',
-      title: 'Oeuvre mortuaire',
-      date: '1686'
+      title: 'Oeuvre <br>mortuaire',
+      date: '1694'
     },
     10: {
       keyTitle: 'photo',
-      title: 'Oeuvre mortuaire',
-      date: '1686'
+      title: 'Petite <br>profanation',
+      date: '1895'
     }
-  },
-  {
-    0: 'nucleaire',
-    1: 'medecine'
   }
 ]

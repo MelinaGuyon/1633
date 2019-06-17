@@ -33,6 +33,7 @@
     "epilogue.text2": "Et nous pouvons aujourd’hui nous demander si, averti de l’agitation engendrée par la Révolution française, Richelieu se serait tant appliqué à l’affirmation de l'absolutisme en son temps...",
     "epilogue.skip": "Skip epilogue",
     "tuto.keyboard": "Utilise les flèches de ton clavier pour te déplacer",
-    "tuto.spacebar": "Clique sur la barre espace quand tu vois ces formes dans les scènes"
+    "tuto.spacebar": "Clique sur la barre espace quand tu vois ces formes dans les scènes",
+    "sceneTitle.text": "Scene"
   }
 }

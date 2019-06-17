@@ -19,11 +19,14 @@ class SceneTitle extends DomComponent {
   }
 
   update (id) {
-    if (!id) id = 0
+    if (id === undefined) return
+
+    const loc = store.loc.get()
+
     let infos = store.levelDict.get()[id]
     if (!infos || this.id === id) return
     this.id = id
-    this.sceneText = 'Scène'
+    this.sceneText = loc['sceneTitle.text']
     this.numberText = (id + 1) + ''
     if (this.numberText.length === 1) this.numberText = '0' + this.numberText
     this.titleText = infos.title
@@ -41,7 +44,7 @@ class SceneTitle extends DomComponent {
       complete: () => {
         this.scene.innerText = this.sceneText
         this.number.innerText = this.numberText
-        this.title.innerText = this.titleText
+        this.title.innerHTML = this.titleText
         this.date.innerText = this.dateText
 
         anime({

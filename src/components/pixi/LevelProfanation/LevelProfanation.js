@@ -19,7 +19,7 @@ export default class LevelProfanation extends Level {
   }
 
   createGlass () {
-    this.glass = this.addComponent(Glass, { layer: '3bg200', x: 30, y: -50, scale: 0.55 })
+    this.glass = this.addComponent(Glass, { layer: '3bg200', x: 0, y: -50, scale: 0.55 })
   }
 
   addColliders () {
