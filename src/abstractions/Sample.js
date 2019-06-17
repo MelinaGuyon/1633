@@ -19,6 +19,7 @@ export default class Sample {
     this.volume = props.volume !== undefined ? props.volume : DEFAULT_VOLUME // Base volume of the sound
     if (this.type === 'music') this.sounds = { intro: null, loop: null }
     else if (this.type === 'sfx') this.sounds = []
+    else if (this.type === 'voice') this.sounds = []
     this.loadSamples()
 
     // Current Sample state
@@ -42,7 +43,7 @@ export default class Sample {
     if (this.type === 'music') { // Play a music
       this.state.sound = opts.musicloop ? this.sounds.loop : this.sounds.intro
       this.state.id = this.state.sound.play()
-    } else if (this.type === 'sfx') { // Play a Sfx
+    } else if (this.type === 'sfx' || this.type === 'voice') { // Play a Sfx
       if (opts.id !== undefined) this.state.index = opts.id // play specific sample
       else if (this.count > 1) { // play random or in order
         this.state.index = this.sequence
@@ -114,6 +115,9 @@ export default class Sample {
       this.state.volume = progress * this.volume
       this.state.sound.volume(this.state.volume, this.state.id)
     }
+    if (this.type === 'voice' && this.checkSeek) {
+      signals.soundSeeked.dispatch({ seek: this.state.sound.seek(), duration: this.state.sound.duration() })
+    }
   }
 
   stop (opts = {}) {
@@ -157,7 +161,7 @@ export default class Sample {
           signals.soundLoaded.dispatch()
         }
       })
-    } else if (this.type === 'sfx') {
+    } else if (this.type === 'voice' || this.type === 'sfx') {
       const urls = []
       for (let i = 1; i <= this.count; i++) {
         const index = this.count > 1 ? i : '' // use index only if there is more than one sample
@@ -171,7 +175,13 @@ export default class Sample {
           onload: () => {
             signals.soundLoaded.dispatch()
           },
+          onplay: () => {
+            signals.soundLoaded.dispatch()
+            this.checkSeek = true
+          },
           onend: () => {
+            this.checkSeek = false
+            signals.soundSeeked.dispatch({ end: true })
             if (this.loop) return
             this.stop({ instant: true })
           }

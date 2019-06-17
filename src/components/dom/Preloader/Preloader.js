@@ -35,10 +35,10 @@ export default class Preloader extends DomComponent {
     // To change quand il y aura plusieur atlas/assets pixi
     this.loadCompteur = 0
     this.loadingElementsLength =
-      store.imagesToPreload.get().length + 2
-      + Object.keys(bank.musics).length
-      + Object.keys(bank.sfxs).length
-
+      store.imagesToPreload.get().length + 2 +
+      Object.keys(bank.musics).length +
+      Object.keys(bank.voices).length +
+      Object.keys(bank.sfxs).length
 
     return (
       <section class='prld fxd' ref={addRef(this, 'prld')}>

@@ -14,7 +14,8 @@ const signals = {
   writeSubtitles: new Signal(),
   factUnlock: new Signal(),
   factUnlockEnd: new Signal(),
-  activeTuto: new Signal()
+  activeTuto: new Signal(),
+  soundSeeked: new Signal()
 }
 
 export default signals

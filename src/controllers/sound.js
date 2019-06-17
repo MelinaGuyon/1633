@@ -24,11 +24,19 @@ function setup () {
     }, sfxOpts))
   }
 
+  for (let k in bank.voices) {
+    const voiceOpts = bank.voices[k]
+    samples[k] = new Sample(Object.assign({
+      type: 'voice',
+      key: k
+    }, voiceOpts))
+  }
+
   for (let k in bank.musics) {
     const musicOpts = bank.musics[k]
     samples[k] = new Sample(Object.assign({
       type: 'music',
-      key: k,
+      key: k
     }, musicOpts))
   }
 

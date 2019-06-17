@@ -2,7 +2,7 @@ const musics = {
   '3_music_studio': { loop: true, fadeOut: 900, volume: 0.05 }
 }
 
-const sfxs = {
+const voices = {
   'voixoff/carrousel': { loop: false, fadeOut: 900, volume: 5 },
   'voixoff/intro': { loop: false, fadeOut: 900, volume: 5 },
   'voixoff/intro_bis': { loop: false, fadeOut: 900, volume: 5 },
@@ -18,7 +18,10 @@ const sfxs = {
   'voixoff/chap_6': { loop: false, fadeOut: 900, volume: 5 },
   'voixoff/chap_7': { loop: false, fadeOut: 900, volume: 5 },
   'voixoff/chap_8': { loop: false, fadeOut: 900, volume: 5 },
-  'voixoff/epilogue': { loop: false, fadeOut: 1000, volume: 5 },
+  'voixoff/epilogue': { loop: false, fadeOut: 1000, volume: 5 }
+}
+
+const sfxs = {
   'effect/cat': { loop: false, fadeOut: 900, volume: 0.5 },
   'effect/crowd': { loop: false, fadeOut: 900, volume: 0.05 },
   'effect/kids': { loop: true, fadeOut: 900, volume: 0.6 },
@@ -30,4 +33,4 @@ const sfxs = {
   'effect/fire': { loop: true, fadeOut: 900, volume: 0.5 }
 }
 
-export default { sfxs, musics }
+export default { voices, sfxs, musics }

@@ -8,6 +8,7 @@ import ChronologieTimeline from 'components/dom/ChronologieTimeline/ChronologieT
 import About from 'components/dom/About/About'
 import Subtitles from 'components/dom/Subtitles/Subtitles'
 import Tutorial from 'components/dom/Tutorial/Tutorial'
+import SoundTimeline from 'components/dom/SoundTimeline/SoundTimeline'
 import Debug from 'components/dom/Debug/Debug'
 import Epilogue from 'components/dom/Epilogue/Epilogue'
 import logger from 'utils/logger'
@@ -29,6 +30,7 @@ export default class GameInterface extends DomComponent {
         <Subtitles />
         <Tutorial />
         <Epilogue />
+        <SoundTimeline />
         <Debug />
       </section>
     )
