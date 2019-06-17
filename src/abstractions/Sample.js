@@ -177,11 +177,11 @@ export default class Sample {
           },
           onplay: () => {
             signals.soundLoaded.dispatch()
-            this.checkSeek = true
+            if (this.type === 'voice') this.checkSeek = true
           },
           onend: () => {
-            this.checkSeek = false
-            signals.soundSeeked.dispatch({ end: true })
+            if (this.type === 'voice') this.checkSeek = false
+            if (this.type === 'voice') signals.soundSeeked.dispatch({ end: true })
             if (this.loop) return
             this.stop({ instant: true })
           }

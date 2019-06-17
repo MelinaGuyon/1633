@@ -40,7 +40,7 @@ export default class SoundTimeline extends DomComponent {
   initInertia () {
     const inrtiaOptions = {
       value: 0,
-      friction: 2,
+      friction: 24,
       precision: 5,
       perfectStop: true,
       interpolation: 'linear'
@@ -68,7 +68,6 @@ export default class SoundTimeline extends DomComponent {
     }
     const ratio = state.seek / state.duration
     if (ratio === 0) return
-    this.inrtia.percent.friction = 2
     this.inrtia.percent.to(ratio)
   }
 
