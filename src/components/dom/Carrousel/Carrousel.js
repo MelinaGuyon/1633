@@ -34,28 +34,24 @@ class Form extends DomComponent {
     )
   }
 
-  componentDidMount () {
-    this.bind()
-  }
-
   bind () {
     this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
   }
 
   unbind () {
+    console.log('unbind')
     this.base.removeEventListener('click', this.onClick) // 1 to pass the event
   }
 
   fadeOut (el) {
     this.base.classList.add('full')
-	  setTimeout(function () {
+	  delay(() => {
       el.classList.remove('animated')
-      el.classList.add('hidden')
+      this.base.classList.remove('full')
     }, 2000)
   }
 
   onClick (e) {
-    this.unbind()
     this.fadeOut(e.target.parentNode.parentNode)
     this.props.launchGame && this.props.launchGame({ id: this.id })
   }
@@ -115,9 +111,15 @@ export default class Carrousel extends DomComponent {
 
     const allHistories = store.allHistories.get()
     const histories = []
+    this.histories = Array(allHistories.length)
+
+    const refHistories = i => el => {
+      this.histories[i] = el
+    }
+
     for (let i = 0; i < allHistories.length; i++) {
-      if (i === 0) histories.push(<Form id={i} active={'active '} animated={'animated'} type={allHistories[i]} launchGame={this.launchGame} />)
-      else histories.push(<Form id={i} active={''} type={allHistories[i]} launchGame={this.launchGame} />)
+      if (i === 0) histories.push(<Form ref={refHistories(i)} id={i} active={'active '} animated={'animated'} type={allHistories[i]} launchGame={this.launchGame} />)
+      else histories.push(<Form ref={refHistories(i)} id={i} active={''} type={allHistories[i]} launchGame={this.launchGame} />)
     }
 
     return (
@@ -155,13 +157,17 @@ export default class Carrousel extends DomComponent {
       complete: () => { this.carouselWrapper.classList.add('visible') }
     })
 
+    this.carrousel.classList.remove('no-touch')
     this.background.addMagnet()
     this.internalBind()
     delay(() => { signals.newIndication.dispatch(2) }, 1000)
   }
 
   internalBind () {
-	  document.addEventListener('mousewheel', this.mouseWhellTodo)
+    document.addEventListener('mousewheel', this.mouseWhellTodo)
+    this.histories.forEach((el) => {
+      el.bind()
+    })
   }
 
   bind () {
@@ -170,6 +176,9 @@ export default class Carrousel extends DomComponent {
 
   internalUnbind () {
     document.removeEventListener('mousewheel', this.mouseWhellTodo)
+    this.histories.forEach((el) => {
+      el.unbind()
+    })
   }
 
   mouseWhellTodo (e) {
