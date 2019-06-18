@@ -169,6 +169,10 @@ export default class Timeline extends DomComponent {
     this.currenPointId = id + 1
     this.currentPoint = this.points[id]
     this.pointDist = this.size / 2
+
+    if (this.circleClickable) return
+    this.circleClickable = true
+    this.whiteCircle.classList.add('magnet')
   }
 
   mooving (displacement) {
@@ -230,18 +234,14 @@ export default class Timeline extends DomComponent {
       if (!this.currentPoint.inCircle) {
         this.currentPoint.base.classList.add('hidden')
         this.currentPoint.base.classList.remove('magnet')
-        this.whiteCircle.classList.add('magnet')
         this.currentPoint.inCircle = true
-        this.circleClickable = true
         signals.newDom.dispatch()
       }
     } else {
       if (this.currentPoint.inCircle) {
         this.currentPoint.base.classList.remove('hidden')
         this.currentPoint.base.classList.add('magnet')
-        this.whiteCircle.classList.remove('magnet')
         this.currentPoint.inCircle = false
-        this.circleClickable = false
         this.resetHalo()
         signals.factUnlockEnd.dispatch()
         signals.newDom.dispatch()
@@ -252,10 +252,9 @@ export default class Timeline extends DomComponent {
   }
 
   onClick () {
-    if (this.circleClickable) {
-      store.chronologieId.set(this.currentPoint.id)
-      store.chronologieStatus.set('appearing')
-    }
+    if (!this.currentPoint && this.circleClickable) return
+    store.chronologieId.set(this.currentPoint.id)
+    store.chronologieStatus.set('appearing')
   }
 
   onFactUnlocked () {
