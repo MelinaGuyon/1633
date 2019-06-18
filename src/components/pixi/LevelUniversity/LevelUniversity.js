@@ -40,8 +40,4 @@ export default class LevelUniversity extends Level {
       this.addComponent(TutoCheck)
     }
   }
-
-  update (dt, time) {
-    this.animations.update(dt)
-  }
 }
