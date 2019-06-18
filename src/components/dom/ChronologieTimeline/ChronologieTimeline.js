@@ -60,6 +60,10 @@ export default class ChronologieTimeline extends DomComponent {
   }
 
   componentDidMount () {
+    this.reset = this.reset.bind(this)
+    this.stickMousehover = this.stickMousehover.bind(this)
+    this.stickClick = this.stickClick.bind(this)
+
     this.updateStick()
     this.bind()
   }
@@ -70,11 +74,11 @@ export default class ChronologieTimeline extends DomComponent {
   }
 
   internalBind () {
-    this.chronoTimeline.addEventListener('mouseleave', this.fastbind('reset', 1))
+    this.chronoTimeline.addEventListener('mouseleave', this.reset)
     this.sticks.forEach((el) => {
       if (el.clickable) {
-        el.base.addEventListener('mouseover', this.fastbind('stickMousehover', 1))
-        el.base.addEventListener('click', this.fastbind('stickClick', 1))
+        el.base.addEventListener('mouseover', this.stickMousehover)
+        el.base.addEventListener('click', this.stickClick)
       }
     })
   }
