@@ -139,6 +139,15 @@
       overflow hidden
       transition: width .3s ease-out
 
+      &:hover
+        .point-number
+          opacity 1
+          transform translateX(-50%) translateY(0)
+
+      &.validated
+        .point-inner
+          background: $salmon
+
       .point-inner
         width: 20px
         height: 2px
@@ -147,6 +156,18 @@
 
       &.hidden
         width: 0
+
+      .point-number
+        position absolute
+        color $white
+        left 50%
+        font-family: RobotoCondensedRegular
+        font-size: 9px
+        top 0
+        transform translateX(-50%) translateY(10px)
+        opacity 0
+        transition opacity 0.3s $quad-ease-out, transform 0.3s $quad-ease-out;
+
 
   .scene-title
     position absolute

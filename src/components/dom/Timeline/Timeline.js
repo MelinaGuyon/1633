@@ -67,8 +67,12 @@ class Point extends DomComponent {
     this.id = store.chronologieIdsTable.get()[props.id]
     this.inCircle = false
 
+    let span = (props.id + 1) + ''
+    if (span.length === 1) span = '0' + span
+
     return (
       <div class='point magnet' data-id={this.id}>
+        <span class='point-number'>{span}</span>
         <div class='point-inner' />
       </div>
     )
@@ -258,6 +262,8 @@ export default class Timeline extends DomComponent {
   }
 
   onFactUnlocked () {
+    this.currentPoint.base.classList.add('validated')
+
     const tl = anime.timeline({
       easing: 'easeOutQuad',
       duration: 600
