@@ -24,8 +24,8 @@ class Stick extends DomComponent {
     chrono.forEach((el) => {
       const dist = Math.abs(el.date - this.date)
       if (this.date < el.date && dist <= 20) {
-        // this.stickContainer.classList.add('magnet')
         this.clickable = true
+        this.base.classList.add('clickable')
       }
     })
   }
@@ -123,7 +123,10 @@ export default class ChronologieTimeline extends DomComponent {
 
   updateStick (text, hovering) {
     this.sticks.forEach((el) => {
-      if (!hovering)el.stick.style.transform = 'scaleX(0.22) translateY(-50%)'
+      if (!hovering) {
+        if (el.clickable) el.stick.style.transform = 'scaleX(0.2) translateY(-50%)'
+        else el.stick.style.transform = 'scaleX(0.09) translateY(-50%)'
+      }
     })
 
     if (this.sticks[this.currentStick - 2]) this.sticks[this.currentStick - 2].stick.style.transform = 'scaleX(0.5) translateY(-50%)'
@@ -148,7 +151,8 @@ export default class ChronologieTimeline extends DomComponent {
   updateStickHover (id) {
     this.sticks.forEach((el, index) => {
       if (index <= this.currentStick + 2 && index >= this.currentStick - 2) return
-      el.stick.style.transform = 'scaleX(0.22) translateY(-50%)'
+      if (el.clickable) el.stick.style.transform = 'scaleX(0.22) translateY(-50%)'
+      else el.stick.style.transform = 'scaleX(0.09) translateY(-50%)'
     })
     this.updateStick('', true)
 
