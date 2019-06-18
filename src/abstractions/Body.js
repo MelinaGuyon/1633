@@ -139,8 +139,10 @@ export default class Body {
     }
 
     if (this.maxX === this.x) {
+      console.log('jeu fini')
       store.pause.set({ paused: true, allMuted: false })
       store.ended.set(true)
+      this.x = this.minX
     }
   }
 
@@ -154,7 +156,7 @@ export default class Body {
       max += size
     })
     if (max < store.size.get().w * 2) max = store.size.get().w * 2
-    return max
+    return 1000
   }
 
   collideWith (group, cb = null) {

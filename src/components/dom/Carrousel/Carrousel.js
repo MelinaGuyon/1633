@@ -269,6 +269,8 @@ export default class Carrousel extends DomComponent {
     this.carrousel.classList.add('no-touch')
     this.background.removeMagnet()
     signals.newIndication.dispatch(0)
+    console.log('jenleve pause')
+    store.pause.set({ paused: false, allMuted: false })
 
     anime({
       targets: this.carouselWrapper,
