@@ -129,8 +129,8 @@ export default class Glass extends PixiComponent {
         targets: el.base,
         alpha: 0,
         easing: 'easeOutQuad',
-        duration: 600,
-        delay: 900
+        duration: 300,
+        delay: 400
       })
     })
     anime({
@@ -138,7 +138,7 @@ export default class Glass extends PixiComponent {
       alpha: 1,
       easing: 'easeOutQuad',
       duration: 600,
-      delay: 1200
+      delay: 400
     })
   }
 
