@@ -277,10 +277,9 @@ export default class Carrousel extends DomComponent {
       delay: 400,
       easing: 'easeInOutQuad',
       complete: () => {
-        this.launchPixi(obj)
-        // this.cinematic.start().then(() => {
-        //   this.launchPixi(obj)
-        // })
+        this.cinematic.start().then(() => {
+          this.launchPixi(obj)
+        })
       }
     })
   }
@@ -306,8 +305,10 @@ export default class Carrousel extends DomComponent {
         console.log('error')
     }
     store.currentHistory.set(obj.id)
+    store.ended.set(false)
     store.launched.set(true)
     store.menuGame.set(true)
+    store.menuSocials.set(false)
     anime({
       targets: this.carrousel,
       opacity: 0,

@@ -285,7 +285,6 @@ export default class Menu extends DomComponent {
     this.listenStore('menuLight', this.updateMenu)
     this.listenStore('menuSocials', this.updateSocials)
     this.listenStore('menuGame', this.updateGame)
-    this.listenStore('launched', this.updateSocials)
     this.listenStore('ended', this.updateSocials)
   }
 

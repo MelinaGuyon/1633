@@ -32,15 +32,19 @@ export default class Epilogue extends DomComponent {
 
   bind () {
     this.listenStore('ended', this.launchEpilogue)
+  }
+
+  internalBind () {
     this.skip.addEventListener('click', this.fastbind('finished', 1))
   }
 
-  unbind () {
-    this.unlistenStore('ended', this.launchEpilogue)
+  internalUnbind () {
     this.skip.removeEventListener('click', this.finished)
   }
 
-  launchEpilogue () {
+  launchEpilogue (ended) {
+    if (!ended) return
+    this.internalBind()
     store.menuGame.set(false)
     this.base.classList.add('visible')
     this.skip.classList.add('magnet')
@@ -64,7 +68,6 @@ export default class Epilogue extends DomComponent {
       // if we want to launch a different sound OR the actual sound is finished
       if (voicePlay.sound !== path || !voicePlay.playing) {
         // intant temp fix
-        console.log('epilogue, je stop sound et je play')
         sound.stop(voicePlay.sound) // stop previous sound
         delay(() => {
           sound.play(path)
@@ -76,7 +79,6 @@ export default class Epilogue extends DomComponent {
       }
     } else {
       // nothing was playing, so play
-      console.log('epilogue, nothing was playing')
       sound.play(path)
       sound.setVoicePlay(path)
       this.intervalId = setInterval(() => {
@@ -108,7 +110,7 @@ export default class Epilogue extends DomComponent {
 
   finished () {
     clearInterval(this.intervalId)
-    this.unbind()
+    this.internalUnbind()
     sound.stop(sound.getMusic())
     sound.stop('voixoff/epilogue')
     store.launched.set(false)
