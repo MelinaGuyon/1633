@@ -15,7 +15,8 @@ const signals = {
   factUnlock: new Signal(),
   factUnlockEnd: new Signal(),
   activeTuto: new Signal(),
-  soundSeeked: new Signal()
+  soundSeeked: new Signal(),
+  mouseWheelEnd: new Signal()
 }
 
 export default signals

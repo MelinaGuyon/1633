@@ -6,6 +6,8 @@ import anime from 'animejs'
 import signals from 'state/signals'
 import sortBy from 'lodash/sortBy'
 import delay from 'lodash/delay'
+import Inrtia from 'inrtia'
+import { raf } from '@internet/raf'
 
 import './Chronologie.styl'
 
@@ -151,7 +153,24 @@ export default class Chronologie extends DomComponent {
   }
 
   componentDidMount () {
+    this.updateInrtia = this.updateInrtia.bind(this)
+
+    this.mousewheelId = 0
+    this.initInertia()
     this.bind()
+  }
+
+  initInertia () {
+    const inrtiaOptions = {
+      value: 0,
+      friction: 16,
+      precision: 5,
+      perfectStop: true,
+      interpolation: 'linear'
+    }
+    this.inrtia = {
+      y: new Inrtia(inrtiaOptions)
+    }
   }
 
   bind () {
@@ -160,9 +179,11 @@ export default class Chronologie extends DomComponent {
   }
 
   internalBind () {
+    raf.add(this.updateInrtia)
     this.listenStore('chronologieDate', this.fastbind('goToDate', 1))
     window.addEventListener('mousewheel', this.fastbind('getChronologieOffset', 1))
     window.addEventListener('mousewheel', this.fastbind('checkCurrent', 1))
+    window.addEventListener('mousewheel', this.fastbind('getMousewheelEnd', 1))
     this.facts.forEach((tab) => {
       tab.forEach((el) => {
         el.glass.bind()
@@ -171,14 +192,27 @@ export default class Chronologie extends DomComponent {
   }
 
   internalUnbind () {
+    raf.remove(this.updateInrtia)
     this.unlistenStore('chronologieDate', this.goToDate)
     window.removeEventListener('mousewheel', this.getChronologieOffset)
     window.removeEventListener('mousewheel', this.checkCurrent)
+    window.removeEventListener('mousewheel', this.getMousewheelEnd)
     this.facts.forEach((tab) => {
       tab.forEach((el) => {
         el.glass.unbind()
       })
     })
+  }
+
+  getMousewheelEnd () {
+    this.inrtia.y.stopped = true
+    clearTimeout(this.mousewheelId)
+    this.mousewheelId = setTimeout(() => {
+      this.inrtia.y.stopped = false
+      this.chronologie.classList.remove('smooth')
+      this.inrtia.y.value = this.chronologie.scrollTop
+      this.inrtia.y.to(this.factsOrdered[this.current].base.offsetTop)
+    }, 50)
   }
 
   onFactUnlocked (id) {
@@ -240,6 +274,7 @@ export default class Chronologie extends DomComponent {
         current = index
       }
     })
+    this.current = current
     store.chronologieCurrent.set({ index: current, el: this.factsOrdered[current], date: this.factsOrdered[current].date })
   }
 
@@ -253,6 +288,7 @@ export default class Chronologie extends DomComponent {
         current = index
       }
     })
+    this.current = current
     store.chronologieCurrent.set({ index: current, el: this.factsOrdered[current], date: this.factsOrdered[current].date })
   }
 
@@ -269,6 +305,7 @@ export default class Chronologie extends DomComponent {
       index = this.factsOrdered.length - 1
     }
 
+    this.inrtia.y.stopped = true
     let top = this.factsOrdered[index].base.offsetTop
     this.unbindedGetChronologieOffset(top)
     this.unbindedCheckCurrent(top)
@@ -277,6 +314,7 @@ export default class Chronologie extends DomComponent {
   }
 
   goToDateOnChronoButton (date, factId) {
+    this.inrtia.y.stopped = true
     let top = this.factsOrdered[factId].base.offsetTop
     this.unbindedGetChronologieOffset(top)
     this.unbindedCheckCurrent(top)
@@ -286,5 +324,13 @@ export default class Chronologie extends DomComponent {
 
   updateTimelineVisibility (bool) {
     store.chronologieTimelineVisible.set(bool)
+  }
+
+  updateInrtia () {
+    if (!this.inrtia.y.stopped) {
+      this.inrtia.y.update()
+      this.chronologie.scrollTop = this.inrtia.y.value
+      this.unbindedGetChronologieOffset(this.inrtia.y.value)
+    }
   }
 }
