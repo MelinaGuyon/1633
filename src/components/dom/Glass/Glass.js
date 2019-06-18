@@ -101,7 +101,8 @@ export default class Glass extends DomComponent {
 
   componentDidMount () {
     if (this.autostart) delay(this.setPosition.bind(this), 500) // better anim perf
-    this.construct = this.fastbind('construct')
+    this.construct = this.construct.bind(this)
+    this.updateInertia = this.updateInertia.bind(this)
   }
 
   start () {
@@ -110,7 +111,7 @@ export default class Glass extends DomComponent {
 
   bind () {
     this.listenStore('mouse', this.handleMoove)
-    raf.add(this.fastbind('updateInertia'))
+    raf.add(this.updateInertia)
   }
 
   unbind () {

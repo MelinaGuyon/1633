@@ -21,11 +21,12 @@ export default class Subtitles extends DomComponent {
   }
 
   componentDidMount () {
+    this.initWritting = this.initWritting.bind(this)
     this.bind()
   }
 
   bind () {
-    signals.writeSubtitles.listen(this.initWritting, this)
+    signals.writeSubtitles.listen(this.initWritting)
   }
 
   initWritting (index) {

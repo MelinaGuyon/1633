@@ -28,13 +28,16 @@ export default class SoundTimeline extends DomComponent {
   }
 
   bind () {
-    signals.soundSeeked.listen(this.fastbind('updateTimeline', 1))
-    raf.add(this.updateInertia.bind(this))
+    this.updateInertia = this.updateInertia.bind(this)
+    this.updateTimeline = this.updateTimeline.bind(this)
+
+    signals.soundSeeked.listen(this.updateTimeline)
+    raf.add(this.updateInertia)
   }
 
   unbind () {
     signals.soundSeeked.unlisten(this.updateTimeline)
-    raf.remove(this.updateInertia.bind(this))
+    raf.remove(this.updateInertia)
   }
 
   initInertia () {

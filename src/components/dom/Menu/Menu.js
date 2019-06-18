@@ -230,7 +230,7 @@ class SocialButton extends DomComponent {
   }
 
   bind () {
-    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+
   }
 
   onClick (e) {
@@ -270,17 +270,23 @@ export default class Menu extends DomComponent {
   }
 
   componentDidMount () {
+    this.onFactUnlocked = this.onFactUnlocked.bind(this)
+    this.onFactUnlockedEnd = this.onFactUnlockedEnd.bind(this)
+    this.updateMenu = this.updateMenu.bind(this)
+    this.updateSocials = this.updateSocials.bind(this)
+    this.updateGame = this.updateGame.bind(this)
+
     this.bind()
   }
 
   bind () {
-    signals.factUnlock.listen(this.fastbind('onFactUnlocked', 1))
-    signals.factUnlockEnd.listen(this.fastbind('onFactUnlockedEnd', 1))
-    this.listenStore('menuLight', this.fastbind('updateMenu', 1))
-    this.listenStore('menuSocials', this.fastbind('updateSocials', 1))
-    this.listenStore('menuGame', this.fastbind('updateGame', 1))
-    this.listenStore('launched', this.fastbind('updateSocials'))
-    this.listenStore('ended', this.fastbind('updateSocials'))
+    signals.factUnlock.listen(this.onFactUnlocked)
+    signals.factUnlockEnd.listen(this.onFactUnlockedEnd)
+    this.listenStore('menuLight', this.updateMenu)
+    this.listenStore('menuSocials', this.updateSocials)
+    this.listenStore('menuGame', this.updateGame)
+    this.listenStore('launched', this.updateSocials)
+    this.listenStore('ended', this.updateSocials)
   }
 
   onFactUnlocked (id) {

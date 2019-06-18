@@ -131,6 +131,10 @@ export default class Timeline extends DomComponent {
   }
 
   componentDidMount () {
+    this.onFactUnlocked = this.onFactUnlocked.bind(this)
+    this.onClick = this.onClick.bind(this)
+    this.mooving = this.mooving.bind(this)
+
     this.bind()
     this.initParams()
   }
@@ -140,10 +144,10 @@ export default class Timeline extends DomComponent {
   }
 
   bind () {
-    signals.factUnlock.listen(this.fastbind('onFactUnlocked', 1))
-    this.whiteCircle.addEventListener('click', this.fastbind('onClick', 1))
+    signals.factUnlock.listen(this.onFactUnlocked)
+    this.whiteCircle.addEventListener('click', this.onClick)
     this.listenStore('levelId', this.onLvlChange)
-    signals.moving.listen(this.mooving, this)
+    signals.moving.listen(this.mooving)
   }
 
   unbind () {
