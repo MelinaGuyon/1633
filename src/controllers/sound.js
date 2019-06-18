@@ -84,10 +84,8 @@ function togglePause (obj) {
 
 function pause (opts = {}) {
   if (opts.allMuted) {
-    console.log('je passe dans pause et je coupe tout')
     for (let k in samples) samples[k].pause()
   } else {
-    console.log('je passe dans pause')
     for (let k in samples) {
       if (k !== music) samples[k].pause(opts)
     }

@@ -220,6 +220,10 @@ export default class Preloader extends DomComponent {
       easing: 'easeInOutQuad',
       duration: 700
     })
+    const tl4 = anime.timeline({
+      easing: 'easeInOutQuad',
+      duration: 700
+    })
 
     tl1
       .add({
@@ -230,7 +234,7 @@ export default class Preloader extends DomComponent {
     tl2
       .add({
         targets: this.title,
-        opacity: 0.3
+        opacity: 0.2
       })
       .add({
         targets: this.title,
@@ -239,6 +243,12 @@ export default class Preloader extends DomComponent {
       })
 
     tl3
+      .add({
+        targets: this.wrapper,
+        opacity: 0
+      })
+
+    tl4
       .add({
         targets: this.baseline,
         opacity: 1,

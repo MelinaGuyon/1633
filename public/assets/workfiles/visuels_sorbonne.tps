@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>4</int>
         <key>texturePackerVersion</key>
-        <string>4.12.1</string>
+        <string>4.11.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -1596,7 +1596,6 @@
             <key type="filename">perso-arret/arret28.png</key>
             <key type="filename">perso-arret/arret29.png</key>
             <key type="filename">perso-arret/arret3.png</key>
-            <key type="filename">perso-arret/arret30.png</key>
             <key type="filename">perso-arret/arret4.png</key>
             <key type="filename">perso-arret/arret5.png</key>
             <key type="filename">perso-arret/arret6.png</key>
@@ -1617,10 +1616,6 @@
             </struct>
             <key type="filename">perso-start/start0.png</key>
             <key type="filename">perso-start/start1.png</key>
-            <key type="filename">perso-start/start10.png</key>
-            <key type="filename">perso-start/start11.png</key>
-            <key type="filename">perso-start/start12.png</key>
-            <key type="filename">perso-start/start13.png</key>
             <key type="filename">perso-start/start2.png</key>
             <key type="filename">perso-start/start3.png</key>
             <key type="filename">perso-start/start4.png</key>
