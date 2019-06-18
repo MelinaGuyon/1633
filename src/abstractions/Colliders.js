@@ -11,7 +11,7 @@ export default class Colliders extends PixiComponent {
     this.base = new Graphics()
     this.base.tint = props.tint || 0xff00ff
     // this.base.alpha = props.alpha < 1 ? props.alpha : 1
-    this.base.alpha = 0
+    // this.base.alpha = 0
     this.base.lineStyle(4, this.base.tint, 1)
     this.base.beginFill(this.base.tint)
     this.base.drawCircle(14, 14, 14)
@@ -40,7 +40,10 @@ export default class Colliders extends PixiComponent {
       })
       this.body.attach(this.base)
 
+      console.log('je passe')
+
       this.body.collideWith('hero', (state) => {
+        console.log('collide')
         if (this.group === 'interests' && this.levelId) this.calcInterestOffset()
         this.state.collide = state.collide
         this.cb(state)

@@ -33,14 +33,30 @@ export default class Perso extends PixiComponent {
     })
     this.body.attach(this.base)
     camera.setTarget(this.base)
+  }
 
+  componentDidMount () {
+    this.updateAnimation = this.updateAnimation.bind(this)
     this.bind()
   }
 
+  componentWillUnmount () {
+    this.unbind()
+    physics.removeBody(this.body)
+    this.body.destroy()
+    this.body = undefined
+  }
+
   bind () {
-    signals.goLeft.listen(this.updateAnimation, this) // 0
-    signals.goRight.listen(this.updateAnimation, this) // 1
-    signals.stop.listen(this.updateAnimation, this)
+    signals.goLeft.listen(this.updateAnimation) // 0
+    signals.goRight.listen(this.updateAnimation) // 1
+    signals.stop.listen(this.updateAnimation)
+  }
+
+  unbind () {
+    signals.goLeft.unlisten(this.updateAnimation)
+    signals.goRight.unlisten(this.updateAnimation)
+    signals.stop.unlisten(this.updateAnimation)
   }
 
   updateAnimation (direction) {

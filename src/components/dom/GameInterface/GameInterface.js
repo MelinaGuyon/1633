@@ -31,7 +31,7 @@ export default class GameInterface extends DomComponent {
         <Tutorial />
         <Epilogue />
         <SoundTimeline />
-        <Debug />
+        {/* <Debug /> */}
       </section>
     )
   }

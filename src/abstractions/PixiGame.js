@@ -53,8 +53,16 @@ export default class Pixigame extends PixiComponent {
     store.levelId.set(0)
   }
 
+  componentWillUnmount () {
+    this.unbind()
+  }
+
   bind () {
     this.listenStore('levelId', this.onLvlChange)
+  }
+
+  unbind () {
+    this.unlistenStore('levelId', this.onLvlChange)
   }
 
   createPerso () {

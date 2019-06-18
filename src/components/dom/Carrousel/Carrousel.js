@@ -39,7 +39,6 @@ class Form extends DomComponent {
   }
 
   unbind () {
-    console.log('unbind')
     this.base.removeEventListener('click', this.onClick) // 1 to pass the event
   }
 
@@ -269,7 +268,6 @@ export default class Carrousel extends DomComponent {
     this.carrousel.classList.add('no-touch')
     this.background.removeMagnet()
     signals.newIndication.dispatch(0)
-    console.log('jenleve pause')
     store.pause.set({ paused: false, allMuted: false })
 
     anime({
@@ -279,9 +277,10 @@ export default class Carrousel extends DomComponent {
       delay: 400,
       easing: 'easeInOutQuad',
       complete: () => {
-        this.cinematic.start().then(() => {
-          this.launchPixi(obj)
-        })
+        this.launchPixi(obj)
+        // this.cinematic.start().then(() => {
+        //   this.launchPixi(obj)
+        // })
       }
     })
   }

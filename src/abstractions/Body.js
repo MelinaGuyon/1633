@@ -48,11 +48,22 @@ export default class Body {
   }
 
   bind () {
-    // TODO : unbind
-    signals.goLeft.listen(this.updateDir, this)
-    signals.goRight.listen(this.updateDir, this)
-    signals.stop.listen(this.prepareToStop, this)
-    signals.animePersoFinished.listen(this.stop, this)
+    this.binded = true
+    this.updateDir = this.updateDir.bind(this)
+    this.prepareToStop = this.prepareToStop.bind(this)
+    this.stop = this.stop.bind(this)
+
+    signals.goLeft.listen(this.updateDir)
+    signals.goRight.listen(this.updateDir)
+    signals.stop.listen(this.prepareToStop)
+    signals.animePersoFinished.listen(this.stop)
+  }
+
+  unbind () {
+    signals.goLeft.unlisten(this.updateDir)
+    signals.goRight.unlisten(this.updateDir)
+    signals.stop.unlisten(this.prepareToStop)
+    signals.animePersoFinished.unlisten(this.stop)
   }
 
   updateDir (dir) {
@@ -156,15 +167,17 @@ export default class Body {
       max += size
     })
     if (max < store.size.get().w * 2) max = store.size.get().w * 2
-    return 1000
+    return 4000
   }
 
   collideWith (group, cb = null) {
+    console.log('je passe dans collide', group, cb)
     this.hasColliders = true
     this.colliders.push([group, cb, { collide: false }])
   }
 
   destroy () {
+    if (this.binded) this.unbind()
     this.destroyed = true
     this.rect && this.rect.destroy()
     this.hasColliders = false

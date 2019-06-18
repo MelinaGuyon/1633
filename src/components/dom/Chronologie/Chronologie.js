@@ -200,7 +200,6 @@ export default class Chronologie extends DomComponent {
       this.internalBind()
       this.updateTimelineVisibility(true)
       this.stateGamePause = store.pause.get().paused
-      console.log(this.stateGamePause)
       this.stateGameMenu = store.menuGame.get()
       store.pause.set({ paused: true, allMuted: false })
       store.menuLight.set(true)

@@ -9,7 +9,9 @@ export default class InterestsAbs extends PixiComponent {
   }
 
   bind () {
-    signals.space.listen(this.checkInterest, this)
+    console.log('interest BINDED')
+    this.checkInterest = this.checkInterest.bind(this)
+    signals.space.listen(this.checkInterest)
   }
 
   unbind () {
@@ -17,6 +19,7 @@ export default class InterestsAbs extends PixiComponent {
   }
 
   cb (idHistoryFact, state) {
+    // console.log('je passe dans cb', idHistoryFact, state)
     if (state.collide) {
       this.props.onCollide && this.props.onCollide(1)
       this.facts[idHistoryFact] = idHistoryFact
@@ -27,6 +30,7 @@ export default class InterestsAbs extends PixiComponent {
   }
 
   checkInterest () {
+    console.log('check')
     this.facts.forEach((id) => {
       if (id !== null) this.unlock(id)
     })
@@ -42,5 +46,6 @@ export default class InterestsAbs extends PixiComponent {
   componentWillUnmount () {
     this.mains = undefined
     this.unbind()
+    console.log('unbind interests')
   }
 }

@@ -29,6 +29,7 @@ function removeBody (body) {
   if (!body.destroyed) body.destroy()
   if (!~index) return
   groups[body.group].splice(index, 1)
+  console.log(groups)
 }
 
 function checkCollide (bB, bA, cb, prevState, gA, gB) {
