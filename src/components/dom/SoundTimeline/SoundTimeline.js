@@ -22,15 +22,15 @@ export default class SoundTimeline extends DomComponent {
   }
 
   componentDidMount () {
+    this.updateInertia = this.updateInertia.bind(this)
+    this.updateTimeline = this.updateTimeline.bind(this)
+
     logger('SoundTimeline did mount', '#47b342').log()
     this.bind()
     this.initInertia()
   }
 
   bind () {
-    this.updateInertia = this.updateInertia.bind(this)
-    this.updateTimeline = this.updateTimeline.bind(this)
-
     signals.soundSeeked.listen(this.updateTimeline)
     raf.add(this.updateInertia)
   }
@@ -55,7 +55,7 @@ export default class SoundTimeline extends DomComponent {
 
   updateTimeline (state) {
     if (state.end) {
-      this.unbind()
+      this.inrtia.percent.stopped = true
       anime({
         targets: this.inner,
         scaleX: 0,
@@ -63,12 +63,12 @@ export default class SoundTimeline extends DomComponent {
         easing: 'easeInOutQuad',
         delay: 600,
         complete: () => {
-          this.inrtia.percent.value = 0
-          this.bind()
+          if (this.inrtia.percent.stopped) this.inrtia.percent.value = 0
         }
       })
       return
     }
+    this.inrtia.percent.stopped = false
     const ratio = state.seek / state.duration
     if (ratio === 0) return
     this.inrtia.percent.to(ratio)
