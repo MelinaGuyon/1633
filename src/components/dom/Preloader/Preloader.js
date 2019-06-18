@@ -256,6 +256,10 @@ export default class Preloader extends DomComponent {
         delay: 500,
         complete: () => {
           delay(() => { this.bg.classList.add('visible') }, 300)
+          delay(() => {
+            sound.play('3_music_studio')
+            sound.setMusic('3_music_studio')
+          }, 1000)
         }
       })
       .add({
@@ -263,8 +267,6 @@ export default class Preloader extends DomComponent {
         opacity: 0,
         delay: 3000 - 500,
         complete: () => {
-          sound.play('3_music_studio')
-          sound.setMusic('3_music_studio')
           this.props.onComplete() // launch game
           delay(() => { this.prld.classList.add('loaded') }, 600)
         }
