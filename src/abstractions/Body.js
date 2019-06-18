@@ -171,7 +171,6 @@ export default class Body {
   }
 
   collideWith (group, cb = null) {
-    console.log('je passe dans collide', group, cb)
     this.hasColliders = true
     this.colliders.push([group, cb, { collide: false }])
   }

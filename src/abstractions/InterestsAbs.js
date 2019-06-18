@@ -30,7 +30,6 @@ export default class InterestsAbs extends PixiComponent {
   }
 
   checkInterest () {
-    console.log('check')
     this.facts.forEach((id) => {
       if (id !== null) this.unlock(id)
     })
@@ -44,8 +43,7 @@ export default class InterestsAbs extends PixiComponent {
   }
 
   componentWillUnmount () {
-    this.mains = undefined
     this.unbind()
-    console.log('unbind interests')
+    this.mains = undefined
   }
 }

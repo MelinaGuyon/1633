@@ -15,11 +15,6 @@ export default class LevelUniversity extends Level {
     this.createLand()
     this.createGlass()
     this.addColliders()
-
-    if (store.skipCarousel.get()) {
-      sound.play('3_music_studio')
-      sound.setMusic('3_music_studio')
-    }
   }
 
   createLand () {

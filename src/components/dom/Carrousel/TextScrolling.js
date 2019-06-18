@@ -25,19 +25,24 @@ export default class TextScrolling extends DomComponent {
   componentDidMount () {
     this.create()
     this.bind()
+    this.internalBind()
   }
 
   bind () {
-    this.listenStore('size', this.rebuild)
     this.listenStore('launched', this.isLaunched)
   }
 
-  unbind () {
+  internalBind () {
+    this.listenStore('size', this.rebuild)
+  }
+
+  internalUnbind () {
     this.unlistenStore('size', this.rebuild)
   }
 
   isLaunched (launched) {
-    if (launched) this.unbind()
+    if (launched) this.internalUnbind()
+    else this.internalBind()
   }
 
   create () {
@@ -50,6 +55,7 @@ export default class TextScrolling extends DomComponent {
   }
 
   rebuild () {
+    console.log('rebuild')
     while (this.wrapper.firstChild) this.wrapper.removeChild(this.wrapper.firstChild)
     this.create()
   }

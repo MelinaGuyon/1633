@@ -40,10 +40,7 @@ export default class Colliders extends PixiComponent {
       })
       this.body.attach(this.base)
 
-      console.log('je passe')
-
       this.body.collideWith('hero', (state) => {
-        console.log('collide')
         if (this.group === 'interests' && this.levelId) this.calcInterestOffset()
         this.state.collide = state.collide
         this.cb(state)
