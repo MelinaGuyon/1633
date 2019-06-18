@@ -1,5 +1,5 @@
 const musics = {
-  '3_music_studio': { loop: true, fadeOut: 900, volume: 0.05 }
+  '3_music_studio': { loop: true, fadeOut: 900, volume: 0.08 }
 }
 
 const voices = {

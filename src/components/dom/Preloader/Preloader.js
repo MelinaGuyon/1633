@@ -189,7 +189,6 @@ export default class Preloader extends DomComponent {
 
     Promise.all([this.imagesLoad(), this.pixiLoad()])
       .then(() => {
-        console.log('all resolved')
         if (store.skipLoading.get()) return this.directCompleteLoading()
         this.glass.start()
         this.intervalId = setInterval(() => {
@@ -199,6 +198,8 @@ export default class Preloader extends DomComponent {
   }
 
   directCompleteLoading () {
+    sound.play('3_music_studio')
+    sound.setMusic('3_music_studio')
     this.props.onComplete() // launch game
     this.prld.classList.add('loaded')
   }
@@ -262,6 +263,8 @@ export default class Preloader extends DomComponent {
         opacity: 0,
         delay: 3000 - 500,
         complete: () => {
+          sound.play('3_music_studio')
+          sound.setMusic('3_music_studio')
           this.props.onComplete() // launch game
           delay(() => { this.prld.classList.add('loaded') }, 600)
         }
