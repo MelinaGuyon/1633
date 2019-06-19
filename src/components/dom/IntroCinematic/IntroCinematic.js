@@ -30,7 +30,7 @@ export default class IntroCinematic extends DomComponent {
     return new Promise((resolve, reject) => {
       delay(() => {
         this.base.classList.add('visible')
-        this.play('voixoff/intro', 0, 0)
+        this.play('voixoff/intro_bis', 0, 0)
         this.resolve = resolve
       }, 4000)
     })
@@ -77,7 +77,7 @@ export default class IntroCinematic extends DomComponent {
   finished (number) {
     clearInterval(this.intervalId)
     if (number === 0) delay(() => { this.play('voixoff/intro_bis', 1, 8000) }, 1000)
-    else if (number === 1) this.play('voixoff/intro_ter', 2, 16000)
+    else if (number === 1) this.play('voixoff/intro_bis', 2, 16000)
     else {
       anime({
         targets: this.base,

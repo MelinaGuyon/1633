@@ -24,20 +24,41 @@ export default class SoundTimeline extends DomComponent {
   componentDidMount () {
     this.updateInertia = this.updateInertia.bind(this)
     this.updateTimeline = this.updateTimeline.bind(this)
+    this.launch = this.launch.bind(this)
 
     logger('SoundTimeline did mount', '#47b342').log()
-    this.bind()
     this.initInertia()
+    this.bind()
   }
 
   bind () {
+    this.listenStore('launched', this.launch)
+  }
+
+  launch (launched) {
+    console.log('je passe', launched)
+    if (launched) this.internalBind()
+    else this.internalUnbind()
+  }
+
+  internalBind () {
     signals.soundSeeked.listen(this.updateTimeline)
     raf.add(this.updateInertia)
   }
 
-  unbind () {
+  internalUnbind () {
     signals.soundSeeked.unlisten(this.updateTimeline)
     raf.remove(this.updateInertia)
+
+    anime({
+      targets: this.inner,
+      scaleX: 0,
+      duration: 1200,
+      easing: 'easeInOutQuad',
+      complete: () => {
+        if (this.inrtia.percent.stopped) this.inrtia.percent.value = 0
+      }
+    })
   }
 
   initInertia () {
