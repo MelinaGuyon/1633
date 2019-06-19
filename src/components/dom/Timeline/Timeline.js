@@ -11,7 +11,7 @@ class SceneTitle extends DomComponent {
   template (props) {
     return (
       <div class='scene-title'>
-        <p class='number'><span class='span1' ref={addRef(this, 'scene')} /><span class='span2' ref={addRef(this, 'number')} /></p>
+        <p class='number' ref={addRef(this, 'sceneContainer')}><span class='span1' ref={addRef(this, 'scene')} /><span class='span2' ref={addRef(this, 'number')} /></p>
         <p class='title' ref={addRef(this, 'title')} />
         <p class='date' ref={addRef(this, 'date')} />
       </div>
@@ -20,7 +20,6 @@ class SceneTitle extends DomComponent {
 
   update (id) {
     if (id === undefined) return
-
     const loc = store.loc.get()
 
     let infos = store.levelDict.get()[id]
@@ -32,29 +31,89 @@ class SceneTitle extends DomComponent {
     this.titleText = infos.title
     this.dateText = infos.date
 
-    this.animate()
+    this.animateIn()
   }
 
-  animate () {
-    anime({
-      targets: this.base,
-      opacity: 0,
-      duration: 600,
-      easing: 'easeOutCubic',
-      complete: () => {
-        this.scene.innerText = this.sceneText
-        this.number.innerText = this.numberText
-        this.title.innerHTML = this.titleText
-        this.date.innerText = this.dateText
+  animateIn () {
+    const wrappers = this.base.querySelectorAll('.wrapper')
+    let spans = []
+    for (let i = 0; i < wrappers.length; i++) {
+      let spansinwrapper = wrappers[i].querySelectorAll('.animated-span')
+      spans.push(spansinwrapper)
+    }
 
-        anime({
-          targets: this.base,
-          opacity: 1,
-          duration: 600,
-          easing: 'easeOutCubic',
-          delay: 300
-        })
+    if (spans.length === 0) return this.animateOut()
+
+    for (let i = 0; i < spans.length; i++) {
+      anime({
+        targets: spans[i],
+        translateY: '100%',
+        duration: 400,
+        delay: (el, i) => { return 20 * i },
+        easing: 'easeInOutQuad',
+        complete: () => {
+          if (i !== spans.length - 1) return
+          this.animateOut()
+        }
+      })
+    }
+
+    anime({
+      targets: this.date,
+      translateY: ['0', '100%'],
+      opacity: [1, 0],
+      duration: 400,
+      easing: 'easeInOutQuad'
+    })
+  }
+
+  animateOut () {
+    this.scene.innerText = this.sceneText
+    this.number.innerText = this.numberText
+    this.date.innerText = this.dateText
+    this.title.innerHTML = null
+    this.sceneContainer.classList.add('visible')
+
+    let text = this.titleText.split('<br>')
+    for (let i = 0; i < text.length; i++) {
+      let span = document.createElement('span')
+      span.classList.add('wrapper')
+
+      let splitted = text[i].split('')
+
+      for (let j = 0; j < splitted.length; j++) {
+        let innerSpan = document.createElement('span')
+        innerSpan.innerText = splitted[j]
+        innerSpan.classList.add('animated-span')
+        span.appendChild(innerSpan)
       }
+
+      this.title.appendChild(span)
+    }
+
+    const wrappers = this.base.querySelectorAll('.wrapper')
+    let spans = []
+    for (let i = 0; i < wrappers.length; i++) {
+      let spansinwrapper = wrappers[i].querySelectorAll('.animated-span')
+      spans.push(spansinwrapper)
+    }
+
+    for (let i = 0; i < spans.length; i++) {
+      anime({
+        targets: spans[i],
+        translateY: ['100%', '0'],
+        duration: 400,
+        delay: (el, i) => { return 20 * i },
+        easing: 'easeInOutQuad'
+      })
+    }
+
+    anime({
+      targets: this.date,
+      translateY: ['100%', '0'],
+      opacity: [0, 1],
+      duration: 400,
+      easing: 'easeInOutQuad'
     })
   }
 }
