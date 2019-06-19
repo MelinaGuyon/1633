@@ -13,7 +13,7 @@ export default class Animations extends PixiComponent {
     this.animDrap = new Animator(this.refs.drap)
     this.animDrap.play('draps', { loop: true, frameDuration: 160 })
 
-    this.refs.lampe = this.addChild('lampeBaschamp', { layer: '3bg600', x: -50, y: -280 })
+    this.refs.lampe = this.addChild('lampeBaschamp', { layer: '3bg600', x: -50, y: -245 })
     this.refs.lampe.scale.x = 0.59
     this.refs.lampe.scale.y = 0.59
     this.animLampe = new Animator(this.refs.lampe)

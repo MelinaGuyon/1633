@@ -1,4 +1,5 @@
 import Level from 'abstractions/Level'
+import Animations from './Animations'
 import Buildings from './CityBuildings'
 import Interests from './Interests'
 import SoundCheck from "./SoundChecks";
@@ -14,6 +15,7 @@ export default class LevelNapoleon extends Level {
 
   createLand () {
     this.addComponent(Buildings)
+    this.animations = this.addComponent(Animations)
   }
 
   createGlass () {

@@ -1,4 +1,5 @@
 import Level from 'abstractions/Level'
+import Animations from './Animations'
 import Buildings from './CityBuildings'
 import SoundChecks from './SoundChecks'
 import Interests from './Interests'
@@ -15,6 +16,7 @@ export default class LevelRecovery extends Level {
 
   createLand () {
     this.addComponent(Buildings)
+    this.animations = this.addComponent(Animations)
   }
 
   createGlass () {
