@@ -1,6 +1,7 @@
 import { h, addRef } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
+import signals from 'state/signals'
 
 import './About.styl'
 
@@ -58,12 +59,14 @@ export default class About extends DomComponent {
       store.menuLight.set(true)
       store.menuSocials.set(false)
       store.menuGame.set(false)
+      signals.moreNoise.dispatch(1)
     } else if (aboutStatus === 'disappearing') {
       this.about.classList.remove('visible')
       store.pause.set({ paused: this.stateGamePause, allMuted: false })
       store.menuLight.set(false)
       store.menuSocials.set(true)
       if (this.stateGameMenu) store.menuGame.set(this.stateGameMenu)
+      signals.moreNoise.dispatch(0)
     }
   }
 }

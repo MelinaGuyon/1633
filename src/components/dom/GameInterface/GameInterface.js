@@ -49,11 +49,18 @@ export default class GameInterface extends DomComponent {
   bind () {
     this.listenStore('size', this.resize)
     document.addEventListener('click', this.clearClick)
+    signals.moreNoise.listen(this.updateNoise)
   }
 
   unbind () {
     this.unlistenStore('size', this.resize)
     document.removeEventListener('click', this.clearClick)
+    signals.moreNoise.unlisten(this.updateNoise)
+  }
+
+  updateNoise (moreNoise) {
+    if (moreNoise) document.body.classList.add('more-noise')
+    else document.body.classList.remove('more-noise')
   }
 
   clearClick (e) {

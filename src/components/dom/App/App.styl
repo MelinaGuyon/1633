@@ -17,6 +17,25 @@ body
   position relative
   cursor: none
 
+  &::after
+    content: '';
+    z-index: $indexBodyAfter;
+    position: fixed;
+    top: -40%;
+    left: -40%;
+    display: block;
+    width: 180%;
+    height: 180%;
+    pointer-events: none;
+    background-repeat: repeat;
+    opacity 0.35
+    background-image: url('assets/img/backgound/noise.png');
+
+  &.more-noise
+    &::after
+      animation: grainAnimation 3s steps(4) infinite;
+      opacity 0.7
+
   .app
     width: 100%
     height: 100%
@@ -41,3 +60,50 @@ body
       position absolute
       right 0
       top: 0
+
+
+@keyframes grainAnimation {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(-5%, -5%);
+  }
+
+  20% {
+    transform: translate(-10%, 5%);
+  }
+
+  30% {
+    transform: translate(5%, -10%);
+  }
+
+  40% {
+    transform: translate(-5%, 15%);
+  }
+
+  50% {
+    transform: translate(-10%, 5%);
+  }
+
+  60% {
+    transform: translate(15%, 0);
+  }
+
+  70% {
+    transform: translate(0, 10%);
+  }
+
+  80% {
+    transform: translate(-15%, 0);
+  }
+
+  90% {
+    transform: translate(10%, 5%);
+  }
+
+  100% {
+    transform: translate(5%, 0);
+  }
+}
