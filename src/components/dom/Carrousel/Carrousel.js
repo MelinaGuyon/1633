@@ -24,6 +24,8 @@ class Form extends DomComponent {
     const title = loc['carrousel.' + props.type]
     const timing = title.length / 5 >> 0
 
+    this.hover = props.hover
+
     return (
       <div class={clasName} launchGame={props.launchGame} type={props.type} data-id={props.id}>
         <div class='carrousel__form' ref={addRef(this, 'form')}>
@@ -35,11 +37,19 @@ class Form extends DomComponent {
   }
 
   bind () {
-    this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+    this.onClick = this.onClick.bind(this)
+    this.onMouseEnter = this.onMouseEnter.bind(this)
+    this.onMouseLeave = this.onMouseLeave.bind(this)
+
+    this.base.addEventListener('click', this.onClick)
+    this.base.addEventListener('mouseenter', this.onMouseEnter)
+    this.base.addEventListener('mouseleave', this.onMouseLeave)
   }
 
   unbind () {
-    this.base.removeEventListener('click', this.onClick) // 1 to pass the event
+    this.base.removeEventListener('click', this.onClick)
+    this.base.removeEventListener('mouseenter', this.onMouseEnter)
+    this.base.removeEventListener('mouseleave', this.onMouseLeave)
   }
 
   fadeOut (el) {
@@ -54,16 +64,47 @@ class Form extends DomComponent {
     this.fadeOut(e.target.parentNode.parentNode)
     this.props.launchGame && this.props.launchGame({ id: this.id })
   }
+
+  onMouseEnter (e) {
+    this.hover(1)
+  }
+
+  onMouseLeave (e) {
+    this.hover(0)
+  }
 }
 
 class Background extends DomComponent {
   template (props) {
     const loc = store.loc.get()
+    const splittedText = loc['carrousel.story'].split('')
+
+    this.spansTop = Array(this.chronologieNumber)
+    const refSpansTop = i => el => {
+      this.spansTop[i] = el
+    }
+    this.spansBottom = Array(this.chronologieNumber)
+    const refSpansBottom = i => el => {
+      this.spansBottom[i] = el
+    }
+
+    let spansTop = []
+    for (let i = 0; i < splittedText.length; i++) {
+      spansTop.push(<span ref={refSpansTop(i)}>{splittedText[i]}</span>)
+    }
+    let spansBottom = []
+    for (let i = 0; i < splittedText.length; i++) {
+      spansBottom.push(<span ref={refSpansBottom(i)}>{splittedText[i]}</span>)
+    }
+
     return (
       <div class='carrousel__background'>
         <img class='img' src='assets/img/backgound/form.png' />
         <div class='story'>
-          <span>{loc['carrousel.story']}</span>
+          <div class='span-container'>
+            <div class='span-container-inner'>{spansTop}</div>
+            <div class='span-container-inner'>{spansBottom}</div>
+          </div>
           <span class='number' ref={addRef(this, 'number')}>01</span>
         </div>
       </div>
@@ -100,6 +141,24 @@ class Background extends DomComponent {
       }
     })
   }
+
+  animateHover (hovering) {
+    let value = hovering ? '-100%' : '0'
+    anime({
+      targets: this.spansTop,
+      translateY: value,
+      duration: 400,
+      delay: (el, i) => { return 20 * i },
+      easing: 'easeOutQuad'
+    })
+    anime({
+      targets: this.spansBottom,
+      translateY: value,
+      duration: 400,
+      delay: (el, i) => { return 20 * i },
+      easing: 'easeOutQuad'
+    })
+  }
 }
 
 let ticking = false
@@ -107,6 +166,7 @@ let ticking = false
 export default class Carrousel extends DomComponent {
   template ({ base }) {
     this.launchGame = this.fastbind('launchGame', 1)
+    this.mousehover = this.fastbind('mousehover', 1)
 
     const allHistories = store.allHistories.get()
     const histories = []
@@ -117,8 +177,8 @@ export default class Carrousel extends DomComponent {
     }
 
     for (let i = 0; i < allHistories.length; i++) {
-      if (i === 0) histories.push(<Form ref={refHistories(i)} id={i} active={'active '} animated={'animated'} type={allHistories[i]} launchGame={this.launchGame} />)
-      else histories.push(<Form ref={refHistories(i)} id={i} active={''} type={allHistories[i]} launchGame={this.launchGame} />)
+      if (i === 0) histories.push(<Form ref={refHistories(i)} id={i} active={'active '} animated={'animated'} type={allHistories[i]} launchGame={this.launchGame} hover={this.mousehover} />)
+      else histories.push(<Form ref={refHistories(i)} id={i} active={''} type={allHistories[i]} launchGame={this.launchGame} hover={this.mousehover} />)
     }
 
     return (
@@ -341,5 +401,9 @@ export default class Carrousel extends DomComponent {
     this.carrousel.style.opacity = 1
     this.activeCarousel()
     this.game.destroy()
+  }
+
+  mousehover (hovering) {
+    this.background.animateHover(hovering)
   }
 }
