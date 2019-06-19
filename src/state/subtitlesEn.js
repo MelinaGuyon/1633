@@ -21,8 +21,8 @@ export default [
   [
     ['Jetez donc un coup d’œil à ces vitraux qui, pour une fois, n’illustrent pas la Bible.', 0],
     ['Ils racontent une toute autre histoire, particulièrement rocambolesque...', 7500],
-    ['Celle… d’un crâne. Un crâne d’importance…', 11000],
-    ['', 20000]
+    ['Celle… d’un crâne. Un crâne d’importance…', 10000],
+    ['', 12000]
   ],
   [
     ['On glorifie notre puissante armée, grande défenseuse des peuples,', 0],

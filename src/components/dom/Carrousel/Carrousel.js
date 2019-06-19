@@ -329,6 +329,7 @@ export default class Carrousel extends DomComponent {
     this.background.removeMagnet()
     signals.newIndication.dispatch(0)
     store.pause.set({ paused: false, allMuted: false })
+    store.menuSocials.set(false)
 
     anime({
       targets: this.carouselWrapper,
@@ -368,7 +369,6 @@ export default class Carrousel extends DomComponent {
     store.ended.set(false)
     store.launched.set(true)
     store.menuGame.set(true)
-    store.menuSocials.set(false)
     anime({
       targets: this.carrousel,
       opacity: 0,
