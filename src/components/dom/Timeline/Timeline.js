@@ -65,6 +65,13 @@ class SceneTitle extends DomComponent {
       duration: 400,
       easing: 'easeInOutQuad'
     })
+
+    anime({
+      targets: this.number,
+      opacity: [1, 0],
+      duration: 400,
+      easing: 'easeInOutQuad'
+    })
   }
 
   animateOut () {
@@ -85,6 +92,7 @@ class SceneTitle extends DomComponent {
         let innerSpan = document.createElement('span')
         innerSpan.innerText = splitted[j]
         innerSpan.classList.add('animated-span')
+        if (splitted[j] === ' ') innerSpan.classList.add('space')
         span.appendChild(innerSpan)
       }
 
@@ -111,6 +119,12 @@ class SceneTitle extends DomComponent {
     anime({
       targets: this.date,
       translateY: ['100%', '0'],
+      opacity: [0, 1],
+      duration: 400,
+      easing: 'easeInOutQuad'
+    })
+    anime({
+      targets: this.number,
       opacity: [0, 1],
       duration: 400,
       easing: 'easeInOutQuad'
