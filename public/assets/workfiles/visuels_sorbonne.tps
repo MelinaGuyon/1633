@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>4</int>
         <key>texturePackerVersion</key>
-        <string>4.11.0</string>
+        <string>4.12.1</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -88,9 +88,9 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>8192</int>
+            <int>8270</int>
             <key>height</key>
-            <int>8192</int>
+            <int>8270</int>
         </QSize>
         <key>fixedTextureSize</key>
         <QSize>
@@ -1233,6 +1233,38 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">anims/bougieBureau1.png</key>
+            <key type="filename">anims/bougieBureau2.png</key>
+            <key type="filename">anims/bougieBureau3.png</key>
+            <key type="filename">anims/bougieBureau4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>205,128,410,257</rect>
+                <key>scale9Paddings</key>
+                <rect>205,128,410,257</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">anims/bougiePharmacie1.png</key>
+            <key type="filename">anims/bougiePharmacie2.png</key>
+            <key type="filename">anims/bougiePharmacie3.png</key>
+            <key type="filename">anims/bougiePharmacie4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>245,200,490,400</rect>
+                <key>scale9Paddings</key>
+                <rect>245,200,490,400</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">anims/chatBretagne1.png</key>
             <key type="filename">anims/chatBretagne2.png</key>
             <key type="filename">anims/chatBretagne3.png</key>
@@ -1246,6 +1278,24 @@
                 <rect>125,225,250,450</rect>
                 <key>scale9Paddings</key>
                 <rect>125,225,250,450</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">anims/chatBureau1.png</key>
+            <key type="filename">anims/chatBureau2.png</key>
+            <key type="filename">anims/chatBureau3.png</key>
+            <key type="filename">anims/chatBureau4.png</key>
+            <key type="filename">anims/chatBureau5.png</key>
+            <key type="filename">anims/chatBureau6.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>33,23,65,45</rect>
+                <key>scale9Paddings</key>
+                <rect>33,23,65,45</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -1353,6 +1403,22 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">anims/empereur1.png</key>
+            <key type="filename">anims/empereur2.png</key>
+            <key type="filename">anims/empereur3.png</key>
+            <key type="filename">anims/empereur4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>85,135,170,270</rect>
+                <key>scale9Paddings</key>
+                <rect>85,135,170,270</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">anims/feuDroite1.png</key>
             <key type="filename">anims/feuDroite2.png</key>
             <key type="filename">anims/feuDroite3.png</key>
@@ -1373,6 +1439,26 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">anims/fumeeSorbonne1.png</key>
+            <key type="filename">anims/fumeeSorbonne2.png</key>
+            <key type="filename">anims/fumeeSorbonne3.png</key>
+            <key type="filename">anims/fumeeSorbonne4.png</key>
+            <key type="filename">anims/fumeeSorbonne5.png</key>
+            <key type="filename">anims/fumeeSorbonne6.png</key>
+            <key type="filename">anims/fumeeSorbonne7.png</key>
+            <key type="filename">anims/fumeeSorbonne8.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,75,150,150</rect>
+                <key>scale9Paddings</key>
+                <rect>75,75,150,150</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">anims/hache1.png</key>
             <key type="filename">anims/hache2.png</key>
             <key type="filename">anims/hache3.png</key>
@@ -1381,6 +1467,10 @@
             <key type="filename">anims/hache6.png</key>
             <key type="filename">anims/hache7.png</key>
             <key type="filename">anims/hache8.png</key>
+            <key type="filename">anims/lampeSorbonne1.png</key>
+            <key type="filename">anims/lampeSorbonne2.png</key>
+            <key type="filename">anims/lampeSorbonne3.png</key>
+            <key type="filename">anims/lampeSorbonne4.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -1393,9 +1483,23 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">anims/hommeSceptre1.png</key>
+            <key type="filename">anims/hommeSceptre2.png</key>
+            <key type="filename">anims/hommeSceptre3.png</key>
+            <key type="filename">anims/hommeSceptre4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>85,140,170,280</rect>
+                <key>scale9Paddings</key>
+                <rect>85,140,170,280</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">anims/lampeBaschamp1.png</key>
-            <key type="filename">anims/lampeBaschamp5.png</key>
-            <key type="filename">anims/lampeBaschamp6.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -1420,6 +1524,38 @@
                 <rect>136,67,271,135</rect>
                 <key>scale9Paddings</key>
                 <rect>136,67,271,135</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">anims/lampeBureau1.png</key>
+            <key type="filename">anims/lampeBureau2.png</key>
+            <key type="filename">anims/lampeBureau3.png</key>
+            <key type="filename">anims/lampeBureau4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>70,88,140,175</rect>
+                <key>scale9Paddings</key>
+                <rect>70,88,140,175</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">anims/lampePharmacie1.png</key>
+            <key type="filename">anims/lampePharmacie2.png</key>
+            <key type="filename">anims/lampePharmacie3.png</key>
+            <key type="filename">anims/lampePharmacie4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>50,85,100,170</rect>
+                <key>scale9Paddings</key>
+                <rect>50,85,100,170</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -1452,6 +1588,22 @@
                 <rect>65,23,130,47</rect>
                 <key>scale9Paddings</key>
                 <rect>65,23,130,47</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">anims/photographe1.png</key>
+            <key type="filename">anims/photographe2.png</key>
+            <key type="filename">anims/photographe3.png</key>
+            <key type="filename">anims/photographe4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>95,150,190,300</rect>
+                <key>scale9Paddings</key>
+                <rect>95,150,190,300</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -1712,7 +1864,9 @@
         <key>replaceList</key>
         <array/>
         <key>ignoredWarnings</key>
-        <array/>
+        <array>
+            <string>large-max-texture-size</string>
+        </array>
         <key>commonDivisorX</key>
         <uint>1</uint>
         <key>commonDivisorY</key>
