@@ -187,7 +187,7 @@ export default class Chronologie extends DomComponent {
   }
 
   internalBind () {
-    // raf.add(this.updateInrtia)
+    raf.add(this.updateInrtia)
     this.listenStore('chronologieDate', this.fastbind('goToDate', 1))
     window.addEventListener('mousewheel', this.fastbind('getChronologieOffset', 1))
     window.addEventListener('mousewheel', this.fastbind('checkCurrent', 1))
@@ -200,7 +200,7 @@ export default class Chronologie extends DomComponent {
   }
 
   internalUnbind () {
-    // raf.remove(this.updateInrtia)
+    raf.remove(this.updateInrtia)
     this.unlistenStore('chronologieDate', this.goToDate)
     window.removeEventListener('mousewheel', this.getChronologieOffset)
     window.removeEventListener('mousewheel', this.checkCurrent)
@@ -216,6 +216,7 @@ export default class Chronologie extends DomComponent {
     this.inrtia.y.stopped = true
     clearTimeout(this.mousewheelId)
     this.mousewheelId = setTimeout(() => {
+      if (this.factsOrdered[0].base.offsetTop > this.chronologie.scrollTop) return
       this.inrtia.y.stopped = false
       this.chronologie.classList.remove('smooth')
       this.inrtia.y.value = this.chronologie.scrollTop
