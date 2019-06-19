@@ -15,9 +15,38 @@
   &.visible
     transform: translateX(0)
 
-#chronologie::-webkit-scrollbar
-   width: 0px
-   background: transparent
+  &::-webkit-scrollbar
+    width: 0px
+    background: transparent
+
+  .sorbone-infos
+    width: 100%;
+    padding: 100px 0
+    min-height: 100vh
+    display flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+
+    &-container
+      position relative
+      width: 60%
+
+      h2
+        color: $salmon
+        font-family: EczarBold
+        font-size: 50px
+        color: transparent
+        -webkit-text-stroke: 0.9px $salmon
+        margin-bottom: 30px
+
+      p
+        position relative
+        font-size: 16px;
+        line-height: 24px;
+        font-family: RobotoCondensedLight;
+        font-stretch: condensed;
+        color: $light-black
 
   .fact
     position: relative

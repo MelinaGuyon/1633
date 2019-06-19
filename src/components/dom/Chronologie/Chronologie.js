@@ -65,7 +65,6 @@ class Fact extends DomComponent {
     this.imageHidden = false
 
     return (
-      // <div class='fact locked' id={'fact' + props.id} ref={addRef(this, 'fact')}>
       <div class='fact locked' id={'fact' + props.id} ref={addRef(this, 'fact')}>
         <div class='content-container'>
           <img class='character' ref={addRef(this, 'character')} src={props.content.src} />
@@ -118,6 +117,8 @@ class Fact extends DomComponent {
 
 export default class Chronologie extends DomComponent {
   template ({ base }) {
+    const loc = store.loc.get()
+
     this.historyNumber = 4 // temp, need to be replace with a real History number getted from store
 
     // get indexes order according to history played
@@ -147,14 +148,21 @@ export default class Chronologie extends DomComponent {
 
     return (
       <section id='chronologie' ref={addRef(this, 'chronologie')}>
+        <div class='sorbone-infos'>
+          <div class='sorbone-infos-container'>
+            <h2>{loc['chronologie.title']}</h2>
+            <p ref={addRef(this, 'chronologieDesc')} />
+          </div>
+        </div>
         {facts}
       </section>
     )
   }
 
   componentDidMount () {
+    const loc = store.loc.get()
+    this.chronologieDesc.innerHTML = loc['chronologie.description']
     this.updateInrtia = this.updateInrtia.bind(this)
-
     this.mousewheelId = 0
     this.initInertia()
     this.bind()
@@ -179,7 +187,7 @@ export default class Chronologie extends DomComponent {
   }
 
   internalBind () {
-    raf.add(this.updateInrtia)
+    // raf.add(this.updateInrtia)
     this.listenStore('chronologieDate', this.fastbind('goToDate', 1))
     window.addEventListener('mousewheel', this.fastbind('getChronologieOffset', 1))
     window.addEventListener('mousewheel', this.fastbind('checkCurrent', 1))
@@ -192,7 +200,7 @@ export default class Chronologie extends DomComponent {
   }
 
   internalUnbind () {
-    raf.remove(this.updateInrtia)
+    // raf.remove(this.updateInrtia)
     this.unlistenStore('chronologieDate', this.goToDate)
     window.removeEventListener('mousewheel', this.getChronologieOffset)
     window.removeEventListener('mousewheel', this.checkCurrent)
