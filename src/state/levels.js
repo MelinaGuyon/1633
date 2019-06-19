@@ -47,7 +47,7 @@ export default [
     },
     9: {
       keyTitle: 'tombeau',
-      title: 'Oeuvre <br>mortuaire',
+      title: 'Œuvre <br>mortuaire',
       date: '1694'
     },
     10: {

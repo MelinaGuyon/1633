@@ -63,7 +63,7 @@ export default {
       historyId: 0,
       historyName: 'Le Crâne Profané',
       date: 1866,
-      title: 'Oeuvre mortuaire',
+      title: 'Œuvre mortuaire',
       sceneTitle: '...',
       text: 'Le tombeau du cardinal de Richelieu est situé dans le chœur de la chapelle Sainte Ursule, en Sorbonne. À la mort du cardinal, la duchesse d\'Aiguillon, son héritière, prend en charge ses dernières volontés. Elle commande au sculpteur Girardon un tombeau monumental qui ne sera achevé qu\'en 1694, tandis que le corps de Richelieu repose dans une crypte sous le cénotaphe. Long de cinq mètres, le mausolée se compose d\'une vasque de marbre blanc sur laquelle repose le corps du cardinal. La Doctrine Chrétienne est agenouillée à ses pieds, et la Piété le soutient. Comme le veut la tradition, un chapeau de cardinal est suspendu au-dessus du tombeau. Le monument a été plusieurs fois déplacé dans l\'église, et a retrouvé sa place d\'origine entre les stalles, Richelieu faisant face à l\'autel.',
       img: 'oeuvre-mortuaire',
