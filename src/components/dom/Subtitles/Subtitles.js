@@ -30,7 +30,6 @@ export default class Subtitles extends DomComponent {
   }
 
   initWritting (index) {
-    console.log('subtitles')
     this.writeSubtitles(store.subtitles.get()[index], index, Date.now())
   }
 

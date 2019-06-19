@@ -223,21 +223,25 @@
           transition: background 0.6s $quad-ease-out;
 
         .l1, .l4
-          animation-duration: 1s;
-          animation-name: sound;
-          animation-iteration-count: infinite;
-          animation-direction: alternate;
+          animation-duration: 1s
+          animation-iteration-count: infinite
+          animation-direction: alternate
 
-        .l2
-          animation-duration: .6s;
-          animation-name: sound;
-          animation-iteration-count: infinite;
-          animation-direction: alternate;
+        .l2,
+          animation-duration: .6s
+          animation-iteration-count: infinite
+          animation-direction: alternate
 
         .l3, .l5
-          animation-duration: 2s;
-          animation-name: sound;
-          animation-iteration-count: infinite;
+          animation-duration: 2s
+          animation-iteration-count: infinite
+
+        .l1, .l6
+          animation-name: sound
+        .l2, .l5
+          animation-name: soundmid
+        .l3, .l4
+          animation-name: soundup
 
     &-lang
       text-transform: uppercase
@@ -249,5 +253,25 @@
 
   to {
     height: 5px
+  }
+}
+
+@keyframes soundmid {
+  from {
+    height: 0
+  }
+
+  to {
+    height: 8px
+  }
+}
+
+@keyframes soundup {
+  from {
+    height: 0
+  }
+
+  to {
+    height: 10px
   }
 }
