@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>4</int>
         <key>texturePackerVersion</key>
-        <string>4.12.1</string>
+        <string>4.11.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -88,7 +88,7 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>8270</int>
+            <int>16384</int>
             <key>height</key>
             <int>8270</int>
         </QSize>
@@ -1471,6 +1471,7 @@
             <key type="filename">anims/lampeSorbonne2.png</key>
             <key type="filename">anims/lampeSorbonne3.png</key>
             <key type="filename">anims/lampeSorbonne4.png</key>
+            <key type="filename">light/light-gradient.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

@@ -132,8 +132,8 @@ class Scene extends PixiComponent {
     scale = Math.max(
       0.9,
       Math.min(
-        0.9 + (Math.max(1, s.w / 700) - 1) * 1.2,
-        0.9 + (Math.max(1, s.h / 700) - 1) * 1.5
+        0.9 + (Math.max(1, s.w / 700) - 1) * 0.5,
+        0.9 + (Math.max(1, s.h / 700) - 1) * 0.8
       )
     )
 

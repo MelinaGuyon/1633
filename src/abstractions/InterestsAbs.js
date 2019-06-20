@@ -9,7 +9,6 @@ export default class InterestsAbs extends PixiComponent {
   }
 
   bind () {
-    console.log('interest BINDED')
     this.checkInterest = this.checkInterest.bind(this)
     signals.space.listen(this.checkInterest)
   }
