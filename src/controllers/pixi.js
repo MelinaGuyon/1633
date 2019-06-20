@@ -25,7 +25,6 @@ function init () {
     roundPixels: true,
     transparent: true
   })
-  // 0x0b1528 old background
 
   settings.PRECISION_FRAGMENT = PRECISION.HIGH
 
