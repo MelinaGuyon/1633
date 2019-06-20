@@ -110,11 +110,13 @@ export default class Glass extends DomComponent {
   }
 
   bind () {
+    this.binded = true
     this.listenStore('mouse', this.handleMoove)
     raf.add(this.updateInertia)
   }
 
   unbind () {
+    this.binded = false
     this.unlistenStore('mouse', this.handleMoove)
     raf.remove(this.updateInertia)
   }

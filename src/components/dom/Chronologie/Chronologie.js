@@ -194,7 +194,20 @@ export default class Chronologie extends DomComponent {
     window.addEventListener('mousewheel', this.fastbind('getMousewheelEnd', 1))
     this.facts.forEach((tab) => {
       tab.forEach((el) => {
-        el.glass.bind()
+        if (Math.abs(el.base.offsetTop - this.chronologie.scrollTop) < 3000) {
+          el.glass.bind()
+        }
+      })
+    })
+  }
+
+  bindGlasses (top) {
+    let topRef = top || this.chronologie.scrollTop
+    this.facts.forEach((tab) => {
+      tab.forEach((el) => {
+        if (Math.abs(el.base.offsetTop - topRef) < 3000) {
+          el.glass.bind()
+        }
       })
     })
   }
@@ -207,7 +220,19 @@ export default class Chronologie extends DomComponent {
     window.removeEventListener('mousewheel', this.getMousewheelEnd)
     this.facts.forEach((tab) => {
       tab.forEach((el) => {
-        el.glass.unbind()
+        if (el.glass.binded) {
+          el.glass.unbind()
+        }
+      })
+    })
+  }
+
+  unbindGlasses () {
+    this.facts.forEach((tab) => {
+      tab.forEach((el) => {
+        if (el.glass.binded) {
+          el.glass.unbind()
+        }
       })
     })
   }
@@ -216,6 +241,8 @@ export default class Chronologie extends DomComponent {
     this.inrtia.y.stopped = true
     clearTimeout(this.mousewheelId)
     this.mousewheelId = setTimeout(() => {
+      this.unbindGlasses()
+      this.bindGlasses()
       if (this.factsOrdered[0].base.offsetTop > this.chronologie.scrollTop) return
       this.inrtia.y.stopped = false
       this.chronologie.classList.remove('smooth')
@@ -300,6 +327,8 @@ export default class Chronologie extends DomComponent {
         current = index
       }
     })
+    this.unbindGlasses()
+    this.bindGlasses(scrollTop)
     this.current = current
     store.chronologieCurrent.set({ index: current, el: this.factsOrdered[current], date: this.factsOrdered[current].date })
   }
