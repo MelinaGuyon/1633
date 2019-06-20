@@ -247,6 +247,10 @@ export default class Menu extends DomComponent {
 
     return (
       <section class='menu' ref={addRef(this, 'menu')}>
+        <div class='menu__top-left'>
+          <img class='light' src='assets/img/logo/logo-white.png' alt='logo' />
+          <img class='dark' src='assets/img/logo/logo-dark.png' alt='logo' />
+        </div>
         <div class='menu__top-right'>
           <ChronologieButton type={'chronologie'} id={1} />
           <AboutButton type={'about'} id={2} />

@@ -2,6 +2,12 @@
   width: 100%
 
   &.light
+    .menu__top-left
+      img.light
+        opacity: 0
+      img.dark
+        opacity: 1
+
     .menu__top-right button
       color: $light-black
 
@@ -20,6 +26,23 @@
 
     .nav-playpause__btn div
       background: $light-black
+
+  &__top-left
+    position absolute
+    top 40px
+    left 50px
+    width 60px
+    height 65px
+    z-index: $indexMenu
+
+    img
+      position absolute
+      width 100%
+      opacity 0
+      transition: opacity 0.6s $quad-ease-out;
+
+      &.light
+        opacity 1
 
   &__top-right
     position absolute
