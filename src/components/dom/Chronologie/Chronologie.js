@@ -235,6 +235,7 @@ export default class Chronologie extends DomComponent {
   onChronologieClick (chronologieStatus, top) {
     if (chronologieStatus === 'appearing') {
       this.chronologie.classList.remove('smooth')
+      this.inrtia.y.stopped = true
       if (store.chronologieId.get() === 'top') this.chronologie.scrollTop = 0
       else this.chronologie.scrollTop = this.facts[store.currentHistory.get()][store.chronologieId.get()].base.offsetTop
       this.chronologie.classList.add('visible')
