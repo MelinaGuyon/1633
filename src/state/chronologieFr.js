@@ -257,6 +257,51 @@ export default {
       sceneTitle: '...',
       text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
       img: 'sante'
+    },
+    {
+      historyId: 4,
+      historyName: 'Architecte de la Sorbonne',
+      date: 1585,
+      title: 'De père en fils',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'pere-fils'
+    },
+    {
+      historyId: 4,
+      historyName: 'Architecte de la Sorbonne',
+      date: 1607,
+      title: 'Séjour à Rome',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'rome'
+    },
+    {
+      historyId: 4,
+      historyName: 'Architecte de la Sorbonne',
+      date: 1612,
+      title: 'Minimes de Fublaines',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'fublaines'
+    },
+    {
+      historyId: 4,
+      historyName: 'Architecte de la Sorbonne',
+      date: 1615,
+      title: 'Architecte du Roi',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'roi'
+    },
+    {
+      historyId: 4,
+      historyName: 'Architecte de la Sorbonne',
+      date: 1629,
+      title: 'Ami du Cardinal',
+      sceneTitle: '...',
+      text: 'Vbi curarum abiectis ponderibus aliis tamquam nodum et codicem difficillimum Caesarem convellere nisu valido cogitabat, eique deliberanti cum proximis clandestinis conloquiis et nocturnis qua vi, quibusve.',
+      img: 'ami'
     }
   ]
 }

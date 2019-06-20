@@ -119,7 +119,7 @@ export default class Chronologie extends DomComponent {
   template ({ base }) {
     const loc = store.loc.get()
 
-    this.historyNumber = 4 // temp, need to be replace with a real History number getted from store
+    this.historyNumber = 5 // temp, need to be replace with a real History number getted from store
 
     // get indexes order according to history played
     this.order = store.chronologie.get().order[store.currentHistory.get()]
