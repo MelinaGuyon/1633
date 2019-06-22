@@ -20,6 +20,7 @@ export default class IntroCinematic extends DomComponent {
           <img class='second' src='assets/img/cinematic/02.jpg' ref={addRef(this, 'item1')} alt='' />
           <img class='third' src='assets/img/cinematic/03.jpg' ref={addRef(this, 'item2')} alt='' />
         </div>
+        <div class='vignet' />
       </section>
     )
   }
