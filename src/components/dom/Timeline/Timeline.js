@@ -18,7 +18,19 @@ class SceneTitle extends DomComponent {
     )
   }
 
+  componentDidMount () {
+    this.preventFirstTime()
+  }
+
+  preventFirstTime () {
+    this.prevented = true
+  }
+
   update (id) {
+    if (this.prevented) {
+      this.prevented = false
+      return
+    }
     if (id === undefined) return
     const loc = store.loc.get()
 
@@ -235,7 +247,7 @@ export default class Timeline extends DomComponent {
   }
 
   initParams () {
-    /// need to be called at resize also + place passed points
+    /// TODO: need to be called at resize also + place passed points
     this.size = this.timeline.offsetWidth
     this.pointSize = this.points[0].base.offsetWidth
     this.circleSize = this.circleWrapper.offsetWidth
