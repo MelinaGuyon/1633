@@ -11,32 +11,34 @@ export default class About extends DomComponent {
 
     return (
       <section id='about' ref={addRef(this, 'about')}>
-        <div class='content'>
-          <p class='title'>Gobelins <span class='love'>x</span> Sorbonne</p>
-          <p class='description'>{loc['about.description']}</p>
-          <p class='helpers'>{loc['about.helpers']}</p>
-          <ul class='team'>
-            <li>
-              <p class='name'>Alicia Baudry</p>
-              <p class='job'>{loc['about.developer']}</p>
-            </li>
-            <li>
-              <p class='name'>Hélène Starck</p>
-              <p class='job'>{loc['about.illustrator']}</p>
-            </li>
-            <li>
-              <p class='name'>Mélina Guyon</p>
-              <p class='job'>{loc['about.developer']}</p>
-            </li>
-            <li>
-              <p class='name'>Tatiana Jacques</p>
-              <p class='job'>{loc['about.developer']}</p>
-            </li>
-            <li>
-              <p class='name'>Solenne Relisieux</p>
-              <p class='job'>{loc['about.designer']}</p>
-            </li>
-          </ul>
+        <div class='global-wrapper'>
+          <div class='content'>
+            <p class='title'>Gobelins <span class='love'>x</span> Sorbonne</p>
+            <p class='description'>{loc['about.description']}</p>
+            <p class='helpers'>{loc['about.helpers']}</p>
+            <ul class='team'>
+              <li>
+                <p class='name'>Alicia Baudry</p>
+                <p class='job'>{loc['about.developer']}</p>
+              </li>
+              <li>
+                <p class='name'>Hélène Starck</p>
+                <p class='job'>{loc['about.illustrator']}</p>
+              </li>
+              <li>
+                <p class='name'>Mélina Guyon</p>
+                <p class='job'>{loc['about.developer']}</p>
+              </li>
+              <li>
+                <p class='name'>Tatiana Jacques</p>
+                <p class='job'>{loc['about.developer']}</p>
+              </li>
+              <li>
+                <p class='name'>Solenne Relisieux</p>
+                <p class='job'>{loc['about.designer']}</p>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
     )

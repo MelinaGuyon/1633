@@ -3,6 +3,7 @@ import { h, addRef } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
 import signals from 'state/signals'
+import delay from 'lodash/delay'
 
 import './Menu.styl'
 import sound from 'controllers/sound'
@@ -26,9 +27,15 @@ class ChronologieButton extends DomComponent {
 
   onClick (e) {
     if (store.chronologieStatus.get() !== 'appearing') {
-      store.aboutStatus.set('disappearing')
-      store.chronologieId.set('top')
-      store.chronologieStatus.set('appearing')
+      let time = 0
+      if (store.aboutStatus.get() === 'appearing') {
+        store.aboutStatus.set('disappearing')
+        time = 600
+      }
+      delay(() => {
+        store.chronologieId.set('top')
+        store.chronologieStatus.set('appearing')
+      }, time)
     } else {
       store.chronologieStatus.set('disappearing')
     }
@@ -210,8 +217,15 @@ class AboutButton extends DomComponent {
 
   onClick (e) {
     if (store.aboutStatus.get() !== 'appearing') {
-      store.chronologieStatus.set('disappearing')
-      store.aboutStatus.set('appearing')
+      let time = 0
+      if (store.chronologieStatus.get() === 'appearing') {
+        store.chronologieStatus.set('disappearing')
+        time = 600
+      }
+      delay(() => {
+        store.chronologieStatus.set('disappearing')
+        store.aboutStatus.set('appearing')
+      }, time)
     } else {
       store.aboutStatus.set('disappearing')
     }

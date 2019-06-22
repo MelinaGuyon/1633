@@ -7,11 +7,18 @@
   top: 0
   overflow: auto
   transform: translateX(100vw)
-  transition: transform 0.6s $quad-ease-out
+  transition: transform 0.6s $quad-ease-in-out
+
+  .global-wrapper
+    height 100%
+    transform: translateX(-100vw)
+    transition: transform 0.6s $quad-ease-in-out
 
   &.visible
     transform: translateX(0)
 
+    .global-wrapper
+      transform: translateX(0)
 
   .content
       font-family: RobotoRegular
