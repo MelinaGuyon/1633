@@ -37,7 +37,7 @@ export default {
       date: 1805,
       title: 'Implication des Armez',
       sceneTitle: '...',
-      text: 'La famille Armez conserva le crâne durant plus de 60 ans. Le prêtre Nicolas, qui ne le récupéra pas plus tard qu’en 1805, le confia au pharmacien Hamon de Saint-Brieuc, qui lui appliquera un traitement anti-insecte et un verni. "La famille Armez appartient à la haute bourgeoisie de Bretagne : elle est fixée depuis le XVIIIème siècle dans la commune de Plourivo, près de Saint-Brieuc. Nicolas Armez, président du Conseil général des Côtes-du-Nord en 1808, fut député [...] à la chambre des Cent Jours, en 1815 : son fils a été plusieurs fois député des Côtes-du-Nord sous Louis-Philippe et son petit-fils, Louis Armez, né en 1848, maire de Plourivo en 1871, a été nommé plusieurs fois depuis 1876 député républicain de Saint-Brieuc."',
+      text: 'La famille Armez conserva le crâne durant plus de 60 ans. Cette lignée appartient à la haute bourgeoisie de Bretagne : elle est fixée depuis le XVIIIème siècle dans la commune de Plourivo, près de Saint-Brieuc. Nicolas Armez, d’abord commerçant, devint prêtre et chanoine du chapitre de la cathédrale de Vannes. Célèbre révolutionnaire, il fut nommé maire de Plourivo, puis président du Conseil général des Côtes-du-Nord en 1808,. Enfin, il fut élu député à la chambre des Cent Jours en 1815. Nicolas récupéra la relique en 1805, et la confia au pharmacien Hamon de Saint-Brieuc, qui lui appliqua un traitement anti-insecte et un verni.',
       img: 'plourivo',
       src: 'assets/img/chrono/armez.png',
       textUrlTitle: 'A. Baudry',
@@ -260,7 +260,7 @@ export default {
     },
     {
       historyId: 4,
-      historyName: 'Architecte de la Sorbonne',
+      historyName: 'L\'Ami du Cardinal',
       date: 1585,
       title: 'De père en fils',
       sceneTitle: '...',
@@ -269,7 +269,7 @@ export default {
     },
     {
       historyId: 4,
-      historyName: 'Architecte de la Sorbonne',
+      historyName: 'L\'Ami du Cardinal',
       date: 1607,
       title: 'Séjour à Rome',
       sceneTitle: '...',
@@ -278,7 +278,7 @@ export default {
     },
     {
       historyId: 4,
-      historyName: 'Architecte de la Sorbonne',
+      historyName: 'L\'Ami du Cardinal',
       date: 1612,
       title: 'Minimes de Fublaines',
       sceneTitle: '...',
@@ -287,7 +287,7 @@ export default {
     },
     {
       historyId: 4,
-      historyName: 'Architecte de la Sorbonne',
+      historyName: 'L\'Ami du Cardinal',
       date: 1615,
       title: 'Architecte du Roi',
       sceneTitle: '...',
@@ -296,7 +296,7 @@ export default {
     },
     {
       historyId: 4,
-      historyName: 'Architecte de la Sorbonne',
+      historyName: 'L\'Ami du Cardinal',
       date: 1629,
       title: 'Ami du Cardinal',
       sceneTitle: '...',

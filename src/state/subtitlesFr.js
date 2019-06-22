@@ -19,7 +19,7 @@ export default [
     ['des années plus tard...', 27500],
     ['Sa profonde volonté de renforcer le pouvoir royal', 29600],
     ['engendra un regain d’autorité,', 32600],
-    ['appelé aujourd’hui “l’absolutisme."', 34500],
+    ['appelé aujourd’hui “l’absolutisme".', 34500],
     ['', 40000]
   ],
   [
@@ -45,7 +45,7 @@ export default [
     ['Le jeune Richelieu ne peut l’imaginer, mais vous les aurez sûrement reconnus…', 9000],
     ['ce sont les manifestants populaires de 1789 : les sans-culottes !', 13500],
     ['Ils sont venus pour profaner le tombeau.', 20000],
-    [' Mais à qui appartient-il ? Qui pourrait mériter un tel sort... ?', 22000],
+    ['Mais à qui appartient-il ? Qui pourrait mériter un tel sort... ?', 22000],
 	  ['', 28000]
   ],
   [
@@ -66,7 +66,7 @@ export default [
     ['Un habitant du quartier aurait assisté au lugubre spectacle de la profanation.', 2700],
     ['Horrifié, il aurait alors récupéré, puis protégé le crâne d’un morceau de linceul…', 7000],
     ['En vérité, il s’agissait d’un bonnetier appelé Cheval, habitant à quelques rues de la Sorbonne.', 12800],
-    [' Il est ainsi parvenu à mettre le crâne à l’abri, et lui évita un destin funeste...', 19500],
+    ['Il est ainsi parvenu à mettre le crâne à l’abri, et lui évita un destin funeste...', 19500],
 	  ['', 24500]
   ],
   [
@@ -86,7 +86,7 @@ export default [
 	  ['', 17500]
   ],
   [
-    ['Un grand soin lui fut apporté. ', 0],
+    ['Un grand soin lui fut apporté.', 0],
     ['Un pharmacien veilla à sa bonne conservation,', 2800],
     ['en appliquant au crâne un traitement anti-insecte et même un verni !', 5200],
     ['Mais pourquoi tant d’attentions ?', 9500],
@@ -104,10 +104,10 @@ export default [
   ],
   [
     ['Après un long voyage de plus de 70 ans,', 0],
-    ['le crâne revint finalement dans son mausolée, ', 3400],
+    ['le crâne revint finalement dans son mausolée,', 3400],
     ['prêt à reposer en paix, pour de bon.', 6200],
     ['Et quelle surprise, pour le jeune Richelieu,', 9000],
-    ['de découvrir l’emplacement du tombeau. Il s’agit de son collège… ', 11500],
+    ['de découvrir l’emplacement du tombeau. Il s’agit de son collège…', 11500],
     ['l’endroit même où il se situe à présent. ', 16400],
 	  ['', 19500]
   ],
@@ -117,8 +117,8 @@ export default [
     ['Il s’agit ainsi de l’histoire de la sépulture du cardinal…', 7300],
     ['Richelieu, devenu proviseur de la Sorbonne,', 11400],
     ['financera lui-même la construction de la nouvelle église du collège', 15000],
-    ['où il projette d’être inhumé. ', 18400],
-    ['Le cardinal mourra en 1642, ', 21000],
+    ['où il projette d’être inhumé.', 18400],
+    ['Le cardinal mourra en 1642,', 21000],
     ['mais le tombeau désiré ne sera achevé qu’en 1694 par le sculpteur Girardon,', 24000],
     ['sur commande de la nièce de Richelieu, Marie-Madeleine d’Aiguillon.', 30600],
     ['', 35000]
@@ -126,12 +126,12 @@ export default [
   [
     ['Le jeune Richelieu n’est pas au bout de ses surprises,', 0],
     ['car l’histoire du crâne, son... crâne,', 3700],
-    ['ne semble pas s’arrêter là. ', 6400],
+    ['ne semble pas s’arrêter là.', 6400],
     ['Un deuxième acte de profanation a visiblement eu lieu...', 8500],
     ['Celui-ci paraît moins violent :', 14000],
     ['un petit groupe d’individus s’active autour de la relique, avec curiosité.', 16400],
     ['Il y a même un homme semblant observer la tête,', 21400],
-    ['à travers une drôle de longue vue... ', 23600],
+    ['à travers une drôle de longue vue...', 23600],
     ['en forme de cube… ?', 26000],
     ['Cette seconde profanation eut lieu le 25 juin 1895,', 29300],
     ['sous l’impulsion de Gabriel Hanotaux, ministre des affaires étrangères.', 33700],
