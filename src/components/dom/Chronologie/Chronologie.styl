@@ -42,10 +42,16 @@
       h2
         color: $salmon
         font-family: EczarBold
-        font-size: 50px
+        font-size: 70px
         color: transparent
         -webkit-text-stroke: 0.9px $salmon
         margin-bottom: 30px
+
+        +largeWidth()
+          font-size: 60px
+
+        +mediumWidth()
+          font-size: 50px
 
       p
         position relative
@@ -85,6 +91,10 @@
         letter-spacing: 4px
         line-height: 82px
 
+        +mediumWidth()
+          font-size: 60px
+          line-height: 72px
+
       h3
         font-family: RobotoCondensedLight
         font-size: 24px
@@ -94,13 +104,31 @@
         letter-spacing: 1px
         text-transform: lowercase
 
+        +mediumWidth()
+          font-size: 20px
+
 
     &.locked
       .glass
-        transform: translate(-50%, -50%) scale(0.9);
+        transform: translate(-50%, -50%) scale(0.85);
         left: 50%
         opacity 0.12
         pointer-events: auto
+
+        +largeWidth()
+          transform: translate(-50%, -50%) scale(0.75);
+
+        +mediumWidth()
+          transform: translate(-50%, -50%) scale(0.55);
+
+        +smallWidth()
+          transform: translate(-50%, -50%) scale(0.35);
+
+        +smallHeight()
+          transform: translate(-50%, -50%) scale(0.55);
+
+        +smallerHeight()
+          transform: translate(-50%, -50%) scale(0.50);
 
       .locked-title
         opacity: 1
