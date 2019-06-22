@@ -14,28 +14,22 @@ export default [
     ['naquit en 1585 au sein d’une grande fratrie.', 13500],
     ['Promis aux armes,', 18300],
     ['il assuma finalement la charge d’évêché de Luçon.', 19400],
-    ['Homme de responsabilités,', 22700],
+    ['Homme de responsabilités,', 22900],
     ['le cardinal fut aussi proviseur de la Sorbonne,', 24600],
     ['des années plus tard...', 27500],
     ['Sa profonde volonté de renforcer le pouvoir royal', 29600],
     ['engendra un regain d’autorité,', 32600],
     ['appelé aujourd’hui “l’absolutisme".', 34500],
-    ['', 40000]
-  ],
-  [
-    ['Voici notre Richelieu jeune, en 1606,', 0],
-    ['lors de son arrivée en Sorbonne,', 3800],
-    ['devant les portes de la chapelle médiévale..', 5400],
-    ['', 10000]
-  ],
-  [
-    ['Jetez donc un coup d’œil à ces vitraux', 0],
-    ['qui, pour une fois, n’illustrent pas la Bible.', 2100],
-    ['Ils racontent une toute autre histoire,', 5500],
-    ['particulièrement rocambolesque...', 7900],
-    ['Celle… d’un crâne.', 10500],
-    ['Un crâne d’importance…', 13000],
-    ['', 15000]
+    ['Voici notre Richelieu jeune, en 1606,', 37300],
+    ['lors de son arrivée en Sorbonne,', 41100],
+    ['devant les portes de la chapelle médiévale..', 42700],
+    ['Jetez donc un coup d’œil à ces vitraux', 46300], // 0
+    ['qui, pour une fois, n’illustrent pas la Bible.', 48400],
+    ['Ils racontent une toute autre histoire,', 51800],
+    ['particulièrement rocambolesque...', 54200],
+    ['Celle… d’un crâne.', 56800],
+    ['Un crâne d’importance…', 59300],
+    ['', 62000]
   ],
   [
     ['Mais… pourquoi tant d’agitation ?', 0],
