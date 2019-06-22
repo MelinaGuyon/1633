@@ -109,6 +109,7 @@ class Scene extends PixiComponent {
 
   updateSizes (layer) {
     if (!this.needsUpdate) return
+    console.log('je calcule les tailles')
     if (this.sizes[layer.id] < layer.base.width && layer.id === 1) this.sizes[layer.id] = layer.base.width + 0 // 500
     else if (this.sizes[layer.id] < layer.base.width && layer.id !== 1) this.sizes[layer.id] = layer.base.width + 500
   }

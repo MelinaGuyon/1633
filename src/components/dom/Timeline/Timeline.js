@@ -223,9 +223,10 @@ export default class Timeline extends DomComponent {
     this.onFactUnlocked = this.onFactUnlocked.bind(this)
     this.onClick = this.onClick.bind(this)
     this.mooving = this.mooving.bind(this)
+    this.resize = this.resize.bind(this)
 
     this.bind()
-    this.initParams()
+    this.initParams(true)
   }
 
   componentWillUnmount () {
@@ -237,6 +238,7 @@ export default class Timeline extends DomComponent {
     this.whiteCircle.addEventListener('click', this.onClick)
     this.listenStore('levelId', this.onLvlChange)
     signals.moving.listen(this.mooving)
+    this.listenStore('size', this.resize)
   }
 
   unbind () {
@@ -246,11 +248,11 @@ export default class Timeline extends DomComponent {
     signals.moving.unlisten(this.mooving)
   }
 
-  initParams () {
+  initParams (first) {
     /// TODO: need to be called at resize also + place passed points
     this.size = this.timeline.offsetWidth
     this.pointSize = this.points[0].base.offsetWidth
-    this.circleSize = this.circleWrapper.offsetWidth
+    if (first) this.circleSize = this.circleWrapper.offsetWidth
   }
 
   onLvlChange (id) {
@@ -399,6 +401,21 @@ export default class Timeline extends DomComponent {
       opacity: 0,
       duration: 600,
       easing: 'easeOutQuad'
+    })
+  }
+
+  resize () {
+    this.initParams()
+    this.onLvlChange(this.currenPointId - 1)
+    this.replacePoints()
+  }
+
+  replacePoints () {
+    this.points.forEach((el, index) => {
+      if (index < this.currenPointId - 1) {
+        let x = this.size - el.endingX - this.pointSize
+        el.base.style.transform = `translateX(-${x}px)`
+      }
     })
   }
 }
