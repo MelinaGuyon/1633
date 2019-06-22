@@ -113,6 +113,10 @@ class Fact extends DomComponent {
       }
     }
   }
+
+  resize () {
+    this.initParams()
+  }
 }
 
 export default class Chronologie extends DomComponent {
@@ -186,6 +190,7 @@ export default class Chronologie extends DomComponent {
   bind () {
     signals.factUnlock.listen(this.fastbind('onFactUnlocked', 1))
     this.listenStore('chronologieStatus', this.onChronologieClick)
+    this.listenStore('size', this.resize)
   }
 
   internalBind () {
@@ -293,19 +298,16 @@ export default class Chronologie extends DomComponent {
   }
 
   getChronologieOffset () {
-    // TODO :: to get on resize too
     store.chronologieOffset.set({ x: this.chronologie.offsetWidth, y: this.chronologie.scrollTop })
     delay(() => { signals.newDom.dispatch() }, 500)
   }
 
   unbindedGetChronologieOffset (top) {
-    // TODO :: to get on resize too
     store.chronologieOffset.set({ x: this.chronologie.offsetWidth, y: top })
     delay(() => { signals.newDom.dispatch() }, 2500)
   }
 
   checkCurrent () {
-    // TODO :: to get on resize too
     let current
     let distCurrent = 10000
     this.factsOrdered.forEach((fact, index) => {
@@ -375,5 +377,16 @@ export default class Chronologie extends DomComponent {
       this.chronologie.scrollTop = this.inrtia.y.value
       this.unbindedGetChronologieOffset(this.inrtia.y.value)
     }
+  }
+
+  resize () {
+    delay(() => {
+      this.getChronologieOffset()
+      this.checkCurrent()
+      this.factsOrdered.forEach((el) => {
+        el.resize()
+        el.glass.getCoords()
+      })
+    }, 1000)
   }
 }

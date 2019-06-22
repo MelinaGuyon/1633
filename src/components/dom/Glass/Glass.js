@@ -172,6 +172,13 @@ export default class Glass extends DomComponent {
     })
   }
 
+  getCoords () {
+    this.singleGlass.forEach((el, index) => {
+      const coord = el.base.getBoundingClientRect()
+      this.coords[index] = { el: el.base, left: coord.left, top: coord.top + store.chronologieOffset.get().y, centerX: coord.left + el.base.offsetWidth / 2, centerY: (coord.top + el.base.offsetHeight / 2) + store.chronologieOffset.get().y }
+    })
+  }
+
   handleMoove (mouse, force) {
     let values = this.isConstructed ? realValues : transformValues
     let distToCheck = this.isConstructed ? 120 : 180

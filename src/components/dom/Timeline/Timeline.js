@@ -249,7 +249,6 @@ export default class Timeline extends DomComponent {
   }
 
   initParams (first) {
-    /// TODO: need to be called at resize also + place passed points
     this.size = this.timeline.offsetWidth
     this.pointSize = this.points[0].base.offsetWidth
     if (first) this.circleSize = this.circleWrapper.offsetWidth
