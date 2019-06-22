@@ -184,7 +184,7 @@ export default class Glass extends DomComponent {
       let offsetX = 0
       let offsetY = 0
       if (this.parrent) {
-        offsetX = store.chronologieOffset.get().x
+        // offsetX = store.chronologieOffset.get().x
         offsetY = store.chronologieOffset.get().y
       }
       let dx = this.coords[index].centerX - mouse.x - offsetX

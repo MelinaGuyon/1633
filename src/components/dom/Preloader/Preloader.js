@@ -199,6 +199,7 @@ export default class Preloader extends DomComponent {
   }
 
   directCompleteLoading () {
+    signals.moreNoise.dispatch(0)
     sound.play('3_music_studio')
     sound.setMusic('3_music_studio')
     this.props.onComplete() // launch game

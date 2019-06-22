@@ -5,7 +5,7 @@ import store from 'state/store'
 import signals from 'state/signals'
 
 import './Menu.styl'
-import sound from '../../../controllers/sound'
+import sound from 'controllers/sound'
 
 class ChronologieButton extends DomComponent {
   template (props) {

@@ -148,13 +148,15 @@ export default class Chronologie extends DomComponent {
 
     return (
       <section id='chronologie' ref={addRef(this, 'chronologie')}>
-        <div class='sorbone-infos'>
-          <div class='sorbone-infos-container'>
-            <h2>{loc['chronologie.title']}</h2>
-            <p ref={addRef(this, 'chronologieDesc')} />
+        <div class='global-wrapper'>
+          <div class='sorbone-infos'>
+            <div class='sorbone-infos-container'>
+              <h2>{loc['chronologie.title']}</h2>
+              <p ref={addRef(this, 'chronologieDesc')} />
+            </div>
           </div>
+          {facts}
         </div>
-        {facts}
       </section>
     )
   }

@@ -7,13 +7,20 @@
   top: 0
   overflow: auto
   transform: translateX(100vw)
-  transition: transform 0.6s $quad-ease-out
+  transition: transform 0.6s $quad-ease-in-out
+
+  .global-wrapper
+    transform: translateX(-100vw)
+    transition: transform 0.6s $quad-ease-in-out
 
   &.smooth
     scroll-behavior: smooth;
 
   &.visible
     transform: translateX(0)
+
+    .global-wrapper
+      transform: translateX(0)
 
   &::-webkit-scrollbar
     width: 0px
@@ -92,7 +99,7 @@
       .glass
         transform: translate(-50%, -50%) scale(0.75);
         left: 50%
-        opacity 0.16
+        opacity 0.12
         pointer-events: auto
 
       .locked-title
