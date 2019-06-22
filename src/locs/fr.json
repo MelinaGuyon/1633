@@ -8,13 +8,15 @@
     "og.decription": "Découvrez les chroniques de la Sorbonne",
     "preloader.text": "Chargement",
     "intro.text": "Bienvenue en Sorbonne, dans cette chapelle, lieu saint qui a connu toute l’histoire de l’Université...\nElle a revêtu bien des formes, dont cette dernière, numérique, dans laquelle vous naviguez aujourd’hui.\nChoisissez donc l’histoire que ces vitraux vont vous conter.",
-    "intro.skip": "Passer l'intro",
+    "intro.skip": "Passer l'introduction",
     "carrousel.richelieu": "Le Crâne Profané",
     "carrousel.mariecurie": "La Femme des Sciences",
     "carrousel.robertdesorbon": "Le Confesseur",
     "carrousel.visconti": "La Mécène Curieuse",
+    "carrousel.nenot": "L'Architecte du Savoir",
+    "carrousel.lemercier": "L'Ami du Cardinal",
     "carrousel.story": "Histoire",
-    "cinematic.text": "Parmi les milliers d’étudiants ayant fréquenté la Sorbonne, Richelieu est l’un des plus connus. Célèbre ministre de Louis XIII, homme religieux, intelligent, ambitieux,  Armand Jean du Plessis de Richelieu naquit en 1585 au sein d’une grande fratrie. Promis aux armes, il assuma finalement la charge d’évêché de Luçon. Homme de responsabilité, le cardinal fut aussi proviseur de la Sorbonne, des années plus tard...\nSa profonde volonté de renforcer le pouvoir royal engendra un regain d’autorité, appelé aujourd’hui “l’absolutisme”.",
+    "cinematic.text": "Parmi les milliers d’étudiants ayant fréquenté la Sorbonne, Richelieu est l’un des plus connus. Célèbre ministre de Louis XIII, homme religieux, intelligent, ambitieux,  Armand Jean du Plessis de Richelieu naquit en 1585 au sein d’une grande fratrie. Promis aux armes, il assuma finalement la charge d’évêché de Luçon. Homme de responsabilités, le cardinal fut aussi proviseur de la Sorbonne, des années plus tard...\nSa profonde volonté de renforcer le pouvoir royal engendra un regain d’autorité, appelé aujourd’hui “l’absolutisme”.",
     "nav.about": "à propos",
     "nav.chronologie": "Chronologie",
     "nav.article": "Voir l'article collecté",
@@ -35,7 +37,7 @@
     "epilogue.text2": "Et nous pouvons aujourd’hui nous demander si, averti de l’agitation engendrée par la Révolution française, Richelieu se serait tant appliqué à l’affirmation de l'absolutisme en son temps...",
     "epilogue.skip": "Passer l'épilogue",
     "tuto.keyboard": "Utilise les flèches de ton clavier pour te déplacer",
-    "tuto.spacebar": "Clique sur la barre espace quand tu vois ces formes dans les scènes",
+    "tuto.spacebar": "Appuie sur la barre espace quand tu vois ces formes apparaître",
     "sceneTitle.text": "Scène"
   }
 }
