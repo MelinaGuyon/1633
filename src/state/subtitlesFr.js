@@ -6,30 +6,43 @@ export default [
     ['', 10000]
   ],
   [
-    ['Parmi les milliers d’étudiants ayant fréquenté la Sorbonne, Richelieu est l’un des plus connus.', 0],
-    ['Célèbre ministre de Louis XIII, homme religieux, intelligent, ambitieux,  Armand Jean du Plessis de Richelieu naquit en 1585 au sein d’une grande fratrie.', 7200],
-    ['Promis aux armes, il assuma finalement la charge d’évêché de Luçon.', 20000],
-    ['Homme de responsabilité, le cardinal fut aussi proviseur de la Sorbonne, des années plus tard...', 24000],
-    ['Sa profonde volonté de renforcer le pouvoir royal engendra un regain d’autorité, appelé aujourd’hui “l’absolutisme."', 31000],
-    ['', 44000]
+    ['Parmi les milliers d’étudiants ayant fréquenté la Sorbonne,', 0],
+    ['Richelieu est l’un des plus connus.', 3000],
+    ['Célèbre ministre de Louis XIII,', 6000],
+    ['homme religieux, intelligent, ambitieux,', 8000],
+    ['Armand Jean du Plessis de Richelieu', 11000],
+    ['naquit en 1585 au sein d’une grande fratrie.', 13500],
+    ['Promis aux armes,', 18300],
+    ['il assuma finalement la charge d’évêché de Luçon.', 19400],
+    ['Homme de responsabilités,', 22700],
+    ['le cardinal fut aussi proviseur de la Sorbonne,', 24600],
+    ['des années plus tard...', 27500],
+    ['Sa profonde volonté de renforcer le pouvoir royal', 29600],
+    ['engendra un regain d’autorité,', 32600],
+    ['appelé aujourd’hui “l’absolutisme."', 34500],
+    ['', 40000]
   ],
   [
     ['Voici notre Richelieu jeune, en 1606,', 0],
-    ['lors de son arrivée en Sorbonne, devant les portes de la chapelle médiévale..', 5000],
+    ['lors de son arrivée en Sorbonne,', 3800],
+    ['devant les portes de la chapelle médiévale..', 5400],
     ['', 10000]
   ],
   [
-    ['Jetez donc un coup d’œil à ces vitraux qui, pour une fois, n’illustrent pas la Bible.', 0],
-    ['Ils racontent une toute autre histoire, particulièrement rocambolesque...', 7500],
-    ['Celle… d’un crâne. Un crâne d’importance…', 10000],
-    ['', 12000]
+    ['Jetez donc un coup d’œil à ces vitraux', 0],
+    ['qui, pour une fois, n’illustrent pas la Bible.', 2100],
+    ['Ils racontent une toute autre histoire,', 5500],
+    ['particulièrement rocambolesque...', 7900],
+    ['Celle… d’un crâne.', 10500],
+    ['Un crâne d’importance…', 13000],
+    ['', 15000]
   ],
   [
     ['Mais… pourquoi tant d’agitation ?', 0],
     ['Ces gens ne ressemblent ni à des religieux, ', 2000],
     ['ni à des étudiants venus se recueillir auprès du tombeau !', 4300],
     ['Alors qui sont-ils ?', 7000],
-	  ['Le jeune Richelieu ne peut l’imaginer, mais vous les aurez sûrement reconnus…', 9000],
+    ['Le jeune Richelieu ne peut l’imaginer, mais vous les aurez sûrement reconnus…', 9000],
     ['ce sont les manifestants populaires de 1789 : les sans-culottes !', 13500],
     ['Ils sont venus pour profaner le tombeau.', 20000],
     [' Mais à qui appartient-il ? Qui pourrait mériter un tel sort... ?', 22000],
