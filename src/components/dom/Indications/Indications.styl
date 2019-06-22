@@ -1,6 +1,6 @@
 .indications
   display: inline-block
-  z-index: $indexIndications
+  z-index $indexIndicationsOnLoad
   position absolute
   bottom: 50px
   left: 50%
@@ -10,6 +10,9 @@
   opacity: 0
   pointer-events: none
   transition: opacity .3s ease-out
+
+  &.app-started
+    z-index: $indexIndications
 
   &.is-visible
     opacity: 1

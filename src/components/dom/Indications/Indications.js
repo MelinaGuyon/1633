@@ -22,7 +22,13 @@ export default class Indications extends DomComponent {
   }
 
   bind () {
+    this.listenStore('started', this.fastbind('updateZIndex', 1))
     signals.newIndication.listen(this.setIndication, this)
+  }
+
+  updateZIndex (started) {
+    if (started) this.base.classList.add('app-started')
+    else this.base.classList.remove('app-started')
   }
 
   setIndication (indication) {

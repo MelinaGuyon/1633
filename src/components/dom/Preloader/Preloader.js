@@ -273,7 +273,7 @@ export default class Preloader extends DomComponent {
         delay: 3000 - 500,
         complete: () => {
           this.props.onComplete() // launch game
-          delay(() => { this.prld.classList.add('loaded') }, 600)
+          delay(() => { this.prld.classList.add('loaded') }, 1400)
         }
       })
   }
