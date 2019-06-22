@@ -12,6 +12,8 @@ export default class SoundChecks extends SoundChecksAbs {
     // 1 = soundId car on veut lancer le son 1
     this.mains.push(this.addComponent(Colliders, { layer: '8bg200', x: -700, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'voixoff/chap_5', 11), name: 'voixoff/chap_5' }))
     this.mains.push(this.addComponent(Colliders, { layer: '8bg200', x: -600, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'effect/ceremony', 11), name: 'effect/ceremony' }))
+    this.mains.push(this.addComponent(Colliders, { layer: '8bg200', x: 600, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'effect/ceremony', 11), name: 'effect/ceremony' }))
+    // this.mains.push(this.addComponent(Colliders, { layer: '8bg200', x: 700, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'voixoff/chap_5', 11), name: 'voixoff/chap_5' }))
   }
 
   componentWillUnmount () {
