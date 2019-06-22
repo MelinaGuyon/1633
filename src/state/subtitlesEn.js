@@ -20,22 +20,16 @@ export default [
     ['His strong will to reinforce the king’s power', 29600],
     ['lead to authority resurgence,', 32600],
     ['now called “absolutism”.', 34500],
-    ['', 40000]
-  ],
-  [
-    ['Here is our young Richelieu, in 1606,', 0],
-    ['during its arrival at La Sorbonne,', 3800],
-    ['in front of the gates of the medieval chapel.', 5400],
-    ['', 10000]
-  ],
-  [
-    ['Have a look at those stained-glasses', 0],
-    ['that, for a change, does not represent a biblical scene.', 2100],
-    ['It tells us a different story,', 5500],
-    ['especially anormal...', 7900],
-    ['The story… of a skull.', 10500],
-    ['An important skull...', 13000],
-    ['', 15000]
+    ['Here is our young Richelieu, in 1606,', 37300],
+    ['during its arrival at La Sorbonne,', 41100],
+    ['in front of the gates of the medieval chapel.', 42700],
+    ['Have a look at those stained-glasses', 46300],
+    ['that, for a change, does not represent a biblical scene.', 48400],
+    ['It tells us a different story,', 51800],
+    ['especially anormal...', 54200],
+    ['The story… of a skull.', 56800],
+    ['An important skull...', 59300],
+    ['', 62000]
   ],
   [
     ['Well… Wat is this fuss about ?', 0],
