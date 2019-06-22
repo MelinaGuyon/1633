@@ -10,10 +10,10 @@ export default class SoundChecks extends SoundChecksAbs {
     this.mains = []
     // ic dans cb :
     // 0 = soundId car on veut lancer le son 0
-    this.mains.push(this.addComponent(Colliders, { layer: '4bg200', x: -700, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'voixoff/chap_3', 7), name: 'voixoff/chap_3' }))
+    this.mains.push(this.addComponent(Colliders, { layer: '4bg200', x: -700, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'voixoff/chap_3', 5), name: 'voixoff/chap_3' }))
     this.mains.push(this.addComponent(Colliders, { layer: '4bg200', x: -600, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'effect/fire', 7), name: 'effect/fire' }))
     this.mains.push(this.addComponent(Colliders, { layer: '4bg200', x: 600, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'effect/fire', 7), name: 'effect/fire' }))
-    this.mains.push(this.addComponent(Colliders, { layer: '4bg200', x: 700, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'voixoff/chap_3', 7), name: 'voixoff/chap_3' }))
+    this.mains.push(this.addComponent(Colliders, { layer: '4bg200', x: 700, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'voixoff/chap_3', 5), name: 'voixoff/chap_3' }))
   }
 
   componentWillUnmount () {

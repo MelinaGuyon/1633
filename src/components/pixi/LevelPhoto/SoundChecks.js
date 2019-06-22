@@ -10,7 +10,7 @@ export default class SoundChecks extends SoundChecksAbs {
     this.mains = []
     // ic dans cb :
     // 1 = soundId car on veut lancer le son 1
-    this.mains.push(this.addComponent(Colliders, { layer: '11bg200', x: -700, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'voixoff/chap_8', 14), name: 'voixoff/chap_8' }))
+    this.mains.push(this.addComponent(Colliders, { layer: '11bg200', x: -700, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'voixoff/chap_8', 12), name: 'voixoff/chap_8' }))
     this.mains.push(this.addComponent(Colliders, { layer: '11bg200', x: -400, y: -100, group: 'sound', collide: true, tint: 0x000000, cb: this.cb.bind(this, 'effect/photo', 14), name: 'effect/photo' }))
   }
 
