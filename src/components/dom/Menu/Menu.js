@@ -92,6 +92,7 @@ class CollectButton extends DomComponent {
 class SoundButton extends DomComponent {
   template (props) {
     this.pause = false
+    this.forceMuted = false
 
     return (
       <button class='nav-sound__btn magnet ' data-id={props.id}>
@@ -110,17 +111,38 @@ class SoundButton extends DomComponent {
 
   bind () {
     this.base.addEventListener('click', this.fastbind('onClick', 1)) // 1 to pass the event
+    this.listenStore('pause', this.checkMuted)
+  }
+
+  checkMuted (pause) {
+    if (pause.allMuted) {
+      this.forceMuted = true
+      store.mute.set(true)
+      this.base.classList.add('pause')
+    } else {
+      this.forceMuted = false
+      if (this.pause) {
+        this.pause = true
+        store.mute.set(true)
+        this.base.classList.add('pause')
+      } else {
+        this.pause = false
+        store.mute.set(false)
+        this.base.classList.remove('pause')
+      }
+    }
   }
 
   onClick (e) {
+    if (this.forceMuted) return
     if (!this.pause) {
       this.pause = true
       store.mute.set(true)
-      e.target.closest('.nav-sound__btn').classList.add('pause')
+      this.base.classList.add('pause')
     } else {
       this.pause = false
       store.mute.set(false)
-      e.target.closest('.nav-sound__btn').classList.remove('pause')
+      this.base.classList.remove('pause')
     }
   }
 }
