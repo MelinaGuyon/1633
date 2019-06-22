@@ -62,6 +62,7 @@ export default class Preloader extends DomComponent {
     this.bind()
     this.initInertia()
     this.load()
+    signals.moreNoise.dispatch(1)
 
     this.prld.classList.add('is-visible')
   }
@@ -260,6 +261,9 @@ export default class Preloader extends DomComponent {
             sound.play('3_music_studio')
             sound.setMusic('3_music_studio')
           }, 1000)
+          delay(() => {
+            signals.moreNoise.dispatch(0)
+          }, 200)
         }
       })
       .add({

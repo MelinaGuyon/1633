@@ -9,7 +9,7 @@ import Preloader from 'components/dom/Preloader/Preloader'
 import MouseMv from 'components/dom/MouseMv/MouseMv'
 import Indications from 'components/dom/Indications/Indications'
 import GameInterface from 'components/dom/GameInterface/GameInterface'
-
+import signals from 'state/signals'
 
 export default class App extends DomComponent {
   template ({ base }) {
@@ -17,6 +17,7 @@ export default class App extends DomComponent {
   }
 
   componentDidMount () {
+    this.bind()
     pixi.init()
 
     this.render(pixi.getView(), this.base)
@@ -35,6 +36,19 @@ export default class App extends DomComponent {
       />, this.base)
 
     mouse.init(document.getElementsByClassName('game'))
+  }
+
+  bind () {
+    signals.moreNoise.listen(this.updateNoise)
+  }
+
+  unbind () {
+    signals.moreNoise.unlisten(this.updateNoise)
+  }
+
+  updateNoise (moreNoise) {
+    if (moreNoise) document.body.classList.add('more-noise')
+    else document.body.classList.remove('more-noise')
   }
 
   didPreload () {
