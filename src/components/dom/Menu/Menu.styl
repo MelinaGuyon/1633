@@ -156,19 +156,24 @@
     z-index: $indexMenu
     font-family: RobotoCondensedLight
     transition: opacity .3s $quad-ease-out;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
 
     &.hidden
       opacity 0
       pointer-events: none;
 
     button
+      font-size: 14px
+      font-family: RobotoCondensedLight
       border: 0px
       background-color transparent
       color: $white
       outline: none
       display block
       padding: 5px
-      margin 14px 0
+      margin 10px 0
       cursor: none
 
   .nav
