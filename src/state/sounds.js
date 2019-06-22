@@ -5,8 +5,6 @@ const musics = {
 const voices = {
   'voixoff/carrousel': { loop: false, fadeOut: 900, volume: 5 },
   'voixoff/intro': { loop: false, fadeOut: 900, volume: 5 },
-  'voixoff/intro_bis': { loop: false, fadeOut: 900, volume: 5 },
-  'voixoff/intro_ter': { loop: false, fadeOut: 900, volume: 5 },
   'voixoff/chap_1': { loop: false, fadeOut: 900, volume: 5 },
   'voixoff/chap_2': { loop: false, fadeOut: 900, volume: 5 },
   'voixoff/chap_2_bis': { loop: false, fadeOut: 900, volume: 5 },

@@ -24,7 +24,6 @@ export default class SoundTimeline extends DomComponent {
   componentDidMount () {
     this.updateInertia = this.updateInertia.bind(this)
     this.updateTimeline = this.updateTimeline.bind(this)
-    this.launch = this.launch.bind(this)
 
     logger('SoundTimeline did mount', '#47b342').log()
     this.initInertia()
@@ -32,21 +31,11 @@ export default class SoundTimeline extends DomComponent {
   }
 
   bind () {
-    this.listenStore('launched', this.launch)
-  }
-
-  launch (launched) {
-    console.log('je passe', launched)
-    if (launched) this.internalBind()
-    else this.internalUnbind()
-  }
-
-  internalBind () {
     signals.soundSeeked.listen(this.updateTimeline)
     raf.add(this.updateInertia)
   }
 
-  internalUnbind () {
+  unbind () {
     signals.soundSeeked.unlisten(this.updateTimeline)
     raf.remove(this.updateInertia)
 
