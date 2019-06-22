@@ -269,6 +269,9 @@ export default class Timeline extends DomComponent {
   mooving (displacement) {
     if (!this.currentPoint) return
 
+    if (displacement) this.displacement = displacement
+    else displacement = this.displacement
+
     // points
     let distStart
     let actualMooveStart
@@ -415,6 +418,8 @@ export default class Timeline extends DomComponent {
       if (index < this.currenPointId - 1) {
         let x = this.size - el.endingX - this.pointSize
         el.base.style.transform = `translateX(-${x}px)`
+      } else if (index === this.currenPointId - 1) {
+        this.mooving()
       }
     })
   }
