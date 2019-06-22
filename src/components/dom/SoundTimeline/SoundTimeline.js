@@ -12,6 +12,8 @@ import './SoundTimeline.styl'
 
 export default class SoundTimeline extends DomComponent {
   template ({ base }) {
+    this.canStartAgain = true
+
     return (
       <section class='sound-timeline' ref={addRef(this, 'timeline')}>
         <div class='wrapper'>
@@ -64,16 +66,21 @@ export default class SoundTimeline extends DomComponent {
   }
 
   updateTimeline (state) {
+    if (!this.canStartAgain) return
     if (state.end) {
+      this.canStartAgain = false
       this.inrtia.percent.stopped = true
       anime({
         targets: this.inner,
-        scaleX: 0,
-        duration: 1200,
-        easing: 'easeInOutQuad',
+        opacity: 0,
+        duration: 400,
+        easing: 'easeOutQuad',
         delay: 600,
         complete: () => {
-          if (this.inrtia.percent.stopped) this.inrtia.percent.value = 0
+          this.inrtia.percent.value = 0
+          this.inner.style.transform = 'scaleX(0)'
+          this.inner.style.opacity = 1
+          this.canStartAgain = true
         }
       })
       return

@@ -33,7 +33,7 @@ class TutoKeyboard extends DomComponent {
     this.base.classList.add('active')
     anime({
       targets: this.base,
-      opacity: 1,
+      opacity: 0.7,
       duration: 600,
       easing: 'easeOutQuad'
     })
@@ -96,7 +96,7 @@ class TutoSpace extends DomComponent {
     this.base.classList.add('active')
     anime({
       targets: this.base,
-      opacity: 1,
+      opacity: 0.7,
       duration: 600,
       easing: 'easeOutQuad'
     })

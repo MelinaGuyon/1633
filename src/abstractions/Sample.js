@@ -125,6 +125,9 @@ export default class Sample {
     const sound = this.state.sound
     if (!id || !sound) return
 
+    console.log('stop sound')
+    if (this.checkSeek) signals.soundSeeked.dispatch({ end: true })
+
     this.state.fadeInMax = 0
     this.state.fadeInTimer = 0
     const fadeOut = opts.fadeOut || this.fadeOut

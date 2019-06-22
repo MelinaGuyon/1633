@@ -204,6 +204,7 @@ export default class Preloader extends DomComponent {
     sound.setMusic('3_music_studio')
     this.props.onComplete() // launch game
     this.prld.classList.add('loaded')
+    store.started.set(true)
   }
 
   completeLoading () {
