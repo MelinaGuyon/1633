@@ -283,7 +283,7 @@ export default class Menu extends DomComponent {
 
     return (
       <section class='menu' ref={addRef(this, 'menu')}>
-        <div class='menu__top-left'>
+        <div class='menu__top-left magnet' ref={addRef(this, 'logo')}>
           <img class='light' src='assets/img/logo/logo-white.png' alt='logo' />
           <img class='dark' src='assets/img/logo/logo-dark.png' alt='logo' />
         </div>
@@ -315,6 +315,7 @@ export default class Menu extends DomComponent {
     this.updateMenu = this.updateMenu.bind(this)
     this.updateSocials = this.updateSocials.bind(this)
     this.updateGame = this.updateGame.bind(this)
+    this.logoClick = this.logoClick.bind(this)
 
     this.bind()
   }
@@ -326,6 +327,14 @@ export default class Menu extends DomComponent {
     this.listenStore('menuSocials', this.updateSocials)
     this.listenStore('menuGame', this.updateGame)
     this.listenStore('ended', this.updateSocials)
+
+    this.logo.addEventListener('click', this.logoClick)
+  }
+
+  logoClick () {
+    signals.forceReset.dispatch()
+    signals.stopSubtitles.dispatch()
+    store.launched.set(false)
   }
 
   onFactUnlocked (id) {

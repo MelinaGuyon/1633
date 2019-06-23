@@ -50,6 +50,7 @@ export default class About extends DomComponent {
 
   bind () {
     this.listenStore('aboutStatus', this.onAboutClick)
+    signals.forceReset.listen(this.reset)
   }
 
   onAboutClick (aboutStatus) {
@@ -70,5 +71,9 @@ export default class About extends DomComponent {
       if (this.stateGameMenu) store.menuGame.set(this.stateGameMenu)
       signals.moreNoise.dispatch(0)
     }
+  }
+
+  reset () {
+    store.aboutStatus.set('disappearing')
   }
 }

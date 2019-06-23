@@ -72,7 +72,7 @@ class Fact extends DomComponent {
             <PreviousButton id={props.id} factDate={props.content.date} goToDateOnChronoButton={props.goToDateOnChronoButton} />
             <div class='subContent' >
               <p class='title'>{props.content.title}</p>
-              <p class='name'>{props.content.historyName}</p>
+              <p class='name'>{props.content.historyName} / {props.content.date}</p>
               <p class='text'>{props.content.text}</p>
               <p class='links'>
                 <a href={props.content.textUrl} target='_blank' class='textLink magnet'>texte / {props.content.textUrlTitle}</a>
@@ -86,6 +86,7 @@ class Fact extends DomComponent {
         <div class='locked-title'>
           <h2>{props.content.title}</h2>
           <h3>{props.content.historyName}</h3>
+          <h4>{props.content.date}</h4>
         </div>
         <Glass ref={addRef(this, 'glass')} autostart parrent path={`glass/${props.content.historyId}/${props.content.img}`} moovingCb={this.moovingCb.bind(this)}/>
       </div>
@@ -191,6 +192,7 @@ export default class Chronologie extends DomComponent {
     signals.factUnlock.listen(this.fastbind('onFactUnlocked', 1))
     this.listenStore('chronologieStatus', this.onChronologieClick)
     this.listenStore('size', this.resize)
+    signals.forceReset.listen(this.reset)
   }
 
   internalBind () {
@@ -388,5 +390,9 @@ export default class Chronologie extends DomComponent {
         el.glass.getCoords()
       })
     }, 1000)
+  }
+
+  reset () {
+    store.chronologieStatus.set('disappearing')
   }
 }
