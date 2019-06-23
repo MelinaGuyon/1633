@@ -155,6 +155,7 @@ export default class Body {
     if (this.maxX === this.x) {
       store.pause.set({ paused: true, allMuted: false })
       store.ended.set(true)
+      signals.stopSubtitles.dispatch()
       delay(() => { this.x = 0 }, 1000)
     }
   }
@@ -169,7 +170,7 @@ export default class Body {
       max += size
     })
     if (max < store.size.get().w * 2) max = store.size.get().w * 2
-    return (max - 200)
+    return (2000 - 200)
   }
 
   collideWith (group, cb = null) {
@@ -189,6 +190,7 @@ export default class Body {
   }
 
   reset () {
+    signals.stopSubtitles.dispatch()
     store.pause.set({ paused: true, allMuted: false })
     delay(() => { this.x = 0 }, 1000)
   }

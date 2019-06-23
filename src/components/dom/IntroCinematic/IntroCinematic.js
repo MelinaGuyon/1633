@@ -79,6 +79,7 @@ export default class IntroCinematic extends DomComponent {
 
   finished (number) {
     clearInterval(this.intervalId)
+    signals.stopSubtitles.dispatch()
     anime({
       targets: this.base,
       opacity: 0,

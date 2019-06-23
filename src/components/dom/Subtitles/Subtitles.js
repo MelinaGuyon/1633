@@ -25,6 +25,7 @@ export default class Subtitles extends DomComponent {
     this.initWritting = this.initWritting.bind(this)
     this.update = this.update.bind(this)
     this.pause = this.pause.bind(this)
+    this.stopSubtitles = this.stopSubtitles.bind(this)
 
     this.bind()
   }
@@ -32,6 +33,7 @@ export default class Subtitles extends DomComponent {
   bind () {
     this.listenStore('pause', this.pause)
     signals.writeSubtitles.listen(this.initWritting)
+    signals.stopSubtitles.listen(this.stopSubtitles)
   }
 
   bindRaf () {
@@ -50,7 +52,9 @@ export default class Subtitles extends DomComponent {
     dt = dt * 1
     this.time += dt
 
-    let text
+    console.log('update')
+
+    let text = ''
     this.currentSubtiltles.forEach(el => {
       const time = el[1]
       if (time < this.time) text = el[0]
@@ -61,22 +65,37 @@ export default class Subtitles extends DomComponent {
   }
 
   initWritting (index) {
+    console.log('INIT')
     this.time = 0
+    this.newOne = true
     if (!this.binded) this.bindRaf()
+    this.globalIndex = index
     this.currentSubtiltles = store.subtitles.get()[index]
   }
 
   write (text) {
     this.text = text
     this.subtiltlesContent.innerHTML = text
+
+    if (this.text === '') this.stopPassedOne()
   }
 
-  remove () {
-    this.subtiltlesContent.innerHTML = ''
+  stopPassedOne () {
+    console.log('STOP')
+    this.currentSubtiltles = []
+    this.unbindRaf()
   }
 
   pause (pause) {
     if (pause.paused) this.unbindRaf()
-    else this.bindRaf()
+    else if (this.currentSubtiltles && this.currentSubtiltles.length > 1) this.bindRaf()
+  }
+
+  stopSubtitles () {
+    console.log('STOP ALL')
+    this.currentSubtiltles = []
+    this.unbindRaf()
+    this.text = ''
+    this.subtiltlesContent.innerHTML = ''
   }
 }

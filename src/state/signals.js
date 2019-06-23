@@ -18,7 +18,8 @@ const signals = {
   soundSeeked: new Signal(),
   mouseWheelEnd: new Signal(),
   moreNoise: new Signal(),
-  forceReset: new Signal()
+  forceReset: new Signal(),
+  stopSubtitles: new Signal()
 }
 
 export default signals
