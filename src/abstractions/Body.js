@@ -170,7 +170,7 @@ export default class Body {
       max += size
     })
     if (max < store.size.get().w * 2) max = store.size.get().w * 2
-    return (2000 - 200)
+    return (max - 200)
   }
 
   collideWith (group, cb = null) {

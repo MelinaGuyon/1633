@@ -52,8 +52,6 @@ export default class Subtitles extends DomComponent {
     dt = dt * 1
     this.time += dt
 
-    console.log('update')
-
     let text = ''
     this.currentSubtiltles.forEach(el => {
       const time = el[1]
@@ -65,7 +63,6 @@ export default class Subtitles extends DomComponent {
   }
 
   initWritting (index) {
-    console.log('INIT')
     this.time = 0
     this.newOne = true
     if (!this.binded) this.bindRaf()
@@ -81,7 +78,6 @@ export default class Subtitles extends DomComponent {
   }
 
   stopPassedOne () {
-    console.log('STOP')
     this.currentSubtiltles = []
     this.unbindRaf()
   }
@@ -92,7 +88,6 @@ export default class Subtitles extends DomComponent {
   }
 
   stopSubtitles () {
-    console.log('STOP ALL')
     this.currentSubtiltles = []
     this.unbindRaf()
     this.text = ''

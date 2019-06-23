@@ -333,6 +333,7 @@ export default class Menu extends DomComponent {
 
   logoClick () {
     signals.forceReset.dispatch()
+    signals.stopSubtitles.dispatch()
     store.launched.set(false)
   }
 
