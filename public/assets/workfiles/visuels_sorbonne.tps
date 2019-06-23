@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>4</int>
         <key>texturePackerVersion</key>
-        <string>4.11.0</string>
+        <string>4.12.1</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -289,6 +289,11 @@
             <key type="filename">05-armez/armez-c.png</key>
             <key type="filename">05-armez/armez-f.png</key>
             <key type="filename">05-armez/armez-g.png</key>
+            <key type="filename">anims/pluie1.png</key>
+            <key type="filename">anims/pluie2.png</key>
+            <key type="filename">anims/pluie3.png</key>
+            <key type="filename">anims/pluie4.png</key>
+            <key type="filename">anims/pluie5.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -1557,6 +1562,19 @@
                 <rect>50,85,100,170</rect>
                 <key>scale9Paddings</key>
                 <rect>50,85,100,170</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">anims/lampeSorbonne5.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>99,186,197,371</rect>
+                <key>scale9Paddings</key>
+                <rect>99,186,197,371</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
