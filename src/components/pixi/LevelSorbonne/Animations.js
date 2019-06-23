@@ -19,22 +19,22 @@ export default class Animations extends PixiComponent {
     this.animFumeeSorbonne = new Animator(this.refs.fumeeSorbonne)
     this.animFumeeSorbonne.play('fumeeSorbonne', { loop: true, frameDuration: 250 })
 
-    this.refs.pluie = this.addChild('pluie', { layer: '9bg500', x: 30, y: -60 })
-    this.refs.pluie.scale.x = 0.46
-    this.refs.pluie.scale.y = 0.46
-    this.animPluie = new Animator(this.refs.pluie)
-    this.animPluie.play('pluie', { loop: true, frameDuration: 160 })
+    // this.refs.pluie = this.addChild('pluie', { layer: '9bg500', x: 30, y: -60 })
+    // this.refs.pluie.scale.x = 0.46
+    // this.refs.pluie.scale.y = 0.46
+    // this.animPluie = new Animator(this.refs.pluie)
+    // this.animPluie.play('pluie', { loop: true, frameDuration: 160 })
   }
 
   componentWillUnmount () {
     this.animLampeSorbonne.dispose()
     this.animFumeeSorbonne.dispose()
-    this.animPluie.dispose()
+    // this.animPluie.dispose()
   }
 
   update (dt) {
     this.animLampeSorbonne.update(dt)
     this.animFumeeSorbonne.update(dt)
-    this.animPluie.update(dt)
+    // this.animPluie.update(dt)
   }
 }
