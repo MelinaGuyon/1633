@@ -14,7 +14,7 @@ export default class CityBuildings extends PixiComponent {
     this.mains.push(this.addComponent(Building, { layer: '9f200', type: 'f', x: 150, y: 50, scale: 0.66 })) // man
     this.mains.push(this.addComponent(Building, { layer: '9f200', type: 'g', x: -220, y: 90, scale: 0.66 })) // woman
     // this.mains.push(this.addComponent(Building, { layer: '9bg600', type: 'h', x: -420, y: -270, scale: 0.66 })) // feu
-    // this.mains.push(this.addComponent(Building, { layer: '9bg500', type: 'i', x: 30, y: -60, scale: 0.66 })) // pluie
+    this.mains.push(this.addComponent(Building, { layer: '9bg500', type: 'i', x: 30, y: -60, scale: 0.66 })) // pluie
   }
 
   componentWillUnmount () {
