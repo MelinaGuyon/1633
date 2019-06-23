@@ -27,6 +27,8 @@ export default class Epilogue extends DomComponent {
 
   componentDidMount () {
     logger('Epilogue did mount', '#47b342').log()
+    this.reset = this.reset.bind(this)
+
     this.bind()
   }
 
@@ -36,10 +38,12 @@ export default class Epilogue extends DomComponent {
 
   internalBind () {
     this.skip.addEventListener('click', this.fastbind('finished', 1))
+    signals.forceReset.listen(this.reset)
   }
 
   internalUnbind () {
     this.skip.removeEventListener('click', this.finished)
+    signals.forceReset.unlisten(this.reset)
   }
 
   launchEpilogue (ended) {
@@ -109,6 +113,15 @@ export default class Epilogue extends DomComponent {
   }
 
   finished () {
+    clearInterval(this.intervalId)
+    this.internalUnbind()
+    sound.stop(sound.getMusic())
+    sound.stop('voixoff/epilogue')
+    store.launched.set(false)
+    this.base.classList.remove('visible')
+  }
+
+  reset () {
     clearInterval(this.intervalId)
     this.internalUnbind()
     sound.stop(sound.getMusic())

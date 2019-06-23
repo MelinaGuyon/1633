@@ -401,6 +401,7 @@ export default class Carrousel extends DomComponent {
     this.carrousel.style.opacity = 1
     this.activeCarousel()
     this.game.destroy()
+    console.log('je passe', this.game)
   }
 
   mousehover (hovering) {

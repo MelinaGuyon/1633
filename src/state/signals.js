@@ -17,7 +17,8 @@ const signals = {
   activeTuto: new Signal(),
   soundSeeked: new Signal(),
   mouseWheelEnd: new Signal(),
-  moreNoise: new Signal()
+  moreNoise: new Signal(),
+  forceReset: new Signal()
 }
 
 export default signals

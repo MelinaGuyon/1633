@@ -52,11 +52,13 @@ export default class Body {
     this.updateDir = this.updateDir.bind(this)
     this.prepareToStop = this.prepareToStop.bind(this)
     this.stop = this.stop.bind(this)
+    this.reset = this.reset.bind(this)
 
     signals.goLeft.listen(this.updateDir)
     signals.goRight.listen(this.updateDir)
     signals.stop.listen(this.prepareToStop)
     signals.animePersoFinished.listen(this.stop)
+    signals.forceReset.listen(this.reset)
   }
 
   unbind () {
@@ -64,6 +66,7 @@ export default class Body {
     signals.goRight.unlisten(this.updateDir)
     signals.stop.unlisten(this.prepareToStop)
     signals.animePersoFinished.unlisten(this.stop)
+    signals.forceReset.unlisten(this.reset)
   }
 
   updateDir (dir) {
@@ -166,7 +169,7 @@ export default class Body {
       max += size
     })
     if (max < store.size.get().w * 2) max = store.size.get().w * 2
-    return (max - 200)
+    return (2000 - 200)
   }
 
   collideWith (group, cb = null) {
@@ -183,5 +186,12 @@ export default class Body {
     this.component = undefined
     this.attachment = undefined
     this.rect = undefined
+  }
+
+  reset () {
+    console.log('reset')
+    store.pause.set({ paused: true, allMuted: false })
+    // store.ended.set(true)
+    delay(() => { this.x = 0 }, 1000)
   }
 }

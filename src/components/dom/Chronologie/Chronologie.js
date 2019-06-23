@@ -192,6 +192,7 @@ export default class Chronologie extends DomComponent {
     signals.factUnlock.listen(this.fastbind('onFactUnlocked', 1))
     this.listenStore('chronologieStatus', this.onChronologieClick)
     this.listenStore('size', this.resize)
+    signals.forceReset.listen(this.reset)
   }
 
   internalBind () {
@@ -389,5 +390,9 @@ export default class Chronologie extends DomComponent {
         el.glass.getCoords()
       })
     }, 1000)
+  }
+
+  reset () {
+    store.chronologieStatus.set('disappearing')
   }
 }

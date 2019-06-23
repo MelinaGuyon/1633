@@ -2,6 +2,7 @@ import { Howler } from 'howler'
 import Sample from 'abstractions/Sample'
 import store from 'state/store'
 import bank from 'state/sounds'
+import signals from 'state/signals';
 
 const samples = {}
 let hidden = [] // Used to store the good visibility change method
@@ -46,6 +47,7 @@ function setup () {
   if (hidden[0]) document.addEventListener(hidden[0], onVisibilityChange, false)
   store.mute.listen(toggleMute)
   store.pause.listen(togglePause)
+  signals.forceReset.listen(reset)
 
   toggleMute(store.mute.get())
 }
@@ -128,6 +130,13 @@ function voiceIsPlaying (dt) {
 function effectIsPlaying (dt) {
   if (!samples[effectPlay]) return { sound: effectPlay, playing: false }
   else return { sound: effectPlay, playing: samples[effectPlay].state.playing }
+}
+
+function reset () {
+  let keys = Object.keys(samples)
+  keys.forEach((key) => {
+    samples[key].stop()
+  })
 }
 
 export default {
