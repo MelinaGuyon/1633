@@ -135,6 +135,7 @@ function effectIsPlaying (dt) {
 function reset () {
   let keys = Object.keys(samples)
   keys.forEach((key) => {
+    if (key.indexOf('music') >= 0) return
     samples[key].stop()
   })
 }
