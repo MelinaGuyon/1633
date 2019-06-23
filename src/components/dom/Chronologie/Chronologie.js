@@ -285,8 +285,10 @@ export default class Chronologie extends DomComponent {
       store.menuLight.set(true)
       store.menuSocials.set(false)
       store.menuGame.set(false)
-      signals.moreNoise.dispatch(1)
-      delay(() => { signals.newDom.dispatch() }, 1000) // car animation css qui décale les points
+      delay(() => {
+        signals.newDom.dispatch()
+        if (chronologieStatus === 'appearing') signals.moreNoise.dispatch(1)
+      }, 900) // car animation css qui décale les points
     } else if (chronologieStatus === 'disappearing') {
       this.chronologie.classList.remove('visible')
       this.internalUnbind()

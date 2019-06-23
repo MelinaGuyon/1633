@@ -62,7 +62,9 @@ export default class About extends DomComponent {
       store.menuLight.set(true)
       store.menuSocials.set(false)
       store.menuGame.set(false)
-      signals.moreNoise.dispatch(1)
+      delay(() => {
+        if (aboutStatus === 'appearing') signals.moreNoise.dispatch(1)
+      }, 900)
     } else if (aboutStatus === 'disappearing') {
       this.about.classList.remove('visible')
       store.pause.set({ paused: this.stateGamePause, allMuted: false })
