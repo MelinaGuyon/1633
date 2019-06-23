@@ -29,11 +29,8 @@
       background: #c8c8c8
 
   &.hold
-    width: 36px
-    height: 36px
-
-    .dot
-      transform: translate(-50%, -50%) scale(1)
+    svg
+      stroke-dashoffset: 0 !important
 
   .dot
     position: absolute
@@ -56,4 +53,18 @@
     height: 100%
     border-radius: 50%
     transition: border .3s ease-out
+
+  .ring-holding
+    position relative
+    height: 100%
+
+    svg
+      position relative
+      top -5px
+      left -5px
+      transform: rotate(-90deg);
+      stroke-dasharray: 157
+      stroke-dashoffset: 157 // radius * 2 * PI
+      transition: 0.7s stroke-dashoffset $quad-ease-out;
+
 
