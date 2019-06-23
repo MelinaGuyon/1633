@@ -22,7 +22,7 @@ class MockedTarget extends PixiComponent {
     this.base.scale = [1, 1]
     this.base.anchor = [0.5, 0.5]
     this.base.y = 0
-    this.base.x = -0
+    this.base.x = props.x || 0
     this.lastScreenOffset = [0, 0]
     this.screenRelative = props.screenRelative || false
     this.screenAnchor = props.screenAnchor || [0, 0]
@@ -48,9 +48,11 @@ export default class Light extends PixiComponent {
 
     this.oscale = props.scale.slice()
     this.base.scale.set(props.scale[0] || 1, props.scale[1] || 1)
-    this.base.x = 0
+    this.base.x = props.x || 0
     this.base.y = 0
     this.base.blendMode = 3
+
+    console.log(props.x)
 
     this.x = props.x || 0
     this.y = props.y || 0
@@ -105,9 +107,8 @@ export default class Light extends PixiComponent {
   }
 
   updatePos (screenPos, scaleMult = 1) {
-    const p = this.toLocal(screenPos[0], screenPos[1])
-    this.base.x = p[0]
-    this.base.y = p[1]
+    this.base.x = this.x
+    this.base.y = this.y
     this.base.scale.x = this.oscale[0] * scaleMult
     this.base.scale.y = this.oscale[1] * scaleMult
   }
