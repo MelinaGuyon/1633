@@ -87,6 +87,7 @@ export default [
   ['1bg690', -690, 0],
   ['1bg500', -500, 0],
   ['1bg400', -400, 0],
+  ['light1', -450, -30],
   ['1bg10', -10, 0],
 
   ['hero', 0, 0], // main layer, used only for the hero
