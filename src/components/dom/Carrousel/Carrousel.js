@@ -363,7 +363,7 @@ export default class Carrousel extends DomComponent {
         this.game = new NapoleonbonaparteGame({ autosetup: true })
         break
       default:
-        console.log('error')
+	      this.game = new RichelieuGame({ autosetup: true })
     }
     store.currentHistory.set(obj.id)
     store.ended.set(false)
