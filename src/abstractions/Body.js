@@ -169,7 +169,7 @@ export default class Body {
       max += size
     })
     if (max < store.size.get().w * 2) max = store.size.get().w * 2
-    return (2000 - 200)
+    return (max - 200)
   }
 
   collideWith (group, cb = null) {
@@ -189,9 +189,7 @@ export default class Body {
   }
 
   reset () {
-    console.log('reset')
     store.pause.set({ paused: true, allMuted: false })
-    // store.ended.set(true)
     delay(() => { this.x = 0 }, 1000)
   }
 }
