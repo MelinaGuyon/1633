@@ -22,7 +22,7 @@ export default class SoundChecksAbs extends PixiComponent {
           let effectPlay = sound.effectIsPlaying()
           if (effectPlay.sound) {
             // if we want to launch a different sound OR the actual sound is finished
-            if (effectPlay.sound !== path || !effectPlay.playing) {
+            if (effectPlay.sound !== path) {
               sound.stop(effectPlay.sound) // stop previous sound
               sound.play(path)
             }
@@ -37,7 +37,7 @@ export default class SoundChecksAbs extends PixiComponent {
 		    // if there is sound playing
 		    if (voicePlay.sound) {
 			    // if we want to launch a different sound OR the actual sound is finished
-			    if (voicePlay.sound !== path || !voicePlay.playing) {
+			    if (voicePlay.sound !== path) {
 				    sound.stop(voicePlay.sound) // stop previous sound
             sound.play(path)
             signals.writeSubtitles.dispatch(soundId)
