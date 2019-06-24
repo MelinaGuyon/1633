@@ -4,9 +4,12 @@ import SoundChecksAbs from 'abstractions/SoundChecksAbs'
 import Colliders from 'abstractions/Colliders'
 import sound from 'controllers/sound'
 import signals from 'state/signals'
+import store from 'state/store'
 
 export default class SoundChecks extends SoundChecksAbs {
   setup () {
+    this.prezStop = false
+
     this.mains = []
     // ic dans cb :
     // 0 = soundId car on veut lancer le son 0 et on a besoin de l'ID du sound pour savoir quels sous tittre lancer
