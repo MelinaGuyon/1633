@@ -66,7 +66,7 @@ export default createStore({
   displayStats: isDev ? 1 : 0, // use stats (fps, drawcalls, ...)
   skipCarousel: isDev ? 1 : 0,
   skipLoading: isDev ? 1 : 0,
-  skipTuto: isDev ? 0 : 0,
+  skipTuto: isDev ? 1 : 0,
 
   // ---- game ----
   loaded: false, // Is app loaded
