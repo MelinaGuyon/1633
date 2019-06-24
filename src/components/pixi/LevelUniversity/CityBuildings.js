@@ -17,9 +17,8 @@ export default class CityBuildings extends PixiComponent {
     this.mains.push(this.addComponent(Building, { layer: '1bg400', type: 'h', x: 130, y: 10, scale: 0.62 })) //  mausolé
     // this.mains.push(this.addComponent(Building, { layer: '1f200', type: 'g', x: 440, y: 10, scale: 0.66 })) //  mec droite
     // this.mains.push(this.addComponent(Building, { layer: '1f200', type: 'i', x: -400, y: 0, scale: 0.66 })) //  mec gauche
-
-    this.mains.push(this.addComponent(Light, { layer: '1bg400', form: 'transparent', x: -500, y: 50, tint: 0xff0000, alpha: 1, scale: [0.3, 0.27] }))
-    // this.mains.push(this.addComponent(Light, { layer: '1bg400', form: 'light-gradient', x: -500, y: 50, tint: 0x0x6a091e, alpha: 1, scale: [0.3, 0.27] }))
+    // this.mains.push(this.addComponent(Light, { layer: '1bg400', form: 'transparent', x: -500, y: 50, tint: 0xff0000, alpha: 1, scale: [0.3, 0.27] }))
+    // this.mains.push(this.addComponent(Light, { layer: '1light550', form: 'light-gradient', x: -210, y: -10, tint: 0x720724, alpha: 1, scale: [0.3, 0.27] }))
   }
 
   componentWillUnmount () {
