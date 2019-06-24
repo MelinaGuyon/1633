@@ -283,7 +283,7 @@ export default class Menu extends DomComponent {
 
     return (
       <section class='menu' ref={addRef(this, 'menu')}>
-        <div class='menu__top-left magnet' ref={addRef(this, 'logo')}>
+        <div class='menu__top-left magne' ref={addRef(this, 'logo')}>
           <img class='light' src='assets/img/logo/logo-white.png' alt='logo' />
           <img class='dark' src='assets/img/logo/logo-dark.png' alt='logo' />
         </div>
@@ -332,9 +332,9 @@ export default class Menu extends DomComponent {
   }
 
   logoClick () {
-    signals.forceReset.dispatch()
-    signals.stopSubtitles.dispatch()
-    store.launched.set(false)
+    // signals.forceReset.dispatch()
+    // signals.stopSubtitles.dispatch()
+    // store.launched.set(false)
   }
 
   onFactUnlocked (id) {

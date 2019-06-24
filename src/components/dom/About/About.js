@@ -2,6 +2,7 @@ import { h, addRef } from '@internet/dom'
 import { DomComponent } from 'abstractions/DomComponent'
 import store from 'state/store'
 import signals from 'state/signals'
+import delay from 'lodash/delay'
 
 import './About.styl'
 
