@@ -168,6 +168,8 @@ export default class Carrousel extends DomComponent {
     this.launchGame = this.fastbind('launchGame', 1)
     this.mousehover = this.fastbind('mousehover', 1)
 
+    this.carrouselIsActive = false
+
     const allHistories = store.allHistories.get()
     const histories = []
     this.histories = Array(allHistories.length)
@@ -216,6 +218,7 @@ export default class Carrousel extends DomComponent {
       complete: () => { this.carouselWrapper.classList.add('visible') }
     })
 
+    this.carrouselIsActive = true
     this.carrousel.classList.remove('no-touch')
     this.background.addMagnet()
     this.internalBind()
@@ -230,6 +233,7 @@ export default class Carrousel extends DomComponent {
   }
 
   bind () {
+    this.listenStore('chronologieStatus', this.fastbind('checkBind', 1))
     this.listenStore('launched', this.resetCarousel)
   }
 
@@ -238,6 +242,16 @@ export default class Carrousel extends DomComponent {
     this.histories.forEach((el) => {
       el.unbind()
     })
+  }
+
+  checkBind (status) {
+    if (this.carrouselIsActive) {
+      if (status === 'appearing') {
+        this.internalUnbind()
+      } else {
+        this.internalBind()
+      }
+    }
   }
 
   mouseWhellTodo (e) {
@@ -325,6 +339,7 @@ export default class Carrousel extends DomComponent {
     this.internalUnbind()
     obj.id = 0 // to force Ricelieu story
 
+    this.carrouselIsActive = false
     this.carrousel.classList.add('no-touch')
     this.background.removeMagnet()
     signals.newIndication.dispatch(0)
