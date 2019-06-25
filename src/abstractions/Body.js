@@ -16,6 +16,8 @@ export default class Body {
     this.vx = this.vy = 0
     this.vxMax = this.vyMax = 0.22
     this.vitesse = 0.00014
+    // this.vxMax = this.vyMax = 0.8
+    // this.vitesse = 0.0014
     this.deceleration = 0.00008
 
     this.y = props.y || 0

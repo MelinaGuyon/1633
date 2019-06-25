@@ -1,23 +1,38 @@
 import PixiComponent from 'abstractions/PixiComponent'
 import Animator from 'controllers/animator'
 import { Container } from 'pixi.js'
+import store from 'state/store'
 
 export default class Animations extends PixiComponent {
   setup () {
     this.base = new Container()
     this.refs = {}
 
-    this.refs.lampeSorbonne = this.addChild('lampeSorbonne', { layer: '9f100', x: 260, y: -10 })
-    this.refs.lampeSorbonne.scale.x = 0.66
-    this.refs.lampeSorbonne.scale.y = 0.66
-    this.animLampeSorbonne = new Animator(this.refs.lampeSorbonne)
-    this.animLampeSorbonne.play('lampeSorbonne', { loop: true, frameDuration: 260 })
+    if (store.isPrez.get()) {
+      this.refs.lampeSorbonne = this.addChild('lampeSorbonne', { layer: '7f100', x: 260, y: -10 })
+      this.refs.lampeSorbonne.scale.x = 0.66
+      this.refs.lampeSorbonne.scale.y = 0.66
+      this.animLampeSorbonne = new Animator(this.refs.lampeSorbonne)
+      this.animLampeSorbonne.play('lampeSorbonne', { loop: true, frameDuration: 260 })
 
-    this.refs.fumeeSorbonne = this.addChild('fumeeSorbonne', { layer: '9bg600', x: -420, y: -285 })
-    this.refs.fumeeSorbonne.scale.x = 0.55
-    this.refs.fumeeSorbonne.scale.y = 0.55
-    this.animFumeeSorbonne = new Animator(this.refs.fumeeSorbonne)
-    this.animFumeeSorbonne.play('fumeeSorbonne', { loop: true, frameDuration: 250 })
+      this.refs.fumeeSorbonne = this.addChild('fumeeSorbonne', { layer: '7bg600', x: -420, y: -285 })
+      this.refs.fumeeSorbonne.scale.x = 0.55
+      this.refs.fumeeSorbonne.scale.y = 0.55
+      this.animFumeeSorbonne = new Animator(this.refs.fumeeSorbonne)
+      this.animFumeeSorbonne.play('fumeeSorbonne', { loop: true, frameDuration: 250 })
+    } else {
+      this.refs.lampeSorbonne = this.addChild('lampeSorbonne', { layer: '9f100', x: 260, y: -10 })
+      this.refs.lampeSorbonne.scale.x = 0.66
+      this.refs.lampeSorbonne.scale.y = 0.66
+      this.animLampeSorbonne = new Animator(this.refs.lampeSorbonne)
+      this.animLampeSorbonne.play('lampeSorbonne', { loop: true, frameDuration: 260 })
+
+      this.refs.fumeeSorbonne = this.addChild('fumeeSorbonne', { layer: '9bg600', x: -420, y: -285 })
+      this.refs.fumeeSorbonne.scale.x = 0.55
+      this.refs.fumeeSorbonne.scale.y = 0.55
+      this.animFumeeSorbonne = new Animator(this.refs.fumeeSorbonne)
+      this.animFumeeSorbonne.play('fumeeSorbonne', { loop: true, frameDuration: 250 })
+    }
 
     // this.refs.pluie = this.addChild('pluie', { layer: '9bg500', x: 30, y: -60 })
     // this.refs.pluie.scale.x = 0.46

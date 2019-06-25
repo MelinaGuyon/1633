@@ -5,6 +5,7 @@ import Interests from './Interests'
 import sound from 'controllers/sound'
 import SoundChecks from "./SoundChecks"
 import Glass from 'components/pixi/LevelCommon/Glass'
+import store from 'state/store';
 
 export default class LevelSorbonne extends Level {
   setup () {
@@ -20,7 +21,11 @@ export default class LevelSorbonne extends Level {
   }
 
   createGlass () {
-    this.glass = this.addComponent(Glass, { layer: '9bg200', x: 30, y: -50, scale: 0.55 })
+    if (store.isPrez.get()) {
+      this.glass = this.addComponent(Glass, { layer: '7bg200', x: 30, y: -50, scale: 0.55 })
+    } else {
+      this.glass = this.addComponent(Glass, { layer: '9bg200', x: 30, y: -50, scale: 0.55 })
+    }
   }
 
   addColliders () {

@@ -7,8 +7,11 @@ export default class Interests extends InterestsAbs {
     this.facts = []
 
     this.mains = []
-    this.mains.push(this.addComponent(Colliders, { layer: '9bg200', levelId: 9, x: 4, y: -100, group: 'interests', collide: true, alpha: 0, tint: 0xFF0000, cb: this.cb.bind(this, (store.chronologieIdsTable.get()[8])) }))
-
+    if (store.isPrez.get()) {
+      this.mains.push(this.addComponent(Colliders, { layer: '7bg200', levelId: 9, x: 4, y: -100, group: 'interests', collide: true, alpha: 0, tint: 0xFF0000, cb: this.cb.bind(this, (store.chronologieIdsTable.get()[8])) }))
+    } else {
+      this.mains.push(this.addComponent(Colliders, { layer: '9bg200', levelId: 9, x: 4, y: -100, group: 'interests', collide: true, alpha: 0, tint: 0xFF0000, cb: this.cb.bind(this, (store.chronologieIdsTable.get()[8])) }))
+    }
     this.bind()
   }
 }

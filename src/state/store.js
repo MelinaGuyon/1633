@@ -1,15 +1,20 @@
-/* global IS_DEV, VERSION */
+/* global IS_DEV, IS_PREZ, VERSION */
 
 import { createStore } from '@internet/state'
 import languages from '../languages'
 import sceneLayers from './sceneLayers'
+import sceneLayersPrez from './sceneLayersPrez'
 import subtitlesFr from './subtitlesFr'
 import subtitlesEn from './subtitlesEn'
 import chronologieFr from './chronologieFr'
 import chronologieEn from './chronologieEn'
 import levels from './levels'
+import levelsPrez from './levelsPrez'
+
+console.log(IS_PREZ)
 
 const isDev = IS_DEV
+const isPrez = IS_PREZ
 const ratio = window.devicePixelRatio <= 2 ? 1 : 1.5
 
 export default createStore({
@@ -40,9 +45,9 @@ export default createStore({
   ],
 
   // ---- scene ----
-  sceneLayers,
+  sceneLayers: IS_PREZ ? sceneLayersPrez : sceneLayers,
   subtitles: window.__conf.lang === 'fr' ? subtitlesFr : subtitlesEn,
-  levelDict: levels[0],
+  levelDict: IS_PREZ ? levelsPrez[0] : levels[0],
   levelId: null,
   levelInstance: null,
   levelSecurity: 2,
@@ -79,6 +84,9 @@ export default createStore({
   menuLight: false,
   menuSocials: true,
   menuGame: false,
+
+  // prez build
+  isPrez: isPrez,
 
   // ---- assets to preload ----
   atlases: {

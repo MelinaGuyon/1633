@@ -20,18 +20,34 @@ import LevelPhoto from 'components/pixi/LevelPhoto/LevelPhoto'
 
 import Perso from 'components/pixi/Perso/Perso'
 
-const levels = {
-  university: LevelUniversity,
-  church: LevelChurch,
-  profanation: LevelProfanation,
-  ceremony: LevelCeremony,
-  pharmacist: LevelPharmacist,
-  napoleon: LevelNapoleon,
-  recovery: LevelRecovery,
-  ceremonie: LevelCeremonie,
-  sorbonne: LevelSorbonne,
-  tombeau: LevelTombeau,
-  photo: LevelPhoto
+let levels = {}
+
+if (store.isPrez.get()) {
+  levels = {
+    university: LevelUniversity,
+    church: LevelChurch,
+    profanation: LevelProfanation,
+    ceremony: LevelCeremony,
+    pharmacist: LevelPharmacist,
+    ceremonie: LevelCeremonie,
+    sorbonne: LevelSorbonne,
+    tombeau: LevelTombeau,
+    photo: LevelPhoto
+  }
+} else {
+  levels = {
+    university: LevelUniversity,
+    church: LevelChurch,
+    profanation: LevelProfanation,
+    ceremony: LevelCeremony,
+    pharmacist: LevelPharmacist,
+    napoleon: LevelNapoleon,
+    recovery: LevelRecovery,
+    ceremonie: LevelCeremonie,
+    sorbonne: LevelSorbonne,
+    tombeau: LevelTombeau,
+    photo: LevelPhoto
+  }
 }
 
 export default class Pixigame extends PixiComponent {

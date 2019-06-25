@@ -10,6 +10,7 @@ const languages = Object.keys(require('./src/languages'))
 const envPaths = require('./src/paths')
 
 const IS_DEV = process.env.NODE_ENV === 'development'
+const IS_PREZ = process.env.APP_ENV === 'prez'
 
 let env = 'prod'
 if (IS_DEV) env = 'dev'
@@ -172,6 +173,7 @@ module.exports = {
     [
       new DefinePlugin({
         'IS_DEV': IS_DEV,
+        'IS_PREZ': IS_PREZ,
         'VERSION': JSON.stringify(version),
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
       })
@@ -180,6 +182,7 @@ module.exports = {
       domain: paths.domain,
       version: version,
       isDev: IS_DEV,
+      isPrez: IS_PREZ,
       languages: JSON.stringify(languages)
     }),
     envConfig.postplugins

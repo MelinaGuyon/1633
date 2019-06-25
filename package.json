@@ -10,8 +10,11 @@
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server",
+    "start:prez": "cross-env NODE_ENV=development APP_ENV=prez webpack-dev-server",
     "build": "npm version minor --no-git-tag-version --no-git && node scripts/cachebustAtlases && npm run build:webpack",
+    "build:prez": "npm version minor --no-git-tag-version --no-git && node scripts/cachebustAtlases && npm run build:webpack:prez",
     "build:webpack": "cross-env NODE_ENV=production webpack",
+    "build:webpack:prez": "cross-env NODE_ENV=production APP_ENV=prez webpack",
     "build:locs": "node scripts/locs",
     "build:audio": "node scripts/audio"
   },
