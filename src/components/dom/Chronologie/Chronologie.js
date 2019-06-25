@@ -86,7 +86,6 @@ class Fact extends DomComponent {
         <div class='locked-title'>
           <h2>{props.content.title}</h2>
           <h3>{props.content.historyName}</h3>
-          <h4>{props.content.date}</h4>
         </div>
         <Glass ref={addRef(this, 'glass')} autostart parrent path={`glass/${props.content.historyId}/${props.content.img}`} moovingCb={this.moovingCb.bind(this)}/>
       </div>
