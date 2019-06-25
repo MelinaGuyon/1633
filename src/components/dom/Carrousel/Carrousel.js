@@ -18,13 +18,27 @@ import './Carrousel.styl'
 
 class Form extends DomComponent {
   template (props) {
-    let clasName = 'carrousel__form__content ' + props.active + (props.animated ? props.animated : '')
+    let clasName
+    if (store.isPrez.get()) {
+      clasName = 'carrousel__form__content ' +
+        props.active +
+        (props.animated ? props.animated : '')
+    } else {
+      clasName = 'carrousel__form__content ' +
+        props.active +
+        (props.animated ? props.animated : '') +
+        (props.id === 0 ? '' : 'not-available')
+    }
+
     const loc = store.loc.get()
     this.id = props.id
     const title = loc['carrousel.' + props.type]
     const timing = title.length / 5 >> 0
 
     this.hover = props.hover
+
+    this.available = false
+    if (props.id === 0 || store.isPrez.get()) this.available = true
 
     return (
       <div class={clasName} launchGame={props.launchGame} type={props.type} data-id={props.id}>
@@ -41,15 +55,19 @@ class Form extends DomComponent {
     this.onMouseEnter = this.onMouseEnter.bind(this)
     this.onMouseLeave = this.onMouseLeave.bind(this)
 
-    this.base.addEventListener('click', this.onClick)
-    this.base.addEventListener('mouseenter', this.onMouseEnter)
-    this.base.addEventListener('mouseleave', this.onMouseLeave)
+    if (this.available) {
+      this.base.addEventListener('click', this.onClick)
+      this.base.addEventListener('mouseenter', this.onMouseEnter)
+      this.base.addEventListener('mouseleave', this.onMouseLeave)
+    }
   }
 
   unbind () {
-    this.base.removeEventListener('click', this.onClick)
-    this.base.removeEventListener('mouseenter', this.onMouseEnter)
-    this.base.removeEventListener('mouseleave', this.onMouseLeave)
+    if (this.available) {
+      this.base.removeEventListener('click', this.onClick)
+      this.base.removeEventListener('mouseenter', this.onMouseEnter)
+      this.base.removeEventListener('mouseleave', this.onMouseLeave)
+    }
   }
 
   fadeOut (el) {
@@ -284,6 +302,9 @@ export default class Carrousel extends DomComponent {
       }
     }
 
+    if (this.histories[nextpos].available) this.background.addMagnet()
+    else this.background.removeMagnet()
+
     this.background.animeNumber(nextpos, 'next')
     current.classList.remove('active')
     delay(() => {
@@ -318,6 +339,9 @@ export default class Carrousel extends DomComponent {
         newCurrent = all[i]
       }
     }
+
+    if (this.histories[nextpos].available) this.background.addMagnet()
+    else this.background.removeMagnet()
 
     this.background.animeNumber(nextpos, 'prev')
     current.classList.remove('active')
@@ -416,7 +440,6 @@ export default class Carrousel extends DomComponent {
     this.carrousel.style.opacity = 1
     this.activeCarousel()
     this.game.destroy()
-    console.log('je passe', this.game)
   }
 
   mousehover (hovering) {
