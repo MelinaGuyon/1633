@@ -28,6 +28,7 @@ export default createStore({
 
   // ---- screen device infos ----
   size: [0, 0],
+  device: {},
   mouse: [0, 0],
   pixelRatio: ratio,
   sceneScale: 1,

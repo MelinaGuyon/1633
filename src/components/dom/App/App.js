@@ -8,8 +8,10 @@ import mouse from 'controllers/mouse'
 import Preloader from 'components/dom/Preloader/Preloader'
 import MouseMv from 'components/dom/MouseMv/MouseMv'
 import Indications from 'components/dom/Indications/Indications'
+import Disclaimer from 'components/dom/Disclaimer/Disclaimer'
 import GameInterface from 'components/dom/GameInterface/GameInterface'
 import signals from 'state/signals'
+import store from 'state/store'
 
 export default class App extends DomComponent {
   template ({ base }) {
@@ -17,6 +19,14 @@ export default class App extends DomComponent {
   }
 
   componentDidMount () {
+
+    if (store.device.get().mobile) {
+      console.log('mobile')
+      this.render(
+        <Disclaimer />, this.base)
+      return
+    }
+
     this.bind()
     pixi.init()
 

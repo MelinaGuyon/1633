@@ -38,6 +38,7 @@
     "epilogue.skip": "Passer l'épilogue",
     "tuto.keyboard": "Utilise les flèches de ton clavier pour te déplacer",
     "tuto.spacebar": "Clique sur la barre espace quand tu vois ces formes dans les scènes",
-    "sceneTitle.text": "Scène"
+    "sceneTitle.text": "Scène",
+    "disclaimer.text": "Expérience immersive exclusivement disponible sur desktop"
   }
 }

@@ -38,6 +38,7 @@
     "epilogue.skip": "Skip epilogue",
     "tuto.keyboard": "Use the arrows of the keyboard to move",
     "tuto.spacebar": "Press the spacebar when you see these shapes appearing",
-    "sceneTitle.text": "Scene"
+    "sceneTitle.text": "Scene",
+    "disclaimer.text": "The experience is only available on desktop"
   }
 }

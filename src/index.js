@@ -7,6 +7,7 @@ import Resize from 'utils/resize'
 import Mouse from 'utils/mouse'
 import Keyboard from 'utils/keyboard'
 import logger from 'utils/logger'
+import addBowserClasses from 'utils/bowserToClasses'
 
 window.onload = () => {
   const main = new Main()
@@ -18,4 +19,6 @@ window.onload = () => {
       logger('App', '#eda61a').log('setup succes')
       render(<App base={document.body.querySelector('.app')} />)
     })
+
+  addBowserClasses()
 }
